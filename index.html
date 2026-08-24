@@ -1,53 +1,1782 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-    />
-    <meta name="theme-color" content="#050505" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>JANHVI × KRISH · SAVE THE DATE 19-20 NOV 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              background: "#050505",
-              surface: "#131313",
-              "surface-low": "#1c1b1b",
-              "surface-lowest": "#0e0e0e",
-              primary: "#ffffff",
-              secondary: "#e9c349",
-              "secondary-fixed": "#ffe088",
-              error: "#ffb4ab",
-              outline: "#8e9192",
-              "outline-variant": "#333333"
-            },
-            fontFamily: {
-              mono: ["'JetBrains Mono'", "monospace"],
-              sans: ["'JetBrains Mono'", "monospace"]
-            }
+<html lang="en" class="dark" style="background-color: #050505;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#050505" />
+  <title>JANHVI × KRISH · SAVE THE DATE 19-20 NOV 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            background: "#050505",
+            surface: "#131313",
+            "surface-low": "#1c1b1b",
+            "surface-lowest": "#0e0e0e",
+            primary: "#ffffff",
+            secondary: "#e9c349",
+            "secondary-fixed": "#ffe088",
+            error: "#ffb4ab",
+            outline: "#8e9192",
+            "outline-variant": "#333333"
+          },
+          fontFamily: {
+            mono: ["'JetBrains Mono'", "monospace"],
+            sans: ["'JetBrains Mono'", "monospace"]
           }
         }
       }
-    </script>
-  </head>
-  <body class="bg-[#050505] text-[#e5e2e1] min-h-screen">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    }
+  </script>
+  <style>
+    html, body {
+      background-color: #050505 !important;
+      color: #e5e2e1;
+      font-family: 'JetBrains Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body {
+      background-image: linear-gradient(rgba(51, 51, 51, 0.25) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(51, 51, 51, 0.25) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .crt-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 40;
+      opacity: 0.35;
+    }
+    .vignette-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.85);
+      pointer-events: none;
+      z-index: 40;
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+    .glitch-hover:hover {
+      animation: glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+      background: #ffffff !important;
+      color: #000000 !important;
+    }
+    .glitch-text:hover {
+      animation: glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+      color: #ffffff;
+    }
+    @keyframes scan {
+      0% { top: 0; opacity: 0.8; }
+      50% { top: 100%; opacity: 0.4; }
+      100% { top: 0; opacity: 0.8; }
+    }
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      animation: scan 4s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes btn-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(233, 195, 73, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(233, 195, 73, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(233, 195, 73, 0); }
+    }
+    .btn-pulse-anim {
+      animation: btn-pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background-color: #fff;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .blinking-caret::after {
+      content: "█";
+      animation: blink 1s step-end infinite;
+    }
+    .glass-panel {
+      background: rgba(19, 19, 19, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .hairline-border {
+      border: 1px solid #333333;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    input[type="range"].volume-slider {
+      -webkit-appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"].volume-slider::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4px;
+      background: #353534;
+      border-radius: 2px;
+    }
+    input[type="range"].volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background: #e9c349;
+      margin-top: -4px;
+    }
+  </style>
+</head>
+<body class="min-h-[100dvh] flex flex-col justify-between selection:bg-white selection:text-black">
+
+  <!-- CRT SCANLINES & CHROMATIC ABERRATION VIGNETTE -->
+  <div class="crt-overlay"></div>
+  <div class="vignette-overlay"></div>
+
+  <!-- ULTRA-MINIMALIST CENTERED INITIALIZATION SCREEN -->
+  <div id="audio-bypass-gate" style="background-color: #050505;" class="fixed inset-0 z-[200] flex flex-col items-center justify-center p-6 transition-opacity duration-350">
+    <div class="flex flex-col items-center justify-center text-center max-w-lg w-full space-y-6">
+      <div class="flex items-center gap-2 font-mono text-[10px] text-[#8e9192] uppercase tracking-[0.3em]">
+        <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
+        <span>CLASSIFIED INVITATION PROTOCOL</span>
+      </div>
+
+      <button
+        type="button"
+        onclick="bypassAudioGate()"
+        class="w-full max-w-md py-6 px-8 border border-white/80 hover:border-[#e9c349] bg-black/60 hover:bg-[#e9c349] text-white hover:text-black font-mono font-bold text-sm md:text-base uppercase tracking-[0.25em] transition-all duration-300 btn-pulse-anim cursor-pointer shadow-[0_0_40px_rgba(255,255,255,0.08)]"
+      >
+        [ CLICK HERE TO INITIALIZE ]
+      </button>
+
+      <p class="font-mono text-[9px] text-[#8e9192] uppercase tracking-[0.3em] opacity-70">
+        [ SECURE_TERMINAL_V2.06 // ENCRYPTED_CHANNEL ]
+      </p>
+    </div>
+  </div>
+
+  <!-- Top App Bar with Minimalist Sound Button -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#050505]/95 backdrop-blur-md border-b border-[#333333] flex justify-between items-center h-14 px-3 md:px-8">
+    <div class="flex items-center gap-2 md:gap-3 text-white">
+      <span id="top-nav-icon" class="material-symbols-outlined text-lg text-[#ffb4ab]">lock</span>
+      <span id="top-nav-title" class="text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.2em] whitespace-nowrap font-mono">
+        [ CLASSIFIED // LEVEL 5 ACCESS ]
+      </span>
+      <span id="sector-alert-tag" class="hidden sm:inline-block text-[10px] text-[#ffb4ab] border border-[#ffb4ab]/40 px-2 py-0.5 ml-2 font-mono">
+        [ RESTRICTED ]
+      </span>
+    </div>
+    <div class="flex items-center gap-3">
+      <!-- Equalizer Visualizer -->
+      <div id="audio-eq" class="flex items-end gap-[3px] h-3.5 opacity-80 mr-1">
+        <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-full"></span>
+        <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-2/3"></span>
+        <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-4/5"></span>
+      </div>
+
+      <!-- Minimalist Sound Button with Hover Popover -->
+      <div class="relative group flex items-center justify-center" onmouseenter="document.getElementById('vol-popover').classList.remove('hidden')" onmouseleave="document.getElementById('vol-popover').classList.add('hidden')">
+        <div id="vol-popover" class="hidden absolute top-12 right-0 bg-[#131313] border border-[#333333] p-3 rounded-lg shadow-2xl backdrop-blur-xl flex flex-col items-center gap-2 z-50">
+          <span id="vol-pct-lbl" class="text-[9px] text-[#8e9192] uppercase tracking-wider font-mono">70%</span>
+          <div class="h-24 flex items-center justify-center py-1">
+            <input type="range" min="0" max="1" step="0.01" value="0.7" id="master-vol" oninput="AudioEngine.setVolume(this.value)" class="volume-slider -rotate-90 w-20 cursor-pointer" />
+          </div>
+        </div>
+
+        <button type="button" onclick="AudioEngine.toggle()" id="btn-audio-toggle" class="flex items-center justify-center p-2.5 rounded-full text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30 transition-colors">
+          <span class="material-symbols-outlined text-lg" id="audio-icon">volume_up</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Flash Screen Effect for Reveal -->
+  <div id="flash-overlay" class="fixed inset-0 z-[100] bg-white pointer-events-none opacity-0 transition-opacity duration-700"></div>
+
+  <!-- Main Canvas with Kinetic Momentum Transition -->
+  <main id="main-content" class="flex-grow pt-16 pb-20 md:pt-20 md:pb-24 px-3 md:px-8 max-w-5xl mx-auto w-full flex flex-col items-center transition-all duration-300 ease-out">
+    
+    <!-- SECTOR 1: INTRO -->
+    <section id="sec-intro" class="w-full flex flex-col items-center min-h-[calc(100dvh-8rem)] justify-center">
+      <div class="w-full border border-[#333333] bg-[#1c1b1b]/60 backdrop-blur-md p-5 md:p-8 relative my-auto">
+        <div class="absolute -top-3 left-4 bg-[#333333] text-[10px] px-2 py-0.5 text-[#e9c349] uppercase tracking-widest font-mono">
+          [SECTOR_01: SYSTEM_AUTH]
+        </div>
+        <div class="mt-3 mb-6 min-h-[90px] md:min-h-[110px] flex items-center justify-center">
+          <p id="typewriter-box" class="text-white mb-2 leading-relaxed max-w-2xl text-center mx-auto text-xs md:text-base font-mono">
+            <span class="typewriter-cursor"></span>
+          </p>
+        </div>
+        <div class="mb-6">
+          <div class="flex justify-between items-end mb-2">
+            <span class="text-[10px] text-[#e9c349] uppercase tracking-widest font-mono">INITIALIZING...</span>
+            <span id="progress-lbl" class="text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">0%</span>
+          </div>
+          <div class="w-full h-[2px] bg-[#333333] relative overflow-hidden">
+            <div id="progress-bar" class="absolute top-0 left-0 h-full bg-[#e9c349] transition-all duration-100 ease-out" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div id="reveal-btn-container" class="flex flex-col items-center">
+          <div class="flex justify-center mb-2 animate-pulse text-[#e9c349]">
+            <span class="material-symbols-outlined text-xl md:text-2xl">keyboard_double_arrow_down</span>
+          </div>
+          <button id="btn-reveal" onclick="triggerReveal()" class="w-full h-14 md:h-16 border-2 border-[#333333] text-[#8e9192] uppercase tracking-[0.2em] font-bold text-xs md:text-base flex items-center justify-center gap-2 cursor-not-allowed opacity-50 transition-all font-mono">
+            [VIEW REVEAL]
+          </button>
+        </div>
+      </div>
+
+      <!-- KINETIC MOTION-GRAPHIC REVEAL SEQUENCE (16 EXTRACTED PHOTOS) -->
+      <div id="intro-expanded" class="hidden w-full flex flex-col items-center mt-6 md:mt-10 animate-[fadeIn_0.6s_ease-out]">
+        <div class="w-full flex justify-between items-start text-[10px] text-[#8e9192] mb-3 max-w-lg font-mono">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
+            <span id="reel-frame-label">REEL: [PROPOSAL_ARCHIVE // 01/16]</span>
+          </div>
+          <div id="reel-speed-label" class="text-right">[SPEED: 5.0 FPS // STEADY]</div>
+        </div>
+
+        <!-- Dynamic Kinetic Frame Container with Centered Subject Geometry & Romantic Audio on Hover -->
+        <div
+          onmouseenter="speedUpReel(); document.getElementById('photo-love-badge').classList.remove('hidden'); document.getElementById('reel-speed-label').textContent = '[SPEED: 12.0 FPS // HYPER_DRIVE]'; document.getElementById('reel-speed-label').className = 'text-right text-[#e9c349] font-bold';"
+          onmouseleave="slowDownReel(); document.getElementById('photo-love-badge').classList.add('hidden'); document.getElementById('reel-speed-label').textContent = '[SPEED: 5.0 FPS // STEADY]'; document.getElementById('reel-speed-label').className = 'text-right text-[#8e9192]';"
+          class="relative w-full max-w-lg aspect-[3/2] border-2 border-[#e9c349]/70 hover:border-[#e9c349] p-1.5 md:p-2 flex flex-col items-center justify-center mb-3 bg-[#0e0e0e] backdrop-blur-xl mx-auto group transition-all duration-300 shadow-[0_0_35px_rgba(0,0,0,0.9)] hover:shadow-[0_0_50px_rgba(233,195,73,0.35)] cursor-pointer rounded-sm overflow-hidden"
+        >
+          <div class="absolute top-2.5 left-2.5 z-20 font-mono text-[9px] text-[#e9c349] bg-black/85 px-2.5 py-0.5 border border-[#e9c349]/40 flex items-center gap-1.5 shadow-md">
+            <span class="w-1.5 h-1.5 bg-[#4ade80] rounded-full animate-pulse"></span>
+            <span id="photo-frame-number">FRAME: 1944 // JAIPUR_ARCHIVE</span>
+          </div>
+          <div id="photo-love-badge" class="hidden absolute top-2.5 right-2.5 z-20 font-mono text-[8px] md:text-[9px] text-pink-300 bg-black/90 px-2.5 py-0.5 border border-pink-500/60 animate-pulse tracking-widest shadow-md">[♥ LOVE_PROTOCOL_ACTIVE ♥]</div>
+
+          <div class="w-full h-full relative overflow-hidden bg-black flex items-center justify-center">
+            <img id="reel-img-display" alt="Janhvi & Krish Proposal Memory" style="object-fit: cover; object-position: center 38%;" class="w-full h-full filter contrast-[1.14] brightness-[0.96] saturate-[1.15] transition-transform duration-300 group-hover:scale-[1.02]" src="reveal-photos/photo-1944.jpg" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/70 via-transparent to-[#e9c349]/10 pointer-events-none mix-blend-overlay z-20"></div>
+
+            <div class="absolute top-2 left-2 text-[#e9c349] font-mono text-[10px] z-20 pointer-events-none">+</div>
+            <div class="absolute top-2 right-2 text-[#e9c349] font-mono text-[10px] z-20 pointer-events-none">+</div>
+            <div class="absolute bottom-2 left-2 text-[#e9c349] font-mono text-[10px] z-20 pointer-events-none">+</div>
+            <div class="absolute bottom-2 right-2 text-[#e9c349] font-mono text-[10px] z-20 pointer-events-none">+</div>
+
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-white opacity-40 shadow-[0_0_10px_#ffffff] animate-[scan_3s_ease-in-out_infinite] pointer-events-none z-20"></div>
+          </div>
+
+          <!-- Interactive Controls Overlay -->
+          <div class="absolute bottom-2 left-2 right-2 z-20 flex justify-between items-center bg-black/85 backdrop-blur-md px-3 py-1 border border-[#333333]">
+            <button type="button" onclick="event.stopPropagation(); prevReelPhoto();" class="font-mono text-[10px] text-[#e9c349] hover:text-white transition-colors cursor-pointer px-2 py-0.5 uppercase tracking-wider">[◄ PREV]</button>
+            <button type="button" onclick="event.stopPropagation(); toggleReelAutoplay();" id="reel-play-btn" class="font-mono text-[9px] text-[#8e9192] hover:text-white uppercase tracking-widest flex items-center gap-1.5 cursor-pointer">
+              <span class="material-symbols-outlined text-xs text-[#e9c349]">pause</span>
+              <span id="reel-play-lbl">AUTO_PLAY</span>
+            </button>
+            <button type="button" onclick="event.stopPropagation(); nextReelPhoto();" class="font-mono text-[10px] text-[#e9c349] hover:text-white transition-colors cursor-pointer px-2 py-0.5 uppercase tracking-wider">[NEXT ►]</button>
+          </div>
+        </div>
+
+        <!-- Pips -->
+        <div id="reel-pips" class="flex items-center justify-center gap-1 mb-6 max-w-lg w-full px-4"></div>
+
+        <div class="text-center w-full flex flex-col items-center gap-4 md:gap-6 mb-8 font-mono">
+          <h1 class="text-4xl md:text-7xl text-[#ffb4ab] tracking-tighter w-full max-w-3xl leading-tight font-bold mx-auto text-center uppercase">
+            Janhvi<br/>&amp;<br/>Krish
+          </h1>
+          <div class="bg-[#1c1b1b] px-3 py-2.5 md:px-4 md:py-3 flex items-center gap-3 border border-[#333333] max-w-lg mx-auto">
+            <span class="material-symbols-outlined text-base md:text-lg text-[#ffb4ab] shrink-0">warning</span>
+            <span class="text-[10px] md:text-xs text-white uppercase tracking-widest text-left leading-relaxed font-mono">
+              STATUS: LOCKED IN. PROBABILITY OF CHAOS: 9,999.99% - TOTAL SYSTEM COLLAPSE IMMINENT
+            </span>
+          </div>
+        </div>
+        <div class="w-full max-w-md pb-safe mx-auto">
+          <div class="text-[10px] text-[#8e9192] mb-2 uppercase tracking-widest font-mono">AWAITING_INPUT<span class="typewriter-cursor"></span></div>
+          <button onclick="switchTab('details')" class="w-full h-14 md:h-16 border-2 border-white text-white text-xs md:text-base hover:bg-white hover:text-black text-center tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 group font-bold glitch-hover uppercase font-mono">
+            <span class="material-symbols-outlined text-base md:text-lg">lock_open</span>[ACCESS LOGISTICS]<span>&gt;&gt;&gt;</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTOR 2: DETAILS (5 STAT CARDS WITH CYAN HOVER STATES) -->
+    <section id="sec-details" class="hidden w-full flex-col font-mono">
+      <div class="flex flex-col gap-2 md:gap-3 w-full mb-6 md:mb-8">
+        <div class="flex items-center gap-2">
+          <div class="h-[1px] bg-[#333333] flex-grow"></div>
+          <span class="text-[9px] md:text-[10px] uppercase text-[#8e9192] tracking-[0.2em]">[MISSION_MANIFEST // 5 CLASSIFIED SEGMENTS]</span>
+          <div class="h-[1px] bg-[#333333] w-12"></div>
+        </div>
+        <h1 class="text-xl md:text-3xl text-white uppercase tracking-widest flex items-center gap-2 font-bold font-mono">
+          MISSION_PARAMETERS <span class="blinking-caret text-white"></span>
+        </h1>
+        <p class="text-[11px] md:text-xs text-[#8e9192] max-w-2xl uppercase tracking-widest leading-relaxed font-mono">
+          Analyzing current event parameters. Please review critical updates below.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3.5 md:gap-4 max-w-5xl">
+        <!-- Card 1 -->
+        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
+          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
+            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_01</span>
+            <span class="text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ THREAT: HIGH ]</span>
+          </div>
+          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
+            <img alt="Calendar Threat" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida/AEtjO1WFkaHOPo0OQ1AGYzFCvgWtHoNeY091i96FtV0Ska9vjRy4wykpmJsZExK5ff_SIuQ7DzdbWYaRaufulU7OB-40MNHiDe2QnYZawnfhtqUSg8QmvggIYEj4-Obn5PzI88YLojC37WDhih0SHMB680qMR7co979T1wKGq03C6sFjcckvXZAuqgrLzvCnkLuzXv9OyiCqqX2oIAjXih2rySAnKfYYySsmxI4uxmuTWg0XeoikItIOb-n7dMM" />
+            <div class="absolute inset-0 bg-[#ffb4ab]/10 mix-blend-overlay group-hover:bg-cyan-400/10 transition-colors"></div>
+          </div>
+          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
+            <div class="flex items-start justify-between gap-2 text-[#ffb4ab]">
+              <div class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">warning</span>
+                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Calendar Threat Level: Maximum</h2>
+              </div>
+              <span class="md:hidden text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ THREAT: HIGH ]</span>
+            </div>
+            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Clear your November right now. The timeline is fixed. No deviations permitted.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Wardrobe Planning - SLEEK & BALANCED ELEGANT FEATURE CARD -->
+        <div onclick="AudioEngine.ping()" class="glass-panel border-2 border-[#e9c349]/80 shadow-[0_0_30px_rgba(233,195,73,0.15)] flex flex-col w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-[#e9c349] hover:shadow-[0_0_40px_rgba(233,195,73,0.3)] transform hover:-translate-y-0.5 transition-all duration-300 rounded-sm">
+          <div class="bg-[#1c1b1b] p-2.5 md:px-5 md:py-2.5 border-b border-[#333333] flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <span class="text-[9px] md:text-[11px] text-white font-bold tracking-widest font-mono">[MISSION_MANIFEST // DATA_SEGMENT_02]</span>
+            </div>
+            <span class="bg-[#e9c349] text-black font-mono font-bold text-[8px] md:text-[9px] px-2 py-0.5 tracking-widest uppercase shadow-[0_0_12px_rgba(233,195,73,0.5)]">
+              ★ PRIMARY DIRECTIVE // WARDROBE PLANNING ★
+            </span>
+          </div>
+
+          <div class="p-3.5 md:p-5 flex flex-col gap-3 font-mono">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[#e9c349] text-xl shrink-0">checkroom</span>
+                <h2 class="text-sm md:text-lg text-[#e9c349] uppercase tracking-[0.15em] font-bold font-mono">
+                  Wardrobe Protocol: Mandatory Dress Codes
+                </h2>
+              </div>
+            </div>
+
+            <!-- 3 THEMATIC TILES (CARNIVAL, PRE-WEDDING GALA, SHAADI) WITH HOVER DRESS THEME CUES -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 md:gap-3.5 mt-0.5">
+              <!-- Carnival -->
+              <div class="flex flex-col bg-[#131313]/95 border border-[#e9c349]/50 hover:border-[#e9c349] p-2.5 md:p-3 rounded-sm transition-all shadow-md relative overflow-hidden group/tile">
+                <div class="w-full h-28 md:h-36 overflow-hidden border border-[#333333] mb-2 relative rounded-sm">
+                  <img alt="Carnival Ceremony" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
+                  <div class="absolute top-1.5 left-1.5 bg-[#e9c349] text-black font-mono text-[8px] font-bold px-1.5 py-0.2 tracking-wider uppercase">EVENT 01</div>
+                  <!-- Interactive Hover Theme Badge -->
+                  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 text-center">
+                    <span class="font-mono text-[10px] md:text-xs font-bold text-[#e9c349] bg-[#e9c349]/20 border border-[#e9c349] px-2 py-0.5 uppercase tracking-widest mb-1 animate-pulse">
+                      [ THEME: YELLOW ]
+                    </span>
+                    <span class="font-sans text-[10px] text-white/90 leading-tight">
+                      Sunshine yellows, vibrant florals & flowy pastels
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs md:text-sm font-bold text-white uppercase tracking-wider font-mono">CARNIVAL</span>
+                  <span class="text-[10px] font-bold text-[#e9c349] bg-[#e9c349]/10 px-1.5 py-0.2 border border-[#e9c349]/40 uppercase tracking-widest font-mono">YELLOW</span>
+                </div>
+                <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-wider mt-1 leading-relaxed font-mono">Sun-drenched yellows, mustard silks, and floral prints.</p>
+              </div>
+
+              <!-- Pre-wedding Gala -->
+              <div class="flex flex-col bg-[#131313]/95 border border-cyan-400/50 hover:border-cyan-400 p-2.5 md:p-3 rounded-sm transition-all shadow-md relative overflow-hidden group/tile">
+                <div class="w-full h-28 md:h-36 overflow-hidden border border-[#333333] mb-2 relative rounded-sm">
+                  <img alt="Pre-wedding Gala" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
+                  <div class="absolute top-1.5 left-1.5 bg-cyan-400 text-black font-mono text-[8px] font-bold px-1.5 py-0.2 tracking-wider uppercase">EVENT 02</div>
+                  <!-- Interactive Hover Theme Badge -->
+                  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 text-center">
+                    <span class="font-mono text-[10px] md:text-xs font-bold text-cyan-300 bg-cyan-400/20 border border-cyan-400 px-2 py-0.5 uppercase tracking-widest mb-1 animate-pulse">
+                      [ THEME: INDO-WESTERN BLING ]
+                    </span>
+                    <span class="font-sans text-[10px] text-white/90 leading-tight">
+                      Metallic sequins, tuxedo cuts & cocktail glamour
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs md:text-sm font-bold text-white uppercase tracking-wider font-mono">PRE-WEDDING GALA</span>
+                  <span class="text-[10px] font-bold text-cyan-300 bg-cyan-400/10 px-1.5 py-0.2 border border-cyan-400/40 uppercase tracking-widest font-mono">INDO-WESTERN BLING</span>
+                </div>
+                <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-wider mt-1 leading-relaxed font-mono">Sequins, metallic accents, and modern high-voltage glamour.</p>
+              </div>
+
+              <!-- Shaadi -->
+              <div class="flex flex-col bg-[#131313]/95 border border-[#ffb4ab]/50 hover:border-[#ffb4ab] p-2.5 md:p-3 rounded-sm transition-all shadow-md relative overflow-hidden group/tile">
+                <div class="w-full h-28 md:h-36 overflow-hidden border border-[#333333] mb-2 relative rounded-sm">
+                  <img alt="Shaadi" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
+                  <div class="absolute top-1.5 left-1.5 bg-[#ffb4ab] text-black font-mono text-[8px] font-bold px-1.5 py-0.2 tracking-wider uppercase">EVENT 03</div>
+                  <!-- Interactive Hover Theme Badge -->
+                  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 text-center">
+                    <span class="font-mono text-[10px] md:text-xs font-bold text-[#ffb4ab] bg-[#ffb4ab]/20 border border-[#ffb4ab] px-2 py-0.5 uppercase tracking-widest mb-1 animate-pulse">
+                      [ THEME: TRADITIONAL ]
+                    </span>
+                    <span class="font-sans text-[10px] text-white/90 leading-tight">
+                      Royal sherwanis, classic lehengas & heritage silks
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs md:text-sm font-bold text-white uppercase tracking-wider font-mono">SHAADI</span>
+                  <span class="text-[10px] font-bold text-[#ffb4ab] bg-[#ffb4ab]/10 px-1.5 py-0.2 border border-[#ffb4ab]/40 uppercase tracking-widest font-mono">TRADITIONAL</span>
+                </div>
+                <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-wider mt-1 leading-relaxed font-mono">Opulent silks, royal brocades, jewel tones, and timeless heritage.</p>
+              </div>
+            </div>
+            <p class="text-[11px] md:text-xs text-[#e5e2e1] leading-relaxed bg-[#131313] p-2.5 border border-[#333333] font-sans rounded-sm">
+              💡 <strong>Directive:</strong> Start shopping now, because wedding outfits take longer to stitch than a government project.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
+          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
+            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_03</span>
+            <span class="text-[9px] text-[#4ade80] group-hover:text-cyan-300 border border-[#4ade80]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ TELEMETRY: MONITORED ]</span>
+          </div>
+          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
+            <img alt="Dance Floor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida/AEtjO1XB4IXvLxw17GxnehBkl6ygw7Svdsx6dmFb5Ey6IhgKJOGzQcfWgBq80w1uBVxNQUwdBvMvNR6FrYfmdxy9uHL-CtHv7zBU1yQSRDzHbikoDuyNoDx4W2o6Y8B85APgHS6BS3Msu2xFG7zBil0maGdtvsSpVvJVDjERQpHvUyImrDs7GtwuU2tgKjTCSbAP8vsJOjOahPssEp4jZak4yiPHelqb0OjTpqtrbFoxeLxzIntOIGKNKk0yp_c1" />
+          </div>
+          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
+            <div class="flex items-start justify-between gap-2 text-[#4ade80]">
+              <div class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">graphic_eq</span>
+                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Dance Floor Situation: High Energy</h2>
+              </div>
+              <span class="md:hidden text-[9px] text-[#4ade80] group-hover:text-cyan-300 border border-[#4ade80]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ TELEMETRY: MONITORED ]</span>
+            </div>
+            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Krish &amp; Janhvi are going to tear it up so hard, even the elders will find themselves tapping their feet.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
+          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
+            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_04</span>
+            <span class="text-[9px] text-[#ffe088] group-hover:text-cyan-300 border border-[#ffe088]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ SATELLITE: VERIFIED ]</span>
+          </div>
+          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
+            <img alt="Jaipur Weather Status" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida/AEtjO1X5P73jhwXuWfvVumZaS3neCqeiGMvE_1G-offVnWZNXtPYpGui4NAPtaJVwEF_aLDQjMhD1UdUL1XWpbGdVMJQ41g1TgQC7roqbw4RwV0khgf27aV6GyU0nX4uRHhybScKfBXo5gBEQ3kKyEQyfMlMQp4hG7r5Ge3c1nZ7IIWL91NL3BfuqAHjaoTc_4HTBjadXPcmYLtSoQ6AkhQg7vfAcsx8tl9x4Yr-1rvRtvwivAJhj6KEyETfCmnN" />
+          </div>
+          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
+            <div class="flex items-start justify-between gap-2 text-[#ffe088]">
+              <div class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">thermostat</span>
+                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Jaipur Weather Status: Optimal</h2>
+              </div>
+              <span class="md:hidden text-[9px] text-[#ffe088] group-hover:text-cyan-300 border border-[#ffe088]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ SATELLITE: VERIFIED ]</span>
+            </div>
+            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Perfect winter breeze by day, but the venue will generate enough heat to melt ice.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
+          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
+            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_05</span>
+            <span class="text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ DIRECTIVE: ENFORCED ]</span>
+          </div>
+          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
+            <img alt="Attendance Policy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida/AEtjO1VImUbnl3ugnD0BRYx2XZp26LYUhAJKRfTNAax_HtgZYwFPMBgMDd8N1UjmUN-aFJ1uBIpkIktS8IRiREkCZFnesIGsSozggr-FhBP_izIlY0viDiyWqXHxR2WdP9aJjWRV0XRGf1eTBBPq_Fh6ewa7hpDd6-hiM5GXs7W976XXBfkKSA9iJ8zzQAL-L_wdnB-KvjJrPt33148HTzn7SOa6IXxnf9SYA17Gr8ZBwYigJevIZa7e0Q-Mnzta" />
+          </div>
+          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
+            <div class="flex items-start justify-between gap-2 text-[#ffb4ab]">
+              <div class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">gavel</span>
+                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Attendance Policy: Mandatory</h2>
+              </div>
+              <span class="md:hidden text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ DIRECTIVE: ENFORCED ]</span>
+            </div>
+            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Excuses like &quot;mujhe yaad nahi tha&quot; or &quot;office ka kaam hai&quot; will be legally rejected by the family committee.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full max-w-5xl mt-6 md:mt-8 mb-4">
+        <button onclick="switchTab('venue')" class="w-full border border-white text-white text-xs md:text-base py-5 hover:bg-white hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-1 transition-all uppercase font-bold font-mono hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]">
+          <span>[MISSION_LOGISTICS]</span>
+          <span class="text-[10px] opacity-50">&gt;&gt;&gt;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTOR 3: VENUE WITH BALANCED PROMINENT CARDS -->
+    <section id="sec-venue" class="hidden w-full flex-col font-mono">
+      <div class="flex-grow flex flex-col border border-[#333333] bg-[#0e0e0e] overflow-hidden">
+        <div class="h-8 border-b border-[#333333] flex justify-between items-center px-4 bg-[#1c1b1b]">
+          <span class="text-[10px] text-white tracking-[0.2em] uppercase font-mono">[LOCATION_SCANNED]</span>
+          <span class="text-[10px] text-[#8e9192] tracking-[0.2em] uppercase font-mono">[SECTOR_03]</span>
+        </div>
+        <div class="relative bg-[#0e0e0e] min-h-[48vh] md:min-h-[58vh] flex flex-col group overflow-hidden aspect-video">
+          <div class="absolute top-3 left-3 md:top-4 md:left-4 z-20 bg-[#201f1f]/90 px-3 py-1 flex items-center space-x-2 border border-[#333333]">
+            <span class="w-2 h-2 bg-[#4ade80] rounded-full animate-ping"></span>
+            <span class="text-[9px] text-[#4ade80] uppercase tracking-widest font-bold font-mono">LIVE_FEED</span>
+          </div>
+          <div class="absolute top-3 right-3 md:top-4 md:right-4 z-20 bg-[#131313]/90 px-3 py-1 border border-[#333333] font-mono text-[9px] text-[#8e9192] uppercase tracking-widest">
+            COORDS: 27.1425° N, 75.9520° E
+          </div>
+
+          <img alt="Achrol Niwas Treehouse" class="w-full h-full object-cover opacity-75 mix-blend-screen filter contrast-125 block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZyg5WNBCsUyGT3ua9vG5xCuMdMyM1Vb_NBx-fi3NSDy-1CaNNBNcg1q1Xl93TajO7v6RaXdQy_e6gPoFTPdU0r4DZZ0ETSVpzEFION5j_BhYOfGe7NQEKG7qmkDGiNdvMI1MwXWpulXAEevGHD5dMjtMh63UC2UHGWJh2FdYCKvEZotZPXtOKrn5BFtpJkc0ojMidpkOhI-YG5SSlU2OTuiMG13hL7WaBJwZg4-iwVCBhha4aw1_23g" />
+          
+          <!-- ACTIVE RADAR RETICLE & PROMINENT LOCATION CARDS -->
+          <div class="absolute inset-0 p-4 md:p-8 flex flex-col justify-center items-center pointer-events-none">
+            <div class="mb-3 z-30">
+              <span class="bg-[#e9c349] text-black font-mono font-bold text-[10px] md:text-xs uppercase tracking-[0.25em] px-3.5 py-1 shadow-[0_0_25px_rgba(233,195,73,0.7)]">
+                [ TARGET ACQUIRED // LOCK CONFIRMED ]
+              </span>
+            </div>
+
+            <!-- Rotating Radar Rings behind text -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
+              <div class="w-72 h-72 md:w-96 md:h-96 border border-[#e9c349]/40 rounded-full animate-[spin_20s_linear_infinite] relative">
+                <span class="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-[#e9c349]"></span>
+                <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-[#e9c349]"></span>
+                <span class="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#e9c349]"></span>
+                <span class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#e9c349]"></span>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-2.5 md:gap-3.5 z-20 w-full max-w-lg px-2 pointer-events-auto">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Click to open Achrol Niwas in Google Maps"
+                class="backdrop-blur-md py-3 px-5 md:py-4 md:px-6 bg-[#0e0e0e]/90 border border-white/20 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group cursor-pointer"
+              >
+                <div class="absolute top-0 left-0 bg-[#222222] group-hover:bg-cyan-950/80 px-2 py-0.5 font-mono text-[8px] md:text-[9px] text-[#8e9192] group-hover:text-cyan-300 uppercase tracking-widest border-r border-b border-[#333333] transition-colors">
+                  SECTOR_COORDINATES // ACHROL NIWAS
+                </div>
+                <div class="absolute top-0 right-0 px-2 py-0.5 font-mono text-[8px] md:text-[9px] text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity tracking-widest uppercase flex items-center gap-1">
+                  <span>OPEN GMAPS</span>
+                  <span class="text-[10px]">↗</span>
+                </div>
+                <span class="font-mono text-[10px] md:text-xs text-[#8e9192] group-hover:text-cyan-300 uppercase tracking-[0.25em] mt-2 mb-1 transition-colors">
+                  WHERE // MISSION LOCATION (RESORT)
+                </span>
+                <span class="font-mono text-base md:text-2xl font-bold text-white group-hover:text-cyan-300 uppercase tracking-[0.15em] leading-snug transition-colors">
+                  Achrol Niwas, Jaipur
+                </span>
+                <span class="font-mono text-[8px] md:text-[9px] text-cyan-400 mt-1 uppercase tracking-widest opacity-80 group-hover:opacity-100 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-xs">near_me</span>
+                  [ TAP TO LAUNCH GMAPS SATELLITE NAV ↗ ]
+                </span>
+              </a>
+
+              <div class="backdrop-blur-md py-3 px-5 md:py-4 md:px-6 bg-[#0e0e0e]/90 border border-white/20 hover:border-[#e9c349]/80 transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group">
+                <div class="absolute top-0 left-0 bg-[#222222] px-2 py-0.5 font-mono text-[8px] md:text-[9px] text-[#e9c349] uppercase tracking-widest border-r border-b border-[#333333]">
+                  TIMELINE_LOCK
+                </div>
+                <span class="font-mono text-[10px] md:text-xs text-[#8e9192] uppercase tracking-[0.25em] mt-2 mb-1">
+                  WHEN // EVENT DATES
+                </span>
+                <span class="font-mono text-base md:text-2xl font-bold text-[#e9c349] uppercase tracking-[0.15em] leading-snug">
+                  19–20 November 2026
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#1c1b1b] p-4 md:p-8 flex flex-col justify-center min-h-[160px] md:min-h-[200px] border-t border-[#333333]">
+          <div class="text-[9px] md:text-[10px] text-[#8e9192] mb-3 flex items-center space-x-2 tracking-widest uppercase font-mono">
+            <span class="material-symbols-outlined text-[14px]">memory</span>
+            <span>SYSTEM_CALCULATION_LOG</span>
+          </div>
+          <div class="text-xs md:text-sm text-white space-y-3 font-mono">
+            <p>&gt; Initializing sequence...</p>
+            <p>&gt; Querying geographic delta: JAIPUR_COORDS_LOCKED...</p>
+            <div class="flex items-start mt-1">
+              <span class="mr-2 text-[#e9c349]">&gt;</span>
+              <p class="text-[#e9c349] leading-loose font-mono"><span class="bg-[#e9c349]/10 px-2.5 py-1.5 inline-block border border-[#e9c349]/30 text-xs md:text-sm font-bold">Calculating probability of pure chaos: 9,999.99% (CRITICAL)</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#0e0e0e] p-4 md:p-8 flex flex-col justify-center items-center border-t border-[#333333]">
+          <div class="w-full max-w-md mx-auto">
+            <button onclick="switchTab('rsvp')" class="w-full border-2 border-white text-white text-xs md:text-base py-4 md:py-5 hover:bg-white hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-1 transition-all uppercase font-bold font-mono">
+              <span>[PROCEED_TO_RSVP]</span>
+              <span class="text-[9px] md:text-[10px] opacity-50">&gt;&gt;&gt;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTOR 4: RSVP -->
+    <section id="sec-rsvp" class="hidden w-full flex-col font-mono">
+      <div id="rsvp-choice-card" class="w-full border border-[#333333] bg-[#131313]/60 backdrop-blur-xl relative overflow-hidden flex flex-col">
+        <div class="border-b border-[#333333] p-2.5 md:p-3 flex justify-between items-center bg-[#1c1b1b]/80">
+          <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">MODULE: AUTH_RESPONSE</span>
+          <span class="bg-[#353534] text-white px-2 py-0.5 text-[9px] md:text-[10px] uppercase font-mono">[CRITICAL_INPUT_REQUIRED]</span>
+        </div>
+        <!-- THE "STOLEN CELEBRATION FRAGMENT" GRAND INDIAN WEDDING MADNESS INTEL -->
+        <div onmouseenter="AudioEngine.tick()" class="relative w-full aspect-[2.1] md:aspect-[1.9] border-b border-[#333333] bg-[#050505] overflow-hidden group cursor-crosshair transition-all duration-500 hover:border-[#e9c349]/80 hover:shadow-[0_0_40px_rgba(233,195,73,0.3)]">
+          <img alt="Grand Indian Wedding Celebration Madness" class="w-full h-full object-cover filter contrast-[1.12] brightness-[1.0] saturate-[1.12] transition-all duration-500 ease-out group-hover:saturate-[1.28] group-hover:brightness-[1.05] group-hover:scale-[1.03]" src="indian-wedding-madness.jpg" />
+          
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-[#050505]/40 pointer-events-none"></div>
+
+          <div class="absolute inset-0 pointer-events-none p-3 md:p-4 flex flex-col justify-between z-20 font-mono">
+            <div class="flex justify-between items-start w-full">
+              <div class="bg-[#0e0e0e]/90 backdrop-blur-md px-2.5 py-1 border border-[#e9c349]/60 flex items-center gap-2 shadow-[0_0_15px_rgba(233,195,73,0.3)]">
+                <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
+                <span class="font-mono text-[9px] md:text-[10px] text-[#e9c349] font-bold tracking-[0.2em] uppercase">
+                  [ VISUAL_INTEL // SECTOR: JAIPUR_MADNESS ]
+                </span>
+              </div>
+              <div class="bg-[#0e0e0e]/85 backdrop-blur-md px-2 py-1 border border-[#333333] font-mono text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest text-right">
+                LAT: 27.1425° N · LON: 75.9520° E
+              </div>
+            </div>
+
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="w-48 h-32 md:w-72 md:h-44 border border-white/20 relative group-hover:border-[#e9c349]/60 transition-colors">
+                <span class="absolute -top-1.5 -left-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
+                <span class="absolute -top-1.5 -right-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
+                <span class="absolute -bottom-1.5 -left-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
+                <span class="absolute -bottom-1.5 -right-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-end w-full">
+              <div class="bg-[#0e0e0e]/85 backdrop-blur-md px-2 py-0.5 border border-[#333333] font-mono text-[8px] md:text-[9px] text-white/70 tracking-widest uppercase">
+                <span class="inline-block w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-1.5 align-middle"></span>
+                INTERCEPT_FEED: DECRYPTED [100%]
+              </div>
+              <div class="bg-[#0e0e0e]/85 backdrop-blur-md px-2 py-0.5 border border-[#333333] font-mono text-[8px] md:text-[9px] text-[#e9c349] tracking-widest text-right font-bold uppercase">
+                ROYAL_WEDDING_INTEL // LIVE
+              </div>
+            </div>
+          </div>
+          <div class="scan-line pointer-events-none z-30 opacity-75"></div>
+        </div>
+        <div class="p-4 md:p-8 text-center border-b border-[#333333] bg-[#131313]/50 space-y-2">
+          <h1 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest glitch-text leading-snug font-mono">
+            ARE YOU COMING TO WITNESS THE MADNESS?
+          </h1>
+          <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest max-w-lg mx-auto font-mono">
+            &gt; INITIATE RESPONSE SEQUENCE BELOW.
+          </p>
+        </div>
+        <div class="flex flex-col p-3 md:p-6 gap-2.5 md:gap-3 bg-[#131313]/90">
+          <button onclick="openModal('YES')" class="w-full border bg-transparent py-3 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-[#4ade80] hover:text-black hover:border-[#4ade80] hover:shadow-[inset_0_0_25px_rgba(74,222,128,0.35),0_0_20px_rgba(74,222,128,0.25)] transition-all duration-300 group relative overflow-hidden text-[#4ade80] border-[#4ade80] text-xs md:text-sm font-bold cursor-pointer text-left md:text-center flex flex-col items-center justify-center">
+            <span class="relative z-10">[ YES, WOULDN'T MISS THIS CIRCUS ]</span>
+            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-60 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">CONFIRM_ATTENDANCE // PRIORITY_ALPHA</span>
+            <div class="absolute inset-0 bg-[#4ade80]/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
+          </button>
+          <button onclick="openModal('MAYBE')" class="w-full border bg-transparent py-3 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-[#ffe088] hover:text-black hover:border-[#ffe088] hover:shadow-[inset_0_0_25px_rgba(255,224,136,0.35),0_0_20px_rgba(255,224,136,0.25)] transition-all duration-300 group relative overflow-hidden text-[#ffe088] border-[#ffe088] text-xs md:text-sm font-bold cursor-pointer text-left md:text-center flex flex-col items-center justify-center">
+            <span class="relative z-10">[ MAYBE (TRYING TO CLEAR MY SCHEDULE) ]</span>
+            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-60 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">SCHEDULE_PENDING // STANDBY_MODE</span>
+            <div class="absolute inset-0 bg-[#ffe088]/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
+          </button>
+          <button onclick="openModal('NO')" class="w-full border bg-transparent py-3 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-[#ffb4ab] hover:text-black hover:border-[#ffb4ab] hover:shadow-[inset_0_0_25px_rgba(255,180,171,0.35),0_0_20px_rgba(255,180,171,0.25)] transition-all duration-300 group relative overflow-hidden text-[#ffb4ab] border-[#ffb4ab] text-xs md:text-sm font-bold cursor-pointer text-left md:text-center flex flex-col items-center justify-center">
+            <span class="relative z-10">[ NO (REGRETTING LIFE CHOICES ALREADY / MISSING OUT BIG TIME) ]</span>
+            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-60 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">PROTOCOL_ABORT // REGRET_LOGGED</span>
+            <div class="absolute inset-0 bg-[#ffb4ab]/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
+          </button>
+        </div>
+        <div class="p-3 md:p-4 bg-black border-t border-[#333333] h-24 md:h-28 overflow-hidden relative font-mono">
+          <div class="text-[9px] text-[#4ade80] absolute top-2 right-4 opacity-50 font-mono">SYSTEM_LOG_ACTIVE</div>
+          <div id="term-logs" class="text-[9px] md:text-[10px] text-[#8e9192] flex flex-col justify-end h-full w-full space-y-1 font-mono">
+            <div>&gt; INITIALIZING GUEST AUTHENTICATION PROTOCOL...</div>
+            <div>&gt; ESTABLISHING SECURE CONNECTION TO MAINFRAME...</div>
+            <div>&gt; CONNECTION SUCCESSFUL. PING: 12ms</div>
+            <div>&gt; AWAITING USER INPUT TETHER...</div>
+          </div>
+          <div class="scan-line"></div>
+        </div>
+      </div>
+
+      <!-- Celebration & Countdown Container with Tabular Numbers -->
+      <div id="rsvp-confirm-card" class="hidden w-full max-w-4xl border border-[#333333] bg-[#131313]/60 backdrop-blur-xl p-6 md:p-12 text-center space-y-6 md:space-y-8 relative overflow-hidden flex flex-col font-mono">
+        <div id="confetti-container" class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-85 mix-blend-screen z-0">
+          <svg width="100%" height="100%" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(250, 250)">
+              <circle cx="0" cy="0" r="3" fill="#4ade80">
+                <animate attributeName="r" values="3;120;0" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite" />
+              </circle>
+            </g>
+          </svg>
+        </div>
+
+        <div class="border-b border-[#333333] p-2.5 flex justify-between items-center bg-[#1c1b1b] absolute top-0 left-0 w-full z-10 font-mono">
+          <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">MODULE: CONFIRMATION</span>
+          <span id="confirm-badge" class="px-2 py-0.5 text-[9px] md:text-[10px] uppercase font-bold text-[#4ade80] font-mono">[PROTOCOL_ACTIVE]</span>
+        </div>
+        <div class="space-y-2 pt-6 relative z-10 font-mono">
+          <h1 id="confirm-msg" class="text-xl md:text-3xl font-bold uppercase tracking-widest glitch-text text-[#4ade80] font-mono">
+            RESPONSE LOGGED. SEE YOU IN JAIPUR.
+          </h1>
+          <p class="text-sm md:text-lg text-[#8e9192] tracking-widest uppercase font-mono">19–20 November 2026</p>
+          <p id="confirm-guest-lbl" class="text-[11px] md:text-xs text-white uppercase tracking-widest font-mono"></p>
+        </div>
+        <div class="grid grid-cols-4 gap-1 md:gap-4 border-y border-[#333333] py-4 md:py-6 relative z-10 bg-black/60 font-mono">
+          <div class="flex flex-col items-center border-r border-[#333333]">
+            <span id="cd-d" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums inline-block w-full text-center" style="font-variant-numeric: tabular-nums;">00</span>
+            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">DAYS</span>
+          </div>
+          <div class="flex flex-col items-center border-r border-[#333333]">
+            <span id="cd-h" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums inline-block w-full text-center" style="font-variant-numeric: tabular-nums;">00</span>
+            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">HRS</span>
+          </div>
+          <div class="flex flex-col items-center border-r border-[#333333]">
+            <span id="cd-m" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums inline-block w-full text-center" style="font-variant-numeric: tabular-nums;">00</span>
+            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">MIN</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <span id="cd-s" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums inline-block w-full text-center" style="font-variant-numeric: tabular-nums;">00</span>
+            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">SEC</span>
+          </div>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-3 relative z-10 font-mono">
+          <div class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] flex items-center justify-center gap-2 text-[#4ade80] font-mono">
+            <span class="inline-block w-2 h-2 bg-[#4ade80] animate-pulse"></span>
+            System Clock Sync: Active
+          </div>
+          <div id="redemption-btn-container"></div>
+        </div>
+        <div class="scan-line z-20"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 w-full h-16 z-50 bg-[#0e0e0e]/95 backdrop-blur-xl border-t border-[#333333] flex justify-around items-center px-2 md:px-6">
+    <button onclick="switchTab('intro')" id="tab-intro" class="flex flex-col items-center justify-center flex-1 h-full relative text-white font-bold font-mono">
+      <div class="tab-indicator absolute top-0 left-[20%] right-[20%] h-[2px] bg-white"></div>
+      <span class="material-symbols-outlined text-xl">qr_code_scanner</span>
+      <span class="text-[10px] uppercase tracking-widest mt-1">Intro</span>
+    </button>
+    <button onclick="switchTab('details')" id="tab-details" class="flex flex-col items-center justify-center flex-1 h-full relative text-[#8e9192] hover:text-white font-mono">
+      <div class="tab-indicator hidden absolute top-0 left-[20%] right-[20%] h-[2px] bg-white"></div>
+      <span class="material-symbols-outlined text-xl">event</span>
+      <span class="text-[10px] uppercase tracking-widest mt-1">Details</span>
+    </button>
+    <button onclick="switchTab('venue')" id="tab-venue" class="flex flex-col items-center justify-center flex-1 h-full relative text-[#8e9192] hover:text-white font-mono">
+      <div class="tab-indicator hidden absolute top-0 left-[20%] right-[20%] h-[2px] bg-white"></div>
+      <span class="material-symbols-outlined text-xl">location_on</span>
+      <span class="text-[10px] uppercase tracking-widest mt-1">Venue</span>
+    </button>
+    <button onclick="switchTab('rsvp')" id="tab-rsvp" class="flex flex-col items-center justify-center flex-1 h-full relative text-[#8e9192] hover:text-white font-mono">
+      <div class="tab-indicator hidden absolute top-0 left-[20%] right-[20%] h-[2px] bg-white"></div>
+      <span class="material-symbols-outlined text-xl">settings_input_component</span>
+      <span class="text-[10px] uppercase tracking-widest mt-1">RSVP</span>
+    </button>
+  </nav>
+
+  <!-- Interactive RSVP Modal with Audio Ducking -->
+  <div id="rsvp-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl hidden font-mono">
+    <div class="w-full max-w-lg border border-[#333333] bg-[#131313] p-5 md:p-8 relative overflow-hidden">
+      <div class="scan-line"></div>
+      <div class="flex justify-between items-center mb-5 border-b border-[#333333] pb-3 bg-[#1c1b1b] -mx-5 md:-mx-8 px-5 md:px-8 -mt-5 md:-mt-8 pt-4">
+        <span class="text-[10px] text-white/70 uppercase tracking-widest font-mono">RSVP_PROTOCOL_v2.0</span>
+        <button onclick="closeModal()" class="text-white hover:text-[#ffb4ab]"><span class="material-symbols-outlined text-lg">close</span></button>
+      </div>
+
+      <div id="modal-step-1" class="space-y-4 md:space-y-5">
+        <h2 id="modal-heading-1" class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">WHO'S MAKING THIS DECISION?</h2>
+        <input type="text" id="input-name" onfocus="AudioEngine.duck()" onblur="AudioEngine.unduck()" placeholder="[ YOUR NAME ]" class="w-full bg-[#0e0e0e] border border-[#333333] p-3.5 text-white uppercase text-xs md:text-sm focus:outline-none focus:border-white font-mono" />
+        <button onclick="submitStep1()" class="w-full border border-white py-3.5 uppercase tracking-widest hover:bg-white hover:text-black font-bold text-xs md:text-sm font-mono">NEXT_STEP &gt;</button>
+      </div>
+
+      <div id="modal-step-2" class="space-y-4 md:space-y-5 hidden">
+        <h2 class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">HOW MANY PEOPLE WILL BE ATTENDING?</h2>
+        <div class="grid grid-cols-2 gap-2 font-mono">
+          <button onclick="setCount(1)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">1 PERSON</button>
+          <button onclick="setCount(2)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">2 PEOPLE</button>
+          <button onclick="setCount(3)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">3 PEOPLE</button>
+          <button onclick="setCount(4)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">4 PEOPLE</button>
+          <button onclick="setCount(5)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">5 PEOPLE</button>
+          <button onclick="setCount('MORE')" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">MORE THAN 5</button>
+        </div>
+      </div>
+
+      <div id="modal-step-3" class="space-y-5 hidden font-mono">
+        <div class="p-3.5 border border-[#333333] bg-[#0e0e0e]">
+          <p class="text-[9px] text-[#8e9192] tracking-widest uppercase mb-1 font-mono">SUMMARY:</p>
+          <p id="summary-name" class="text-white font-bold text-sm md:text-base font-mono"></p>
+          <p id="summary-count" class="text-white text-xs md:text-sm mt-1 font-mono"></p>
+        </div>
+        <button onclick="finalizeRSVP()" class="w-full bg-white text-black py-3.5 font-bold uppercase tracking-widest hover:bg-[#e9c349] text-xs md:text-sm font-mono">[ CONFIRM ]</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Procedural Music & Sound Engine with Audio Ducking & SFX Normalization
+    const AudioEngine = (() => {
+      let ctx, master, bgmBus, sfxBus, warmth, delay, delayFb, isMuted = false, vol = 0.7;
+      let currentTrack = 'off';
+      let trackGains = {};
+      let loopTimers = [];
+      let activeOscs = [];
+      let isDucked = false;
+
+      function init() {
+        if (ctx) {
+          if (ctx.state === 'suspended') ctx.resume();
+          return;
+        }
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) return;
+        ctx = new C();
+        master = ctx.createGain();
+        master.gain.value = isMuted ? 0 : vol;
+
+        bgmBus = ctx.createGain(); bgmBus.gain.value = 1.0;
+        sfxBus = ctx.createGain(); sfxBus.gain.value = 1.0;
+
+        warmth = ctx.createBiquadFilter();
+        warmth.type = 'lowpass';
+        warmth.frequency.value = 8500;
+
+        delay = ctx.createDelay(1.0);
+        delay.delayTime.value = 0.24;
+        delayFb = ctx.createGain();
+        delayFb.gain.value = 0.26;
+        delay.connect(delayFb);
+        delayFb.connect(delay);
+        delay.connect(master);
+
+        const sfxRev = ctx.createGain();
+        sfxRev.gain.value = 0.22;
+        sfxBus.connect(sfxRev);
+        sfxRev.connect(delay);
+
+        bgmBus.connect(warmth);
+        sfxBus.connect(warmth);
+        warmth.connect(master);
+        master.connect(ctx.destination);
+
+        ['espionage_suspense', 'tactical_spy', 'rajasthan_grand', 'rsvp_curious', 'rsvp_yes_tone', 'rsvp_maybe_tone', 'rsvp_no_tone', 'party_celebration', 'deadpan_regret'].forEach(t => {
+          const g = ctx.createGain();
+          g.gain.value = 0;
+          g.connect(bgmBus);
+          const sendG = ctx.createGain();
+          sendG.gain.value = 0.14;
+          g.connect(sendG);
+          sendG.connect(delay);
+          trackGains[t] = g;
+        });
+      }
+
+      function startFromEntryGate() {
+        init();
+        if (ctx && ctx.state === 'suspended') ctx.resume();
+        playAccessGranted();
+        setTimeout(() => {
+          setTrack('espionage_suspense');
+        }, 150);
+      }
+
+      function duck() {
+        if (!ctx || !bgmBus || isDucked) return;
+        isDucked = true;
+        bgmBus.gain.setTargetAtTime(0.65, ctx.currentTime, 0.25);
+      }
+
+      function unduck() {
+        if (!ctx || !bgmBus || !isDucked) return;
+        isDucked = false;
+        bgmBus.gain.setTargetAtTime(1.0, ctx.currentTime, 0.35);
+      }
+
+      function playAccessGranted() {
+        if (!ctx || !sfxBus) return;
+        const now = ctx.currentTime;
+        [261.63, 392.0, 523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'triangle';
+          o.frequency.setValueAtTime(freq, now + idx * 0.04);
+          g.gain.setValueAtTime(0, now + idx * 0.04);
+          g.gain.linearRampToValueAtTime(0.18, now + idx * 0.04 + 0.01);
+          g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.04 + 0.5);
+          o.connect(g); g.connect(sfxBus);
+          o.start(now + idx * 0.04); o.stop(now + idx * 0.04 + 0.5);
+        });
+      }
+
+      function toggle() {
+        init();
+        if (ctx && ctx.state === 'suspended') ctx.resume();
+        isMuted = !isMuted;
+        if (master) {
+          master.gain.setTargetAtTime(isMuted ? 0 : vol, ctx.currentTime, 0.05);
+        }
+        const icon = document.getElementById('audio-icon');
+        const eq = document.getElementById('audio-eq');
+        const btn = document.getElementById('btn-audio-toggle');
+        if (isMuted) {
+          icon.textContent = 'volume_off';
+          eq.classList.add('hidden');
+          btn.className = 'flex items-center justify-center p-2.5 rounded-full text-[#8e9192] hover:text-white bg-[#1c1b1b] border border-[#333333] transition-colors';
+        } else {
+          icon.textContent = 'volume_up';
+          eq.classList.remove('hidden');
+          btn.className = 'flex items-center justify-center p-2.5 rounded-full text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30 transition-colors';
+        }
+      }
+
+      function setVolume(v) {
+        init();
+        vol = parseFloat(v);
+        document.getElementById('vol-pct-lbl').textContent = Math.round(vol * 100) + '%';
+        if (master && !isMuted) master.gain.setTargetAtTime(vol, ctx.currentTime, 0.05);
+      }
+
+      function setTrack(t) {
+        init();
+        if (!ctx || currentTrack === t) return;
+        const prev = currentTrack;
+        currentTrack = t;
+        const now = ctx.currentTime;
+        const fadeDur = 1.5;
+
+        if (prev !== 'off' && trackGains[prev]) {
+          const pg = trackGains[prev];
+          pg.gain.cancelScheduledValues(now);
+          pg.gain.setValueAtTime(Math.max(0.001, pg.gain.value), now);
+          pg.gain.exponentialRampToValueAtTime(0.0001, now + fadeDur);
+        }
+
+        if (currentTrack !== 'off' && trackGains[currentTrack]) {
+          const ng = trackGains[currentTrack];
+          ng.gain.cancelScheduledValues(now);
+          ng.gain.setValueAtTime(0.0001, now);
+          ng.gain.exponentialRampToValueAtTime(1.0, now + fadeDur);
+
+          if (currentTrack === 'espionage_suspense') startEspionageSuspense(ng);
+          else if (currentTrack === 'tactical_spy') startTacticalSpy(ng);
+          else if (currentTrack === 'rajasthan_grand') startRajasthanGrand(ng);
+          else if (currentTrack === 'rsvp_curious') startRsvpCurious(ng);
+          else if (currentTrack === 'rsvp_yes_tone') startRsvpYesTone(ng);
+          else if (currentTrack === 'rsvp_maybe_tone') startRsvpMaybeTone(ng);
+          else if (currentTrack === 'rsvp_no_tone') startRsvpNoTone(ng);
+          else if (currentTrack === 'party_celebration') startPartyCelebration(ng);
+          else if (currentTrack === 'deadpan_regret') startDeadpanRegret(ng);
+        }
+      }
+
+      function stopGenerators() {
+        loopTimers.forEach(id => clearInterval(id));
+        loopTimers = [];
+        activeOscs.forEach(o => { try { o.stop(); o.disconnect(); } catch(e){} });
+        activeOscs = [];
+      }
+
+      function startEspionageSuspense(out) {
+        if (!ctx) return;
+        const sub1 = ctx.createOscillator(), sub2 = ctx.createOscillator(), subG = ctx.createGain(), subF = ctx.createBiquadFilter();
+        sub1.type = 'sawtooth'; sub1.frequency.value = 41.2;
+        sub2.type = 'sine'; sub2.frequency.value = 41.6;
+        subF.type = 'lowpass'; subF.frequency.value = 90;
+        subG.gain.value = 0.32;
+        sub1.connect(subF); sub2.connect(subF); subF.connect(subG); subG.connect(out);
+        sub1.start(); sub2.start(); activeOscs.push(sub1, sub2);
+
+        const sw = ctx.createOscillator(), swF = ctx.createBiquadFilter(), swG = ctx.createGain();
+        sw.type = 'sawtooth'; sw.frequency.value = 82.4;
+        swF.type = 'bandpass'; swF.Q.value = 6.0; swF.frequency.value = 250;
+        swG.gain.value = 0.15;
+        sw.connect(swF); swF.connect(swG); swG.connect(out);
+        sw.start(); activeOscs.push(sw);
+
+        let sDir = 1, sCut = 250;
+        const ivSw = setInterval(() => {
+          if (!ctx || currentTrack !== 'espionage_suspense') return;
+          sCut += sDir * 35;
+          if (sCut > 650) sDir = -1;
+          if (sCut < 160) sDir = 1;
+          swF.frequency.setTargetAtTime(sCut, ctx.currentTime, 0.2);
+        }, 200);
+        loopTimers.push(ivSw);
+
+        const ivScr = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'espionage_suspense') return;
+          const t = ctx.currentTime, sc = ctx.createOscillator(), scG = ctx.createGain(), scF = ctx.createBiquadFilter();
+          sc.type = 'triangle';
+          sc.frequency.setValueAtTime(1480 + Math.random() * 200, t);
+          sc.frequency.exponentialRampToValueAtTime(1820 + Math.random() * 300, t + 0.6);
+          scF.type = 'highpass'; scF.frequency.value = 1200;
+          scG.gain.setValueAtTime(0.0001, t);
+          scG.gain.linearRampToValueAtTime(0.035, t + 0.2);
+          scG.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
+          sc.connect(scF); scF.connect(scG); scG.connect(out);
+          sc.start(t); sc.stop(t + 0.9);
+        }, 2800);
+        loopTimers.push(ivScr);
+      }
+
+      function triggerGrandReveal(cb) {
+        init();
+        if (!ctx) { if (cb) cb(); return; }
+        const t = ctx.currentTime;
+        const r = ctx.createOscillator(), rg = ctx.createGain(), rf = ctx.createBiquadFilter();
+        r.type = 'sawtooth'; r.frequency.setValueAtTime(80, t); r.frequency.exponentialRampToValueAtTime(1400, t + 0.3);
+        rf.type = 'lowpass'; rf.frequency.setValueAtTime(200, t); rf.frequency.exponentialRampToValueAtTime(3200, t + 0.3);
+        rg.gain.setValueAtTime(0.05, t); rg.gain.linearRampToValueAtTime(0.35, t + 0.28); rg.gain.setValueAtTime(0, t + 0.31);
+        r.connect(rf); rf.connect(rg); rg.connect(master);
+        r.start(t); r.stop(t + 0.31);
+
+        stopGenerators();
+
+        setTimeout(() => {
+          if (!ctx || !master) return;
+          const tBoom = ctx.currentTime;
+          if (cb) cb();
+
+          const sb = ctx.createOscillator(), sbg = ctx.createGain();
+          sb.type = 'sine'; sb.frequency.setValueAtTime(150, tBoom); sb.frequency.exponentialRampToValueAtTime(24, tBoom + 1.4);
+          sbg.gain.setValueAtTime(0.55, tBoom); sbg.gain.exponentialRampToValueAtTime(0.001, tBoom + 1.6);
+          sb.connect(sbg); sbg.connect(master);
+          sb.start(tBoom); sb.stop(tBoom + 1.6);
+
+          const br = ctx.createOscillator(), brg = ctx.createGain(), brf = ctx.createBiquadFilter();
+          br.type = 'sawtooth'; br.frequency.setValueAtTime(55.0, tBoom);
+          brf.type = 'lowpass'; brf.frequency.setValueAtTime(2400, tBoom); brf.frequency.exponentialRampToValueAtTime(280, tBoom + 1.0);
+          brg.gain.setValueAtTime(0.38, tBoom); brg.gain.exponentialRampToValueAtTime(0.001, tBoom + 1.1);
+          br.connect(brf); brf.connect(brg); brg.connect(master);
+          br.start(tBoom); br.stop(tBoom + 1.1);
+
+          setTimeout(() => startRomanticLoveTheme(), 350);
+        }, 320);
+      }
+
+      function startTacticalSpy(out) {
+        if (!ctx) return;
+        let beat = 0;
+        const spyBass = [73.42, 73.42, 87.31, 98.0, 73.42, 73.42, 65.41, 98.0];
+        const techLead = [293.66, 349.23, 392.0, 440.0, 523.25, 440.0, 392.0, 349.23];
+        const iv = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'tactical_spy') return;
+          const t = ctx.currentTime;
+          if (beat % 4 === 0 || beat % 4 === 2) {
+            const k = ctx.createOscillator(), kg = ctx.createGain();
+            k.type = 'sine'; k.frequency.setValueAtTime(140, t); k.frequency.exponentialRampToValueAtTime(45, t + 0.12);
+            kg.gain.setValueAtTime(0.32, t); kg.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+            k.connect(kg); kg.connect(out);
+            k.start(t); k.stop(t + 0.15);
+          }
+          if (beat % 4 === 2) {
+            const s = ctx.createOscillator(), sg = ctx.createGain(), sf = ctx.createBiquadFilter();
+            s.type = 'sawtooth'; sf.type = 'bandpass'; sf.frequency.value = 1750;
+            sg.gain.setValueAtTime(0.18, t); sg.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+            s.connect(sf); sf.connect(sg); sg.connect(out);
+            s.start(t); s.stop(t + 0.1);
+          }
+          const b = ctx.createOscillator(), bg = ctx.createGain(), bf = ctx.createBiquadFilter();
+          b.type = 'sawtooth'; b.frequency.setValueAtTime(spyBass[beat % spyBass.length], t);
+          bf.type = 'lowpass'; bf.frequency.setValueAtTime(750, t); bf.frequency.exponentialRampToValueAtTime(180, t + 0.14);
+          bg.gain.setValueAtTime(0.16, t); bg.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+          b.connect(bf); bf.connect(bg); bg.connect(out);
+          b.start(t); b.stop(t + 0.16);
+          beat++;
+        }, 115);
+        loopTimers.push(iv);
+      }
+
+      function triggerTargetLockedCue() {
+        init();
+        if (!ctx || isMuted) { setTrack('rajasthan_grand'); return; }
+        const t = ctx.currentTime;
+        [1800, 2400, 3200, 4800].forEach((freq, i) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine'; o.frequency.setValueAtTime(freq, t + i * 0.06);
+          g.gain.setValueAtTime(0.14, t + i * 0.06); g.gain.exponentialRampToValueAtTime(0.001, t + i * 0.06 + 0.04);
+          o.connect(g); g.connect(sfxBus);
+          o.start(t + i * 0.06); o.stop(t + i * 0.06 + 0.04);
+        });
+
+        setTimeout(() => {
+          if (!ctx) return;
+          const tLock = ctx.currentTime, lock = ctx.createOscillator(), lg = ctx.createGain();
+          lock.type = 'triangle'; lock.frequency.setValueAtTime(1174.66, tLock);
+          lg.gain.setValueAtTime(0.2, tLock); lg.gain.exponentialRampToValueAtTime(0.001, tLock + 0.28);
+          lock.connect(lg); lg.connect(sfxBus);
+          lock.start(tLock); lock.stop(tLock + 0.28);
+
+          setTimeout(() => {
+            if (!ctx) return;
+            const tDrop = ctx.currentTime, drop = ctx.createOscillator(), dg = ctx.createGain();
+            drop.type = 'sine'; drop.frequency.setValueAtTime(160, tDrop); drop.frequency.exponentialRampToValueAtTime(32, tDrop + 0.8);
+            dg.gain.setValueAtTime(0.42, tDrop); dg.gain.exponentialRampToValueAtTime(0.001, tDrop + 0.9);
+            drop.connect(dg); dg.connect(master);
+            drop.start(tDrop); drop.stop(tDrop + 0.9);
+            setTrack('rajasthan_grand');
+          }, 160);
+        }, 280);
+      }
+
+      function startRajasthanGrand(out) {
+        if (!ctx) return;
+        const p1 = ctx.createOscillator(), p2 = ctx.createOscillator(), pg = ctx.createGain(), pf = ctx.createBiquadFilter();
+        p1.type = 'sawtooth'; p1.frequency.value = 73.42; p2.type = 'triangle'; p2.frequency.value = 146.83;
+        pf.type = 'lowpass'; pf.frequency.value = 550; pg.gain.value = 0.2;
+        p1.connect(pf); p2.connect(pf); pf.connect(pg); pg.connect(out);
+        p1.start(); p2.start(); activeOscs.push(p1, p2);
+
+        let step = 0;
+        const scale = [293.66, 369.99, 440.0, 493.88, 587.33, 440.0, 369.99, 293.66];
+        const iv = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'rajasthan_grand') return;
+          const t = ctx.currentTime;
+          if (step % 2 === 0) {
+            const k = ctx.createOscillator(), kg = ctx.createGain();
+            k.type = 'sine'; k.frequency.setValueAtTime(115, t); k.frequency.exponentialRampToValueAtTime(45, t + 0.14);
+            kg.gain.setValueAtTime(0.26, t); kg.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+            k.connect(kg); kg.connect(out);
+            k.start(t); k.stop(t + 0.16);
+          }
+          const o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+          o.type = 'triangle'; o.frequency.setValueAtTime(scale[step % scale.length], t);
+          f.type = 'bandpass'; f.frequency.setValueAtTime(1700, t); f.Q.value = 3;
+          g.gain.setValueAtTime(0.12, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.24);
+          o.connect(f); f.connect(g); g.connect(out);
+          o.start(t); o.stop(t + 0.24);
+          step++;
+        }, 150);
+        loopTimers.push(iv);
+      }
+
+      function startRsvpCurious(out) {
+        if (!ctx) return;
+        let beat = 0;
+        const bassline = [130.81, 146.83, 164.81, 196.0];
+        const chords = [523.25, 659.25, 783.99, 659.25];
+        const iv = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'rsvp_curious') return;
+          const t = ctx.currentTime;
+          if (beat % 2 === 0) {
+            const k = ctx.createOscillator(), kg = ctx.createGain();
+            k.type = 'sine'; k.frequency.setValueAtTime(120, t); k.frequency.exponentialRampToValueAtTime(50, t + 0.1);
+            kg.gain.setValueAtTime(0.2, t); kg.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+            k.connect(kg); kg.connect(out);
+            k.start(t); k.stop(t + 0.12);
+          }
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine'; o.frequency.setValueAtTime(chords[beat % chords.length], t);
+          g.gain.setValueAtTime(0.09, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+          o.connect(g); g.connect(out);
+          o.start(t); o.stop(t + 0.18);
+          beat++;
+        }, 140);
+        loopTimers.push(iv);
+      }
+
+      function startRsvpYesTone(out) {
+        if (!ctx) return;
+        let b = 0; const c = [523.25, 659.25, 783.99, 1046.5];
+        const iv = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'rsvp_yes_tone') return;
+          const t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'triangle'; o.frequency.setValueAtTime(c[b % c.length], t);
+          g.gain.setValueAtTime(0.14, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+          o.connect(g); g.connect(out); o.start(t); o.stop(t + 0.2);
+          b++;
+        }, 130);
+        loopTimers.push(iv);
+      }
+
+      function startRsvpMaybeTone(out) {
+        if (!ctx) return;
+        let b = 0; const c = [440.0, 523.25, 659.25, 587.33];
+        const iv = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'rsvp_maybe_tone') return;
+          const t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine'; o.frequency.setValueAtTime(c[b % c.length], t);
+          g.gain.setValueAtTime(0.12, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+          o.connect(g); g.connect(out); o.start(t); o.stop(t + 0.2);
+          b++;
+        }, 140);
+        loopTimers.push(iv);
+      }
+
+      function startRsvpNoTone(out) {
+        if (!ctx) return;
+        let b = 0; const c = [311.13, 277.18, 261.63, 220.0];
+        const iv = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'rsvp_no_tone') return;
+          const t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+          o.type = 'sawtooth'; o.frequency.setValueAtTime(c[b % c.length], t);
+          f.type = 'lowpass'; f.frequency.value = 450;
+          g.gain.setValueAtTime(0.12, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
+          o.connect(f); f.connect(g); g.connect(out); o.start(t); o.stop(t + 0.35);
+          b++;
+        }, 250);
+        loopTimers.push(iv);
+      }
+
+      function startPartyCelebration(out) {
+        if (!ctx) return;
+        let beat = 0;
+        const chords = [[392, 493.88, 587.33, 739.99], [493.88, 587.33, 739.99, 880], [523.25, 659.25, 783.99, 987.77], [587.33, 739.99, 880, 1174.66]];
+        const iv = setInterval(() => {
+          if (!ctx || isMuted || currentTrack !== 'party_celebration') return;
+          const t = ctx.currentTime;
+          if (beat % 4 === 0) {
+            const k = ctx.createOscillator(), kg = ctx.createGain();
+            k.type = 'sine'; k.frequency.setValueAtTime(150, t); k.frequency.exponentialRampToValueAtTime(45, t + 0.14);
+            kg.gain.setValueAtTime(0.38, t); kg.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+            k.connect(kg); kg.connect(out);
+            k.start(t); k.stop(t + 0.18);
+          }
+          if (beat % 4 === 2) {
+            const s = ctx.createOscillator(), sg = ctx.createGain(), sf = ctx.createBiquadFilter();
+            s.type = 'sawtooth'; sf.type = 'bandpass'; sf.frequency.value = 1800;
+            sg.gain.setValueAtTime(0.22, t); sg.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+            s.connect(sf); sf.connect(sg); sg.connect(out);
+            s.start(t); s.stop(t + 0.12);
+          }
+          const c = chords[Math.floor(beat / 8) % chords.length];
+          const l = ctx.createOscillator(), lg = ctx.createGain(), lf = ctx.createBiquadFilter();
+          l.type = 'sawtooth'; l.frequency.setValueAtTime(c[beat % c.length], t);
+          lf.type = 'lowpass'; lf.frequency.setValueAtTime(3000, t); lf.frequency.exponentialRampToValueAtTime(700, t + 0.14);
+          lg.gain.setValueAtTime(0.14, t); lg.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+          l.connect(lf); lf.connect(lg); lg.connect(out);
+          l.start(t); l.stop(t + 0.15);
+          beat++;
+        }, 112);
+        loopTimers.push(iv);
+      }
+
+      function startDeadpanRegret(out) {
+        if (!ctx) return;
+        const o1 = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+        o1.type = 'sawtooth'; o1.frequency.value = 43.65; o2.type = 'sine'; o2.frequency.value = 44.2;
+        f.type = 'lowpass'; f.frequency.value = 110; g.gain.value = 0.22;
+        o1.connect(f); o2.connect(f); f.connect(g); g.connect(out);
+        o1.start(); o2.start(); activeOscs.push(o1, o2);
+      }
+
+      function sfxYesSelect() {
+        init(); if (isMuted || !ctx) return;
+        const now = ctx.currentTime;
+        [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((freq, idx) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'triangle'; o.frequency.setValueAtTime(freq, now + idx * 0.04);
+          g.gain.setValueAtTime(0.16, now + idx * 0.04);
+          g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.04 + 0.45);
+          o.connect(g); g.connect(sfxBus); o.start(now + idx * 0.04); o.stop(now + idx * 0.04 + 0.45);
+        });
+      }
+
+      function sfxMaybeSelect() {
+        init(); if (isMuted || !ctx) return;
+        const now = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(520, now);
+        o.frequency.exponentialRampToValueAtTime(840, now + 0.1);
+        o.frequency.exponentialRampToValueAtTime(659, now + 0.22);
+        g.gain.setValueAtTime(0.16, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        o.connect(g); g.connect(sfxBus); o.start(now); o.stop(now + 0.25);
+      }
+
+      function sfxNoSelect() {
+        init(); if (isMuted || !ctx) return;
+        const now = ctx.currentTime, o1 = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+        o1.type = 'sawtooth'; o1.frequency.setValueAtTime(220, now); o1.frequency.exponentialRampToValueAtTime(55, now + 0.45);
+        o2.type = 'triangle'; o2.frequency.setValueAtTime(130, now); o2.frequency.exponentialRampToValueAtTime(45, now + 0.45);
+        f.type = 'lowpass'; f.frequency.value = 450;
+        g.gain.setValueAtTime(0.24, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.48);
+        o1.connect(f); o2.connect(f); f.connect(g); g.connect(sfxBus);
+        o1.start(now); o2.start(now); o1.stop(now + 0.48); o2.stop(now + 0.48);
+      }
+
+      function sfxCelebrationExplosion() {
+        init(); if (isMuted || !ctx) return;
+        const now = ctx.currentTime;
+        const w = ctx.createOscillator(), wg = ctx.createGain();
+        w.type = 'sine'; w.frequency.setValueAtTime(320, now); w.frequency.exponentialRampToValueAtTime(3000, now + 0.35);
+        wg.gain.setValueAtTime(0.18, now); wg.gain.linearRampToValueAtTime(0.3, now + 0.3); wg.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+        w.connect(wg); wg.connect(sfxBus); w.start(now); w.stop(now + 0.38);
+
+        setTimeout(() => {
+          if (!ctx || isMuted) return;
+          const t = ctx.currentTime;
+          const b = ctx.createOscillator(), bg = ctx.createGain();
+          b.type = 'sawtooth'; b.frequency.setValueAtTime(200, t); b.frequency.exponentialRampToValueAtTime(30, t + 0.5);
+          bg.gain.setValueAtTime(0.45, t); bg.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+          b.connect(bg); bg.connect(sfxBus); b.start(t); b.stop(t + 0.55);
+
+          [200, 350, 500, 700, 950].forEach((freq, idx) => {
+            const cl = ctx.createOscillator(), clg = ctx.createGain(), clf = ctx.createBiquadFilter();
+            cl.type = 'sawtooth'; cl.frequency.setValueAtTime(freq + Math.random() * 80, t + idx * 0.05);
+            clf.type = 'bandpass'; clf.frequency.value = 1400 + Math.random() * 400;
+            clg.gain.setValueAtTime(0.14, t + idx * 0.05); clg.gain.exponentialRampToValueAtTime(0.001, t + idx * 0.05 + 0.85);
+            cl.connect(clf); clf.connect(clg); clg.connect(sfxBus); cl.start(t + idx * 0.05); cl.stop(t + idx * 0.05 + 0.85);
+          });
+        }, 350);
+      }
+
+      function sfxDeadpanDrop() {
+        init(); if (isMuted || !ctx) { setTrack('deadpan_regret'); return; }
+        const now = ctx.currentTime;
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sawtooth'; o.frequency.setValueAtTime(160, now); o.frequency.exponentialRampToValueAtTime(35, now + 1.2);
+        g.gain.setValueAtTime(0.35, now); g.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+        o.connect(g); g.connect(master); o.start(now); o.stop(now + 1.4);
+        setTimeout(() => setTrack('deadpan_regret'), 600);
+      }
+
+      function playClick() {
+        if (isMuted || !ctx) return;
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'square'; o.frequency.setValueAtTime(800, ctx.currentTime);
+        o.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.05);
+        g.gain.setValueAtTime(0.08, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+        o.connect(g); g.connect(sfxBus); o.start(); o.stop(ctx.currentTime + 0.08);
+      }
+
+      function playTick() {
+        if (isMuted || !ctx) return;
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(1200, ctx.currentTime);
+        g.gain.setValueAtTime(0.04, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
+        o.connect(g); g.connect(sfxBus); o.start(); o.stop(ctx.currentTime + 0.03);
+      }
+
+      function playPing() {
+        if (isMuted || !ctx) return;
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(880, ctx.currentTime);
+        g.gain.setValueAtTime(0.15, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.55);
+        o.connect(g); g.connect(sfxBus); o.start(); o.stop(ctx.currentTime + 0.55);
+      }
+
+      let romanticOscs = [], romanticTimer = null, romanticGain = null;
+      function startRomanticLoveTheme() {
+        init();
+        if (!ctx || isMuted) return;
+        stopRomanticLoveTheme();
+        try {
+          const now = ctx.currentTime;
+          duck();
+          romanticGain = ctx.createGain();
+          romanticGain.gain.setValueAtTime(0.001, now);
+          romanticGain.gain.exponentialRampToValueAtTime(0.35, now + 0.5);
+
+          const rf = ctx.createBiquadFilter();
+          rf.type = 'lowpass'; rf.frequency.value = 3200;
+          romanticGain.connect(rf);
+          if (delay) rf.connect(delay);
+          rf.connect(master);
+
+          const padNotes = [174.61, 261.63, 329.63, 392.0];
+          padNotes.forEach(freq => {
+            const osc = ctx.createOscillator(), g = ctx.createGain();
+            osc.type = 'sine'; osc.frequency.value = freq; g.gain.value = 0.15;
+            osc.connect(g); if (romanticGain) g.connect(romanticGain);
+            osc.start(now); romanticOscs.push(osc);
+          });
+
+          const scale = [523.25, 659.25, 783.99, 987.77, 1046.5, 1318.5, 1567.98];
+          let aIdx = 0;
+          romanticTimer = setInterval(() => {
+            if (!ctx || isMuted || !romanticGain) return;
+            const t = ctx.currentTime;
+            const bell = ctx.createOscillator(), bg = ctx.createGain();
+            bell.type = 'triangle'; bell.frequency.setValueAtTime(scale[aIdx % scale.length], t);
+            bg.gain.setValueAtTime(0.09, t);
+            bg.gain.exponentialRampToValueAtTime(0.001, t + 0.7);
+            bell.connect(bg); bg.connect(romanticGain);
+            bell.start(t); bell.stop(t + 0.7);
+            aIdx++;
+          }, 160);
+        } catch(e){}
+      }
+
+      function stopRomanticLoveTheme() {
+        if (!ctx) return;
+        if (romanticTimer) { clearInterval(romanticTimer); romanticTimer = null; }
+        if (romanticGain) {
+          const now = ctx.currentTime;
+          romanticGain.gain.cancelScheduledValues(now);
+          romanticGain.gain.setValueAtTime(romanticGain.gain.value, now);
+          romanticGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
+          setTimeout(() => {
+            romanticOscs.forEach(o => { try { o.stop(); o.disconnect(); } catch(e){} });
+            romanticOscs = []; romanticGain = null;
+          }, 450);
+        }
+        unduck();
+      }
+
+      return {
+        init, startFromEntryGate, playAccessGranted, toggle, setVolume, setTrack, duck, unduck,
+        click: playClick, tick: playTick, ping: playPing,
+        startRomanticLoveTheme, stopRomanticLoveTheme,
+        triggerGrandReveal, triggerTargetLockedCue, sfxYesSelect, sfxMaybeSelect, sfxNoSelect, sfxCelebrationExplosion, sfxDeadpanDrop
+      };
+    })();
+
+    function bypassAudioGate() {
+      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+        try { navigator.vibrate([30, 40, 50]); } catch(e){}
+      }
+      const gate = document.getElementById('audio-bypass-gate');
+      gate.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        gate.classList.add('hidden');
+      }, 350);
+
+      AudioEngine.startFromEntryGate();
+      startTypewriter();
+    }
+
+    // Typewriter
+    const lines = ["Stop scrolling.", "Look at your screen.", "A classified database just crashed, and only one file survived..."];
+    let lIdx = 0, cIdx = 0, currentText = "";
+    const box = document.getElementById('typewriter-box');
+
+    function startTypewriter() {
+      lIdx = 0; cIdx = 0; currentText = "";
+      setTimeout(typeWriter, 300);
+    }
+
+    function typeWriter() {
+      if (lIdx < lines.length) {
+        if (cIdx < lines[lIdx].length) {
+          currentText += lines[lIdx].charAt(cIdx);
+          box.innerHTML = currentText + '<span class="typewriter-cursor"></span>';
+          AudioEngine.tick();
+          cIdx++;
+          setTimeout(typeWriter, 30);
+        } else {
+          currentText += '<br/>';
+          lIdx++;
+          cIdx = 0;
+          setTimeout(typeWriter, 220);
+        }
+      } else {
+        startProgress();
+      }
+    }
+
+    function startProgress() {
+      let p = 0;
+      const bar = document.getElementById('progress-bar');
+      const lbl = document.getElementById('progress-lbl');
+      const btn = document.getElementById('btn-reveal');
+      const iv = setInterval(() => {
+        p += 5;
+        if (p <= 100) {
+          bar.style.width = p + '%';
+          lbl.textContent = p + '%';
+          AudioEngine.tick();
+        } else {
+          clearInterval(iv);
+          lbl.textContent = 'COMPLETE';
+          AudioEngine.ping();
+          btn.classList.remove('cursor-not-allowed', 'opacity-50', 'text-[#8e9192]', 'border-[#333333]');
+          btn.classList.add('border-[#e9c349]', 'text-[#e9c349]', 'btn-pulse-anim', 'cursor-pointer');
+        }
+      }, 70);
+    }
+
+    // 16-Photo Kinetic Reel Controller
+    const REEL_PHOTOS = [
+      "reveal-photos/photo-1944.jpg",
+      "reveal-photos/photo-1945.jpg",
+      "reveal-photos/photo-1946.jpg",
+      "reveal-photos/photo-1947.jpg",
+      "reveal-photos/photo-1948.jpg",
+      "reveal-photos/photo-1949.jpg",
+      "reveal-photos/photo-1950.jpg",
+      "reveal-photos/photo-1951.jpg",
+      "reveal-photos/photo-1952.jpg",
+      "reveal-photos/photo-1953.jpg",
+      "reveal-photos/photo-1954.jpg",
+      "reveal-photos/photo-1955.jpg",
+      "reveal-photos/photo-1956.jpg",
+      "reveal-photos/photo-1957.jpg",
+      "reveal-photos/photo-1958.jpg",
+      "reveal-photos/photo-1959.jpg"
+    ];
+    let reelIndex = 0;
+    let reelAutoplayTimer = null;
+    let isReelAutoplay = true;
+    let reelDurationMs = 200;
+
+    function renderReel() {
+      const frameZoom = (1.0 + (reelIndex / (REEL_PHOTOS.length - 1)) * 0.52).toFixed(2);
+      const img = document.getElementById('reel-img-display');
+      if (img) {
+        img.src = REEL_PHOTOS[reelIndex];
+        img.style.transform = `scale(${frameZoom})`;
+        img.style.transformOrigin = 'center 38%';
+      }
+      const numLbl = document.getElementById('photo-frame-number');
+      if (numLbl) numLbl.textContent = 'FRAME: ' + (1944 + reelIndex) + ' // ZOOM: ' + frameZoom + 'x';
+      const frameLbl = document.getElementById('reel-frame-label');
+      if (frameLbl) frameLbl.textContent = 'REEL: [PROPOSAL_ARCHIVE // ' + String(reelIndex + 1).padStart(2, '0') + '/16]';
+
+      // Update Pips
+      const pipsContainer = document.getElementById('reel-pips');
+      if (pipsContainer) {
+        pipsContainer.innerHTML = '';
+        REEL_PHOTOS.forEach((_, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.onclick = () => { AudioEngine.tick(); setReelIndex(idx); };
+          btn.className = (idx === reelIndex)
+            ? 'h-1.5 rounded-full transition-all duration-200 w-6 bg-[#e9c349] shadow-[0_0_8px_#e9c349] cursor-pointer'
+            : 'h-1.5 rounded-full transition-all duration-200 w-1.5 bg-[#333333] hover:bg-white/60 cursor-pointer';
+          pipsContainer.appendChild(btn);
+        });
+      }
+    }
+
+    function startReelAutoplay() {
+      if (reelAutoplayTimer) clearInterval(reelAutoplayTimer);
+      reelAutoplayTimer = setInterval(() => {
+        reelIndex = (reelIndex + 1) % REEL_PHOTOS.length;
+        renderReel();
+      }, reelDurationMs);
+    }
+
+    function speedUpReel() {
+      reelDurationMs = 85;
+      if (isReelAutoplay) startReelAutoplay();
+    }
+
+    function slowDownReel() {
+      reelDurationMs = 200;
+      if (isReelAutoplay) startReelAutoplay();
+    }
+
+    function toggleReelAutoplay() {
+      isReelAutoplay = !isReelAutoplay;
+      AudioEngine.click();
+      const lbl = document.getElementById('reel-play-lbl');
+      const icon = document.querySelector('#reel-play-btn .material-symbols-outlined');
+      if (isReelAutoplay) {
+        lbl.textContent = 'AUTO_PLAY';
+        icon.textContent = 'pause';
+        startReelAutoplay();
+      } else {
+        lbl.textContent = 'PAUSED';
+        icon.textContent = 'play_arrow';
+        if (reelAutoplayTimer) clearInterval(reelAutoplayTimer);
+      }
+    }
+
+    function nextReelPhoto() {
+      AudioEngine.tick();
+      reelIndex = (reelIndex + 1) % REEL_PHOTOS.length;
+      renderReel();
+    }
+
+    function prevReelPhoto() {
+      AudioEngine.tick();
+      reelIndex = (reelIndex - 1 + REEL_PHOTOS.length) % REEL_PHOTOS.length;
+      renderReel();
+    }
+
+    function setReelIndex(idx) {
+      reelIndex = idx;
+      renderReel();
+    }
+
+    function triggerReveal() {
+      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+        try { navigator.vibrate([60, 80, 100, 120]); } catch(e){}
+      }
+      const flash = document.getElementById('flash-overlay');
+      flash.classList.remove('opacity-0');
+      flash.classList.add('opacity-100');
+      setTimeout(() => {
+        flash.classList.remove('opacity-100');
+        flash.classList.add('opacity-0');
+      }, 700);
+
+      AudioEngine.triggerGrandReveal(() => {
+        document.getElementById('intro-expanded').classList.remove('hidden');
+        document.getElementById('reveal-btn-container').classList.add('hidden');
+        renderReel();
+        startReelAutoplay();
+        // REVEAL TOP BAR TITLE
+        document.getElementById('top-nav-icon').textContent = 'terminal';
+        document.getElementById('top-nav-title').textContent = 'SAVE THE DATE 19-20 NOV';
+        document.getElementById('sector-alert-tag').textContent = '[ ACTIVE ]';
+      });
+    }
+
+    // Tabs & Kinetic Dynamic Track Crossfader
+    function switchTab(t) {
+      AudioEngine.click();
+      const main = document.getElementById('main-content');
+      main.classList.add('opacity-60', 'scale-[0.985]', 'translate-y-1');
+
+      setTimeout(() => {
+        ['intro', 'details', 'venue', 'rsvp'].forEach(id => {
+          document.getElementById('sec-' + id).classList.add('hidden');
+          const tabBtn = document.getElementById('tab-' + id);
+          tabBtn.classList.remove('text-white', 'font-bold');
+          tabBtn.classList.add('text-[#8e9192]');
+          tabBtn.querySelector('.tab-indicator').classList.add('hidden');
+        });
+        document.getElementById('sec-' + t).classList.remove('hidden');
+        const activeTab = document.getElementById('tab-' + t);
+        activeTab.classList.add('text-white', 'font-bold');
+        activeTab.classList.remove('text-[#8e9192]');
+        activeTab.querySelector('.tab-indicator').classList.remove('hidden');
+
+        // Reveal top nav if navigated away from intro
+        if (t !== 'intro') {
+          document.getElementById('top-nav-icon').textContent = 'terminal';
+          document.getElementById('top-nav-title').textContent = 'SAVE THE DATE 19-20 NOV';
+          document.getElementById('sector-alert-tag').textContent = '[ ACTIVE ]';
+        }
+
+        if (t === 'intro') {
+          const introExp = document.getElementById('intro-expanded');
+          if (introExp && !introExp.classList.contains('hidden')) {
+            AudioEngine.startRomanticLoveTheme();
+          } else {
+            AudioEngine.setTrack('espionage_suspense');
+          }
+        } else {
+          AudioEngine.stopRomanticLoveTheme();
+          if (t === 'details') AudioEngine.setTrack('tactical_spy');
+          else if (t === 'venue') AudioEngine.triggerTargetLockedCue();
+          else if (t === 'rsvp') AudioEngine.setTrack('rsvp_curious');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => {
+          main.classList.remove('opacity-60', 'scale-[0.985]', 'translate-y-1');
+        }, 50);
+      }, 150);
+    }
+
+    // RSVP Flow
+    let currentRsvp = 'YES', guestName = '', guestCount = '1';
+    function openModal(t) {
+      currentRsvp = t;
+      if (t === 'YES') {
+        AudioEngine.sfxYesSelect();
+        AudioEngine.setTrack('rsvp_yes_tone');
+      } else if (t === 'MAYBE') {
+        AudioEngine.sfxMaybeSelect();
+        AudioEngine.setTrack('rsvp_maybe_tone');
+      } else {
+        AudioEngine.sfxNoSelect();
+        AudioEngine.setTrack('rsvp_no_tone');
+      }
+
+      document.getElementById('rsvp-modal').classList.remove('hidden');
+      document.getElementById('modal-step-1').classList.remove('hidden');
+      document.getElementById('modal-step-2').classList.add('hidden');
+      document.getElementById('modal-step-3').classList.add('hidden');
+      document.getElementById('modal-heading-1').textContent = t === 'NO' ? 'WHO IS BREAKING OUR HEARTS?' : "WHO'S MAKING THIS DECISION?";
+    }
+    function closeModal() {
+      AudioEngine.unduck();
+      document.getElementById('rsvp-modal').classList.add('hidden');
+      AudioEngine.setTrack('rsvp_curious');
+    }
+    function submitStep1() {
+      AudioEngine.unduck();
+      AudioEngine.click();
+      guestName = document.getElementById('input-name').value || 'ANONYMOUS_GUEST';
+      if (currentRsvp === 'NO') {
+        renderSummary();
+      } else {
+        document.getElementById('modal-step-1').classList.add('hidden');
+        document.getElementById('modal-step-2').classList.remove('hidden');
+      }
+    }
+    function setCount(c) {
+      AudioEngine.click();
+      guestCount = c === 'MORE' ? '6+' : c.toString();
+      renderSummary();
+    }
+    function renderSummary() {
+      document.getElementById('modal-step-1').classList.add('hidden');
+      document.getElementById('modal-step-2').classList.add('hidden');
+      document.getElementById('modal-step-3').classList.remove('hidden');
+      document.getElementById('summary-name').textContent = guestName;
+      document.getElementById('summary-count').textContent = currentRsvp === 'NO' ? 'STATUS: DECLINED' : 'ATTENDING: ' + guestCount + ' GUEST(S)';
+    }
+    function finalizeRSVP() {
+      AudioEngine.unduck();
+      document.getElementById('rsvp-modal').classList.add('hidden');
+      document.getElementById('rsvp-choice-card').classList.add('hidden');
+      const confirmCard = document.getElementById('rsvp-confirm-card');
+      confirmCard.classList.remove('hidden');
+      const isNo = currentRsvp === 'NO';
+      const col = isNo ? '#ff4d4d' : currentRsvp === 'MAYBE' ? '#ffe088' : '#4ade80';
+
+      const redContainer = document.getElementById('redemption-btn-container');
+      if (isNo) {
+        document.getElementById('confetti-container').classList.add('hidden');
+        AudioEngine.sfxDeadpanDrop();
+        redContainer.innerHTML = '<button type="button" onclick="redeemRsvp()" class="mt-2 py-3.5 px-8 border-2 border-[#e9c349] text-[#e9c349] hover:bg-[#e9c349] hover:text-black font-mono text-xs md:text-sm uppercase tracking-widest font-bold transition-all cursor-pointer shadow-[0_0_25px_rgba(233,195,73,0.4)]">[ RE-EVALUATE PROTOCOL // CHANGE VOTE ]</button>';
+      } else {
+        document.getElementById('confetti-container').classList.remove('hidden');
+        AudioEngine.sfxCelebrationExplosion();
+        setTimeout(() => AudioEngine.setTrack('party_celebration'), 700);
+        redContainer.innerHTML = '<button type="button" onclick="redeemRsvp()" class="mt-2 py-3 px-8 border-2 border-white/70 text-white hover:bg-white hover:text-black font-mono text-xs md:text-sm uppercase tracking-widest font-bold transition-all cursor-pointer hover:border-white shadow-[0_0_25px_rgba(255,255,255,0.25)] bg-[#131313]/90">[ ↻ MODIFY RESPONSE / RE-VOTE ]</button>';
+      }
+
+      document.getElementById('confirm-msg').textContent = isNo ? "RESPONSE LOGGED. ACCESS REVOKED. YOU WILL BE MISSED." : "RESPONSE LOGGED. SEE YOU IN JAIPUR.";
+      document.getElementById('confirm-msg').style.color = col;
+      document.getElementById('confirm-badge').textContent = isNo ? "[PROTOCOL_REVOKED]" : "[PROTOCOL_ACTIVE]";
+      document.getElementById('confirm-badge').style.color = col;
+      ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => document.getElementById(id).style.color = col);
+      document.getElementById('confirm-guest-lbl').textContent = "GUEST: " + guestName + (isNo ? "" : " · ATTENDING: " + guestCount);
+      startCountdown();
+    }
+
+    function redeemRsvp() {
+      document.getElementById('rsvp-confirm-card').classList.add('hidden');
+      document.getElementById('rsvp-choice-card').classList.remove('hidden');
+      AudioEngine.setTrack('rsvp_curious');
+    }
+
+    function startCountdown() {
+      const target = new Date('2026-11-19T00:00:00').getTime();
+      setInterval(() => {
+        const diff = Math.max(0, target - new Date().getTime());
+        document.getElementById('cd-d').textContent = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+        document.getElementById('cd-h').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+        document.getElementById('cd-m').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        const s = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        const oldS = document.getElementById('cd-s').textContent;
+        document.getElementById('cd-s').textContent = s;
+        if (oldS !== s) AudioEngine.tick();
+      }, 1000);
+    }
+  </script>
+</body>
 </html>
