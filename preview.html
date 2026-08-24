@@ -81,10 +81,42 @@
       animation: glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
       color: #ffffff;
     }
-    @keyframes scan {
-      0% { top: 0; opacity: 0.8; }
-      50% { top: 100%; opacity: 0.4; }
-      100% { top: 0; opacity: 0.8; }
+    @keyframes btn-flicker-pulse {
+      0%, 100% {
+        box-shadow: 0 0 16px rgba(233, 195, 73, 0.45), inset 0 0 12px rgba(233, 195, 73, 0.2);
+        border-color: #e9c349;
+        color: #ffffff;
+      }
+      50% {
+        box-shadow: 0 0 32px rgba(233, 195, 73, 0.9), inset 0 0 18px rgba(233, 195, 73, 0.4);
+        border-color: #ffffff;
+        color: #e9c349;
+      }
+      92% { opacity: 0.82; }
+      94% { opacity: 1; }
+      96% { opacity: 0.88; }
+    }
+    .btn-flicker-pulse {
+      animation: btn-flicker-pulse 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+
+    @keyframes btn-cyan-flicker {
+      0%, 100% {
+        box-shadow: 0 0 16px rgba(34, 211, 238, 0.45), inset 0 0 12px rgba(34, 211, 238, 0.2);
+        border-color: #22d3ee;
+        color: #ffffff;
+      }
+      50% {
+        box-shadow: 0 0 32px rgba(34, 211, 238, 0.9), inset 0 0 18px rgba(34, 211, 238, 0.4);
+        border-color: #ffffff;
+        color: #22d3ee;
+      }
+      92% { opacity: 0.82; }
+      94% { opacity: 1; }
+      96% { opacity: 0.88; }
+    }
+    .btn-cyan-flicker {
+      animation: btn-cyan-flicker 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
     .scan-line {
       position: absolute;
@@ -329,56 +361,34 @@
         </div>
         <div class="w-full max-w-md pb-safe mx-auto">
           <div class="text-[10px] text-[#8e9192] mb-2 uppercase tracking-widest font-mono">AWAITING_INPUT<span class="typewriter-cursor"></span></div>
-          <button onclick="switchTab('details')" class="w-full h-14 md:h-16 border-2 border-white text-white text-xs md:text-base hover:bg-white hover:text-black text-center tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 group font-bold glitch-hover uppercase font-mono">
-            <span class="material-symbols-outlined text-base md:text-lg">lock_open</span>[ACCESS LOGISTICS]<span>&gt;&gt;&gt;</span>
+          <button onclick="switchTab('details')" class="w-full h-14 md:h-16 border-2 border-[#e9c349] text-white text-xs md:text-base hover:bg-[#e9c349] hover:text-black text-center tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-flicker-pulse cursor-pointer">
+            <span class="material-symbols-outlined text-base md:text-lg">lock_open</span>[PROCEED TO DETAILS]<span>&gt;&gt;&gt;</span>
           </button>
         </div>
       </div>
     </section>
 
-    <!-- SECTOR 2: DETAILS (5 STAT CARDS WITH CYAN HOVER STATES) -->
+    <!-- SECTOR 2: DETAILS (PRIMARY DIRECTIVE: WARDROBE PLANNING ONLY) -->
     <section id="sec-details" class="hidden w-full flex-col font-mono">
       <div class="flex flex-col gap-2 md:gap-3 w-full mb-6 md:mb-8">
         <div class="flex items-center gap-2">
           <div class="h-[1px] bg-[#333333] flex-grow"></div>
-          <span class="text-[9px] md:text-[10px] uppercase text-[#8e9192] tracking-[0.2em]">[MISSION_MANIFEST // 5 CLASSIFIED SEGMENTS]</span>
+          <span class="text-[9px] md:text-[10px] uppercase text-[#e9c349] tracking-[0.2em] font-bold font-mono">[MISSION_MANIFEST // PRIMARY DIRECTIVE: WARDROBE PLANNING]</span>
           <div class="h-[1px] bg-[#333333] w-12"></div>
         </div>
         <h1 class="text-xl md:text-3xl text-white uppercase tracking-widest flex items-center gap-2 font-bold font-mono">
           MISSION_PARAMETERS <span class="blinking-caret text-white"></span>
         </h1>
         <p class="text-[11px] md:text-xs text-[#8e9192] max-w-2xl uppercase tracking-widest leading-relaxed font-mono">
-          Analyzing current event parameters. Please review critical updates below.
+          Analyzing current event parameters. Please review critical wardrobe protocols below.
         </p>
       </div>
       <div class="flex flex-col gap-3.5 md:gap-4 max-w-5xl">
-        <!-- Card 1 -->
-        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
-          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
-            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_01</span>
-            <span class="text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ THREAT: HIGH ]</span>
-          </div>
-          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
-            <img alt="Calendar Threat Level 20 Nov" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="calendar-threat.jpg" />
-            <div class="absolute inset-0 bg-[#ffb4ab]/5 mix-blend-overlay group-hover:bg-cyan-400/10 transition-colors"></div>
-          </div>
-          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
-            <div class="flex items-start justify-between gap-2 text-[#ffb4ab]">
-              <div class="flex items-start gap-2">
-                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">warning</span>
-                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Calendar Threat Level: Maximum</h2>
-              </div>
-              <span class="md:hidden text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ THREAT: HIGH ]</span>
-            </div>
-            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Clear your November right now. The timeline is fixed. No deviations permitted.</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Wardrobe Planning - SLEEK & BALANCED ELEGANT FEATURE CARD -->
-        <div onclick="AudioEngine.ping()" class="glass-panel border-2 border-[#e9c349]/80 shadow-[0_0_30px_rgba(233,195,73,0.15)] flex flex-col w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-[#e9c349] hover:shadow-[0_0_40px_rgba(233,195,73,0.3)] transform hover:-translate-y-0.5 transition-all duration-300 rounded-sm">
+        <!-- Card: Wardrobe Planning - HERO FEATURE CARD -->
+        <div onclick="AudioEngine.ping()" class="glass-panel border-2 border-[#e9c349]/80 shadow-[0_0_30px_rgba(233,195,73,0.15)] flex flex-col w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-[#e9c349] hover:shadow-[0_0_40px_rgba(233,195,73,0.35)] transform hover:-translate-y-0.5 transition-all duration-300 rounded-sm">
           <div class="bg-[#1c1b1b] p-2.5 md:px-5 md:py-2.5 border-b border-[#333333] flex justify-between items-center">
             <div class="flex items-center gap-2">
-              <span class="text-[9px] md:text-[11px] text-white font-bold tracking-widest font-mono">[MISSION_MANIFEST // DATA_SEGMENT_02]</span>
+              <span class="text-[9px] md:text-[11px] text-white font-bold tracking-widest font-mono">[MISSION_MANIFEST // CRITICAL_PROTOCOL]</span>
             </div>
             <span class="bg-[#e9c349] text-black font-mono font-bold text-[8px] md:text-[9px] px-2 py-0.5 tracking-widest uppercase shadow-[0_0_12px_rgba(233,195,73,0.5)]">
               ★ PRIMARY DIRECTIVE // WARDROBE PLANNING ★
@@ -468,148 +478,83 @@
             </p>
           </div>
         </div>
-
-        <!-- Card 3 -->
-        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
-          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
-            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_03</span>
-            <span class="text-[9px] text-[#4ade80] group-hover:text-cyan-300 border border-[#4ade80]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ TELEMETRY: MONITORED ]</span>
-          </div>
-          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
-            <img alt="Dance Floor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida/AEtjO1XB4IXvLxw17GxnehBkl6ygw7Svdsx6dmFb5Ey6IhgKJOGzQcfWgBq80w1uBVxNQUwdBvMvNR6FrYfmdxy9uHL-CtHv7zBU1yQSRDzHbikoDuyNoDx4W2o6Y8B85APgHS6BS3Msu2xFG7zBil0maGdtvsSpVvJVDjERQpHvUyImrDs7GtwuU2tgKjTCSbAP8vsJOjOahPssEp4jZak4yiPHelqb0OjTpqtrbFoxeLxzIntOIGKNKk0yp_c1" />
-          </div>
-          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
-            <div class="flex items-start justify-between gap-2 text-[#4ade80]">
-              <div class="flex items-start gap-2">
-                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">graphic_eq</span>
-                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Dance Floor Situation: High Energy</h2>
-              </div>
-              <span class="md:hidden text-[9px] text-[#4ade80] group-hover:text-cyan-300 border border-[#4ade80]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ TELEMETRY: MONITORED ]</span>
-            </div>
-            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Krish &amp; Janhvi are going to tear it up so hard, even the elders will find themselves tapping their feet.</p>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
-          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
-            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_04</span>
-            <span class="text-[9px] text-[#ffe088] group-hover:text-cyan-300 border border-[#ffe088]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ SATELLITE: VERIFIED ]</span>
-          </div>
-          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
-            <img alt="Jaipur Weather Status" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida/AEtjO1X5P73jhwXuWfvVumZaS3neCqeiGMvE_1G-offVnWZNXtPYpGui4NAPtaJVwEF_aLDQjMhD1UdUL1XWpbGdVMJQ41g1TgQC7roqbw4RwV0khgf27aV6GyU0nX4uRHhybScKfBXo5gBEQ3kKyEQyfMlMQp4hG7r5Ge3c1nZ7IIWL91NL3BfuqAHjaoTc_4HTBjadXPcmYLtSoQ6AkhQg7vfAcsx8tl9x4Yr-1rvRtvwivAJhj6KEyETfCmnN" />
-          </div>
-          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
-            <div class="flex items-start justify-between gap-2 text-[#ffe088]">
-              <div class="flex items-start gap-2">
-                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">thermostat</span>
-                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Jaipur Weather Status: Optimal</h2>
-              </div>
-              <span class="md:hidden text-[9px] text-[#ffe088] group-hover:text-cyan-300 border border-[#ffe088]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ SATELLITE: VERIFIED ]</span>
-            </div>
-            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Perfect winter breeze by day, but the venue will generate enough heat to melt ice.</p>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div onclick="AudioEngine.ping()" class="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300">
-          <div class="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 border-r border-b border-[#333333] group-hover:border-cyan-400/50 transition-colors">
-            <span class="text-[10px] text-white group-hover:text-cyan-300 font-mono">DATA_SEGMENT_05</span>
-            <span class="text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 font-mono">[ DIRECTIVE: ENFORCED ]</span>
-          </div>
-          <div class="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
-            <img alt="Attendance Policy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida/AEtjO1VImUbnl3ugnD0BRYx2XZp26LYUhAJKRfTNAax_HtgZYwFPMBgMDd8N1UjmUN-aFJ1uBIpkIktS8IRiREkCZFnesIGsSozggr-FhBP_izIlY0viDiyWqXHxR2WdP9aJjWRV0XRGf1eTBBPq_Fh6ewa7hpDd6-hiM5GXs7W976XXBfkKSA9iJ8zzQAL-L_wdnB-KvjJrPt33148HTzn7SOa6IXxnf9SYA17Gr8ZBwYigJevIZa7e0Q-Mnzta" />
-          </div>
-          <div class="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2">
-            <div class="flex items-start justify-between gap-2 text-[#ffb4ab]">
-              <div class="flex items-start gap-2">
-                <span class="material-symbols-outlined text-lg group-hover:text-cyan-300 transition-colors">gavel</span>
-                <h2 class="text-xs md:text-base uppercase tracking-[0.15em] font-bold font-mono group-hover:text-cyan-300 transition-colors">Attendance Policy: Mandatory</h2>
-              </div>
-              <span class="md:hidden text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 font-mono">[ DIRECTIVE: ENFORCED ]</span>
-            </div>
-            <p class="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">Excuses like &quot;mujhe yaad nahi tha&quot; or &quot;office ka kaam hai&quot; will be legally rejected by the family committee.</p>
-          </div>
-        </div>
       </div>
 
       <div class="w-full max-w-5xl mt-6 md:mt-8 mb-4">
-        <button onclick="switchTab('venue')" class="w-full border border-white text-white text-xs md:text-base py-5 hover:bg-white hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-1 transition-all uppercase font-bold font-mono hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]">
-          <span>[MISSION_LOGISTICS]</span>
-          <span class="text-[10px] opacity-50">&gt;&gt;&gt;</span>
+        <button onclick="switchTab('venue')" class="w-full border-2 border-cyan-400 text-white text-xs md:text-base py-4 md:py-5 hover:bg-cyan-400 hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-1 transition-all uppercase font-bold font-mono btn-cyan-flicker cursor-pointer">
+          <span>[PROCEED TO VENUE]</span>
+          <span class="text-[10px]">&gt;&gt;&gt;</span>
         </button>
       </div>
     </section>
 
-    <!-- SECTOR 3: VENUE WITH BALANCED PROMINENT CARDS -->
-    <section id="sec-venue" class="hidden w-full flex-col font-mono">
-      <div class="flex-grow flex flex-col border border-[#333333] bg-[#0e0e0e] overflow-hidden">
-        <div class="h-8 border-b border-[#333333] flex justify-between items-center px-4 bg-[#1c1b1b]">
-          <span class="text-[10px] text-white tracking-[0.2em] uppercase font-mono">[LOCATION_SCANNED]</span>
-          <span class="text-[10px] text-[#8e9192] tracking-[0.2em] uppercase font-mono">[SECTOR_03]</span>
+    <!-- SECTOR 3: VENUE WITH BALANCED PROMINENT CARDS (FITS IN SINGLE FRAME) -->
+    <section id="sec-venue" class="hidden w-full flex-col font-mono max-w-5xl">
+      <div class="flex-grow flex flex-col border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl">
+        <div class="h-7 md:h-8 border-b border-[#333333] flex justify-between items-center px-3 md:px-4 bg-[#1c1b1b]">
+          <span class="text-[9px] md:text-[10px] text-white tracking-[0.2em] uppercase font-mono">[LOCATION_SCANNED]</span>
+          <span class="text-[9px] md:text-[10px] text-[#8e9192] tracking-[0.2em] uppercase font-mono">[SECTOR_03]</span>
         </div>
-        <div class="relative bg-[#0e0e0e] min-h-[56vh] md:min-h-[66vh] flex flex-col justify-between group overflow-hidden p-3.5 md:p-6">
+        <div class="relative bg-[#0e0e0e] min-h-[38vh] md:min-h-[44vh] max-h-[46vh] flex flex-col justify-between group overflow-hidden p-3 md:p-4">
           <div class="flex justify-between items-center w-full z-20">
-            <div class="bg-[#201f1f]/90 px-3 py-1 flex items-center space-x-2 border border-[#333333] shadow-md">
-              <span class="w-2 h-2 bg-[#4ade80] rounded-full animate-ping"></span>
-              <span class="text-[9px] text-[#4ade80] uppercase tracking-widest font-bold font-mono">LIVE_FEED // ACHROL NIWAS</span>
+            <div class="bg-[#201f1f]/90 px-2.5 py-0.5 md:px-3 md:py-1 flex items-center space-x-2 border border-[#333333] shadow-md">
+              <span class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#4ade80] rounded-full animate-ping"></span>
+              <span class="text-[8px] md:text-[9px] text-[#4ade80] uppercase tracking-widest font-bold font-mono">LIVE_FEED // ACHROL NIWAS</span>
             </div>
-            <div class="bg-[#131313]/90 px-3 py-1 border border-[#333333] font-mono text-[9px] text-[#8e9192] uppercase tracking-widest shadow-md">
+            <div class="bg-[#131313]/90 px-2.5 py-0.5 md:px-3 md:py-1 border border-[#333333] font-mono text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest shadow-md">
               COORDS: 27.1425° N, 75.9520° E
             </div>
           </div>
 
-
-
           <!-- Rotating Radar Rings behind visual -->
-          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 z-10">
-            <div class="w-72 h-72 md:w-[420px] md:h-[420px] border border-[#e9c349]/40 rounded-full animate-[spin_25s_linear_infinite] relative">
-              <span class="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-5 bg-[#e9c349]"></span>
-              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-5 bg-[#e9c349]"></span>
-              <span class="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-0.5 bg-[#e9c349]"></span>
-              <span class="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-0.5 bg-[#e9c349]"></span>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-25 z-10">
+            <div class="w-64 h-64 md:w-[380px] md:h-[380px] border border-[#e9c349]/40 rounded-full animate-[spin_25s_linear_infinite] relative">
+              <span class="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-[#e9c349]"></span>
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-[#e9c349]"></span>
+              <span class="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#e9c349]"></span>
+              <span class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#e9c349]"></span>
             </div>
           </div>
 
           <!-- SIDE-BY-SIDE PROMINENT LOCATION CARDS AT BOTTOM TO KEEP RESORT CENTER VISIBLE -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4 z-20 w-full max-w-4xl mx-auto pointer-events-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 z-20 w-full max-w-4xl mx-auto pointer-events-auto mt-auto">
             <a
               href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
               target="_blank"
               rel="noopener noreferrer"
               title="Click to open Achrol Niwas in Google Maps"
-              class="backdrop-blur-md py-3 px-4 md:py-3.5 md:px-5 bg-[#0e0e0e]/90 border border-white/20 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group cursor-pointer"
+              class="backdrop-blur-md py-2.5 px-3 md:py-3 md:px-4 bg-[#0e0e0e]/90 border border-white/20 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group cursor-pointer"
             >
-              <div class="absolute top-0 left-0 bg-[#222222] group-hover:bg-cyan-950/80 px-2 py-0.5 font-mono text-[8px] md:text-[9px] text-[#8e9192] group-hover:text-cyan-300 uppercase tracking-widest border-r border-b border-[#333333] transition-colors">
-                SECTOR_COORDINATES // ACHROL NIWAS
+              <div class="absolute top-0 left-0 bg-[#222222] group-hover:bg-cyan-950/80 px-1.5 py-0.5 font-mono text-[7px] md:text-[8px] text-[#8e9192] group-hover:text-cyan-300 uppercase tracking-widest border-r border-b border-[#333333] transition-colors">
+                COORDINATES // RESORT
               </div>
-              <div class="absolute top-0 right-0 px-2 py-0.5 font-mono text-[8px] md:text-[9px] text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity tracking-widest uppercase flex items-center gap-1">
+              <div class="absolute top-0 right-0 px-1.5 py-0.5 font-mono text-[7px] md:text-[8px] text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity tracking-widest uppercase flex items-center gap-1">
                 <span>OPEN GMAPS</span>
-                <span class="text-[10px]">↗</span>
+                <span class="text-[9px]">↗</span>
               </div>
-              <span class="font-mono text-[9px] md:text-[10px] text-[#8e9192] group-hover:text-cyan-300 uppercase tracking-[0.25em] mt-2 mb-0.5 transition-colors">
+              <span class="font-mono text-[8px] md:text-[9px] text-[#8e9192] group-hover:text-cyan-300 uppercase tracking-[0.2em] mt-1.5 mb-0.5 transition-colors">
                 WHERE // MISSION LOCATION (RESORT)
               </span>
-              <span class="font-mono text-sm md:text-xl font-bold text-white group-hover:text-cyan-300 uppercase tracking-[0.15em] leading-snug transition-colors">
+              <span class="font-mono text-xs md:text-lg font-bold text-white group-hover:text-cyan-300 uppercase tracking-[0.12em] leading-snug transition-colors">
                 Achrol Niwas, Jaipur
               </span>
-              <span class="font-mono text-[8px] md:text-[9px] text-cyan-400 mt-1 uppercase tracking-widest opacity-80 group-hover:opacity-100 flex items-center gap-1">
-                <span class="material-symbols-outlined text-xs">near_me</span>
+              <span class="font-mono text-[7px] md:text-[8px] text-cyan-400 mt-0.5 uppercase tracking-widest opacity-80 group-hover:opacity-100 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[10px]">near_me</span>
                 [ TAP TO LAUNCH GMAPS SATELLITE NAV ↗ ]
               </span>
             </a>
 
-            <div class="backdrop-blur-md py-3 px-4 md:py-3.5 md:px-5 bg-[#0e0e0e]/90 border border-white/20 hover:border-[#e9c349]/80 transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group">
-              <div class="absolute top-0 left-0 bg-[#222222] px-2 py-0.5 font-mono text-[8px] md:text-[9px] text-[#e9c349] uppercase tracking-widest border-r border-b border-[#333333]">
+            <div class="backdrop-blur-md py-2.5 px-3 md:py-3 md:px-4 bg-[#0e0e0e]/90 border border-white/20 hover:border-[#e9c349]/80 transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group">
+              <div class="absolute top-0 left-0 bg-[#222222] px-1.5 py-0.5 font-mono text-[7px] md:text-[8px] text-[#e9c349] uppercase tracking-widest border-r border-b border-[#333333]">
                 TIMELINE_LOCK
               </div>
-              <span class="font-mono text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-[0.25em] mt-2 mb-0.5">
+              <span class="font-mono text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-[0.2em] mt-1.5 mb-0.5">
                 WHEN // EVENT DATES
               </span>
-              <span class="font-mono text-sm md:text-xl font-bold text-[#e9c349] uppercase tracking-[0.15em] leading-snug">
+              <span class="font-mono text-xs md:text-lg font-bold text-[#e9c349] uppercase tracking-[0.12em] leading-snug">
                 19–20 November 2026
               </span>
-              <span class="font-mono text-[8px] md:text-[9px] text-[#4ade80] mt-1 uppercase tracking-widest">
+              <span class="font-mono text-[7px] md:text-[8px] text-[#4ade80] mt-0.5 uppercase tracking-widest">
                 [ 2 DAYS OF UNSTOPPABLE MADNESS ]
               </span>
             </div>
@@ -620,26 +565,23 @@
           <div class="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-transparent to-[#0e0e0e]/60 pointer-events-none z-10"></div>
         </div>
 
-        <div class="bg-[#1c1b1b] p-4 md:p-8 flex flex-col justify-center min-h-[160px] md:min-h-[200px] border-t border-[#333333]">
-          <div class="text-[9px] md:text-[10px] text-[#8e9192] mb-3 flex items-center space-x-2 tracking-widest uppercase font-mono">
-            <span class="material-symbols-outlined text-[14px]">memory</span>
-            <span>SYSTEM_CALCULATION_LOG</span>
+        <!-- Sleek Compact Telemetry Strip -->
+        <div class="bg-[#1c1b1b] py-2 px-3 md:py-2.5 md:px-4 flex items-center justify-between border-t border-[#333333] font-mono">
+          <div class="flex items-center space-x-2 text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest">
+            <span class="material-symbols-outlined text-[13px] text-[#4ade80]">memory</span>
+            <span>SYSTEM_TELEMETRY // JAIPUR_COORDS_LOCKED</span>
           </div>
-          <div class="text-xs md:text-sm text-white space-y-3 font-mono">
-            <p>&gt; Initializing sequence...</p>
-            <p>&gt; Querying geographic delta: JAIPUR_COORDS_LOCKED...</p>
-            <div class="flex items-start mt-1">
-              <span class="mr-2 text-[#e9c349]">&gt;</span>
-              <p class="text-[#e9c349] leading-loose font-mono"><span class="bg-[#e9c349]/10 px-2.5 py-1.5 inline-block border border-[#e9c349]/30 text-xs md:text-sm font-bold">Calculating probability of pure chaos: 9,999.99% (CRITICAL)</span></p>
-            </div>
+          <div class="text-[8px] md:text-[9px] text-[#e9c349] font-bold uppercase tracking-widest">
+            PROBABILITY OF PURE CHAOS: 9,999.99% (CRITICAL)
           </div>
         </div>
 
-        <div class="bg-[#0e0e0e] p-4 md:p-8 flex flex-col justify-center items-center border-t border-[#333333]">
+        <!-- High-Visibility Bottom Proceed Button (Instantly Visible Without Scrolling) -->
+        <div class="bg-[#0e0e0e] p-3 md:p-4 flex flex-col justify-center items-center border-t border-[#333333]">
           <div class="w-full max-w-md mx-auto">
-            <button onclick="switchTab('rsvp')" class="w-full border-2 border-white text-white text-xs md:text-base py-4 md:py-5 hover:bg-white hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-1 transition-all uppercase font-bold font-mono">
-              <span>[PROCEED_TO_RSVP]</span>
-              <span class="text-[9px] md:text-[10px] opacity-50">&gt;&gt;&gt;</span>
+            <button onclick="switchTab('rsvp')" class="w-full border-2 border-[#e9c349] text-white text-xs md:text-base py-3.5 md:py-4 hover:bg-[#e9c349] hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all uppercase font-bold font-mono btn-flicker-pulse cursor-pointer">
+              <span>[PROCEED TO RSVP]</span>
+              <span class="text-[9px]">&gt;&gt;&gt;</span>
             </button>
           </div>
         </div>
@@ -1505,7 +1447,7 @@
           lbl.textContent = 'COMPLETE';
           AudioEngine.ping();
           btn.classList.remove('cursor-not-allowed', 'opacity-50', 'text-[#8e9192]', 'border-[#333333]');
-          btn.classList.add('border-[#e9c349]', 'text-[#e9c349]', 'btn-pulse-anim', 'cursor-pointer');
+          btn.classList.add('border-[#e9c349]', 'text-[#e9c349]', 'btn-flicker-pulse', 'cursor-pointer');
         }
       }, 70);
     }
