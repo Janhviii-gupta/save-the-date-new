@@ -225,7 +225,7 @@
     
     <!-- SECTOR 1: INTRO -->
     <section id="sec-intro" class="w-full flex flex-col items-center min-h-[calc(100dvh-8rem)] justify-center">
-      <div class="w-full border border-[#333333] bg-[#1c1b1b]/60 backdrop-blur-md p-5 md:p-8 relative my-auto">
+      <div id="pre-reveal-card" class="w-full border border-[#333333] bg-[#1c1b1b]/60 backdrop-blur-md p-5 md:p-8 relative my-auto">
         <div class="absolute -top-3 left-4 bg-[#333333] text-[10px] px-2 py-0.5 text-[#e9c349] uppercase tracking-widest font-mono">
           [SECTOR_01: SYSTEM_AUTH]
         </div>
@@ -254,7 +254,7 @@
       </div>
 
       <!-- KINETIC MOTION-GRAPHIC REVEAL SEQUENCE (16 EXTRACTED PHOTOS) -->
-      <div id="intro-expanded" class="hidden w-full flex flex-col items-center mt-6 md:mt-10 animate-[fadeIn_0.6s_ease-out]">
+      <div id="intro-expanded" class="hidden w-full flex flex-col items-center my-auto animate-[fadeIn_0.5s_ease-out]">
         <div class="w-full flex justify-between items-start text-[10px] text-[#8e9192] mb-3 max-w-lg font-mono">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
@@ -276,25 +276,23 @@
           <div id="photo-love-badge" class="hidden absolute top-2.5 right-2.5 z-20 font-mono text-[8px] md:text-[9px] text-pink-300 bg-black/90 px-2.5 py-0.5 border border-pink-500/60 animate-pulse tracking-widest shadow-md">[♥ LOVE_PROTOCOL_ACTIVE ♥]</div>
 
           <div class="w-full h-full relative overflow-hidden bg-black flex items-center justify-center">
-            <!-- 16 PRE-LOADED STACKED GPU FRAMES WITH PROGRESSIVE ZOOM (ZERO FLICKER / ZERO RE-RENDER LAG) -->
-            <img id="reel-f-0" alt="Proposal 1944" src="reveal-photos/photo-1944.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-100 z-10" style="object-position: center 38%; transform: scale(1.00); transform-origin: center 38%;" />
-            <img id="reel-f-1" alt="Proposal 1945" src="reveal-photos/photo-1945.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.03); transform-origin: center 38%;" />
-            <img id="reel-f-2" alt="Proposal 1946" src="reveal-photos/photo-1946.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.07); transform-origin: center 38%;" />
-            <img id="reel-f-3" alt="Proposal 1947" src="reveal-photos/photo-1947.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.10); transform-origin: center 38%;" />
-            <img id="reel-f-4" alt="Proposal 1948" src="reveal-photos/photo-1948.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.14); transform-origin: center 38%;" />
-            <img id="reel-f-5" alt="Proposal 1949" src="reveal-photos/photo-1949.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.17); transform-origin: center 38%;" />
-            <img id="reel-f-6" alt="Proposal 1950" src="reveal-photos/photo-1950.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.21); transform-origin: center 38%;" />
-            <img id="reel-f-7" alt="Proposal 1951" src="reveal-photos/photo-1951.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.24); transform-origin: center 38%;" />
-            <img id="reel-f-8" alt="Proposal 1952" src="reveal-photos/photo-1952.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.28); transform-origin: center 38%;" />
-            <img id="reel-f-9" alt="Proposal 1953" src="reveal-photos/photo-1953.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.31); transform-origin: center 38%;" />
-            <img id="reel-f-10" alt="Proposal 1954" src="reveal-photos/photo-1954.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.35); transform-origin: center 38%;" />
-            <img id="reel-f-11" alt="Proposal 1955" src="reveal-photos/photo-1955.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.38); transform-origin: center 38%;" />
-            <img id="reel-f-12" alt="Proposal 1956" src="reveal-photos/photo-1956.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.42); transform-origin: center 38%;" />
-            <img id="reel-f-13" alt="Proposal 1957" src="reveal-photos/photo-1957.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.45); transform-origin: center 38%;" />
-            <img id="reel-f-14" alt="Proposal 1958" src="reveal-photos/photo-1958.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.49); transform-origin: center 38%;" />
-            <img id="reel-f-15" alt="Proposal 1959" src="reveal-photos/photo-1959.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0" style="object-position: center 38%; transform: scale(1.52); transform-origin: center 38%;" />
-
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/70 via-transparent to-[#e9c349]/10 pointer-events-none mix-blend-overlay z-20"></div>
+            <!-- 16 PRE-LOADED STACKED GPU FRAMES WITH PROGRESSIVE ZOOM (HARDWARE ACCELERATED) -->
+            <img id="reel-f-0" alt="Proposal 1944" src="reveal-photos/photo-1944.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-100 z-10 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.00) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-1" alt="Proposal 1945" src="reveal-photos/photo-1945.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.03) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-2" alt="Proposal 1946" src="reveal-photos/photo-1946.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.07) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-3" alt="Proposal 1947" src="reveal-photos/photo-1947.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.10) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-4" alt="Proposal 1948" src="reveal-photos/photo-1948.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.14) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-5" alt="Proposal 1949" src="reveal-photos/photo-1949.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.17) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-6" alt="Proposal 1950" src="reveal-photos/photo-1950.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.21) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-7" alt="Proposal 1951" src="reveal-photos/photo-1951.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.24) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-8" alt="Proposal 1952" src="reveal-photos/photo-1952.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.28) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-9" alt="Proposal 1953" src="reveal-photos/photo-1953.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.31) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-10" alt="Proposal 1954" src="reveal-photos/photo-1954.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.35) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-11" alt="Proposal 1955" src="reveal-photos/photo-1955.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.38) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-12" alt="Proposal 1956" src="reveal-photos/photo-1956.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.42) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-13" alt="Proposal 1957" src="reveal-photos/photo-1957.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.45) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-14" alt="Proposal 1958" src="reveal-photos/photo-1958.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.49) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
+            <img id="reel-f-15" alt="Proposal 1959" src="reveal-photos/photo-1959.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.14] brightness-[0.96] saturate-[1.15] opacity-0 z-0 will-change-[opacity,transform]" style="object-position: center 38%; transform: scale(1.52) translateZ(0); transform-origin: center 38%; backface-visibility: hidden;" />
 
             <div class="absolute top-2 left-2 text-[#e9c349] font-mono text-[10px] z-20 pointer-events-none">+</div>
             <div class="absolute top-2 right-2 text-[#e9c349] font-mono text-[10px] z-20 pointer-events-none">+</div>
@@ -1635,10 +1633,15 @@
       }, 700);
 
       AudioEngine.triggerGrandReveal(() => {
-        document.getElementById('intro-expanded').classList.remove('hidden');
-        document.getElementById('reveal-btn-container').classList.add('hidden');
+        const preCard = document.getElementById('pre-reveal-card');
+        if (preCard) preCard.classList.add('hidden');
+        const exp = document.getElementById('intro-expanded');
+        if (exp) exp.classList.remove('hidden');
+        const rBtn = document.getElementById('reveal-btn-container');
+        if (rBtn) rBtn.classList.add('hidden');
         renderReel();
         startReelAutoplay();
+        window.scrollTo({ top: 0, behavior: 'instant' });
         // REVEAL TOP BAR TITLE
         document.getElementById('top-nav-icon').textContent = 'terminal';
         document.getElementById('top-nav-title').textContent = 'SAVE THE DATE 19-20 NOV';
