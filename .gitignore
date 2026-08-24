@@ -1,0 +1,22 @@
+# dependencies
+/node_modules
+
+# Next.js
+/.next
+/out
+
+# testing
+/coverage
+/playwright-report
+/test-results
+
+# local environment files
+.env*.local
+.env
+
+# build
+/dist
+*.tsbuildinfo
+
+# macOS
+.DS_Store
