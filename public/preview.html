@@ -346,23 +346,25 @@
         </div>
 
         <!-- Pips -->
-        <div id="reel-pips" class="flex items-center justify-center gap-1 mb-6 max-w-lg w-full px-4"></div>
+        <div id="reel-pips" class="flex items-center justify-center gap-1 mb-3 max-w-lg w-full px-4"></div>
 
-        <div class="text-center w-full flex flex-col items-center gap-4 md:gap-6 mb-8 font-mono">
-          <h1 class="text-4xl md:text-7xl text-[#ffb4ab] tracking-tighter w-full max-w-3xl leading-tight font-bold mx-auto text-center uppercase">
-            Janhvi<br/>&amp;<br/>Krish
+        <!-- JANHVI & KRISH IN ONE COMPACT LINE RIGHT BENEATH MOTION GRAPHIC -->
+        <div class="text-center w-full flex flex-col items-center gap-1.5 mb-3 font-mono">
+          <h1 class="text-xl md:text-3xl text-[#ffb4ab] tracking-wider leading-tight font-bold mx-auto text-center uppercase font-mono">
+            Janhvi &amp; Krish
           </h1>
-          <div class="bg-[#1c1b1b] px-3 py-2.5 md:px-4 md:py-3 flex items-center gap-3 border border-[#333333] max-w-lg mx-auto">
-            <span class="material-symbols-outlined text-base md:text-lg text-[#ffb4ab] shrink-0">warning</span>
-            <span class="text-[10px] md:text-xs text-white uppercase tracking-widest text-left leading-relaxed font-mono">
-              STATUS: LOCKED IN. PROBABILITY OF CHAOS: 9,999.99% - TOTAL SYSTEM COLLAPSE IMMINENT
+          <div class="bg-[#1c1b1b]/90 px-3 py-1 flex items-center gap-2 border border-[#333333] max-w-md mx-auto">
+            <span class="material-symbols-outlined text-xs md:text-sm text-[#ffb4ab] shrink-0">warning</span>
+            <span class="text-[8px] md:text-[9px] text-white uppercase tracking-widest text-left leading-tight font-mono">
+              STATUS: LOCKED IN. PROBABILITY OF CHAOS: 9,999.99%
             </span>
           </div>
         </div>
-        <div class="w-full max-w-md pb-safe mx-auto">
-          <div class="text-[10px] text-[#8e9192] mb-2 uppercase tracking-widest font-mono">AWAITING_INPUT<span class="typewriter-cursor"></span></div>
-          <button onclick="switchTab('details')" class="w-full h-14 md:h-16 border-2 border-[#e9c349] text-white text-xs md:text-base hover:bg-[#e9c349] hover:text-black text-center tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-flicker-pulse cursor-pointer">
-            <span class="material-symbols-outlined text-base md:text-lg">lock_open</span>[PROCEED TO DETAILS]<span>&gt;&gt;&gt;</span>
+
+        <!-- DIRECTLY VISIBLE PROCEED BUTTON (NO SCROLLING NEEDED) -->
+        <div class="w-full max-w-md mx-auto">
+          <button onclick="switchTab('details')" class="w-full h-12 md:h-14 border-2 border-[#e9c349] text-white text-xs md:text-sm hover:bg-[#e9c349] hover:text-black text-center tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-flicker-pulse cursor-pointer">
+            <span class="material-symbols-outlined text-base">lock_open</span>[PROCEED TO DETAILS]<span>&gt;&gt;&gt;</span>
           </button>
         </div>
       </div>
@@ -377,10 +379,10 @@
           <div class="h-[1px] bg-[#333333] w-12"></div>
         </div>
         <h1 class="text-xl md:text-3xl text-white uppercase tracking-widest flex items-center gap-2 font-bold font-mono">
-          MISSION_PARAMETERS <span class="blinking-caret text-white"></span>
+          WARDROBE_PROTOCOL <span class="blinking-caret text-white"></span>
         </h1>
         <p class="text-[11px] md:text-xs text-[#8e9192] max-w-2xl uppercase tracking-widest leading-relaxed font-mono">
-          Analyzing current event parameters. Please review critical wardrobe protocols below.
+          Event dress codes & style directives. Please review the wardrobe protocols below.
         </p>
       </div>
       <div class="flex flex-col gap-3.5 md:gap-4 max-w-5xl">
@@ -481,7 +483,7 @@
       </div>
 
       <div class="w-full max-w-5xl mt-6 md:mt-8 mb-4">
-        <button onclick="switchTab('venue')" class="w-full border-2 border-cyan-400 text-white text-xs md:text-base py-4 md:py-5 hover:bg-cyan-400 hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-1 transition-all uppercase font-bold font-mono btn-cyan-flicker cursor-pointer">
+        <button onclick="switchTab('venue')" class="w-full border-2 border-[#e9c349] text-white text-xs md:text-base py-3.5 md:py-4 hover:bg-[#e9c349] hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all uppercase font-bold font-mono btn-flicker-pulse cursor-pointer">
           <span>[PROCEED TO VENUE]</span>
           <span class="text-[10px]">&gt;&gt;&gt;</span>
         </button>
@@ -754,19 +756,19 @@
 
       <div id="modal-step-1" class="space-y-4 md:space-y-5">
         <h2 id="modal-heading-1" class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">WHO'S MAKING THIS DECISION?</h2>
-        <input type="text" id="input-name" onfocus="AudioEngine.duck()" onblur="AudioEngine.unduck()" placeholder="[ YOUR NAME ]" class="w-full bg-[#0e0e0e] border border-[#333333] p-3.5 text-white uppercase text-xs md:text-sm focus:outline-none focus:border-white font-mono" />
-        <button onclick="submitStep1()" class="w-full border border-white py-3.5 uppercase tracking-widest hover:bg-white hover:text-black font-bold text-xs md:text-sm font-mono">NEXT_STEP &gt;</button>
+        <input type="text" id="input-name" onfocus="AudioEngine.duck()" onblur="AudioEngine.unduck()" placeholder="[ YOUR NAME ]" class="w-full bg-[#0e0e0e] border border-[#333333] p-3.5 text-white uppercase text-xs md:text-sm focus:outline-none focus:border-[#e9c349] font-mono" />
+        <button onclick="submitStep1()" class="w-full border-2 border-[#e9c349] text-white py-3.5 uppercase tracking-widest hover:bg-[#e9c349] hover:text-black font-bold text-xs md:text-sm font-mono btn-flicker-pulse cursor-pointer">NEXT_STEP &gt;</button>
       </div>
 
       <div id="modal-step-2" class="space-y-4 md:space-y-5 hidden">
         <h2 class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">HOW MANY PEOPLE WILL BE ATTENDING?</h2>
         <div class="grid grid-cols-2 gap-2 font-mono">
-          <button onclick="setCount(1)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">1 PERSON</button>
-          <button onclick="setCount(2)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">2 PEOPLE</button>
-          <button onclick="setCount(3)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">3 PEOPLE</button>
-          <button onclick="setCount(4)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">4 PEOPLE</button>
-          <button onclick="setCount(5)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">5 PEOPLE</button>
-          <button onclick="setCount('MORE')" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black uppercase tracking-widest text-[11px] md:text-xs font-bold">MORE THAN 5</button>
+          <button onclick="setCount(1)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">1 PERSON</button>
+          <button onclick="setCount(2)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">2 PEOPLE</button>
+          <button onclick="setCount(3)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">3 PEOPLE</button>
+          <button onclick="setCount(4)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">4 PEOPLE</button>
+          <button onclick="setCount(5)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">5 PEOPLE</button>
+          <button onclick="setCount('MORE')" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">MORE THAN 5</button>
         </div>
       </div>
 
@@ -776,7 +778,7 @@
           <p id="summary-name" class="text-white font-bold text-sm md:text-base font-mono"></p>
           <p id="summary-count" class="text-white text-xs md:text-sm mt-1 font-mono"></p>
         </div>
-        <button onclick="finalizeRSVP()" class="w-full bg-white text-black py-3.5 font-bold uppercase tracking-widest hover:bg-[#e9c349] text-xs md:text-sm font-mono">[ CONFIRM ]</button>
+        <button onclick="finalizeRSVP()" class="w-full border-2 border-[#e9c349] bg-[#e9c349] text-black py-3.5 font-bold uppercase tracking-widest hover:bg-white text-xs md:text-sm font-mono btn-flicker-pulse cursor-pointer shadow-[0_0_20px_rgba(233,195,73,0.6)]">[ CONFIRM &amp; TRANSMIT RSVP ]</button>
       </div>
     </div>
   </div>
