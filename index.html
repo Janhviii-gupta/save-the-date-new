@@ -1841,6 +1841,30 @@
       ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => document.getElementById(id).style.color = col);
       document.getElementById('confirm-guest-lbl').textContent = "GUEST: " + guestName + (isNo ? "" : " · ATTENDING: " + guestCount);
       startCountdown();
+
+      // Store RSVP in Supabase Database in Real-Time
+      try {
+        fetch('https://wquuviizwhsuzglowfgb.supabase.co/rest/v1/rsvps', {
+          method: 'POST',
+          headers: {
+            'apikey': 'sb_publishable_gaJz8fuJtKIwA72ClZuZeg_0vZDmZJc',
+            'Authorization': 'Bearer sb_publishable_gaJz8fuJtKIwA72ClZuZeg_0vZDmZJc',
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            guest_name: guestName,
+            response: currentRsvp,
+            guest_count: isNo ? '0' : guestCount
+          })
+        }).then(function(res) {
+          if (res.ok) console.log('RSVP stored in Supabase successfully');
+        }).catch(function(err) {
+          console.error('Supabase RSVP sync error:', err);
+        });
+      } catch (err) {
+        console.error('Supabase fetch exception:', err);
+      }
     }
 
     function redeemRsvp() {
