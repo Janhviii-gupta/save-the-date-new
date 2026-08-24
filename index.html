@@ -19,6 +19,32 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              background: "#050505",
+              surface: "#131313",
+              "surface-low": "#1c1b1b",
+              "surface-lowest": "#0e0e0e",
+              primary: "#ffffff",
+              secondary: "#e9c349",
+              "secondary-fixed": "#ffe088",
+              error: "#ffb4ab",
+              outline: "#8e9192",
+              "outline-variant": "#333333"
+            },
+            fontFamily: {
+              mono: ["'JetBrains Mono'", "monospace"],
+              sans: ["'JetBrains Mono'", "monospace"]
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body class="bg-[#050505] text-[#e5e2e1] min-h-screen">
     <div id="root"></div>
