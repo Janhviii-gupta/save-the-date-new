@@ -25,3 +25,10 @@ export const rsvpSubmissionSchema = z
 export type RsvpResponse = z.infer<typeof rsvpResponseSchema>;
 export type RsvpSubmission = z.infer<typeof rsvpSubmissionSchema>;
 
+export interface BootstrapPayload {
+  currentRsvp?: RsvpResponse;
+  submittedName?: string;
+  attendanceCount?: number | null;
+  guestId?: string;
+}
+

@@ -265,4 +265,96 @@ export function SectorDetails({ onAdvance }: SectorDetailsProps) {
           </div>
         </div>
 
-        {/* Card 4: Jaipur Weather 
+        {/* Card 4: Jaipur Weather Status */}
+        <div
+          onClick={handleCardClick}
+          onMouseEnter={handleCardHover}
+          className="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300"
+        >
+          <div className="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 transition-colors border-r border-b border-[#333333] group-hover:border-cyan-400/50">
+            <span className="font-mono text-[10px] text-white group-hover:text-cyan-300 transition-colors">DATA_SEGMENT_04</span>
+            <span className="font-mono text-[9px] text-[#ffe088] group-hover:text-cyan-300 border border-[#ffe088]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 transition-colors">[ SATELLITE: VERIFIED ]</span>
+          </div>
+          <div className="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt="Jaipur Weather Status"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1X5P73jhwXuWfvVumZaS3neCqeiGMvE_1G-offVnWZNXtPYpGui4NAPtaJVwEF_aLDQjMhD1UdUL1XWpbGdVMJQ41g1TgQC7roqbw4RwV0khgf27aV6GyU0nX4uRHhybScKfBXo5gBEQ3kKyEQyfMlMQp4hG7r5Ge3c1nZ7IIWL91NL3BfuqAHjaoTc_4HTBjadXPcmYLtSoQ6AkhQg7vfAcsx8tl9x4Yr-1rvRtvwivAJhj6KEyETfCmnN"
+            />
+          </div>
+          <div className="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2 overflow-hidden">
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex items-start gap-2">
+                <span className="material-symbols-outlined text-[#ffe088] group-hover:text-cyan-300 text-lg shrink-0 mt-[2px] transition-colors">
+                  thermostat
+                </span>
+                <h2 className="font-mono text-xs md:text-base text-[#ffe088] group-hover:text-cyan-300 uppercase tracking-[0.15em] leading-relaxed font-bold transition-colors">
+                  Jaipur Weather Status: Optimal
+                </h2>
+              </div>
+              <span className="md:hidden font-mono text-[9px] text-[#ffe088] group-hover:text-cyan-300 border border-[#ffe088]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 transition-colors">
+                [ SATELLITE: VERIFIED ]
+              </span>
+            </div>
+            <p className="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">
+              Perfect winter breeze by day, but the venue will generate enough heat to melt ice.
+            </p>
+          </div>
+        </div>
+
+        {/* Card 5: Attendance Policy */}
+        <div
+          onClick={handleCardClick}
+          onMouseEnter={handleCardHover}
+          className="glass-panel hairline-border flex flex-col sm:flex-row w-full group relative overflow-hidden items-stretch cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] transform hover:-translate-y-1 transition-all duration-300"
+        >
+          <div className="absolute top-0 left-0 bg-[#333333] group-hover:bg-cyan-950/80 px-2 py-1 z-10 hidden md:flex items-center gap-2 transition-colors border-r border-b border-[#333333] group-hover:border-cyan-400/50">
+            <span className="font-mono text-[10px] text-white group-hover:text-cyan-300 transition-colors">DATA_SEGMENT_05</span>
+            <span className="font-mono text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.2 transition-colors">[ DIRECTIVE: ENFORCED ]</span>
+          </div>
+          <div className="w-full sm:w-40 md:w-64 h-40 sm:h-auto shrink-0 relative border-b sm:border-b-0 sm:border-r border-[#333333] group-hover:border-cyan-400/40 transition-colors">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt="Attendance Policy"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1VImUbnl3ugnD0BRYx2XZp26LYUhAJKRfTNAax_HtgZYwFPMBgMDd8N1UjmUN-aFJ1uBIpkIktS8IRiREkCZFnesIGsSozggr-FhBP_izIlY0viDiyWqXHxR2WdP9aJjWRV0XRGf1eTBBPq_Fh6ewa7hpDd6-hiM5GXs7W976XXBfkKSA9iJ8zzQAL-L_wdnB-KvjJrPt33148HTzn7SOa6IXxnf9SYA17Gr8ZBwYigJevIZa7e0Q-Mnzta"
+            />
+          </div>
+          <div className="flex-grow p-4 md:p-8 flex flex-col justify-center gap-2 overflow-hidden">
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex items-start gap-2">
+                <span className="material-symbols-outlined text-[#ffb4ab] group-hover:text-cyan-300 text-lg shrink-0 mt-[2px] transition-colors">
+                  gavel
+                </span>
+                <h2 className="font-mono text-xs md:text-base text-[#ffb4ab] group-hover:text-cyan-300 uppercase tracking-[0.15em] leading-relaxed font-bold transition-colors">
+                  Attendance Policy: Mandatory
+                </h2>
+              </div>
+              <span className="md:hidden font-mono text-[9px] text-[#ffb4ab] group-hover:text-cyan-300 border border-[#ffb4ab]/40 group-hover:border-cyan-400/80 px-1.5 py-0.5 shrink-0 transition-colors">
+                [ DIRECTIVE: ENFORCED ]
+              </span>
+            </div>
+            <p className="font-sans text-xs md:text-sm text-[#e5e2e1] leading-relaxed mt-1">
+              Excuses like &quot;mujhe yaad nahi tha&quot; or &quot;office ka kaam hai&quot; will be legally rejected by the family committee.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Action Button: Proceed to Venue */}
+      <div className="w-full max-w-5xl mt-6 md:mt-8 mb-4">
+        <button
+          type="button"
+          onClick={handleAdvance}
+          className="w-full border border-white text-white font-mono text-sm md:text-base py-5 hover:bg-white hover:text-black text-center tracking-[0.2em] flex flex-col items-center justify-center gap-1 transition-all duration-300 group uppercase font-bold cursor-pointer hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]"
+        >
+          <span className="group-hover:scale-105 transition-transform">[MISSION_LOGISTICS]</span>
+          <span className="font-mono text-[10px] opacity-50 group-hover:opacity-100 transition-opacity">
+            &gt;&gt;&gt;
+          </span>
+        </button>
+      </div>
+    </div>
+  );
+}
