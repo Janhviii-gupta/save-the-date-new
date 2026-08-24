@@ -287,18 +287,10 @@
 
       <!-- KINETIC MOTION-GRAPHIC REVEAL SEQUENCE (16 EXTRACTED PHOTOS) -->
       <div id="intro-expanded" class="hidden w-full flex flex-col items-center my-auto animate-[fadeIn_0.5s_ease-out]">
-        <div class="w-full flex justify-between items-start text-[10px] text-[#8e9192] mb-3 max-w-lg font-mono">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
-            <span id="reel-frame-label">REEL: [PROPOSAL_ARCHIVE // 01/16]</span>
-          </div>
-          <div id="reel-speed-label" class="text-right">[SPEED: 5.0 FPS // STEADY]</div>
-        </div>
-
         <!-- Dynamic Kinetic Frame Container with Centered Subject Geometry & Romantic Audio on Hover -->
         <div
-          onmouseenter="speedUpReel(); document.getElementById('photo-love-badge').classList.remove('hidden'); document.getElementById('reel-speed-label').textContent = '[SPEED: 12.0 FPS // HYPER_DRIVE]'; document.getElementById('reel-speed-label').className = 'text-right text-[#e9c349] font-bold';"
-          onmouseleave="slowDownReel(); document.getElementById('photo-love-badge').classList.add('hidden'); document.getElementById('reel-speed-label').textContent = '[SPEED: 5.0 FPS // STEADY]'; document.getElementById('reel-speed-label').className = 'text-right text-[#8e9192]';"
+          onmouseenter="speedUpReel(); document.getElementById('photo-love-badge')?.classList.remove('hidden');"
+          onmouseleave="slowDownReel(); document.getElementById('photo-love-badge')?.classList.add('hidden');"
           class="relative w-full max-w-lg aspect-[3/2] border-2 border-[#e9c349]/70 hover:border-[#e9c349] p-1.5 md:p-2 flex flex-col items-center justify-center mb-3 bg-[#0e0e0e] backdrop-blur-xl mx-auto group transition-all duration-300 shadow-[0_0_35px_rgba(0,0,0,0.9)] hover:shadow-[0_0_50px_rgba(233,195,73,0.35)] cursor-pointer rounded-sm overflow-hidden"
         >
           <div class="absolute top-2.5 left-2.5 z-20 font-mono text-[9px] text-[#e9c349] bg-black/85 px-2.5 py-0.5 border border-[#e9c349]/40 flex items-center gap-1.5 shadow-md">
@@ -373,11 +365,6 @@
     <!-- SECTOR 2: DETAILS (PRIMARY DIRECTIVE: WARDROBE PLANNING ONLY) -->
     <section id="sec-details" class="hidden w-full flex-col font-mono">
       <div class="flex flex-col gap-2 md:gap-3 w-full mb-6 md:mb-8">
-        <div class="flex items-center gap-2">
-          <div class="h-[1px] bg-[#333333] flex-grow"></div>
-          <span class="text-[9px] md:text-[10px] uppercase text-[#e9c349] tracking-[0.2em] font-bold font-mono">[MISSION_MANIFEST // PRIMARY DIRECTIVE: WARDROBE PLANNING]</span>
-          <div class="h-[1px] bg-[#333333] w-12"></div>
-        </div>
         <h1 class="text-xl md:text-3xl text-white uppercase tracking-widest flex items-center gap-2 font-bold font-mono">
           WARDROBE_PROTOCOL <span class="blinking-caret text-white"></span>
         </h1>
@@ -498,15 +485,6 @@
           <span class="text-[9px] md:text-[10px] text-[#8e9192] tracking-[0.2em] uppercase font-mono">[SECTOR_03]</span>
         </div>
         <div class="relative bg-[#0e0e0e] min-h-[38vh] md:min-h-[44vh] max-h-[46vh] flex flex-col justify-between group overflow-hidden p-3 md:p-4">
-          <div class="flex justify-between items-center w-full z-20">
-            <div class="bg-[#201f1f]/90 px-2.5 py-0.5 md:px-3 md:py-1 flex items-center space-x-2 border border-[#333333] shadow-md">
-              <span class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#4ade80] rounded-full animate-ping"></span>
-              <span class="text-[8px] md:text-[9px] text-[#4ade80] uppercase tracking-widest font-bold font-mono">LIVE_FEED // ACHROL NIWAS</span>
-            </div>
-            <div class="bg-[#131313]/90 px-2.5 py-0.5 md:px-3 md:py-1 border border-[#333333] font-mono text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest shadow-md">
-              COORDS: 27.1425° N, 75.9520° E
-            </div>
-          </div>
 
           <!-- Rotating Radar Rings behind visual -->
           <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-25 z-10">
@@ -600,41 +578,7 @@
         <!-- THE "STOLEN CELEBRATION FRAGMENT" GRAND INDIAN WEDDING MADNESS INTEL -->
         <div onmouseenter="AudioEngine.tick()" class="relative w-full aspect-[2.1] md:aspect-[1.9] border-b border-[#333333] bg-[#050505] overflow-hidden group cursor-crosshair transition-all duration-500 hover:border-[#e9c349]/80 hover:shadow-[0_0_40px_rgba(233,195,73,0.3)]">
           <img alt="Grand Indian Wedding Celebration Madness" class="w-full h-full object-cover filter contrast-[1.12] brightness-[1.0] saturate-[1.12] transition-all duration-500 ease-out group-hover:saturate-[1.28] group-hover:brightness-[1.05] group-hover:scale-[1.03]" src="indian-wedding-madness.jpg" />
-          
           <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-[#050505]/40 pointer-events-none"></div>
-
-          <div class="absolute inset-0 pointer-events-none p-3 md:p-4 flex flex-col justify-between z-20 font-mono">
-            <div class="flex justify-between items-start w-full">
-              <div class="bg-[#0e0e0e]/90 backdrop-blur-md px-2.5 py-1 border border-[#e9c349]/60 flex items-center gap-2 shadow-[0_0_15px_rgba(233,195,73,0.3)]">
-                <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
-                <span class="font-mono text-[9px] md:text-[10px] text-[#e9c349] font-bold tracking-[0.2em] uppercase">
-                  [ VISUAL_INTEL // SECTOR: JAIPUR_MADNESS ]
-                </span>
-              </div>
-              <div class="bg-[#0e0e0e]/85 backdrop-blur-md px-2 py-1 border border-[#333333] font-mono text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest text-right">
-                LAT: 27.1425° N · LON: 75.9520° E
-              </div>
-            </div>
-
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div class="w-48 h-32 md:w-72 md:h-44 border border-white/20 relative group-hover:border-[#e9c349]/60 transition-colors">
-                <span class="absolute -top-1.5 -left-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
-                <span class="absolute -top-1.5 -right-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
-                <span class="absolute -bottom-1.5 -left-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
-                <span class="absolute -bottom-1.5 -right-1.5 text-[#e9c349] font-mono text-[10px]">+</span>
-              </div>
-            </div>
-
-            <div class="flex justify-between items-end w-full">
-              <div class="bg-[#0e0e0e]/85 backdrop-blur-md px-2 py-0.5 border border-[#333333] font-mono text-[8px] md:text-[9px] text-white/70 tracking-widest uppercase">
-                <span class="inline-block w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-1.5 align-middle"></span>
-                INTERCEPT_FEED: DECRYPTED [100%]
-              </div>
-              <div class="bg-[#0e0e0e]/85 backdrop-blur-md px-2 py-0.5 border border-[#333333] font-mono text-[8px] md:text-[9px] text-[#e9c349] tracking-widest text-right font-bold uppercase">
-                ROYAL_WEDDING_INTEL // LIVE
-              </div>
-            </div>
-          </div>
           <div class="scan-line pointer-events-none z-30 opacity-75"></div>
         </div>
         <div class="p-4 md:p-8 text-center border-b border-[#333333] bg-[#131313]/50 space-y-2">
@@ -661,16 +605,6 @@
             <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-60 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">PROTOCOL_ABORT // REGRET_LOGGED</span>
             <div class="absolute inset-0 bg-[#ffb4ab]/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
           </button>
-        </div>
-        <div class="p-3 md:p-4 bg-black border-t border-[#333333] h-24 md:h-28 overflow-hidden relative font-mono">
-          <div class="text-[9px] text-[#4ade80] absolute top-2 right-4 opacity-50 font-mono">SYSTEM_LOG_ACTIVE</div>
-          <div id="term-logs" class="text-[9px] md:text-[10px] text-[#8e9192] flex flex-col justify-end h-full w-full space-y-1 font-mono">
-            <div>&gt; INITIALIZING GUEST AUTHENTICATION PROTOCOL...</div>
-            <div>&gt; ESTABLISHING SECURE CONNECTION TO MAINFRAME...</div>
-            <div>&gt; CONNECTION SUCCESSFUL. PING: 12ms</div>
-            <div>&gt; AWAITING USER INPUT TETHER...</div>
-          </div>
-          <div class="scan-line"></div>
         </div>
       </div>
 
