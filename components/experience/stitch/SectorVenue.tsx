@@ -83,14 +83,7 @@ export function SectorVenue({ onAdvance }: SectorVenueProps) {
 
           {/* ACTIVE ANIMATED TARGETING RETICLE & LOCK OVERLAY */}
           <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-center items-center pointer-events-none">
-            {/* Top Telemetry Lock Badge */}
-            {lockAcquired && (
-              <div className="mb-3 animate-[fadeIn_0.3s_ease-out] z-30">
-                <span className="bg-[#e9c349] text-black font-mono font-bold text-[10px] md:text-xs uppercase tracking-[0.25em] px-3.5 py-1 shadow-[0_0_25px_rgba(233,195,73,0.7)]">
-                  [ TARGET ACQUIRED // LOCK CONFIRMED ]
-                </span>
-              </div>
-            )}
+
 
             {/* Rotating Radar Rings behind text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
