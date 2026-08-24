@@ -97,15 +97,4 @@ export function TopBar({ currentSector, isRevealed = false }: TopBarProps) {
             className={
               audioEnabled
                 ? "flex items-center justify-center p-2.5 rounded-full transition-all cursor-pointer text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30"
-                : "flex items-center justify-center p-2.5 rounded-full transition-all cursor-pointer text-[#8e9192] hover:text-white bg-[#1c1b1b] border border-[#333333]"
-            }
-          >
-            <span className="material-symbols-outlined text-lg">
-              {audioEnabled ? "volume_up" : "volume_off"}
-            </span>
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-}
+                : "flex items-center justify-center p-2.5 rounded-full transiti

@@ -64,5 +64,4 @@ export function AudioBypassGate({ onBypass }: AudioBypassGateProps) {
         </p>
       </div>
     </div>
-  );
-}
+  )
