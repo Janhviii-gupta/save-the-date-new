@@ -490,72 +490,48 @@
       </div>
     </section>
 
-    <!-- SECTOR 3: VENUE WITH BALANCED PROMINENT CARDS (FITS IN SINGLE FRAME) -->
+    <!-- SECTOR 3: VENUE (CLEAN, ZERO OVERLAP ON MOBILE, FITS IN SINGLE FRAME) -->
     <section id="sec-venue" class="hidden w-full flex-col font-mono max-w-5xl">
       <div class="flex-grow flex flex-col border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl">
         <div class="h-7 md:h-8 border-b border-[#333333] flex justify-between items-center px-3 md:px-4 bg-[#1c1b1b]">
           <span class="text-[9px] md:text-[10px] text-white tracking-[0.2em] uppercase font-mono">[LOCATION_SCANNED]</span>
           <span class="text-[9px] md:text-[10px] text-[#8e9192] tracking-[0.2em] uppercase font-mono">[SECTOR_03]</span>
         </div>
-        <div class="relative bg-[#0e0e0e] min-h-[38vh] md:min-h-[44vh] max-h-[46vh] flex flex-col justify-between group overflow-hidden p-3 md:p-4">
 
-          <!-- Rotating Radar Rings behind visual -->
-          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-25 z-10">
-            <div class="w-64 h-64 md:w-[380px] md:h-[380px] border border-[#e9c349]/40 rounded-full animate-[spin_25s_linear_infinite] relative">
-              <span class="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-[#e9c349]"></span>
-              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-[#e9c349]"></span>
-              <span class="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#e9c349]"></span>
-              <span class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#e9c349]"></span>
-            </div>
-          </div>
+        <!-- 100% UNOBSTRUCTED RESORT PHOTO (NO OVERLAPPING TEXT) -->
+        <div class="relative w-full h-40 sm:h-52 md:h-64 overflow-hidden bg-black border-b border-[#333333]">
+          <img alt="Achrol Niwas Luxury Resort Jaipur" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98]" src="achrol-niwas.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none"></div>
+          <div class="scan-line pointer-events-none opacity-60"></div>
+        </div>
 
-          <!-- SIDE-BY-SIDE PROMINENT LOCATION CARDS AT BOTTOM TO KEEP RESORT CENTER VISIBLE -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 z-20 w-full max-w-4xl mx-auto pointer-events-auto mt-auto">
+        <!-- DEDICATED VENUE & DATE CARDS (DIRECTLY BENEATH PHOTO, NO OVERLAP) -->
+        <div class="p-3 md:p-4 bg-[#0e0e0e] flex flex-col gap-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-4xl mx-auto w-full">
+            <!-- Venue Card with Cyan Flicker -->
             <a
               href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
               target="_blank"
               rel="noopener noreferrer"
               title="Click to open Achrol Niwas in Google Maps"
-              class="backdrop-blur-md py-2.5 px-3 md:py-3 md:px-4 bg-[#0e0e0e]/90 border-2 border-cyan-400 hover:border-white hover:shadow-[0_0_45px_rgba(34,211,238,0.6)] transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group cursor-pointer btn-cyan-flicker"
+              class="py-2.5 sm:py-3 px-4 bg-[#131313] border-2 border-cyan-400 hover:border-white hover:shadow-[0_0_35px_rgba(34,211,238,0.55)] transition-all flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden group cursor-pointer btn-cyan-flicker rounded-sm"
             >
-              <div class="absolute top-0 left-0 bg-[#222222] group-hover:bg-cyan-950/80 px-1.5 py-0.5 font-mono text-[7px] md:text-[8px] text-cyan-400 group-hover:text-cyan-300 uppercase tracking-widest border-r border-b border-[#333333] transition-colors">
-                COORDINATES // RESORT
-              </div>
-              <div class="absolute top-0 right-0 px-1.5 py-0.5 font-mono text-[7px] md:text-[8px] text-cyan-400 opacity-90 group-hover:opacity-100 transition-opacity tracking-widest uppercase flex items-center gap-1">
-                <span>OPEN GMAPS</span>
-                <span class="text-[9px]">↗</span>
-              </div>
-              <span class="font-mono text-[8px] md:text-[9px] text-cyan-300 uppercase tracking-[0.2em] mt-1.5 mb-0.5 transition-colors">
-                WHERE // MISSION LOCATION (RESORT)
-              </span>
-              <span class="font-mono text-xs md:text-lg font-bold text-white group-hover:text-cyan-300 uppercase tracking-[0.12em] leading-snug transition-colors">
+              <span class="font-mono text-sm sm:text-base md:text-lg font-bold text-white group-hover:text-cyan-300 uppercase tracking-wider transition-colors">
                 Achrol Niwas, Jaipur
               </span>
-              <span class="font-mono text-[7px] md:text-[8px] text-cyan-400 mt-0.5 uppercase tracking-widest opacity-90 group-hover:opacity-100 flex items-center gap-1">
-                <span class="material-symbols-outlined text-[10px]">near_me</span>
-                [ TAP TO LAUNCH GMAPS SATELLITE NAV ↗ ]
+              <span class="font-mono text-[9px] md:text-[10px] text-cyan-400 mt-1 uppercase tracking-widest flex items-center gap-1 font-bold">
+                <span class="material-symbols-outlined text-[12px]">near_me</span>
+                [ TAP TO LAUNCH G-MAPS ↗ ]
               </span>
             </a>
 
-            <div class="backdrop-blur-md py-2.5 px-3 md:py-3 md:px-4 bg-[#0e0e0e]/90 border border-white/20 hover:border-[#e9c349]/80 transition-all flex flex-col items-center text-center shadow-2xl relative overflow-hidden group">
-              <div class="absolute top-0 left-0 bg-[#222222] px-1.5 py-0.5 font-mono text-[7px] md:text-[8px] text-[#e9c349] uppercase tracking-widest border-r border-b border-[#333333]">
-                TIMELINE_LOCK
-              </div>
-              <span class="font-mono text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-[0.2em] mt-1.5 mb-0.5">
-                WHEN // EVENT DATES
-              </span>
-              <span class="font-mono text-xs md:text-lg font-bold text-[#e9c349] uppercase tracking-[0.12em] leading-snug">
+            <!-- Dates Card -->
+            <div class="py-2.5 sm:py-3 px-4 bg-[#131313] border-2 border-[#e9c349]/80 flex flex-col items-center justify-center text-center shadow-lg rounded-sm">
+              <span class="font-mono text-sm sm:text-base md:text-lg font-bold text-[#e9c349] uppercase tracking-wider">
                 19–20 November 2026
-              </span>
-              <span class="font-mono text-[7px] md:text-[8px] text-[#4ade80] mt-0.5 uppercase tracking-widest">
-                [ 2 DAYS OF UNSTOPPABLE MADNESS ]
               </span>
             </div>
           </div>
-
-          <!-- REAL RESORT BACKGROUND IMAGE -->
-          <img alt="Achrol Niwas Luxury Resort Jaipur" class="absolute inset-0 w-full h-full object-cover opacity-85 filter contrast-[1.08] brightness-[0.95] z-0" src="achrol-niwas.jpg" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-transparent to-[#0e0e0e]/60 pointer-events-none z-10"></div>
         </div>
 
         <!-- Sleek Compact Telemetry Strip -->
@@ -565,7 +541,7 @@
             <span>SYSTEM_TELEMETRY // JAIPUR_COORDS_LOCKED</span>
           </div>
           <div class="text-[8px] md:text-[9px] text-[#e9c349] font-bold uppercase tracking-widest">
-            PROBABILITY OF PURE CHAOS: 9,999.99% (CRITICAL)
+            PROBABILITY OF PURE CHAOS: 9,999.99%
           </div>
         </div>
 
