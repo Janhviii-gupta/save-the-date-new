@@ -490,68 +490,65 @@
       </div>
     </section>
 
-    <!-- SECTOR 3: VENUE (CLEAN, ZERO OVERLAP ON MOBILE, FITS IN SINGLE FRAME) -->
+    <!-- SECTOR 3: VENUE (PERFECTLY BALANCED FULL SCREEN, MATCHES RSVP PROPORTIONS) -->
     <section id="sec-venue" class="hidden w-full flex-col font-mono max-w-5xl">
-      <div class="flex-grow flex flex-col border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl">
-        <div class="h-7 md:h-8 border-b border-[#333333] flex justify-between items-center px-3 md:px-4 bg-[#1c1b1b]">
-          <span class="text-[9px] md:text-[10px] text-white tracking-[0.2em] uppercase font-mono">[LOCATION_SCANNED]</span>
-          <span class="text-[9px] md:text-[10px] text-[#8e9192] tracking-[0.2em] uppercase font-mono">[SECTOR_03]</span>
+      <div class="w-full border border-[#333333] bg-[#131313]/60 backdrop-blur-xl relative overflow-hidden flex flex-col shadow-2xl">
+        <div class="border-b border-[#333333] p-2.5 md:p-3 flex justify-between items-center bg-[#1c1b1b]/80">
+          <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">MODULE: MISSION_LOCATION</span>
+          <span class="bg-[#353534] text-white px-2 py-0.5 text-[9px] md:text-[10px] uppercase font-mono">[LOCATION_LOCKED]</span>
         </div>
 
-        <!-- 100% UNOBSTRUCTED RESORT PHOTO (NO OVERLAPPING TEXT) -->
-        <div class="relative w-full h-40 sm:h-52 md:h-64 overflow-hidden bg-black border-b border-[#333333]">
+        <!-- 100% UNOBSTRUCTED RESORT PHOTO (PROPORTIONED LIKE RSVP IMAGE) -->
+        <div class="relative w-full aspect-[2.1] md:aspect-[1.9] border-b border-[#333333] bg-[#050505] overflow-hidden group cursor-crosshair transition-all duration-500 hover:border-cyan-400/80 hover:shadow-[0_0_40px_rgba(34,211,238,0.3)]">
           <img alt="Achrol Niwas Luxury Resort Jaipur" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98]" src="achrol-niwas.jpg" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none"></div>
-          <div class="scan-line pointer-events-none opacity-60"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-[#050505]/40 pointer-events-none"></div>
+          <div class="scan-line pointer-events-none z-30 opacity-75"></div>
         </div>
 
-        <!-- DEDICATED VENUE & DATE CARDS (DIRECTLY BENEATH PHOTO, NO OVERLAP) -->
-        <div class="p-3 md:p-4 bg-[#0e0e0e] flex flex-col gap-2">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-4xl mx-auto w-full">
-            <!-- Venue Card with Cyan Flicker -->
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Click to open Achrol Niwas in Google Maps"
-              class="py-2.5 sm:py-3 px-4 bg-[#131313] border-2 border-cyan-400 hover:border-white hover:shadow-[0_0_35px_rgba(34,211,238,0.55)] transition-all flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden group cursor-pointer btn-cyan-flicker rounded-sm"
-            >
-              <span class="font-mono text-sm sm:text-base md:text-lg font-bold text-white group-hover:text-cyan-300 uppercase tracking-wider transition-colors">
-                Achrol Niwas, Jaipur
-              </span>
-              <span class="font-mono text-[9px] md:text-[10px] text-cyan-400 mt-1 uppercase tracking-widest flex items-center gap-1 font-bold">
-                <span class="material-symbols-outlined text-[12px]">near_me</span>
-                [ TAP TO LAUNCH G-MAPS ↗ ]
-              </span>
-            </a>
+        <!-- VENUE & DATE HEADER BLOCK (SAME PROMINENT HEIGHT & STRUCTURE AS RSVP) -->
+        <div class="p-4 md:p-8 text-center border-b border-[#333333] bg-[#131313]/50 space-y-2 font-mono">
+          <h1 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest glitch-text leading-snug font-mono">
+            ACHROL NIWAS, JAIPUR
+          </h1>
+          <p class="text-[9px] md:text-[10px] text-[#e9c349] uppercase tracking-widest max-w-lg mx-auto font-mono font-bold">
+            19–20 NOVEMBER 2026 // 2 DAYS OF UNSTOPPABLE MADNESS
+          </p>
+        </div>
 
-            <!-- Dates Card -->
-            <div class="py-2.5 sm:py-3 px-4 bg-[#131313] border-2 border-[#e9c349]/80 flex flex-col items-center justify-center text-center shadow-lg rounded-sm">
-              <span class="font-mono text-sm sm:text-base md:text-lg font-bold text-[#e9c349] uppercase tracking-wider">
-                19–20 November 2026
-              </span>
-            </div>
-          </div>
+        <!-- INTERACTIVE ACTION TILES & PROCEED BUTTON -->
+        <div class="flex flex-col p-3 md:p-6 gap-2.5 md:gap-3 bg-[#131313]/90 font-mono">
+          <!-- Google Maps Launch Link (Cyan Pulse Flicker) -->
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Click to open Achrol Niwas in Google Maps"
+            class="w-full border bg-transparent py-3 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-cyan-400 hover:text-black hover:border-cyan-400 hover:shadow-[inset_0_0_25px_rgba(34,211,238,0.35),0_0_20px_rgba(34,211,238,0.25)] transition-all duration-300 group relative overflow-hidden text-cyan-400 border-cyan-400 text-xs md:text-sm font-bold cursor-pointer text-left md:text-center flex flex-col items-center justify-center btn-cyan-flicker"
+          >
+            <span class="relative z-10 font-bold">[ LAUNCH SATELLITE NAVIGATION ]</span>
+            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-75 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">ACHROL NIWAS // OPEN IN GOOGLE MAPS ↗</span>
+            <div class="absolute inset-0 bg-cyan-400/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
+          </a>
+
+          <!-- High-Visibility Bottom Proceed Button -->
+          <button
+            onclick="switchTab('rsvp')"
+            class="w-full border-2 border-white bg-white text-black text-xs md:text-sm py-3.5 md:py-4 hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-solid-white-flicker cursor-pointer"
+          >
+            <span>[ PROCEED TO RSVP ]</span>
+            <span class="text-[9px]">&gt;&gt;&gt;</span>
+          </button>
         </div>
 
         <!-- Sleek Compact Telemetry Strip -->
-        <div class="bg-[#1c1b1b] py-2 px-3 md:py-2.5 md:px-4 flex items-center justify-between border-t border-[#333333] font-mono">
-          <div class="flex items-center space-x-2 text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest">
-            <span class="material-symbols-outlined text-[13px] text-[#4ade80]">memory</span>
-            <span>SYSTEM_TELEMETRY // JAIPUR_COORDS_LOCKED</span>
+        <div class="bg-[#1c1b1b] border-t border-[#333333] px-3.5 py-2.5 md:px-5 md:py-3 flex flex-col sm:flex-row items-center justify-between gap-1.5 md:gap-2 font-mono">
+          <div class="flex items-center gap-2 text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest">
+            <span class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#4ade80] rounded-full animate-ping"></span>
+            <span>COORDS: <span class="text-[#4ade80] font-bold">27.1425° N, 75.9520° E</span></span>
           </div>
-          <div class="text-[8px] md:text-[9px] text-[#e9c349] font-bold uppercase tracking-widest">
-            PROBABILITY OF PURE CHAOS: 9,999.99%
-          </div>
-        </div>
-
-        <!-- High-Visibility Bottom Proceed Button (Instantly Visible Without Scrolling) -->
-        <div class="bg-[#0e0e0e] p-3 md:p-4 flex flex-col justify-center items-center border-t border-[#333333]">
-          <div class="w-full max-w-md mx-auto">
-            <button onclick="switchTab('rsvp')" class="w-full border-2 border-white bg-white text-black text-xs md:text-base py-3.5 md:py-4 hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-solid-white-flicker cursor-pointer">
-              <span>[PROCEED TO RSVP]</span>
-              <span class="text-[9px]">&gt;&gt;&gt;</span>
-            </button>
+          <div class="text-[8px] md:text-[9px] text-[#e9c349] uppercase tracking-widest font-bold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[12px] md:text-[14px]">memory</span>
+            <span>PROBABILITY OF PURE CHAOS: 9,999.99%</span>
           </div>
         </div>
       </div>
