@@ -115,8 +115,21 @@
       94% { opacity: 1; }
       96% { opacity: 0.88; }
     }
-    .btn-cyan-flicker {
-      animation: btn-cyan-flicker 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    @keyframes btn-solid-white-flicker {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 35px rgba(233, 195, 73, 0.35);
+        border-color: #ffffff;
+      }
+      50% {
+        box-shadow: 0 0 38px rgba(255, 255, 255, 0.95), 0 0 55px rgba(233, 195, 73, 0.6);
+        border-color: #e9c349;
+      }
+      92% { opacity: 0.92; }
+      94% { opacity: 1; }
+      96% { opacity: 0.95; }
+    }
+    .btn-solid-white-flicker {
+      animation: btn-solid-white-flicker 2.0s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
     .scan-line {
       position: absolute;
@@ -203,7 +216,7 @@
       <button
         type="button"
         onclick="bypassAudioGate()"
-        class="w-full max-w-md py-4 sm:py-5 md:py-6 px-3 sm:px-6 md:px-8 border-2 border-[#e9c349] hover:border-white bg-black/80 hover:bg-white text-white hover:text-black font-mono font-bold text-[11px] sm:text-xs md:text-base uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap transition-all duration-300 btn-flicker-pulse cursor-pointer glitch-hover shadow-[0_0_35px_rgba(233,195,73,0.35)]"
+        class="w-full max-w-md py-4 sm:py-5 md:py-6 px-3 sm:px-6 md:px-8 border-2 border-white bg-white hover:bg-black text-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_40px_rgba(233,195,73,0.85)] font-mono font-bold text-[11px] sm:text-xs md:text-base uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap transition-all duration-300 btn-solid-white-flicker cursor-pointer glitch-hover"
       >
         [ CLICK HERE TO INITIALIZE ]
       </button>
@@ -355,7 +368,7 @@
 
         <!-- DIRECTLY VISIBLE PROCEED BUTTON (NO SCROLLING NEEDED) -->
         <div class="w-full max-w-md mx-auto">
-          <button onclick="switchTab('details')" class="w-full h-12 md:h-14 border-2 border-[#e9c349] text-white text-xs md:text-sm hover:bg-white hover:text-black text-center tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-flicker-pulse cursor-pointer">
+          <button onclick="switchTab('details')" class="w-full h-12 md:h-14 border-2 border-white bg-white text-black text-xs md:text-sm hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] text-center tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-solid-white-flicker cursor-pointer">
             <span class="material-symbols-outlined text-base">lock_open</span>[PROCEED TO DETAILS]<span>&gt;&gt;&gt;</span>
           </button>
         </div>
@@ -470,7 +483,7 @@
       </div>
 
       <div class="w-full max-w-5xl mt-6 md:mt-8 mb-4">
-        <button onclick="switchTab('venue')" class="w-full border-2 border-[#e9c349] text-white text-xs md:text-base py-3.5 md:py-4 hover:bg-white hover:text-black hover:border-white text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-flicker-pulse cursor-pointer">
+        <button onclick="switchTab('venue')" class="w-full border-2 border-white bg-white text-black text-xs md:text-base py-3.5 md:py-4 hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-solid-white-flicker cursor-pointer">
           <span>[PROCEED TO VENUE]</span>
           <span class="text-[10px]">&gt;&gt;&gt;</span>
         </button>
@@ -559,7 +572,7 @@
         <!-- High-Visibility Bottom Proceed Button (Instantly Visible Without Scrolling) -->
         <div class="bg-[#0e0e0e] p-3 md:p-4 flex flex-col justify-center items-center border-t border-[#333333]">
           <div class="w-full max-w-md mx-auto">
-            <button onclick="switchTab('rsvp')" class="w-full border-2 border-[#e9c349] text-white text-xs md:text-base py-3.5 md:py-4 hover:bg-white hover:text-black hover:border-white text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-flicker-pulse cursor-pointer">
+            <button onclick="switchTab('rsvp')" class="w-full border-2 border-white bg-white text-black text-xs md:text-base py-3.5 md:py-4 hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] text-center tracking-[0.2em] flex flex-col items-center justify-center gap-0.5 transition-all duration-300 group font-bold glitch-hover uppercase font-mono btn-solid-white-flicker cursor-pointer">
               <span>[PROCEED TO RSVP]</span>
               <span class="text-[9px]">&gt;&gt;&gt;</span>
             </button>
@@ -691,18 +704,18 @@
       <div id="modal-step-1" class="space-y-4 md:space-y-5">
         <h2 id="modal-heading-1" class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">WHO'S MAKING THIS DECISION?</h2>
         <input type="text" id="input-name" onfocus="AudioEngine.duck()" onblur="AudioEngine.unduck()" placeholder="[ YOUR NAME ]" class="w-full bg-[#0e0e0e] border border-[#333333] p-3.5 text-white uppercase text-xs md:text-sm focus:outline-none focus:border-[#e9c349] font-mono" />
-        <button onclick="submitStep1()" class="w-full border-2 border-[#e9c349] text-white py-3.5 uppercase tracking-widest hover:bg-[#e9c349] hover:text-black font-bold text-xs md:text-sm font-mono btn-flicker-pulse cursor-pointer">NEXT_STEP &gt;</button>
+        <button onclick="submitStep1()" class="w-full border-2 border-white bg-white text-black py-3.5 uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] font-bold text-xs md:text-sm font-mono btn-solid-white-flicker cursor-pointer">NEXT_STEP &gt;</button>
       </div>
 
       <div id="modal-step-2" class="space-y-4 md:space-y-5 hidden">
         <h2 class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">HOW MANY PEOPLE WILL BE ATTENDING?</h2>
         <div class="grid grid-cols-2 gap-2 font-mono">
-          <button onclick="setCount(1)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">1 PERSON</button>
-          <button onclick="setCount(2)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">2 PEOPLE</button>
-          <button onclick="setCount(3)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">3 PEOPLE</button>
-          <button onclick="setCount(4)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">4 PEOPLE</button>
-          <button onclick="setCount(5)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">5 PEOPLE</button>
-          <button onclick="setCount('MORE')" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-[#e9c349] hover:text-black hover:border-[#e9c349] uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">MORE THAN 5</button>
+          <button onclick="setCount(1)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">1 PERSON</button>
+          <button onclick="setCount(2)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">2 PEOPLE</button>
+          <button onclick="setCount(3)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">3 PEOPLE</button>
+          <button onclick="setCount(4)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">4 PEOPLE</button>
+          <button onclick="setCount(5)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">5 PEOPLE</button>
+          <button onclick="setCount('MORE')" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">MORE THAN 5</button>
         </div>
       </div>
 
@@ -712,7 +725,7 @@
           <p id="summary-name" class="text-white font-bold text-sm md:text-base font-mono"></p>
           <p id="summary-count" class="text-white text-xs md:text-sm mt-1 font-mono"></p>
         </div>
-        <button onclick="finalizeRSVP()" class="w-full border-2 border-[#e9c349] bg-[#e9c349] text-black py-3.5 font-bold uppercase tracking-widest hover:bg-white text-xs md:text-sm font-mono btn-flicker-pulse cursor-pointer shadow-[0_0_20px_rgba(233,195,73,0.6)]">[ CONFIRM &amp; TRANSMIT RSVP ]</button>
+        <button onclick="finalizeRSVP()" class="w-full border-2 border-white bg-white text-black py-3.5 font-bold uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] text-xs md:text-sm font-mono btn-solid-white-flicker cursor-pointer">[ CONFIRM &amp; TRANSMIT RSVP ]</button>
       </div>
     </div>
   </div>
@@ -1383,7 +1396,7 @@
           lbl.textContent = 'COMPLETE';
           AudioEngine.ping();
           btn.classList.remove('cursor-not-allowed', 'opacity-50', 'text-[#8e9192]', 'border-[#333333]');
-          btn.classList.add('border-[#e9c349]', 'text-white', 'hover:bg-white', 'hover:text-black', 'hover:border-white', 'glitch-hover', 'btn-flicker-pulse', 'cursor-pointer');
+          btn.classList.add('border-2', 'border-white', 'bg-white', 'text-black', 'hover:bg-black', 'hover:text-[#e9c349]', 'hover:border-[#e9c349]', 'hover:shadow-[0_0_35px_rgba(233,195,73,0.85)]', 'glitch-hover', 'btn-solid-white-flicker', 'cursor-pointer');
         }
       }, 70);
     }
