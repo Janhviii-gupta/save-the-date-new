@@ -1633,15 +1633,18 @@
       }, 700);
 
       AudioEngine.triggerGrandReveal(() => {
-        const preCard = document.getElementById('pre-reveal-card');
-        if (preCard) preCard.classList.add('hidden');
         const exp = document.getElementById('intro-expanded');
         if (exp) exp.classList.remove('hidden');
         const rBtn = document.getElementById('reveal-btn-container');
         if (rBtn) rBtn.classList.add('hidden');
         renderReel();
         startReelAutoplay();
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        
+        // Smoothly bring the kinetic reel into natural view
+        if (exp) {
+          exp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
         // REVEAL TOP BAR TITLE
         document.getElementById('top-nav-icon').textContent = 'terminal';
         document.getElementById('top-nav-title').textContent = 'SAVE THE DATE 19-20 NOV';
