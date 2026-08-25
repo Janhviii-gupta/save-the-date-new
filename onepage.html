@@ -123,33 +123,39 @@
         </p>
       </div>
 
-      <!-- 16-Photo Kinetic Motion Reel (Click to Start Reel & Music) -->
-      <div class="border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow max-w-2xl mx-auto cursor-pointer" onclick="handleReelClick()">
-        <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-black overflow-hidden flex items-center justify-center">
-          <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.05]" src="reveal-photos/photo-1944.jpg" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none"></div>
+      <!-- 16-Photo Kinetic Motion Reel (Enlarged Cinematic Frame + Thematic Initialize Trigger) -->
+      <div class="border-2 border-[#e9c349]/60 hover:border-[#e9c349] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow w-full max-w-4xl mx-auto cursor-pointer transition-all duration-300" onclick="handleReelClick()">
+        <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] bg-black overflow-hidden flex items-center justify-center">
+          <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98]" src="reveal-photos/photo-1944.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none"></div>
 
-          <!-- Initial Tap to Play & Unlock Music Overlay -->
-          <div id="reel-start-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 z-30 transition-all duration-300">
+          <!-- Thematic Corner HUD Marks -->
+          <div class="absolute top-2.5 left-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
+          <div class="absolute top-2.5 right-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
+          <div class="absolute bottom-2.5 left-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
+          <div class="absolute bottom-2.5 right-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
+
+          <!-- Initial Thematic Tap to Initialize & Unlock Overlay -->
+          <div id="reel-start-overlay" class="absolute inset-0 bg-black/65 backdrop-blur-[3px] flex flex-col items-center justify-center p-4 md:p-8 z-30 transition-all duration-300">
             <button
               type="button"
               onclick="event.stopPropagation(); startReelAndSound();"
-              class="px-6 py-3.5 md:py-4 rounded bg-[#e9c349] hover:bg-white text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center gap-2.5 shadow-[0_0_35px_rgba(233,195,73,0.8)] hover:scale-105 transition-all cursor-pointer border-2 border-white animate-pulse"
+              class="px-6 md:px-10 py-4 md:py-5 rounded-sm bg-white hover:bg-black text-black hover:text-[#e9c349] border-2 border-white hover:border-[#e9c349] font-mono font-extrabold text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-[0_0_35px_rgba(255,255,255,0.75)] hover:shadow-[0_0_40px_rgba(233,195,73,0.85)] hover:scale-105 transition-all cursor-pointer btn-solid-white-flicker"
             >
-              <span class="material-symbols-outlined text-2xl">play_circle</span>
-              <span>[ TAP TO PLAY REEL &amp; MUSIC ]</span>
+              <span class="material-symbols-outlined text-xl md:text-2xl">terminal</span>
+              <span>[ INITIALIZE &amp; VIEW REVEAL ]</span>
             </button>
-            <span class="text-[10px] text-white/80 uppercase tracking-widest mt-2 font-mono">
-              Tap to start photo reel &amp; romantic music
+            <span class="text-[10px] md:text-xs text-[#e9c349] font-bold uppercase tracking-[0.2em] mt-3 font-mono">
+              &gt; TAP TO UNLOCK SOUND &amp; VIEW CELEBRATION INTEL
             </span>
           </div>
 
           <!-- Bottom Play / Pause & Frame Counter (Revealed when playing) -->
-          <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 flex items-center justify-between z-20 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-[#333333] text-[10px] text-white rounded-sm">
-            <span class="font-bold tracking-widest text-[#e9c349]">
+          <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 md:inset-x-6 flex items-center justify-between z-20 px-3.5 py-2 bg-black/85 backdrop-blur-md border border-[#333333] text-[10px] md:text-xs text-white rounded-sm">
+            <span class="font-bold tracking-widest text-[#e9c349] font-mono">
               FRAME: <span id="reel-num" class="text-white">1</span> / 16
             </span>
-            <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer">
+            <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1.5 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer font-mono">
               <span class="material-symbols-outlined text-sm" id="reel-play-icon">pause</span>
               <span id="reel-play-lbl">PAUSE</span>
             </button>
