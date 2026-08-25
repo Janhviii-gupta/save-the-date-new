@@ -307,11 +307,11 @@
 
       <!-- KINETIC MOTION-GRAPHIC REVEAL SEQUENCE (16 EXTRACTED PHOTOS) -->
       <div id="intro-expanded" class="hidden w-full flex flex-col items-center my-auto animate-[fadeIn_0.5s_ease-out]">
-        <!-- Dynamic Kinetic Frame Container with Centered Subject Geometry & Romantic Audio on Hover -->
+        <!-- Dynamic Kinetic Frame Container with Centered Subject Geometry & Romantic Audio on Hover (Enlarged Cinematic Size) -->
         <div
           onmouseenter="speedUpReel(); document.getElementById('photo-love-badge')?.classList.remove('hidden');"
           onmouseleave="slowDownReel(); document.getElementById('photo-love-badge')?.classList.add('hidden');"
-          class="relative w-full max-w-lg aspect-[3/2] border-2 border-[#e9c349]/70 hover:border-[#e9c349] p-1.5 md:p-2 flex flex-col items-center justify-center mb-3 bg-[#0e0e0e] backdrop-blur-xl mx-auto group transition-all duration-300 shadow-[0_0_35px_rgba(0,0,0,0.9)] hover:shadow-[0_0_50px_rgba(233,195,73,0.35)] cursor-pointer rounded-sm overflow-hidden"
+          class="relative w-full max-w-3xl md:max-w-4xl aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] border-2 border-[#e9c349]/70 hover:border-[#e9c349] p-1.5 md:p-2 flex flex-col items-center justify-center mb-3 bg-[#0e0e0e] backdrop-blur-xl mx-auto group transition-all duration-300 shadow-[0_0_35px_rgba(0,0,0,0.9)] hover:shadow-[0_0_50px_rgba(233,195,73,0.35)] cursor-pointer rounded-sm overflow-hidden"
         >
           <div class="absolute top-2.5 left-2.5 z-20 font-mono text-[9px] text-[#e9c349] bg-black/85 px-2.5 py-0.5 border border-[#e9c349]/40 flex items-center gap-1.5 shadow-md">
             <span class="w-1.5 h-1.5 bg-[#4ade80] rounded-full animate-pulse"></span>
@@ -347,18 +347,18 @@
           </div>
 
           <!-- Interactive Controls Overlay -->
-          <div class="absolute bottom-2 left-2 right-2 z-20 flex justify-between items-center bg-black/85 backdrop-blur-md px-3 py-1 border border-[#333333]">
-            <button type="button" onclick="event.stopPropagation(); prevReelPhoto();" class="font-mono text-[10px] text-[#e9c349] hover:text-white transition-colors cursor-pointer px-2 py-0.5 uppercase tracking-wider">[◄ PREV]</button>
-            <button type="button" onclick="event.stopPropagation(); toggleReelAutoplay();" id="reel-play-btn" class="font-mono text-[9px] text-[#8e9192] hover:text-white uppercase tracking-widest flex items-center gap-1.5 cursor-pointer">
-              <span class="material-symbols-outlined text-xs text-[#e9c349]">pause</span>
+          <div class="absolute bottom-2 left-2 right-2 z-20 flex justify-between items-center bg-black/85 backdrop-blur-md px-3 py-1.5 border border-[#333333]">
+            <button type="button" onclick="event.stopPropagation(); prevReelPhoto();" class="font-mono text-[10px] md:text-xs text-[#e9c349] hover:text-white transition-colors cursor-pointer px-2 py-0.5 uppercase tracking-wider font-bold">[◄ PREV]</button>
+            <button type="button" onclick="event.stopPropagation(); toggleReelAutoplay();" id="reel-play-btn" class="font-mono text-[9px] md:text-[10px] text-[#8e9192] hover:text-white uppercase tracking-widest flex items-center gap-1.5 cursor-pointer font-bold">
+              <span class="material-symbols-outlined text-xs md:text-sm text-[#e9c349]">pause</span>
               <span id="reel-play-lbl">AUTO_PLAY</span>
             </button>
-            <button type="button" onclick="event.stopPropagation(); nextReelPhoto();" class="font-mono text-[10px] text-[#e9c349] hover:text-white transition-colors cursor-pointer px-2 py-0.5 uppercase tracking-wider">[NEXT ►]</button>
+            <button type="button" onclick="event.stopPropagation(); nextReelPhoto();" class="font-mono text-[10px] md:text-xs text-[#e9c349] hover:text-white transition-colors cursor-pointer px-2 py-0.5 uppercase tracking-wider font-bold">[NEXT ►]</button>
           </div>
         </div>
 
         <!-- Pips -->
-        <div id="reel-pips" class="flex items-center justify-center gap-1 mb-3 max-w-lg w-full px-4"></div>
+        <div id="reel-pips" class="flex items-center justify-center gap-1 mb-3 max-w-3xl w-full px-4"></div>
 
         <!-- JANHVI & KRISH IN ONE COMPACT LINE RIGHT BENEATH MOTION GRAPHIC -->
         <div class="text-center w-full flex flex-col items-center gap-1.5 mb-3 font-mono">
