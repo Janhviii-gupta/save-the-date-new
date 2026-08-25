@@ -123,18 +123,33 @@
         </p>
       </div>
 
-      <!-- 16-Photo Kinetic Motion Reel (Auto-Playing) -->
-      <div class="border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow max-w-2xl mx-auto">
+      <!-- 16-Photo Kinetic Motion Reel (Click to Start Reel & Music) -->
+      <div class="border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow max-w-2xl mx-auto cursor-pointer" onclick="handleReelClick()">
         <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-black overflow-hidden flex items-center justify-center">
           <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.05]" src="reveal-photos/photo-1944.jpg" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none"></div>
 
-          <!-- Bottom Play / Pause & Frame Counter -->
-          <div class="absolute bottom-3 inset-x-3 flex items-center justify-between z-20 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-[#333333] text-[10px] text-white rounded-sm">
+          <!-- Initial Tap to Play & Unlock Music Overlay -->
+          <div id="reel-start-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 z-30 transition-all duration-300">
+            <button
+              type="button"
+              onclick="event.stopPropagation(); startReelAndSound();"
+              class="px-6 py-3.5 md:py-4 rounded bg-[#e9c349] hover:bg-white text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center gap-2.5 shadow-[0_0_35px_rgba(233,195,73,0.8)] hover:scale-105 transition-all cursor-pointer border-2 border-white animate-pulse"
+            >
+              <span class="material-symbols-outlined text-2xl">play_circle</span>
+              <span>[ TAP TO PLAY REEL &amp; MUSIC ]</span>
+            </button>
+            <span class="text-[10px] text-white/80 uppercase tracking-widest mt-2 font-mono">
+              Tap to start photo reel &amp; romantic music
+            </span>
+          </div>
+
+          <!-- Bottom Play / Pause & Frame Counter (Revealed when playing) -->
+          <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 flex items-center justify-between z-20 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-[#333333] text-[10px] text-white rounded-sm">
             <span class="font-bold tracking-widest text-[#e9c349]">
               FRAME: <span id="reel-num" class="text-white">1</span> / 16
             </span>
-            <button onclick="toggleReelPlay()" id="reel-play-btn" class="flex items-center gap-1 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer">
+            <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer">
               <span class="material-symbols-outlined text-sm" id="reel-play-icon">pause</span>
               <span id="reel-play-lbl">PAUSE</span>
             </button>
@@ -578,7 +593,10 @@
       }
 
       function toggle() {
-        init();
+        if (!romanticGain) {
+          startReelAndSound();
+          return;
+        }
         if (ctx && ctx.state === 'suspended') ctx.resume();
         isMuted = !isMuted;
         if (master) {
@@ -592,7 +610,6 @@
         } else {
           icon.textContent = 'volume_up';
           eq.classList.remove('hidden');
-          if (!romanticGain) startRomanticLoveTheme();
         }
       }
 
@@ -613,7 +630,7 @@
       };
     })();
 
-    // 16-Photo Kinetic Reel Controller (Completely Silent Autoplay)
+    // 16-Photo Kinetic Reel Controller (Merged with Sound Unlock)
     const REEL_PHOTOS = [
       "reveal-photos/photo-1944.jpg",
       "reveal-photos/photo-1945.jpg",
@@ -635,11 +652,38 @@
 
     let reelIndex = 0;
     let reelTimer = null;
-    let isReelPlaying = true;
+    let isReelPlaying = false; // Starts paused until user clicks!
     const reelImgEl = document.getElementById('reel-img');
     const reelNumEl = document.getElementById('reel-num');
     const reelPlayIcon = document.getElementById('reel-play-icon');
     const reelPlayLbl = document.getElementById('reel-play-lbl');
+    const reelStartOverlay = document.getElementById('reel-start-overlay');
+    const reelBottomControls = document.getElementById('reel-bottom-controls');
+
+    function startReelAndSound() {
+      // 1. Unlock Web Audio Context via user gesture
+      AudioEngine.init();
+      const eq = document.getElementById('audio-eq');
+      if (eq) eq.classList.remove('hidden');
+
+      // 2. Hide initial overlay & show bottom controls
+      if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
+      if (reelBottomControls) reelBottomControls.classList.remove('hidden');
+
+      // 3. Start 16-photo kinetic reel
+      isReelPlaying = true;
+      if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
+      if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
+      startReel();
+    }
+
+    function handleReelClick() {
+      if (!isReelPlaying) {
+        startReelAndSound();
+      } else {
+        toggleReelPlay();
+      }
+    }
 
     function startReel() {
       if (reelTimer) clearInterval(reelTimer);
@@ -670,7 +714,6 @@
       const img = new Image();
       img.src = url;
     });
-    startReel();
 
     // RSVP Logic
     let currentRsvp = 'YES', guestName = '', guestCount = '1';
@@ -782,12 +825,6 @@
       }, 1000);
     }
 
-    // Auto-init audio on first interaction
-    ['touchstart', 'pointerdown', 'click'].forEach(evType => {
-      window.addEventListener(evType, () => {
-        AudioEngine.init();
-      }, { passive: true, once: true });
-    });
   </script>
 </body>
 </html>
