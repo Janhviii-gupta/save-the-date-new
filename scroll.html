@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <title>Save The Date — Janhvi &amp; Krish // 19–20 Nov 2026, Jaipur</title>
 
-  <!-- JetBrains Mono Font & Material Symbols (Retained Exact Font) -->
+  <!-- JetBrains Mono Font & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -48,70 +48,34 @@
       overflow-x: hidden;
     }
 
-    /* Scanline effect */
-    .scan-line {
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: rgba(233, 195, 73, 0.4);
-      opacity: 0.6;
-      box-shadow: 0 0 10px rgba(233, 195, 73, 0.6);
-      animation: scanMove 4s linear infinite;
-      pointer-events: none;
-      z-index: 20;
-    }
-    @keyframes scanMove {
-      0% { top: 0%; opacity: 0; }
-      15% { opacity: 0.8; }
-      85% { opacity: 0.8; }
-      100% { top: 100%; opacity: 0; }
-    }
-
-    /* Glowing Pulsing Button */
-    .btn-solid-white-flicker {
-      animation: solidWhiteFlicker 2.4s ease-in-out infinite;
-    }
-    @keyframes solidWhiteFlicker {
-      0%, 100% {
-        box-shadow: 0 0 18px rgba(255, 255, 255, 0.45), 0 0 32px rgba(233, 195, 73, 0.3);
-        border-color: #ffffff;
-      }
-      50% {
-        box-shadow: 0 0 32px rgba(255, 255, 255, 0.85), 0 0 50px rgba(233, 195, 73, 0.6);
-        border-color: #ffffff;
-      }
-    }
-
-    /* Cyan Pulse for Location */
-    .btn-cyan-flicker {
-      animation: cyanFlicker 2.4s ease-in-out infinite;
-    }
-    @keyframes cyanFlicker {
-      0%, 100% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.35); }
-      50% { box-shadow: 0 0 30px rgba(34, 211, 238, 0.8); }
-    }
-
     .volume-slider {
       accent-color: #e9c349;
+    }
+
+    /* Subtle Gold Aura */
+    .gold-glow {
+      box-shadow: 0 0 35px rgba(233, 195, 73, 0.25);
+    }
+
+    .cyan-glow {
+      animation: cyanPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes cyanPulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.35); }
+      50% { box-shadow: 0 0 32px rgba(34, 211, 238, 0.75); }
     }
   </style>
 </head>
 <body class="min-h-screen selection:bg-[#e9c349] selection:text-black font-mono">
 
-  <!-- TOP HEADER BAR: MODE SWITCHER & AUDIO CONTROLS -->
-  <header class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#333333] px-3 md:px-6 py-2.5 flex items-center justify-between shadow-lg font-mono">
+  <!-- TOP HEADER BAR: CLEAN & UNCLUTTERED -->
+  <header class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#333333] px-4 md:px-8 py-3 flex items-center justify-between shadow-lg">
     <div class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-[#4ade80] animate-ping"></span>
-      <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white">SAVE THE DATE // SCROLL VIEW</span>
+      <span class="w-2 h-2 rounded-full bg-[#e9c349] animate-ping"></span>
+      <span class="text-xs md:text-sm font-bold tracking-widest uppercase text-white">JANHVI &amp; KRISH // SAVE THE DATE</span>
     </div>
 
-    <div class="flex items-center gap-2 md:gap-3">
-      <!-- Switch to Interactive Spy Mode -->
-      <a href="index.html" class="flex items-center gap-1.5 px-3 py-1 rounded border border-[#e9c349]/40 bg-[#1c1b1b] hover:bg-[#e9c349] text-[#e9c349] hover:text-black font-mono text-[9px] md:text-[10px] uppercase tracking-wider transition-colors shadow-sm">
-        <span class="material-symbols-outlined text-[13px]">smart_toy</span>
-        <span class="hidden sm:inline">Interactive Spy Mode</span>
-        <span class="sm:hidden">Spy Mode</span>
-      </a>
-
+    <div class="flex items-center gap-3">
       <!-- Equalizer Visualizer -->
       <div id="audio-eq" class="flex items-end gap-[3px] h-3.5 opacity-80 mr-1">
         <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-full"></span>
@@ -119,7 +83,7 @@
         <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-4/5"></span>
       </div>
 
-      <!-- Minimalist Sound Button with Hover Popover -->
+      <!-- Music Toggle Button with Volume Popover -->
       <div class="relative group flex items-center justify-center" onmouseenter="document.getElementById('vol-popover').classList.remove('hidden')" onmouseleave="document.getElementById('vol-popover').classList.add('hidden')">
         <div id="vol-popover" class="hidden absolute top-12 right-0 bg-[#131313] border border-[#333333] p-3 rounded-lg shadow-2xl backdrop-blur-xl flex flex-col items-center gap-2 z-50">
           <span id="vol-pct-lbl" class="text-[9px] text-[#8e9192] uppercase tracking-wider font-mono">70%</span>
@@ -132,352 +96,289 @@
           <span class="material-symbols-outlined text-lg" id="audio-icon">volume_up</span>
         </button>
       </div>
+
+      <!-- Switch to Interactive Mode -->
+      <a href="index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#e9c349]/40 bg-[#1c1b1b] hover:bg-[#e9c349] text-[#e9c349] hover:text-black text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
+        <span class="material-symbols-outlined text-sm">smart_toy</span>
+        <span class="hidden sm:inline">Interactive Mode ↗</span>
+      </a>
     </div>
   </header>
 
   <!-- MAIN SCROLLABLE CONTAINER -->
-  <main class="max-w-4xl mx-auto px-3 md:px-6 py-6 md:py-10 space-y-12 md:space-y-16 font-mono">
+  <main class="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 space-y-12 md:space-y-16">
 
     <!-- ========================================================================= -->
-    <!-- SECTION 1: HERO & 16-PHOTO KINETIC MOTION GRAPHIC REEL -->
+    <!-- SECTION 1: HERO & 16-PHOTO KINETIC MOTION REEL -->
     <!-- ========================================================================= -->
-    <section class="space-y-4 md:space-y-6">
+    <section class="space-y-4 md:space-y-6 text-center">
       
-      <!-- Top Sector Header -->
-      <div class="border border-[#333333] bg-[#1c1b1b]/80 p-2.5 md:p-3 flex justify-between items-center">
-        <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">[SAVE_THE_DATE]</span>
-        <span class="text-[9px] md:text-[10px] text-[#e9c349] font-bold uppercase tracking-widest font-mono">[WEDDING_CELEBRATION]</span>
+      <!-- Couple Title & Save The Date -->
+      <div class="space-y-2">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-widest uppercase">
+          Janhvi &amp; Krish
+        </h1>
+        <p class="text-sm sm:text-lg text-[#e9c349] font-bold tracking-widest uppercase">
+          19–20 NOVEMBER 2026 · JAIPUR, RAJASTHAN
+        </p>
       </div>
 
-      <!-- 16-PHOTO KINETIC MOTION GRAPHIC REEL (AUTO-PLAYING) -->
-      <div class="border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl relative">
-        <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] bg-black overflow-hidden flex items-center justify-center">
+      <!-- 16-Photo Kinetic Motion Reel (Auto-Playing) -->
+      <div class="border border-[#333333] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow max-w-2xl mx-auto">
+        <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-black overflow-hidden flex items-center justify-center">
           <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.05]" src="reveal-photos/photo-1944.jpg" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
-          <div class="scan-line pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none"></div>
 
-          <!-- Bottom Counter & Autoplay Control -->
-          <div class="absolute bottom-3 inset-x-3 flex items-center justify-between z-30 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-[#333333] text-[9px] md:text-[10px] text-white">
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e9c349] animate-ping"></span>
-              <span class="font-bold tracking-widest">FRAME: <span id="reel-num" class="text-[#e9c349]">1</span>/16</span>
-            </div>
+          <!-- Bottom Play / Pause & Frame Counter -->
+          <div class="absolute bottom-3 inset-x-3 flex items-center justify-between z-20 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-[#333333] text-[10px] text-white rounded-sm">
+            <span class="font-bold tracking-widest text-[#e9c349]">
+              FRAME: <span id="reel-num" class="text-white">1</span> / 16
+            </span>
             <button onclick="toggleReelPlay()" id="reel-play-btn" class="flex items-center gap-1 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer">
               <span class="material-symbols-outlined text-sm" id="reel-play-icon">pause</span>
               <span id="reel-play-lbl">PAUSE</span>
             </button>
           </div>
         </div>
-
-        <!-- Couple Name & Dates Banner -->
-        <div class="p-4 md:p-6 text-center border-t border-[#333333] bg-[#131313] space-y-2">
-          <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-widest uppercase font-mono">
-            Janhvi &amp; Krish
-          </h1>
-          <p class="text-xs sm:text-base text-[#e9c349] font-bold tracking-widest uppercase font-mono">
-            19–20 NOVEMBER 2026 // JAIPUR, RAJASTHAN
-          </p>
-          <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest max-w-lg mx-auto font-mono pt-1">
-            &gt; TOGETHER WITH THEIR FAMILIES, INVITE YOU TO CELEBRATE THEIR WEDDING.
-          </p>
-        </div>
       </div>
 
+      <p class="text-xs md:text-sm text-[#8e9192] uppercase tracking-wider pt-1">
+        Together with their families, invite you to celebrate their wedding
+      </p>
+
       <!-- Gentle Scroll Down Indicator -->
-      <div class="text-center text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest flex items-center justify-center gap-1 animate-bounce pt-1">
-        <span>SCROLL DOWN FOR WARDROBE, VENUE &amp; RSVP</span>
+      <div class="text-[10px] text-[#8e9192] uppercase tracking-widest flex items-center justify-center gap-1 animate-bounce pt-2">
+        <span>Scroll down for wardrobe, venue &amp; RSVP</span>
         <span class="material-symbols-outlined text-sm">expand_more</span>
       </div>
     </section>
 
+    <hr class="border-[#222222]" />
+
     <!-- ========================================================================= -->
-    <!-- SECTION 2: WARDROBE PLANNING & 3 THEME TILES (RETAINED EXACT TILES) -->
+    <!-- SECTION 2: WARDROBE THEMES (3 OUTFIT TILES) -->
     <!-- ========================================================================= -->
-    <section class="space-y-4 md:space-y-6">
-      <div class="border border-[#333333] bg-[#131313]/90 relative overflow-hidden shadow-2xl">
-        <div class="border-b border-[#333333] p-2.5 md:p-3 flex justify-between items-center bg-[#1c1b1b]">
-          <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">SECTOR_02: WARDROBE_PROTOCOL</span>
-          <span class="bg-[#353534] text-white px-2 py-0.5 text-[9px] md:text-[10px] uppercase font-mono">[THEMES_LOCKED]</span>
+    <section class="space-y-6">
+      <div class="text-center space-y-1">
+        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest">
+          WARDROBE PLANNING
+        </h2>
+        <p class="text-xs text-[#8e9192] uppercase tracking-wider">
+          Dress code themes for each celebration:
+        </p>
+      </div>
+
+      <!-- 3 Outfits Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- Event 01: Carnival -->
+        <div class="flex flex-col bg-[#131313] border border-[#e9c349]/50 hover:border-[#e9c349] p-3 rounded-sm transition-all shadow-lg relative overflow-hidden group/tile">
+          <div class="w-full h-36 md:h-44 overflow-hidden border border-[#333333] mb-3 relative rounded-sm">
+            <img alt="Carnival Ceremony" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
+            <div class="absolute top-2 left-2 bg-[#e9c349] text-black text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-sm">EVENT 01</div>
+          </div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-sm font-bold text-white uppercase tracking-wider">CARNIVAL</span>
+            <span class="text-[10px] font-bold text-[#e9c349] bg-[#e9c349]/10 px-2 py-0.5 border border-[#e9c349]/40 uppercase tracking-widest rounded-sm">YELLOW</span>
+          </div>
+          <p class="text-[11px] text-[#8e9192] uppercase tracking-wider leading-relaxed">
+            Sunshine yellows, vibrant florals, mustard silks &amp; flowy pastels.
+          </p>
         </div>
 
-        <div class="p-4 md:p-6 space-y-4">
-          <div class="text-center space-y-1">
-            <h2 class="text-lg md:text-2xl font-bold text-white uppercase tracking-widest font-mono">
-              WARDROBE &amp; ATTIRE PLANNING
-            </h2>
-            <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">
-              &gt; SPECIFIC ATTIRE DIRECTIVES FOR EACH CEREMONY:
-            </p>
+        <!-- Event 02: Pre-wedding Gala -->
+        <div class="flex flex-col bg-[#131313] border border-cyan-400/50 hover:border-cyan-400 p-3 rounded-sm transition-all shadow-lg relative overflow-hidden group/tile">
+          <div class="w-full h-36 md:h-44 overflow-hidden border border-[#333333] mb-3 relative rounded-sm">
+            <img alt="Pre-wedding Gala" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
+            <div class="absolute top-2 left-2 bg-cyan-400 text-black text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-sm">EVENT 02</div>
           </div>
-
-          <!-- 3 THEMATIC TILES (CARNIVAL, PRE-WEDDING GALA, SHAADI) -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-2">
-            
-            <!-- Event 01: Carnival -->
-            <div class="flex flex-col bg-[#0e0e0e] border border-[#e9c349]/50 hover:border-[#e9c349] p-3 rounded-sm transition-all shadow-md relative overflow-hidden group/tile">
-              <div class="w-full h-32 md:h-40 overflow-hidden border border-[#333333] mb-2.5 relative rounded-sm">
-                <img alt="Carnival Ceremony" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
-                <div class="absolute top-1.5 left-1.5 bg-[#e9c349] text-black font-mono text-[8px] font-bold px-1.5 py-0.5 tracking-wider uppercase">EVENT 01</div>
-                
-                <!-- Interactive Theme Overlay -->
-                <div class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 text-center">
-                  <span class="font-mono text-[10px] md:text-xs font-bold text-[#e9c349] bg-[#e9c349]/20 border border-[#e9c349] px-2 py-0.5 uppercase tracking-widest mb-1 animate-pulse">
-                    [ THEME: YELLOW ]
-                  </span>
-                  <span class="font-mono text-[9px] md:text-[10px] text-white/90 leading-tight">
-                    Sunshine yellows, vibrant florals &amp; flowy pastels
-                  </span>
-                </div>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs md:text-sm font-bold text-white uppercase tracking-wider font-mono">CARNIVAL</span>
-                <span class="text-[10px] font-bold text-[#e9c349] bg-[#e9c349]/10 px-1.5 py-0.5 border border-[#e9c349]/40 uppercase tracking-widest font-mono">YELLOW</span>
-              </div>
-              <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-wider mt-1 leading-relaxed font-mono">Sun-drenched yellows, mustard silks, and floral prints.</p>
-            </div>
-
-            <!-- Event 02: Pre-wedding Gala -->
-            <div class="flex flex-col bg-[#0e0e0e] border border-cyan-400/50 hover:border-cyan-400 p-3 rounded-sm transition-all shadow-md relative overflow-hidden group/tile">
-              <div class="w-full h-32 md:h-40 overflow-hidden border border-[#333333] mb-2.5 relative rounded-sm">
-                <img alt="Pre-wedding Gala" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
-                <div class="absolute top-1.5 left-1.5 bg-cyan-400 text-black font-mono text-[8px] font-bold px-1.5 py-0.5 tracking-wider uppercase">EVENT 02</div>
-                
-                <!-- Interactive Theme Overlay -->
-                <div class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 text-center">
-                  <span class="font-mono text-[10px] md:text-xs font-bold text-cyan-300 bg-cyan-400/20 border border-cyan-400 px-2 py-0.5 uppercase tracking-widest mb-1 animate-pulse">
-                    [ THEME: INDO-WESTERN BLING ]
-                  </span>
-                  <span class="font-mono text-[9px] md:text-[10px] text-white/90 leading-tight">
-                    Metallic sequins, tuxedo cuts &amp; cocktail glamour
-                  </span>
-                </div>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs md:text-sm font-bold text-white uppercase tracking-wider font-mono">PRE-WEDDING GALA</span>
-                <span class="text-[10px] font-bold text-cyan-300 bg-cyan-400/10 px-1.5 py-0.5 border border-cyan-400/40 uppercase tracking-widest font-mono">INDO-WESTERN BLING</span>
-              </div>
-              <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-wider mt-1 leading-relaxed font-mono">Sequins, metallic accents, and modern high-voltage glamour.</p>
-            </div>
-
-            <!-- Event 03: Shaadi -->
-            <div class="flex flex-col bg-[#0e0e0e] border border-[#ffb4ab]/50 hover:border-[#ffb4ab] p-3 rounded-sm transition-all shadow-md relative overflow-hidden group/tile">
-              <div class="w-full h-32 md:h-40 overflow-hidden border border-[#333333] mb-2.5 relative rounded-sm">
-                <img alt="Shaadi" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
-                <div class="absolute top-1.5 left-1.5 bg-[#ffb4ab] text-black font-mono text-[8px] font-bold px-1.5 py-0.5 tracking-wider uppercase">EVENT 03</div>
-                
-                <!-- Interactive Theme Overlay -->
-                <div class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 text-center">
-                  <span class="font-mono text-[10px] md:text-xs font-bold text-[#ffb4ab] bg-[#ffb4ab]/20 border border-[#ffb4ab] px-2 py-0.5 uppercase tracking-widest mb-1 animate-pulse">
-                    [ THEME: TRADITIONAL ]
-                  </span>
-                  <span class="font-mono text-[9px] md:text-[10px] text-white/90 leading-tight">
-                    Royal sherwanis, classic lehengas &amp; heritage silks
-                  </span>
-                </div>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs md:text-sm font-bold text-white uppercase tracking-wider font-mono">SHAADI</span>
-                <span class="text-[10px] font-bold text-[#ffb4ab] bg-[#ffb4ab]/10 px-1.5 py-0.5 border border-[#ffb4ab]/40 uppercase tracking-widest font-mono">TRADITIONAL</span>
-              </div>
-              <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-wider mt-1 leading-relaxed font-mono">Opulent silks, royal brocades, jewel tones, and timeless heritage.</p>
-            </div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-sm font-bold text-white uppercase tracking-wider">PRE-WEDDING GALA</span>
+            <span class="text-[10px] font-bold text-cyan-300 bg-cyan-400/10 px-2 py-0.5 border border-cyan-400/40 uppercase tracking-widest rounded-sm">INDO-WESTERN BLING</span>
           </div>
+          <p class="text-[11px] text-[#8e9192] uppercase tracking-wider leading-relaxed">
+            Metallic sequins, tuxedo cuts, cocktail glamour &amp; high-voltage styling.
+          </p>
+        </div>
 
-          <div class="text-[11px] md:text-xs text-[#e5e2e1] leading-relaxed bg-[#1c1b1b] p-3 border border-[#333333] font-mono rounded-sm flex items-start gap-2">
-            <span class="text-base shrink-0">💡</span>
-            <div>
-              <strong class="text-[#e9c349]">Directive:</strong> Start shopping now, because wedding outfits take longer to stitch than a government project.
-            </div>
+        <!-- Event 03: Shaadi -->
+        <div class="flex flex-col bg-[#131313] border border-[#ffb4ab]/50 hover:border-[#ffb4ab] p-3 rounded-sm transition-all shadow-lg relative overflow-hidden group/tile">
+          <div class="w-full h-36 md:h-44 overflow-hidden border border-[#333333] mb-3 relative rounded-sm">
+            <img alt="Shaadi" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
+            <div class="absolute top-2 left-2 bg-[#ffb4ab] text-black text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-sm">EVENT 03</div>
           </div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-sm font-bold text-white uppercase tracking-wider">SHAADI</span>
+            <span class="text-[10px] font-bold text-[#ffb4ab] bg-[#ffb4ab]/10 px-2 py-0.5 border border-[#ffb4ab]/40 uppercase tracking-widest rounded-sm">TRADITIONAL</span>
+          </div>
+          <p class="text-[11px] text-[#8e9192] uppercase tracking-wider leading-relaxed">
+            Royal sherwanis, classic lehengas, opulent silks &amp; timeless heritage.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-xs text-[#e5e2e1] leading-relaxed bg-[#131313] p-3.5 border border-[#333333] rounded-sm flex items-start gap-2.5">
+        <span class="text-base shrink-0">💡</span>
+        <div>
+          <strong class="text-[#e9c349]">Directive:</strong> Start shopping now, because wedding outfits take longer to stitch than a government project!
         </div>
       </div>
     </section>
 
-    <!-- ========================================================================= -->
-    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION -->
-    <!-- ========================================================================= -->
-    <section class="space-y-4 md:space-y-6">
-      <div class="border border-[#333333] bg-[#131313]/90 relative overflow-hidden shadow-2xl">
-        <div class="border-b border-[#333333] p-2.5 md:p-3 flex justify-between items-center bg-[#1c1b1b]">
-          <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">SECTOR_03: MISSION_LOCATION</span>
-          <span class="bg-[#353534] text-white px-2 py-0.5 text-[9px] md:text-[10px] uppercase font-mono">[LOCATION_LOCKED]</span>
-        </div>
+    <hr class="border-[#222222]" />
 
-        <!-- 100% UNOBSTRUCTED RESORT PHOTO -->
-        <div class="relative w-full aspect-[2.1] md:aspect-[1.9] border-b border-[#333333] bg-[#050505] overflow-hidden group cursor-crosshair">
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: VENUE & GOOGLE MAPS -->
+    <!-- ========================================================================= -->
+    <section class="space-y-6">
+      <div class="text-center space-y-1">
+        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest">
+          ACHROL NIWAS, JAIPUR
+        </h2>
+        <p class="text-xs text-[#e9c349] font-bold uppercase tracking-wider">
+          19–20 NOVEMBER 2026 // EVENT HEADQUARTERS
+        </p>
+      </div>
+
+      <div class="border border-[#333333] bg-[#131313] rounded-sm overflow-hidden shadow-2xl space-y-0">
+        <!-- Resort Photo -->
+        <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-black overflow-hidden">
           <img alt="Achrol Niwas Luxury Resort Jaipur" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98]" src="achrol-niwas.jpg" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-[#050505]/40 pointer-events-none"></div>
-          <div class="scan-line pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-black/30 pointer-events-none"></div>
         </div>
 
-        <!-- Venue Details & Action -->
-        <div class="p-4 md:p-8 text-center border-b border-[#333333] bg-[#131313]/50 space-y-2 font-mono">
-          <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest leading-snug font-mono">
-            ACHROL NIWAS, JAIPUR
-          </h2>
-          <p class="text-[9px] md:text-[10px] text-[#e9c349] uppercase tracking-widest max-w-lg mx-auto font-mono font-bold">
-            19–20 NOVEMBER 2026 // RESORT &amp; EVENT HEADQUARTERS
-          </p>
-        </div>
+        <div class="p-5 md:p-8 space-y-5 text-center">
+          <div class="space-y-1">
+            <h3 class="text-lg md:text-2xl font-bold text-white uppercase tracking-wider">
+              Achrol Niwas A TreeHouse Resort
+            </h3>
+            <p class="text-xs md:text-sm text-[#8e9192] uppercase tracking-widest">
+              Jaipur-Delhi Highway, Achrol, Jaipur, Rajasthan 303002
+            </p>
+          </div>
 
-        <!-- High-Visibility Location Google Maps Button -->
-        <div class="p-4 md:p-6 bg-[#131313]">
+          <!-- Big Friendly Google Maps Button -->
           <a
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
             target="_blank"
             rel="noopener noreferrer"
-            title="Click to open Achrol Niwas in Google Maps"
-            class="w-full border bg-transparent py-3.5 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-cyan-400 hover:text-black hover:border-cyan-400 hover:shadow-[inset_0_0_25px_rgba(34,211,238,0.35),0_0_20px_rgba(34,211,238,0.25)] transition-all duration-300 group relative overflow-hidden text-cyan-400 border-cyan-400 text-xs md:text-sm font-bold cursor-pointer text-center flex flex-col items-center justify-center btn-cyan-flicker"
+            class="w-full py-4 px-6 rounded-sm bg-cyan-400 hover:bg-white text-black font-bold text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-xl cyan-glow cursor-pointer"
           >
-            <span class="relative z-10 font-bold">[ LOCATION ]</span>
-            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-75 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">ACHROL NIWAS // OPEN IN GOOGLE MAPS ↗</span>
-            <div class="absolute inset-0 bg-cyan-400/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
+            <span class="material-symbols-outlined text-xl">near_me</span>
+            <span>OPEN IN GOOGLE MAPS ↗</span>
           </a>
-        </div>
-
-        <!-- Telemetry Footer Bar -->
-        <div class="bg-[#1c1b1b] border-t border-[#333333] px-3.5 py-2.5 md:px-5 md:py-3 flex flex-col sm:flex-row items-center justify-between gap-1.5 md:gap-2 font-mono">
-          <div class="flex items-center gap-2 text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest">
-            <span class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#4ade80] rounded-full animate-ping"></span>
-            <span>COORDS: <span class="text-[#4ade80] font-bold">27.1425° N, 75.9520° E</span></span>
-          </div>
-          <div class="text-[8px] md:text-[9px] text-[#e9c349] uppercase tracking-widest font-bold flex items-center gap-1.5">
-            <span class="material-symbols-outlined text-[12px] md:text-[14px]">memory</span>
-            <span>PROBABILITY OF PURE CHAOS: 9,999.99%</span>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- ========================================================================= -->
-    <!-- SECTION 4: RSVP & ATTENDANCE CONFIRMATION -->
-    <!-- ========================================================================= -->
-    <section id="rsvp-section" class="space-y-4 md:space-y-6 pb-12">
-      <div id="rsvp-choice-card" class="w-full border border-[#333333] bg-[#131313]/90 relative overflow-hidden flex flex-col shadow-2xl">
-        <div class="border-b border-[#333333] p-2.5 md:p-3 flex justify-between items-center bg-[#1c1b1b]">
-          <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">SECTOR_04: AUTH_RESPONSE</span>
-          <span class="bg-[#353534] text-white px-2 py-0.5 text-[9px] md:text-[10px] uppercase font-mono">[CRITICAL_INPUT_REQUIRED]</span>
-        </div>
+    <hr class="border-[#222222]" />
 
-        <!-- Wedding Celebration Fragment Image -->
-        <div class="relative w-full aspect-[2.1] md:aspect-[1.9] border-b border-[#333333] bg-[#050505] overflow-hidden group">
-          <img alt="Grand Indian Wedding Celebration Madness" class="w-full h-full object-cover filter contrast-[1.12] brightness-[1.0] saturate-[1.12]" src="indian-wedding-madness.jpg" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-[#050505]/40 pointer-events-none"></div>
-          <div class="scan-line pointer-events-none opacity-75"></div>
-        </div>
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: RSVP & ATTENDANCE -->
+    <!-- ========================================================================= -->
+    <section id="rsvp-section" class="space-y-6 pb-12">
+      <div class="text-center space-y-1">
+        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest">
+          WILL YOU BE JOINING US?
+        </h2>
+        <p class="text-xs text-[#8e9192] uppercase tracking-wider">
+          Please confirm your attendance below:
+        </p>
+      </div>
 
-        <div class="p-4 md:p-8 text-center border-b border-[#333333] bg-[#131313]/50 space-y-2">
-          <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest glitch-text leading-snug font-mono">
-            ARE YOU COMING TO WITNESS THE MADNESS?
-          </h2>
-          <p class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest max-w-lg mx-auto font-mono">
-            &gt; INITIATE RESPONSE SEQUENCE BELOW.
+      <!-- RSVP Choice Container -->
+      <div id="rsvp-choice-card" class="border border-[#333333] bg-[#131313] p-5 md:p-8 rounded-sm shadow-2xl space-y-3.5">
+        
+        <!-- YES -->
+        <button onclick="openModal('YES')" class="w-full py-4 px-5 bg-transparent border-2 border-[#4ade80] hover:bg-[#4ade80] text-[#4ade80] hover:text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center justify-between rounded-sm transition-all shadow-lg cursor-pointer">
+          <span class="flex items-center gap-2">
+            <span>🎉</span>
+            <span>[ YES, WOULDN'T MISS THIS CIRCUS ]</span>
+          </span>
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </button>
+
+        <!-- MAYBE -->
+        <button onclick="openModal('MAYBE')" class="w-full py-4 px-5 bg-transparent border-2 border-[#ffe088] hover:bg-[#ffe088] text-[#ffe088] hover:text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center justify-between rounded-sm transition-all shadow-lg cursor-pointer">
+          <span class="flex items-center gap-2">
+            <span>⏳</span>
+            <span>[ MAYBE (TRYING TO CLEAR MY SCHEDULE) ]</span>
+          </span>
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </button>
+
+        <!-- NO -->
+        <button onclick="openModal('NO')" class="w-full py-3.5 px-5 bg-transparent border border-[#ffb4ab]/60 hover:bg-[#ffb4ab] text-[#ffb4ab] hover:text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center justify-between rounded-sm transition-all cursor-pointer">
+          <span class="flex items-center gap-2">
+            <span>💔</span>
+            <span>[ NO (REGRETTING LIFE CHOICES ALREADY) ]</span>
+          </span>
+          <span class="material-symbols-outlined text-base">close</span>
+        </button>
+      </div>
+
+      <!-- Confirmation Card with Live Countdown (Hidden until response submitted) -->
+      <div id="rsvp-confirm-card" class="hidden border border-[#333333] bg-[#131313] p-6 md:p-10 text-center space-y-6 rounded-sm shadow-2xl">
+        <div class="space-y-2">
+          <h3 id="confirm-msg" class="text-xl md:text-3xl font-bold uppercase tracking-widest text-white">
+            RESPONSE LOGGED. SEE YOU IN JAIPUR!
+          </h3>
+          <p id="confirm-sub-msg" class="text-xs md:text-sm text-[#e9c349] tracking-widest uppercase">
+            19–20 November 2026 // Achrol Niwas, Jaipur
           </p>
+          <p id="confirm-guest-lbl" class="text-xs text-white uppercase tracking-wider"></p>
         </div>
 
-        <!-- RSVP 3 Choices (YES / MAYBE / NO) -->
-        <div class="flex flex-col p-3 md:p-6 gap-2.5 md:gap-3 bg-[#131313]">
-          
-          <!-- YES -->
-          <button onclick="openModal('YES')" class="w-full border bg-transparent py-3 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-[#4ade80] hover:text-black hover:border-[#4ade80] hover:shadow-[inset_0_0_25px_rgba(74,222,128,0.35),0_0_20px_rgba(74,222,128,0.25)] transition-all duration-300 group relative overflow-hidden text-[#4ade80] border-[#4ade80] text-xs md:text-sm font-bold cursor-pointer text-left md:text-center flex flex-col items-center justify-center">
-            <span class="relative z-10">[ YES, WOULDN'T MISS THIS CIRCUS ]</span>
-            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-60 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">CONFIRM_ATTENDANCE // PRIORITY_ALPHA</span>
-            <div class="absolute inset-0 bg-[#4ade80]/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
-          </button>
-
-          <!-- MAYBE -->
-          <button onclick="openModal('MAYBE')" class="w-full border bg-transparent py-3 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-[#ffe088] hover:text-black hover:border-[#ffe088] hover:shadow-[inset_0_0_25px_rgba(255,224,136,0.35),0_0_20px_rgba(255,224,136,0.25)] transition-all duration-300 group relative overflow-hidden text-[#ffe088] border-[#ffe088] text-xs md:text-sm font-bold cursor-pointer text-left md:text-center flex flex-col items-center justify-center">
-            <span class="relative z-10">[ MAYBE (TRYING TO CLEAR MY SCHEDULE) ]</span>
-            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-60 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">SCHEDULE_PENDING // STANDBY_MODE</span>
-            <div class="absolute inset-0 bg-[#ffe088]/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
-          </button>
-
-          <!-- NO -->
-          <button onclick="openModal('NO')" class="w-full border bg-transparent py-3 md:py-4 px-3 font-mono uppercase tracking-widest hover:bg-[#ffb4ab] hover:text-black hover:border-[#ffb4ab] hover:shadow-[inset_0_0_25px_rgba(255,180,171,0.35),0_0_20px_rgba(255,180,171,0.25)] transition-all duration-300 group relative overflow-hidden text-[#ffb4ab] border-[#ffb4ab] text-xs md:text-sm font-bold cursor-pointer text-left md:text-center flex flex-col items-center justify-center">
-            <span class="relative z-10">[ NO (REGRETTING LIFE CHOICES ALREADY / MISSING OUT BIG TIME) ]</span>
-            <span class="relative z-10 text-[8px] md:text-[9px] font-mono tracking-[0.2em] opacity-60 group-hover:opacity-100 group-hover:text-black mt-0.5 transition-opacity">PROTOCOL_ABORT // REGRET_LOGGED</span>
-            <div class="absolute inset-0 bg-[#ffb4ab]/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
-          </button>
-        </div>
-
-        <!-- Sleek Telemetry Footer Strip -->
-        <div class="bg-[#1c1b1b] border-t border-[#333333] px-3.5 py-2.5 md:px-5 md:py-3 flex flex-col sm:flex-row items-center justify-between gap-1.5 md:gap-2 font-mono">
-          <div class="flex items-center gap-2 text-[8px] md:text-[9px] text-[#8e9192] uppercase tracking-widest">
-            <span class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#4ade80] rounded-full animate-ping"></span>
-            <span>TRANSMISSION_STATUS: <span class="text-[#4ade80] font-bold">READY_TO_LOG</span></span>
+        <!-- Live Countdown -->
+        <div class="grid grid-cols-4 gap-2 md:gap-4 p-4 bg-black/60 border border-[#333333] rounded-sm">
+          <div class="p-2 text-center">
+            <div id="cd-d" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">DAYS</div>
           </div>
-          <div class="text-[8px] md:text-[9px] text-[#e9c349] uppercase tracking-widest font-bold flex items-center gap-1.5">
-            <span class="material-symbols-outlined text-[12px] md:text-[14px]">fingerprint</span>
-            <span>DECISION_IRREVOCABLE // JAIPUR_LOCKED</span>
+          <div class="p-2 text-center">
+            <div id="cd-h" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">HRS</div>
+          </div>
+          <div class="p-2 text-center">
+            <div id="cd-m" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">MIN</div>
+          </div>
+          <div class="p-2 text-center">
+            <div id="cd-s" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">SEC</div>
           </div>
         </div>
+
+        <button onclick="redeemRsvp()" class="text-xs text-[#e9c349] hover:underline uppercase tracking-wider cursor-pointer">
+          ↻ Change or update response
+        </button>
       </div>
 
-      <!-- Confirmation Card with Tabular Numbers & Live Countdown (Revealed after submission) -->
-      <div id="rsvp-confirm-card" class="hidden w-full border border-[#333333] bg-[#131313] p-6 md:p-12 text-center space-y-6 md:space-y-8 relative overflow-hidden flex flex-col font-mono shadow-2xl">
-        <canvas id="celebration-canvas" class="absolute inset-0 pointer-events-none w-full h-full z-0"></canvas>
-
-        <div class="border-b border-[#333333] p-2.5 flex justify-between items-center bg-[#1c1b1b] absolute top-0 left-0 w-full z-10 font-mono">
-          <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">MODULE: CONFIRMATION</span>
-          <span id="confirm-badge" class="px-2.5 py-0.5 text-[9px] md:text-[10px] uppercase font-bold font-mono tracking-widest">[PROTOCOL_ACTIVE]</span>
-        </div>
-
-        <div class="space-y-2 pt-6 relative z-10 font-mono">
-          <h2 id="confirm-msg" class="text-xl md:text-3xl font-bold uppercase tracking-widest font-mono">
-            RESPONSE LOGGED. SEE YOU IN JAIPUR.
-          </h2>
-          <p id="confirm-sub-msg" class="text-sm md:text-lg text-[#e9c349] tracking-widest uppercase font-mono">19–20 November 2026 // Achrol Niwas, Jaipur</p>
-          <p id="confirm-guest-lbl" class="text-[11px] md:text-xs text-white uppercase tracking-widest font-mono"></p>
-        </div>
-
-        <!-- Live Days Countdown -->
-        <div class="grid grid-cols-4 gap-1 md:gap-4 border-y border-[#333333] py-4 md:py-6 relative z-10 bg-black/60 font-mono">
-          <div class="flex flex-col items-center border-r border-[#333333]">
-            <span id="cd-d" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums">00</span>
-            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">DAYS</span>
-          </div>
-          <div class="flex flex-col items-center border-r border-[#333333]">
-            <span id="cd-h" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums">00</span>
-            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">HRS</span>
-          </div>
-          <div class="flex flex-col items-center border-r border-[#333333]">
-            <span id="cd-m" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums">00</span>
-            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">MIN</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <span id="cd-s" class="text-2xl md:text-6xl tracking-widest text-[#4ade80] font-bold font-mono tabular-nums">00</span>
-            <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest mt-1 font-mono">SEC</span>
-          </div>
-        </div>
-
-        <div id="redemption-btn-container" class="relative z-10"></div>
-      </div>
     </section>
 
   </main>
 
   <!-- ========================================================================= -->
-  <!-- MODAL: GUEST NAME & ATTENDEE SELECTION -->
+  <!-- MODAL: GUEST NAME & ATTENDEE ENTRY -->
   <!-- ========================================================================= -->
   <div id="rsvp-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl hidden font-mono">
-    <div class="w-full max-w-lg border border-[#333333] bg-[#131313] p-5 md:p-8 relative overflow-hidden">
-      <div class="scan-line"></div>
+    <div class="w-full max-w-lg border border-[#333333] bg-[#131313] p-5 md:p-8 relative overflow-hidden rounded-sm">
       <div class="flex justify-between items-center mb-5 border-b border-[#333333] pb-3 bg-[#1c1b1b] -mx-5 md:-mx-8 px-5 md:px-8 -mt-5 md:-mt-8 pt-4">
-        <span class="text-[10px] text-white/70 uppercase tracking-widest font-mono">RSVP_PROTOCOL_v2.0</span>
+        <span class="text-[10px] text-white/70 uppercase tracking-widest font-mono">RSVP_PROTOCOL</span>
         <button onclick="closeModal()" class="text-white hover:text-[#ffb4ab] cursor-pointer"><span class="material-symbols-outlined text-lg">close</span></button>
       </div>
 
       <!-- Step 1: Name -->
       <div id="modal-step-1" class="space-y-4 md:space-y-5">
-        <h3 id="modal-heading-1" class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">WHO'S MAKING THIS DECISION?</h3>
-        <input type="text" id="input-name" placeholder="[ YOUR NAME / FAMILY NAME ]" class="w-full bg-[#0e0e0e] border border-[#333333] p-3.5 text-white uppercase text-xs md:text-sm focus:outline-none focus:border-[#e9c349] font-mono" />
-        <button onclick="submitStep1()" class="w-full border-2 border-white bg-white text-black py-3.5 uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] font-bold text-xs md:text-sm font-mono btn-solid-white-flicker cursor-pointer">NEXT_STEP &gt;</button>
+        <h3 id="modal-heading-1" class="text-base md:text-lg font-bold text-white uppercase tracking-widest">WHO'S MAKING THIS DECISION?</h3>
+        <input type="text" id="input-name" placeholder="[ YOUR NAME / FAMILY NAME ]" class="w-full bg-[#0e0e0e] border border-[#333333] p-3.5 text-white uppercase text-xs md:text-sm focus:outline-none focus:border-[#e9c349]" />
+        <button onclick="submitStep1()" class="w-full border-2 border-white bg-white text-black py-3.5 uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] font-bold text-xs md:text-sm cursor-pointer">NEXT_STEP &gt;</button>
       </div>
 
       <!-- Step 2: Attendance Count -->
       <div id="modal-step-2" class="space-y-4 md:space-y-5 hidden">
-        <h3 class="text-base md:text-xl font-bold text-white uppercase tracking-widest font-mono">HOW MANY PEOPLE WILL BE ATTENDING?</h3>
-        <div class="grid grid-cols-2 gap-2 font-mono">
+        <h3 class="text-base md:text-lg font-bold text-white uppercase tracking-widest">HOW MANY PEOPLE WILL BE ATTENDING?</h3>
+        <div class="grid grid-cols-2 gap-2">
           <button onclick="setCount(1)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">1 PERSON</button>
           <button onclick="setCount(2)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">2 PEOPLE</button>
           <button onclick="setCount(3)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">3 PEOPLE</button>
@@ -494,23 +395,21 @@
           <p id="summary-name" class="text-white font-bold text-sm md:text-base font-mono"></p>
           <p id="summary-count" class="text-white text-xs md:text-sm mt-1 font-mono"></p>
         </div>
-        <button onclick="finalizeRSVP()" class="w-full border-2 border-white bg-white text-black py-3.5 font-bold uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_35px_rgba(233,195,73,0.85)] text-xs md:text-sm font-mono btn-solid-white-flicker cursor-pointer">[ CONFIRM &amp; TRANSMIT RSVP ]</button>
+        <button onclick="finalizeRSVP()" class="w-full border-2 border-white bg-white text-black py-3.5 font-bold uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] text-xs md:text-sm cursor-pointer">[ CONFIRM &amp; TRANSMIT RSVP ]</button>
       </div>
     </div>
   </div>
 
   <!-- ========================================================================= -->
-  <!-- COMPLETE LOW-LATENCY PROCEDURAL AUDIO ENGINE (EXACT SOUND EFFECTS) -->
+  <!-- AUDIO ENGINE (ROMANTIC LOVE THEME FROM TAP REVEAL + ZERO RAPID NOISE) -->
   <!-- ========================================================================= -->
   <script>
     const AudioEngine = (() => {
-      let ctx, master, bgmBus, sfxBus, warmth, delay, delayFb, isMuted = false, vol = 0.7;
-      let currentTrack = 'off';
-      let trackGains = {};
-      let loopTimers = [];
-      let activeOscs = [];
+      let ctx, master, isMuted = false, vol = 0.7;
+      let romanticOscs = [], romanticTimer = null, romanticGain = null;
+      let delay = null;
 
-      // Low-Latency In-Memory Web Audio API Buffer Cache
+      // Low-Latency Buffer Cache for micro-interactions
       const bufferCache = {};
 
       function generateBuffer(durationSec, sampleRate, genFn) {
@@ -528,78 +427,51 @@
         if (!ctx) return;
         const sr = ctx.sampleRate || 44100;
 
-        bufferCache['buf_tick'] = generateBuffer(0.015, sr, (t) => {
-          const env = Math.exp(-t * 350);
-          return Math.sin(2 * Math.PI * 1600 * t) * env * 0.4;
+        // Gentle acoustic tap
+        bufferCache['buf_click'] = generateBuffer(0.03, sr, (t) => {
+          const env = Math.exp(-t * 220);
+          return Math.sin(2 * Math.PI * 180 * t) * env * 0.3;
         });
 
-        bufferCache['buf_click'] = generateBuffer(0.04, sr, (t) => {
-          const env = Math.exp(-t * 180);
-          const freq = 450 * Math.exp(-t * 60);
-          return Math.sin(2 * Math.PI * freq * t) * env * 0.6;
+        // Soft glass chime
+        bufferCache['buf_ping'] = generateBuffer(0.4, sr, (t) => {
+          const env = Math.exp(-t * 10);
+          return (Math.sin(2 * Math.PI * 880 * t) + Math.sin(2 * Math.PI * 1320 * t) * 0.4) * env * 0.25;
         });
 
-        bufferCache['buf_ping'] = generateBuffer(0.45, sr, (t) => {
-          const env = Math.exp(-t * 9);
-          const f1 = Math.sin(2 * Math.PI * 880 * t);
-          const f2 = Math.sin(2 * Math.PI * 1760 * t) * 0.45;
-          const f3 = Math.sin(2 * Math.PI * 2640 * t) * 0.15;
-          return (f1 + f2 + f3) * env * 0.4;
-        });
-
-        bufferCache['buf_rsvp_yes'] = generateBuffer(0.48, sr, (t) => {
+        // Triumphant soft arpeggio for YES
+        bufferCache['buf_rsvp_yes'] = generateBuffer(0.45, sr, (t) => {
           let sig = 0;
-          const notes = [523.25, 659.25, 783.99, 1046.5];
-          notes.forEach((f, idx) => {
+          [523.25, 659.25, 783.99, 1046.5].forEach((f, idx) => {
             const startT = idx * 0.05;
             if (t >= startT) {
               const dt = t - startT;
-              const env = Math.exp(-dt * 12);
-              sig += Math.sin(2 * Math.PI * f * dt) * env * 0.28;
-              sig += Math.sin(2 * Math.PI * f * 2 * dt) * env * 0.08;
+              sig += Math.sin(2 * Math.PI * f * dt) * Math.exp(-dt * 12) * 0.22;
             }
           });
           return sig;
         });
 
-        bufferCache['buf_rsvp_maybe'] = generateBuffer(0.48, sr, (t) => {
+        // Suspended warm chime for MAYBE
+        bufferCache['buf_rsvp_maybe'] = generateBuffer(0.45, sr, (t) => {
           let sig = 0;
-          const notes = [440.0, 554.37, 659.25, 880.0];
-          notes.forEach((f, idx) => {
+          [440.0, 554.37, 659.25].forEach((f, idx) => {
             const startT = idx * 0.055;
             if (t >= startT) {
               const dt = t - startT;
-              const env = Math.exp(-dt * 11);
-              sig += Math.sin(2 * Math.PI * f * dt) * env * 0.26;
+              sig += Math.sin(2 * Math.PI * f * dt) * Math.exp(-dt * 11) * 0.22;
             }
           });
           return sig;
         });
 
-        bufferCache['buf_rsvp_no'] = generateBuffer(0.52, sr, (t) => {
-          const env = Math.exp(-t * 7);
-          const freq = 180 * Math.exp(-t * 4) + 40;
-          const f = Math.sin(2 * Math.PI * freq * t);
-          const sub = Math.sin(2 * Math.PI * (freq * 0.5) * t) * 0.4;
-          return (f + sub) * env * 0.5;
-        });
-
-        bufferCache['buf_access_granted'] = generateBuffer(0.55, sr, (t) => {
-          let sig = 0;
-          const notes = [261.63, 392.0, 523.25, 659.25, 783.99, 1046.5];
-          notes.forEach((f, idx) => {
-            const startT = idx * 0.04;
-            if (t >= startT) {
-              const dt = t - startT;
-              const env = Math.exp(-dt * 14);
-              sig += Math.sin(2 * Math.PI * f * dt) * env * 0.22;
-            }
-          });
-          return sig;
+        // Soft low tone for NO
+        bufferCache['buf_rsvp_no'] = generateBuffer(0.5, sr, (t) => {
+          return Math.sin(2 * Math.PI * 110 * t) * Math.exp(-t * 8) * 0.3;
         });
       }
 
-      function playCachedBuffer(name, gain = 0.22, rate = 1.0) {
+      function playCachedBuffer(name, gain = 0.2) {
         if (isMuted) return;
         if (!ctx) init();
         if (ctx && ctx.state === 'suspended') ctx.resume();
@@ -608,11 +480,10 @@
         try {
           const src = ctx.createBufferSource();
           src.buffer = buf;
-          src.playbackRate.value = rate;
           const g = ctx.createGain();
           g.gain.value = gain;
           src.connect(g);
-          g.connect(sfxBus || master || ctx.destination);
+          g.connect(master || ctx.destination);
           src.start(0);
         } catch(e){}
       }
@@ -628,44 +499,82 @@
         master = ctx.createGain();
         master.gain.value = isMuted ? 0 : vol;
 
-        bgmBus = ctx.createGain(); bgmBus.gain.value = 1.0;
-        sfxBus = ctx.createGain(); sfxBus.gain.value = 1.0;
-
-        warmth = ctx.createBiquadFilter();
-        warmth.type = 'lowpass';
-        warmth.frequency.value = 8500;
-
         delay = ctx.createDelay(1.0);
         delay.delayTime.value = 0.24;
-        delayFb = ctx.createGain();
+        const delayFb = ctx.createGain();
         delayFb.gain.value = 0.26;
         delay.connect(delayFb);
         delayFb.connect(delay);
         delay.connect(master);
-
-        const sfxRev = ctx.createGain();
-        sfxRev.gain.value = 0.22;
-        sfxBus.connect(sfxRev);
-        sfxRev.connect(delay);
-
-        bgmBus.connect(warmth);
-        sfxBus.connect(warmth);
-        warmth.connect(master);
         master.connect(ctx.destination);
 
-        ['rajasthan_grand', 'party_celebration', 'deadpan_regret'].forEach(t => {
-          const g = ctx.createGain();
-          g.gain.value = 0;
-          g.connect(bgmBus);
-          const sendG = ctx.createGain();
-          sendG.gain.value = 0.14;
-          g.connect(sendG);
-          sendG.connect(delay);
-          trackGains[t] = g;
-        });
-
         prebakeBufferCache();
-        setTrack('rajasthan_grand');
+        startRomanticLoveTheme();
+      }
+
+      // EXACT ROMANTIC LOVE THEME FROM TAP REVEAL
+      function startRomanticLoveTheme() {
+        if (!ctx || romanticGain) return;
+        try {
+          const now = ctx.currentTime;
+          romanticGain = ctx.createGain();
+          romanticGain.gain.setValueAtTime(0.001, now);
+          romanticGain.gain.exponentialRampToValueAtTime(0.35, now + 0.5);
+
+          const rf = ctx.createBiquadFilter();
+          rf.type = 'lowpass';
+          rf.frequency.value = 3200;
+          romanticGain.connect(rf);
+          if (delay) rf.connect(delay);
+          rf.connect(master);
+
+          // Warm Pad Chords (F Major 7 / C Harmonious Sine Drone)
+          const padNotes = [174.61, 261.63, 329.63, 392.0];
+          padNotes.forEach(freq => {
+            const osc = ctx.createOscillator(), g = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            g.gain.value = 0.15;
+            osc.connect(g);
+            if (romanticGain) g.connect(romanticGain);
+            osc.start(now);
+            romanticOscs.push(osc);
+          });
+
+          // Sparkling Celebration Melody Bells
+          const scale = [523.25, 659.25, 783.99, 987.77, 1046.5, 1318.5, 1567.98];
+          let aIdx = 0;
+          romanticTimer = setInterval(() => {
+            if (!ctx || isMuted || !romanticGain) return;
+            const t = ctx.currentTime;
+            const bell = ctx.createOscillator(), bg = ctx.createGain();
+            bell.type = 'triangle';
+            bell.frequency.setValueAtTime(scale[aIdx % scale.length], t);
+            bg.gain.setValueAtTime(0.09, t);
+            bg.gain.exponentialRampToValueAtTime(0.001, t + 0.7);
+            bell.connect(bg);
+            bg.connect(romanticGain);
+            bell.start(t);
+            bell.stop(t + 0.7);
+            aIdx++;
+          }, 160);
+        } catch(e){}
+      }
+
+      function stopRomanticLoveTheme() {
+        if (!ctx) return;
+        if (romanticTimer) { clearInterval(romanticTimer); romanticTimer = null; }
+        if (romanticGain) {
+          const now = ctx.currentTime;
+          romanticGain.gain.cancelScheduledValues(now);
+          romanticGain.gain.setValueAtTime(romanticGain.gain.value, now);
+          romanticGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
+          setTimeout(() => {
+            romanticOscs.forEach(o => { try { o.stop(); o.disconnect(); } catch(e){} });
+            romanticOscs = [];
+            romanticGain = null;
+          }, 450);
+        }
       }
 
       function toggle() {
@@ -677,15 +586,13 @@
         }
         const icon = document.getElementById('audio-icon');
         const eq = document.getElementById('audio-eq');
-        const btn = document.getElementById('btn-audio-toggle');
         if (isMuted) {
           icon.textContent = 'volume_off';
           eq.classList.add('hidden');
-          btn.className = 'flex items-center justify-center p-2.5 rounded-full text-[#8e9192] hover:text-white bg-[#1c1b1b] border border-[#333333] transition-colors';
         } else {
           icon.textContent = 'volume_up';
           eq.classList.remove('hidden');
-          btn.className = 'flex items-center justify-center p-2.5 rounded-full text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30 transition-colors';
+          if (!romanticGain) startRomanticLoveTheme();
         }
       }
 
@@ -696,113 +603,17 @@
         if (master && !isMuted) master.gain.setTargetAtTime(vol, ctx.currentTime, 0.05);
       }
 
-      function setTrack(t) {
-        init();
-        if (!ctx || currentTrack === t) return;
-        const prev = currentTrack;
-        currentTrack = t;
-        const now = ctx.currentTime;
-        const fadeDur = 1.2;
-
-        if (prev !== 'off' && trackGains[prev]) {
-          const pg = trackGains[prev];
-          pg.gain.cancelScheduledValues(now);
-          pg.gain.setValueAtTime(Math.max(0.001, pg.gain.value), now);
-          pg.gain.exponentialRampToValueAtTime(0.0001, now + fadeDur);
-        }
-
-        if (currentTrack !== 'off' && trackGains[currentTrack]) {
-          const ng = trackGains[currentTrack];
-          ng.gain.cancelScheduledValues(now);
-          ng.gain.setValueAtTime(0.0001, now);
-          ng.gain.exponentialRampToValueAtTime(1.0, now + fadeDur);
-
-          if (currentTrack === 'rajasthan_grand') startRajasthanGrand(ng);
-          else if (currentTrack === 'party_celebration') startPartyCelebration(ng);
-          else if (currentTrack === 'deadpan_regret') startDeadpanRegret(ng);
-        }
-      }
-
-      function startRajasthanGrand(out) {
-        if (!ctx) return;
-        // Warm Velvet Tanpura Drone (D Major / A Harmonious Warmth)
-        const d1 = ctx.createOscillator(), d2 = ctx.createOscillator(), dg = ctx.createGain(), df = ctx.createBiquadFilter();
-        d1.type = 'sine'; d1.frequency.value = 73.42; // D2
-        d2.type = 'triangle'; d2.frequency.value = 146.83; // D3
-        df.type = 'lowpass'; df.frequency.value = 380;
-        dg.gain.value = 0.12;
-        d1.connect(df); d2.connect(df); df.connect(dg); dg.connect(out);
-        d1.start(); d2.start(); activeOscs.push(d1, d2);
-
-        // Soothing Royal Sitar & Santoor Melodic Bell Chimes (Slow, Peaceful Raga)
-        const ragaNotes = [293.66, 329.63, 369.99, 440.0, 554.37, 587.33]; // D4, E4, F#4, A4, C#5, D5
-        let noteIdx = 0;
-        const sitarTimer = setInterval(() => {
-          if (!ctx || isMuted || currentTrack !== 'rajasthan_grand') return;
-          const t = ctx.currentTime;
-          const sitar = ctx.createOscillator(), sg = ctx.createGain(), sf = ctx.createBiquadFilter();
-          sitar.type = 'sine';
-          sitar.frequency.setValueAtTime(ragaNotes[noteIdx % ragaNotes.length], t);
-          sf.type = 'lowpass'; sf.frequency.value = 1400;
-          sg.gain.setValueAtTime(0.001, t);
-          sg.gain.linearRampToValueAtTime(0.09, t + 0.04);
-          sg.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
-          sitar.connect(sf); sf.connect(sg); sg.connect(out);
-          sitar.start(t); sitar.stop(t + 1.6);
-          noteIdx = (noteIdx + 1) % ragaNotes.length;
-        }, 1400); // Relaxed, calming pace
-        loopTimers.push(sitarTimer);
-      }
-
-      function startPartyCelebration(out) {
-        if (!ctx) return;
-        const notes = [293.66, 369.99, 440.0, 587.33];
-        let pIdx = 0;
-        const pTimer = setInterval(() => {
-          if (!ctx || isMuted || currentTrack !== 'party_celebration') return;
-          const t = ctx.currentTime;
-          const bell = ctx.createOscillator(), bg = ctx.createGain(), bf = ctx.createBiquadFilter();
-          bell.type = 'triangle';
-          bell.frequency.setValueAtTime(notes[pIdx % notes.length], t);
-          bf.type = 'lowpass'; bf.frequency.value = 1800;
-          bg.gain.setValueAtTime(0.08, t);
-          bg.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
-          bell.connect(bf); bf.connect(bg); bg.connect(out);
-          bell.start(t); bell.stop(t + 0.6);
-          pIdx++;
-        }, 400);
-        loopTimers.push(pTimer);
-      }
-
-      function startDeadpanRegret(out) {
-        if (!ctx) return;
-        const o = ctx.createOscillator(), g = ctx.createGain();
-        o.type = 'sine'; o.frequency.value = 73.42;
-        g.gain.value = 0.12;
-        o.connect(g); g.connect(out);
-        o.start(); activeOscs.push(o);
-      }
-
       return {
-        init, toggle, setVolume, setTrack,
-        click: () => playCachedBuffer('buf_click', 0.18),
-        tick: () => playCachedBuffer('buf_tick', 0.10),
-        ping: () => playCachedBuffer('buf_ping', 0.20),
-        sfxYesSelect: () => playCachedBuffer('buf_rsvp_yes', 0.28),
-        sfxMaybeSelect: () => playCachedBuffer('buf_rsvp_maybe', 0.28),
-        sfxNoSelect: () => playCachedBuffer('buf_rsvp_no', 0.28),
-        sfxCelebrationExplosion: () => {
-          playCachedBuffer('buf_rsvp_yes', 0.35);
-          setTimeout(() => playCachedBuffer('buf_access_granted', 0.25), 180);
-        },
-        sfxDeadpanDrop: () => {
-          playCachedBuffer('buf_rsvp_no', 0.32);
-          setTimeout(() => setTrack('deadpan_regret'), 400);
-        }
+        init, toggle, setVolume,
+        click: () => playCachedBuffer('buf_click', 0.2),
+        ping: () => playCachedBuffer('buf_ping', 0.25),
+        sfxYesSelect: () => playCachedBuffer('buf_rsvp_yes', 0.35),
+        sfxMaybeSelect: () => playCachedBuffer('buf_rsvp_maybe', 0.35),
+        sfxNoSelect: () => playCachedBuffer('buf_rsvp_no', 0.35)
       };
     })();
 
-    // 16-Photo Kinetic Reel Controller (Smooth & Completely Silent Autoplay)
+    // 16-Photo Kinetic Reel Controller (Completely Silent Autoplay)
     const REEL_PHOTOS = [
       "reveal-photos/photo-1944.jpg",
       "reveal-photos/photo-1945.jpg",
@@ -836,7 +647,6 @@
         reelIndex = (reelIndex + 1) % REEL_PHOTOS.length;
         reelImgEl.src = REEL_PHOTOS[reelIndex];
         reelNumEl.textContent = (reelIndex + 1);
-        // Zero sound on automatic photo cycle for soothing, peaceful viewing
       }, 220);
     }
 
@@ -918,24 +728,15 @@
       const isNo = currentRsvp === 'NO';
       const col = isNo ? '#ff4d4d' : currentRsvp === 'MAYBE' ? '#ffe088' : '#4ade80';
 
-      const redContainer = document.getElementById('redemption-btn-container');
       if (isNo) {
-        AudioEngine.sfxDeadpanDrop();
-        document.getElementById('confirm-msg').textContent = "PROTOCOL ABORTED // REGRET LOGGED";
-        document.getElementById('confirm-sub-msg').textContent = "19–20 November 2026 // You will be sorely missed.";
-        document.getElementById('confirm-badge').textContent = "[ MISSION_COMPROMISED // STATUS: DECLINED ]";
-        redContainer.innerHTML = '<button type="button" onclick="redeemRsvp()" class="mt-2 py-3.5 px-8 border-2 border-[#e9c349] text-[#e9c349] hover:bg-[#e9c349] hover:text-black font-mono text-xs md:text-sm uppercase tracking-widest font-bold transition-all cursor-pointer shadow-[0_0_25px_rgba(233,195,73,0.4)]">[ RE-EVALUATE PROTOCOL // CHANGE VOTE ]</button>';
+        document.getElementById('confirm-msg').textContent = "RESPONSE LOGGED // YOU WILL BE MISSED!";
+        document.getElementById('confirm-sub-msg').textContent = "19–20 November 2026 // Achrol Niwas, Jaipur";
       } else {
-        AudioEngine.sfxCelebrationExplosion();
-        setTimeout(() => AudioEngine.setTrack('party_celebration'), 700);
         document.getElementById('confirm-msg').textContent = currentRsvp === 'MAYBE' ? "SCHEDULE PENDING. HOPE TO SEE YOU IN JAIPUR!" : "RESPONSE LOGGED. SEE YOU IN JAIPUR!";
         document.getElementById('confirm-sub-msg').textContent = "19–20 November 2026 // Achrol Niwas, Jaipur";
-        document.getElementById('confirm-badge').textContent = currentRsvp === 'MAYBE' ? "[ ★ STANDBY PROTOCOL // CLEARING SCHEDULE ★ ]" : "[ ★ VIP ACCESS GRANTED // CHAOS CONFIRMED ★ ]";
-        redContainer.innerHTML = '<button type="button" onclick="redeemRsvp()" class="mt-2 py-3 px-8 border-2 border-white/70 text-white hover:bg-white hover:text-black font-mono text-xs md:text-sm uppercase tracking-widest font-bold transition-all cursor-pointer hover:border-white shadow-[0_0_25px_rgba(255,255,255,0.25)] bg-[#131313]/90">[ ↻ MODIFY RESPONSE / RE-VOTE ]</button>';
       }
 
       document.getElementById('confirm-msg').style.color = col;
-      document.getElementById('confirm-badge').style.color = col;
       ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => document.getElementById(id).style.color = col);
       document.getElementById('confirm-guest-lbl').textContent = "GUEST: " + guestName + (isNo ? "" : " · ATTENDING: " + guestCount);
       startCountdown();
@@ -967,7 +768,6 @@
       AudioEngine.click();
       document.getElementById('rsvp-confirm-card').classList.add('hidden');
       document.getElementById('rsvp-choice-card').classList.remove('hidden');
-      AudioEngine.setTrack('rajasthan_grand');
     }
 
     function startCountdown() {
@@ -978,17 +778,15 @@
         document.getElementById('cd-h').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
         document.getElementById('cd-m').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
         const s = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        const oldS = document.getElementById('cd-s').textContent;
         document.getElementById('cd-s').textContent = s;
-        if (oldS !== s) AudioEngine.tick();
       }, 1000);
     }
 
-    // Touch & interaction warming for mobile
+    // Auto-init audio on first interaction
     ['touchstart', 'pointerdown', 'click'].forEach(evType => {
       window.addEventListener(evType, () => {
         AudioEngine.init();
-      }, { passive: true, once: false });
+      }, { passive: true, once: true });
     });
   </script>
 </body>
