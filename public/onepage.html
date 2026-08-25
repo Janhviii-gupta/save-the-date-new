@@ -725,79 +725,84 @@
 
       function startRajasthanGrand(out) {
         if (!ctx) return;
-        const d1 = ctx.createOscillator(), d2 = ctx.createOscillator(), dg = ctx.createGain();
-        d1.type = 'sawtooth'; d1.frequency.value = 146.83;
-        d2.type = 'sine'; d2.frequency.value = 220.0;
-        dg.gain.value = 0.16;
-        d1.connect(dg); d2.connect(dg); dg.connect(out);
+        // Warm Velvet Tanpura Drone (D Major / A Harmonious Warmth)
+        const d1 = ctx.createOscillator(), d2 = ctx.createOscillator(), dg = ctx.createGain(), df = ctx.createBiquadFilter();
+        d1.type = 'sine'; d1.frequency.value = 73.42; // D2
+        d2.type = 'triangle'; d2.frequency.value = 146.83; // D3
+        df.type = 'lowpass'; df.frequency.value = 380;
+        dg.gain.value = 0.12;
+        d1.connect(df); d2.connect(df); df.connect(dg); dg.connect(out);
         d1.start(); d2.start(); activeOscs.push(d1, d2);
 
-        const sitarScale = [293.66, 329.63, 370.0, 440.0, 554.37, 587.33, 659.25, 739.99];
+        // Soothing Royal Sitar & Santoor Melodic Bell Chimes (Slow, Peaceful Raga)
+        const ragaNotes = [293.66, 329.63, 369.99, 440.0, 554.37, 587.33]; // D4, E4, F#4, A4, C#5, D5
         let noteIdx = 0;
         const sitarTimer = setInterval(() => {
           if (!ctx || isMuted || currentTrack !== 'rajasthan_grand') return;
           const t = ctx.currentTime;
           const sitar = ctx.createOscillator(), sg = ctx.createGain(), sf = ctx.createBiquadFilter();
-          sitar.type = 'triangle';
-          sitar.frequency.setValueAtTime(sitarScale[noteIdx % sitarScale.length], t);
-          sf.type = 'bandpass'; sf.frequency.value = 1800; sf.Q.value = 3.5;
-          sg.gain.setValueAtTime(0.12, t);
-          sg.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
+          sitar.type = 'sine';
+          sitar.frequency.setValueAtTime(ragaNotes[noteIdx % ragaNotes.length], t);
+          sf.type = 'lowpass'; sf.frequency.value = 1400;
+          sg.gain.setValueAtTime(0.001, t);
+          sg.gain.linearRampToValueAtTime(0.09, t + 0.04);
+          sg.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
           sitar.connect(sf); sf.connect(sg); sg.connect(out);
-          sitar.start(t); sitar.stop(t + 0.9);
-          noteIdx = (noteIdx + 1 + Math.floor(Math.random() * 3)) % sitarScale.length;
-        }, 340);
+          sitar.start(t); sitar.stop(t + 1.6);
+          noteIdx = (noteIdx + 1) % ragaNotes.length;
+        }, 1400); // Relaxed, calming pace
         loopTimers.push(sitarTimer);
       }
 
       function startPartyCelebration(out) {
         if (!ctx) return;
-        const notes = [261.63, 329.63, 392.0, 523.25, 659.25, 783.99, 1046.5];
+        const notes = [293.66, 369.99, 440.0, 587.33];
         let pIdx = 0;
         const pTimer = setInterval(() => {
           if (!ctx || isMuted || currentTrack !== 'party_celebration') return;
           const t = ctx.currentTime;
-          const synth = ctx.createOscillator(), sg = ctx.createGain();
-          synth.type = 'sawtooth';
-          synth.frequency.setValueAtTime(notes[pIdx % notes.length], t);
-          sg.gain.setValueAtTime(0.12, t);
-          sg.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
-          synth.connect(sg); sg.connect(out);
-          synth.start(t); synth.stop(t + 0.35);
+          const bell = ctx.createOscillator(), bg = ctx.createGain(), bf = ctx.createBiquadFilter();
+          bell.type = 'triangle';
+          bell.frequency.setValueAtTime(notes[pIdx % notes.length], t);
+          bf.type = 'lowpass'; bf.frequency.value = 1800;
+          bg.gain.setValueAtTime(0.08, t);
+          bg.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+          bell.connect(bf); bf.connect(bg); bg.connect(out);
+          bell.start(t); bell.stop(t + 0.6);
           pIdx++;
-        }, 180);
+        }, 400);
         loopTimers.push(pTimer);
       }
 
       function startDeadpanRegret(out) {
         if (!ctx) return;
         const o = ctx.createOscillator(), g = ctx.createGain();
-        o.type = 'sine'; o.frequency.value = 55.0;
-        g.gain.value = 0.22;
+        o.type = 'sine'; o.frequency.value = 73.42;
+        g.gain.value = 0.12;
         o.connect(g); g.connect(out);
         o.start(); activeOscs.push(o);
       }
 
       return {
         init, toggle, setVolume, setTrack,
-        click: () => playCachedBuffer('buf_click', 0.25),
-        tick: () => playCachedBuffer('buf_tick', 0.15),
-        ping: () => playCachedBuffer('buf_ping', 0.28),
-        sfxYesSelect: () => playCachedBuffer('buf_rsvp_yes', 0.35),
-        sfxMaybeSelect: () => playCachedBuffer('buf_rsvp_maybe', 0.35),
-        sfxNoSelect: () => playCachedBuffer('buf_rsvp_no', 0.38),
+        click: () => playCachedBuffer('buf_click', 0.18),
+        tick: () => playCachedBuffer('buf_tick', 0.10),
+        ping: () => playCachedBuffer('buf_ping', 0.20),
+        sfxYesSelect: () => playCachedBuffer('buf_rsvp_yes', 0.28),
+        sfxMaybeSelect: () => playCachedBuffer('buf_rsvp_maybe', 0.28),
+        sfxNoSelect: () => playCachedBuffer('buf_rsvp_no', 0.28),
         sfxCelebrationExplosion: () => {
-          playCachedBuffer('buf_rsvp_yes', 0.45);
-          setTimeout(() => playCachedBuffer('buf_access_granted', 0.35), 180);
+          playCachedBuffer('buf_rsvp_yes', 0.35);
+          setTimeout(() => playCachedBuffer('buf_access_granted', 0.25), 180);
         },
         sfxDeadpanDrop: () => {
-          playCachedBuffer('buf_rsvp_no', 0.42);
+          playCachedBuffer('buf_rsvp_no', 0.32);
           setTimeout(() => setTrack('deadpan_regret'), 400);
         }
       };
     })();
 
-    // 16-Photo Kinetic Reel Controller
+    // 16-Photo Kinetic Reel Controller (Smooth & Completely Silent Autoplay)
     const REEL_PHOTOS = [
       "reveal-photos/photo-1944.jpg",
       "reveal-photos/photo-1945.jpg",
@@ -831,7 +836,7 @@
         reelIndex = (reelIndex + 1) % REEL_PHOTOS.length;
         reelImgEl.src = REEL_PHOTOS[reelIndex];
         reelNumEl.textContent = (reelIndex + 1);
-        AudioEngine.tick();
+        // Zero sound on automatic photo cycle for soothing, peaceful viewing
       }, 220);
     }
 

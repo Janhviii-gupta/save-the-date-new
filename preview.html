@@ -1135,33 +1135,33 @@
 
       function startRajasthanGrand(out) {
         if (!ctx) return;
-        const p1 = ctx.createOscillator(), p2 = ctx.createOscillator(), pg = ctx.createGain(), pf = ctx.createBiquadFilter();
-        p1.type = 'sawtooth'; p1.frequency.value = 73.42; p2.type = 'triangle'; p2.frequency.value = 146.83;
-        pf.type = 'lowpass'; pf.frequency.value = 550; pg.gain.value = 0.2;
-        p1.connect(pf); p2.connect(pf); pf.connect(pg); pg.connect(out);
-        p1.start(); p2.start(); activeOscs.push(p1, p2);
+        // Warm Velvet Tanpura Drone (D Major / A Harmonious Warmth)
+        const d1 = ctx.createOscillator(), d2 = ctx.createOscillator(), dg = ctx.createGain(), df = ctx.createBiquadFilter();
+        d1.type = 'sine'; d1.frequency.value = 73.42; // D2
+        d2.type = 'triangle'; d2.frequency.value = 146.83; // D3
+        df.type = 'lowpass'; df.frequency.value = 380;
+        dg.gain.value = 0.12;
+        d1.connect(df); d2.connect(df); df.connect(dg); dg.connect(out);
+        d1.start(); d2.start(); activeOscs.push(d1, d2);
 
-        let step = 0;
-        const scale = [293.66, 369.99, 440.0, 493.88, 587.33, 440.0, 369.99, 293.66];
-        const iv = setInterval(() => {
+        // Soothing Royal Sitar & Santoor Melodic Bell Chimes (Slow, Peaceful Raga)
+        const ragaNotes = [293.66, 329.63, 369.99, 440.0, 554.37, 587.33]; // D4, E4, F#4, A4, C#5, D5
+        let noteIdx = 0;
+        const sitarTimer = setInterval(() => {
           if (!ctx || isMuted || currentTrack !== 'rajasthan_grand') return;
           const t = ctx.currentTime;
-          if (step % 2 === 0) {
-            const k = ctx.createOscillator(), kg = ctx.createGain();
-            k.type = 'sine'; k.frequency.setValueAtTime(115, t); k.frequency.exponentialRampToValueAtTime(45, t + 0.14);
-            kg.gain.setValueAtTime(0.26, t); kg.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
-            k.connect(kg); kg.connect(out);
-            k.start(t); k.stop(t + 0.16);
-          }
-          const o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
-          o.type = 'triangle'; o.frequency.setValueAtTime(scale[step % scale.length], t);
-          f.type = 'bandpass'; f.frequency.setValueAtTime(1700, t); f.Q.value = 3;
-          g.gain.setValueAtTime(0.12, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.24);
-          o.connect(f); f.connect(g); g.connect(out);
-          o.start(t); o.stop(t + 0.24);
-          step++;
-        }, 150);
-        loopTimers.push(iv);
+          const sitar = ctx.createOscillator(), sg = ctx.createGain(), sf = ctx.createBiquadFilter();
+          sitar.type = 'sine';
+          sitar.frequency.setValueAtTime(ragaNotes[noteIdx % ragaNotes.length], t);
+          sf.type = 'lowpass'; sf.frequency.value = 1400;
+          sg.gain.setValueAtTime(0.001, t);
+          sg.gain.linearRampToValueAtTime(0.09, t + 0.04);
+          sg.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
+          sitar.connect(sf); sf.connect(sg); sg.connect(out);
+          sitar.start(t); sitar.stop(t + 1.6);
+          noteIdx = (noteIdx + 1) % ragaNotes.length;
+        }, 1400); // Relaxed, calming pace
+        loopTimers.push(sitarTimer);
       }
 
       function startRsvpCurious(out) {
