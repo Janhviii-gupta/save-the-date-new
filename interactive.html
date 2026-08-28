@@ -600,19 +600,12 @@
           </div>
         </div>
 
-        <!-- Banter & Confetti Button -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#1c1b1b] p-3 border border-[#333333] rounded-sm text-left">
+        <!-- Banter Strip -->
+        <div class="bg-[#1c1b1b] p-3 border border-[#333333] rounded-sm text-left">
           <div class="flex items-center gap-2">
             <span class="text-lg">🥂</span>
             <span id="i-banter-text" class="text-xs text-white font-mono">Counting down the days until Janhvi says yes and Krish gets nervous!</span>
           </div>
-          <button
-            type="button"
-            onclick="launchCelebrationConfetti();"
-            class="px-4 py-2 bg-[#e9c349] hover:bg-white text-black font-bold text-[10px] md:text-xs uppercase tracking-wider rounded-sm shrink-0 transition-all cursor-pointer font-mono shadow-[0_0_15px_rgba(233,195,73,0.4)]"
-          >
-            🎉 POP CONFETTI
-          </button>
         </div>
       </div>
     </section>
@@ -1064,10 +1057,12 @@
       setInterval(update, 1000);
     }
 
+    // Live Ambient Celebration Confetti Engine (Lives automatically without any clicks)
     let confettiParticles = [];
     let confettiCanvas = null;
     let confettiCtx = null;
-    let confettiAnimId = null;
+    const CONFETTI_COLORS = ['#e9c349', '#ffe088', '#22d3ee', '#ff69b4', '#4ade80', '#ffffff', '#fbbf24'];
+    const CONFETTI_EMOJIS = ['✨', '🎉', '💛', '🎊', '🥂', '🍾'];
 
     function initConfettiCanvas() {
       confettiCanvas = document.getElementById('confetti-canvas');
@@ -1081,76 +1076,64 @@
           confettiCanvas.height = window.innerHeight;
         }
       });
+
+      for (let i = 0; i < 48; i++) {
+        spawnAmbientParticle(true);
+      }
+      animateAmbientConfetti();
     }
 
-    function launchCelebrationConfetti() {
-      AudioEngine.chime();
-      if (!confettiCanvas) initConfettiCanvas();
-      if (!confettiCtx) return;
-
-      const colors = ['#e9c349', '#ffe088', '#22d3ee', '#ff69b4', '#4ade80', '#ffffff', '#f43f5e'];
-      const emojis = ['🎉', '✨', '💛', '🎊', '💃', '🥂', '🍾'];
-
-      for (let i = 0; i < 90; i++) {
-        confettiParticles.push({
-          x: window.innerWidth * (0.2 + Math.random() * 0.6),
-          y: window.innerHeight * 0.75,
-          vx: (Math.random() - 0.5) * 16,
-          vy: -Math.random() * 18 - 8,
-          size: Math.random() * 8 + 4,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          emoji: Math.random() > 0.65 ? emojis[Math.floor(Math.random() * emojis.length)] : null,
-          rotation: Math.random() * 360,
-          rotationSpeed: (Math.random() - 0.5) * 12,
-          gravity: 0.45,
-          alpha: 1,
-          decay: Math.random() * 0.012 + 0.008
-        });
-      }
-
-      if (!confettiAnimId) {
-        animateConfetti();
-      }
+    function spawnAmbientParticle(initial = false) {
+      const isEmoji = Math.random() > 0.75;
+      confettiParticles.push({
+        x: Math.random() * window.innerWidth,
+        y: initial ? Math.random() * window.innerHeight : -20,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: Math.random() * 1.3 + 0.7,
+        size: Math.random() * 7 + 4,
+        color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+        emoji: isEmoji ? CONFETTI_EMOJIS[Math.floor(Math.random() * CONFETTI_EMOJIS.length)] : null,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 2.5,
+        alpha: Math.random() * 0.4 + 0.6,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: Math.random() * 0.04 + 0.02
+      });
     }
 
-    function animateConfetti() {
+    function animateAmbientConfetti() {
       if (!confettiCtx || !confettiCanvas) return;
       confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
 
       for (let i = confettiParticles.length - 1; i >= 0; i--) {
         const p = confettiParticles[i];
-        p.x += p.vx;
+        p.wobble += p.wobbleSpeed;
+        p.x += p.vx + Math.sin(p.wobble) * 0.7;
         p.y += p.vy;
-        p.vy += p.gravity;
         p.rotation += p.rotationSpeed;
-        p.alpha -= p.decay;
 
-        if (p.alpha <= 0 || p.y > confettiCanvas.height) {
+        if (p.y > confettiCanvas.height + 25) {
           confettiParticles.splice(i, 1);
+          spawnAmbientParticle(false);
           continue;
         }
 
         confettiCtx.save();
-        confettiCtx.globalAlpha = Math.max(0, p.alpha);
+        confettiCtx.globalAlpha = p.alpha;
         confettiCtx.translate(p.x, p.y);
         confettiCtx.rotate((p.rotation * Math.PI) / 180);
 
         if (p.emoji) {
-          confettiCtx.font = `${p.size * 2.2}px serif`;
+          confettiCtx.font = `${p.size * 2.0}px serif`;
           confettiCtx.fillText(p.emoji, 0, 0);
         } else {
           confettiCtx.fillStyle = p.color;
-          confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
         }
         confettiCtx.restore();
       }
 
-      if (confettiParticles.length > 0) {
-        confettiAnimId = requestAnimationFrame(animateConfetti);
-      } else {
-        confettiAnimId = null;
-        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-      }
+      requestAnimationFrame(animateAmbientConfetti);
     }
 
     startInteractiveCountdown();
