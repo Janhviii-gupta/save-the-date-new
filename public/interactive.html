@@ -207,18 +207,19 @@
   </div>
 
   <!-- TOP APP BAR -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-[#050505]/95 backdrop-blur-xl border-b border-[#333333] flex justify-between items-center h-14 px-3 md:px-8">
-    <div class="flex items-center gap-2 md:gap-3 text-white">
-      <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
-      <span id="top-nav-title" class="text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.2em] whitespace-nowrap font-mono">
-        JANHVI &amp; KRISH // SAVE THE DATE
+  <!-- TOP APP BAR: FIXED NON-INTRUSIVE GLASSMORPHISM WITH MATCHING SWITCHER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#050505]/95 backdrop-blur-xl border-b border-[#333333] flex justify-between items-center h-14 px-2.5 sm:px-4 md:px-8">
+    <div class="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1 mr-1.5 sm:mr-3">
+      <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping shrink-0"></span>
+      <span id="top-nav-title" class="text-[11px] sm:text-xs md:text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap truncate font-mono">
+        JANHVI &amp; KRISH <span class="hidden md:inline text-[#8e9192]">// SAVE THE DATE</span>
       </span>
-      <span class="hidden sm:inline-block text-[10px] text-[#e9c349] border border-[#e9c349]/40 px-2 py-0.5 ml-2 font-mono">
+      <span class="hidden lg:inline-block text-[10px] text-[#e9c349] border border-[#e9c349]/40 px-2 py-0.5 ml-2 font-mono shrink-0">
         [ JAIPUR 2026 ]
       </span>
     </div>
 
-    <div class="flex items-center gap-2.5 md:gap-3 shrink-0">
+    <div class="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0">
       <!-- Equalizer Visualizer -->
       <div id="audio-eq" class="hidden sm:flex items-end gap-[3px] h-3.5 opacity-80 mr-0.5">
         <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-full"></span>
@@ -235,18 +236,18 @@
           </div>
         </div>
 
-        <button type="button" onclick="AudioEngine.toggle()" id="btn-audio-toggle" aria-label="Toggle Sound" class="flex items-center justify-center p-2 rounded-full text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30 transition-colors cursor-pointer">
-          <span class="material-symbols-outlined text-base md:text-lg" id="audio-icon">volume_up</span>
+        <button type="button" onclick="AudioEngine.toggle()" id="btn-audio-toggle" aria-label="Toggle Sound" class="flex items-center justify-center p-1.5 sm:p-2 rounded-full text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30 transition-colors cursor-pointer shrink-0">
+          <span class="material-symbols-outlined text-sm sm:text-base md:text-lg" id="audio-icon">volume_up</span>
         </button>
       </div>
 
       <!-- Symmetrical Header Switcher Button: [ SIMPLE SCROLL VIEW ] -->
       <a
         href="index.html"
-        class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#e9c349]/50 bg-[#1c1b1b]/80 backdrop-blur-md hover:bg-[#e9c349] text-[#e9c349] hover:text-black font-mono text-[10px] md:text-xs font-bold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(233,195,73,0.15)] hover:shadow-[0_0_20px_rgba(233,195,73,0.5)] cursor-pointer"
+        class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-[#e9c349]/60 bg-[#1c1b1b]/90 backdrop-blur-md hover:bg-[#e9c349] text-[#e9c349] hover:text-black font-mono text-[9px] sm:text-[11px] md:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all shadow-[0_0_15px_rgba(233,195,73,0.15)] hover:shadow-[0_0_20px_rgba(233,195,73,0.5)] cursor-pointer shrink-0"
         title="Switch to Simple Scroll View"
       >
-        <span class="material-symbols-outlined text-sm">menu_book</span>
+        <span class="material-symbols-outlined text-xs sm:text-sm">menu_book</span>
         <span class="hidden sm:inline">[ SIMPLE SCROLL VIEW ]</span>
         <span class="sm:hidden">[ SCROLL VIEW ]</span>
       </a>
@@ -946,7 +947,7 @@
       }
     }
 
-    const TYPEWRITER_TEXT = "WE’RE GETTING MARRIED! JOIN US FOR 2 DAYS OF CELEBRATION, LAUGHTER & MUSIC IN JAIPUR · 19–20 NOVEMBER 2026.";
+    const TYPEWRITER_TEXT = "Stop scrolling. Look at your screen. A classified database just crashed, and only one file survived...";
     let typeIdx = 0;
 
     function typeNextChar() {

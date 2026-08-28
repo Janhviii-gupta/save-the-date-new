@@ -42,9 +42,9 @@ export function SectorIntro({ onAdvance, onRevealed }: SectorIntroProps) {
   const dramaticPlayed = useRef(false);
 
   const lines = [
-    "We're getting married!",
-    "Save the Date: 19–20 November 2026",
-    "Join us in Jaipur, Rajasthan for 2 days of celebration!"
+    "Stop scrolling.",
+    "Look at your screen.",
+    "A classified database just crashed, and only one file survived..."
   ];
 
   // Typewriter effect
