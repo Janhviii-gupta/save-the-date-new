@@ -48,6 +48,12 @@
       overflow-x: hidden;
     }
 
+    body {
+      background-image: linear-gradient(rgba(51, 51, 51, 0.18) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(51, 51, 51, 0.18) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
     .volume-slider {
       accent-color: #e9c349;
     }
@@ -64,20 +70,48 @@
       0%, 100% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.35); }
       50% { box-shadow: 0 0 32px rgba(34, 211, 238, 0.75); }
     }
+
+    /* Hardware Accelerated Kinetic Image Container */
+    .gpu-accelerated {
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      will-change: transform, opacity;
+    }
+
+    @keyframes btn-flicker-pulse {
+      0%, 100% {
+        box-shadow: 0 0 16px rgba(233, 195, 73, 0.45), inset 0 0 12px rgba(233, 195, 73, 0.2);
+        border-color: #e9c349;
+        color: #ffffff;
+      }
+      50% {
+        box-shadow: 0 0 32px rgba(233, 195, 73, 0.9), inset 0 0 18px rgba(233, 195, 73, 0.4);
+        border-color: #ffffff;
+        color: #e9c349;
+      }
+      92% { opacity: 0.88; }
+      94% { opacity: 1; }
+      96% { opacity: 0.92; }
+    }
+    .btn-solid-white-flicker:hover {
+      animation: btn-flicker-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
   </style>
 </head>
 <body class="min-h-screen selection:bg-[#e9c349] selection:text-black font-mono">
 
-  <!-- TOP HEADER BAR: CLEAN & UNCLUTTERED -->
-  <header class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#333333] px-4 md:px-8 py-3 flex items-center justify-between shadow-lg">
+  <!-- TOP HEADER BAR: FIXED NON-INTRUSIVE GLASSMORPHISM WITH MATCHING SWITCHER -->
+  <header class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#333333] px-3 md:px-8 py-3 flex items-center justify-between shadow-lg">
     <div class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-[#e9c349] animate-ping"></span>
-      <span class="text-xs md:text-sm font-bold tracking-widest uppercase text-white">JANHVI &amp; KRISH // SAVE THE DATE</span>
+      <span class="w-2 h-2 rounded-full bg-[#e9c349] animate-ping shrink-0"></span>
+      <span class="text-xs md:text-sm font-bold tracking-widest uppercase text-white truncate font-mono">
+        JANHVI &amp; KRISH // SAVE THE DATE
+      </span>
     </div>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2.5 md:gap-3 shrink-0">
       <!-- Equalizer Visualizer -->
-      <div id="audio-eq" class="flex items-end gap-[3px] h-3.5 opacity-80 mr-1">
+      <div id="audio-eq" class="hidden sm:flex items-end gap-[3px] h-3.5 opacity-80 mr-0.5">
         <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-full"></span>
         <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-2/3"></span>
         <span class="w-[3px] bg-[#e9c349] rounded-full animate-pulse h-4/5"></span>
@@ -85,22 +119,27 @@
 
       <!-- Music Toggle Button with Volume Popover -->
       <div class="relative group flex items-center justify-center" onmouseenter="document.getElementById('vol-popover').classList.remove('hidden')" onmouseleave="document.getElementById('vol-popover').classList.add('hidden')">
-        <div id="vol-popover" class="hidden absolute top-12 right-0 bg-[#131313] border border-[#333333] p-3 rounded-lg shadow-2xl backdrop-blur-xl flex flex-col items-center gap-2 z-50">
+        <div id="vol-popover" class="hidden absolute top-11 right-0 bg-[#131313] border border-[#333333] p-3 rounded-lg shadow-2xl backdrop-blur-xl flex flex-col items-center gap-2 z-50">
           <span id="vol-pct-lbl" class="text-[9px] text-[#8e9192] uppercase tracking-wider font-mono">70%</span>
           <div class="h-24 flex items-center justify-center py-1">
             <input type="range" min="0" max="1" step="0.01" value="0.7" id="master-vol" oninput="AudioEngine.setVolume(this.value)" class="volume-slider -rotate-90 w-20 cursor-pointer" />
           </div>
         </div>
 
-        <button type="button" onclick="AudioEngine.toggle()" id="btn-audio-toggle" class="flex items-center justify-center p-2.5 rounded-full text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30 transition-colors cursor-pointer">
-          <span class="material-symbols-outlined text-lg" id="audio-icon">volume_up</span>
+        <button type="button" onclick="AudioEngine.toggle()" id="btn-audio-toggle" aria-label="Toggle Sound" class="flex items-center justify-center p-2 rounded-full text-[#e9c349] hover:text-white bg-[#e9c349]/10 border border-[#e9c349]/30 transition-colors cursor-pointer">
+          <span class="material-symbols-outlined text-base md:text-lg" id="audio-icon">volume_up</span>
         </button>
       </div>
 
-      <!-- Switch to Interactive Mode -->
-      <a href="index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#e9c349]/40 bg-[#1c1b1b] hover:bg-[#e9c349] text-[#e9c349] hover:text-black text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
+      <!-- Symmetrical Header Switcher Button: [ INTERACTIVE MODE ↗ ] -->
+      <a
+        href="interactive.html"
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#e9c349]/50 bg-[#1c1b1b]/80 backdrop-blur-md hover:bg-[#e9c349] text-[#e9c349] hover:text-black font-mono text-[10px] md:text-xs font-bold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(233,195,73,0.15)] hover:shadow-[0_0_20px_rgba(233,195,73,0.5)] cursor-pointer"
+        title="Switch to full interactive spy terminal mode"
+      >
         <span class="material-symbols-outlined text-sm">smart_toy</span>
-        <span class="hidden sm:inline">Interactive Mode ↗</span>
+        <span class="hidden sm:inline">[ INTERACTIVE MODE ↗ ]</span>
+        <span class="sm:hidden">[ INTERACTIVE ↗ ]</span>
       </a>
     </div>
   </header>
@@ -115,18 +154,18 @@
       
       <!-- Couple Title & Save The Date -->
       <div class="space-y-2">
-        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-widest uppercase">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-widest uppercase font-mono">
           Janhvi &amp; Krish
         </h1>
-        <p class="text-sm sm:text-lg text-[#e9c349] font-bold tracking-widest uppercase">
+        <p class="text-sm sm:text-lg text-[#e9c349] font-bold tracking-widest uppercase font-mono">
           19–20 NOVEMBER 2026 · JAIPUR, RAJASTHAN
         </p>
       </div>
 
       <!-- 16-Photo Kinetic Motion Reel (Enlarged Cinematic Frame + Thematic Initialize Trigger) -->
-      <div class="border-2 border-[#e9c349]/60 hover:border-[#e9c349] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow w-full max-w-4xl mx-auto cursor-pointer transition-all duration-300" onclick="handleReelClick()">
+      <div class="border-2 border-[#e9c349]/60 hover:border-[#e9c349] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow w-full max-w-4xl mx-auto cursor-pointer transition-all duration-300 gpu-accelerated" onclick="handleReelClick()">
         <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] bg-black overflow-hidden flex items-center justify-center">
-          <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98]" src="reveal-photos/photo-1944.jpg" />
+          <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] gpu-accelerated" src="reveal-photos/photo-1944.jpg" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none"></div>
 
           <!-- Thematic Corner HUD Marks -->
@@ -151,8 +190,8 @@
           </div>
 
           <!-- Bottom Play / Pause & Frame Counter (Revealed when playing) -->
-          <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 md:inset-x-6 flex items-center justify-between z-20 px-3.5 py-2 bg-black/85 backdrop-blur-md border border-[#333333] text-[10px] md:text-xs text-white rounded-sm">
-            <span class="font-bold tracking-widest text-[#e9c349] font-mono">
+          <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 md:inset-x-6 flex items-center justify-between z-20 px-3.5 py-2 bg-black/85 backdrop-blur-md border border-[#333333] text-[10px] md:text-xs text-white rounded-sm font-mono">
+            <span class="font-bold tracking-widest text-[#e9c349]">
               FRAME: <span id="reel-num" class="text-white">1</span> / 16
             </span>
             <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1.5 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer font-mono">
@@ -163,7 +202,7 @@
         </div>
       </div>
 
-      <p class="text-xs md:text-sm text-[#d1d1db] tracking-wide max-w-lg mx-auto leading-relaxed pt-1">
+      <p class="text-xs md:text-sm text-[#d1d1db] tracking-wide max-w-lg mx-auto leading-relaxed pt-1 font-mono">
         We’re making it official! Pack your best outfits and join us in Jaipur for 2 days of celebration, laughter &amp; music.
       </p>
     </section>
@@ -173,23 +212,23 @@
     <!-- ========================================================================= -->
     <!-- SECTION 2: WARDROBE THEMES (3 OUTFIT TILES) -->
     <!-- ========================================================================= -->
-    <section class="space-y-6">
+    <section class="space-y-6 font-mono">
       <div class="text-center space-y-1">
-        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest">
+        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest font-mono">
           WARDROBE PLANNING
         </h2>
-        <p class="text-xs text-[#8e9192] uppercase tracking-wider">
+        <p class="text-xs text-[#8e9192] uppercase tracking-wider font-mono">
           Dress code themes for each celebration:
         </p>
       </div>
 
       <!-- 3 Outfits Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono">
         
         <!-- Event 01: Carnival -->
         <div class="flex flex-col bg-[#131313] border border-[#e9c349]/50 hover:border-[#e9c349] p-3 rounded-sm transition-all shadow-lg relative overflow-hidden group/tile">
           <div class="w-full h-36 md:h-44 overflow-hidden border border-[#333333] mb-3 relative rounded-sm">
-            <img alt="Carnival Ceremony" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
+            <img alt="Carnival Ceremony" loading="lazy" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500 gpu-accelerated" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
             <div class="absolute top-2 left-2 bg-[#e9c349] text-black text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-sm">EVENT 01</div>
           </div>
           <div class="flex items-center justify-between mb-1">
@@ -204,7 +243,7 @@
         <!-- Event 02: Pre-wedding Gala -->
         <div class="flex flex-col bg-[#131313] border border-cyan-400/50 hover:border-cyan-400 p-3 rounded-sm transition-all shadow-lg relative overflow-hidden group/tile">
           <div class="w-full h-36 md:h-44 overflow-hidden border border-[#333333] mb-3 relative rounded-sm">
-            <img alt="Pre-wedding Gala" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
+            <img alt="Pre-wedding Gala" loading="lazy" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500 gpu-accelerated" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
             <div class="absolute top-2 left-2 bg-cyan-400 text-black text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-sm">EVENT 02</div>
           </div>
           <div class="flex items-center justify-between mb-1">
@@ -219,7 +258,7 @@
         <!-- Event 03: Shaadi -->
         <div class="flex flex-col bg-[#131313] border border-[#ffb4ab]/50 hover:border-[#ffb4ab] p-3 rounded-sm transition-all shadow-lg relative overflow-hidden group/tile">
           <div class="w-full h-36 md:h-44 overflow-hidden border border-[#333333] mb-3 relative rounded-sm">
-            <img alt="Shaadi" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
+            <img alt="Shaadi" loading="lazy" class="w-full h-full object-cover group-hover/tile:scale-105 transition-transform duration-500 gpu-accelerated" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
             <div class="absolute top-2 left-2 bg-[#ffb4ab] text-black text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-sm">EVENT 03</div>
           </div>
           <div class="flex items-center justify-between mb-1">
@@ -232,7 +271,7 @@
         </div>
       </div>
 
-      <div class="text-xs text-[#e5e2e1] leading-relaxed bg-[#131313] p-3.5 border border-[#333333] rounded-sm flex items-start gap-2.5">
+      <div class="text-xs text-[#e5e2e1] leading-relaxed bg-[#131313] p-3.5 border border-[#333333] rounded-sm flex items-start gap-2.5 font-mono">
         <span class="text-base shrink-0">💡</span>
         <div>
           <strong class="text-[#e9c349]">Directive:</strong> Start shopping now, because wedding outfits take longer to stitch than a government project!
@@ -245,12 +284,12 @@
     <!-- ========================================================================= -->
     <!-- SECTION 3: VENUE & GOOGLE MAPS -->
     <!-- ========================================================================= -->
-    <section class="space-y-6">
+    <section class="space-y-6 font-mono">
       <div class="text-center space-y-1">
-        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest">
+        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest font-mono">
           ACHROL NIWAS, JAIPUR
         </h2>
-        <p class="text-xs text-[#e9c349] font-bold uppercase tracking-wider">
+        <p class="text-xs text-[#e9c349] font-bold uppercase tracking-wider font-mono">
           19–20 NOVEMBER 2026 // EVENT HEADQUARTERS
         </p>
       </div>
@@ -258,16 +297,16 @@
       <div class="border border-[#333333] bg-[#131313] rounded-sm overflow-hidden shadow-2xl space-y-0">
         <!-- Resort Photo -->
         <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-black overflow-hidden">
-          <img alt="Achrol Niwas Luxury Resort Jaipur" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98]" src="achrol-niwas.jpg" />
+          <img alt="Achrol Niwas Luxury Resort Jaipur" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] gpu-accelerated" src="achrol-niwas.jpg" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-black/30 pointer-events-none"></div>
         </div>
 
         <div class="p-5 md:p-8 space-y-5 text-center">
           <div class="space-y-1">
-            <h3 class="text-lg md:text-2xl font-bold text-white uppercase tracking-wider">
+            <h3 class="text-lg md:text-2xl font-bold text-white uppercase tracking-wider font-mono">
               Achrol Niwas A TreeHouse Resort
             </h3>
-            <p class="text-xs md:text-sm text-[#8e9192] uppercase tracking-widest">
+            <p class="text-xs md:text-sm text-[#8e9192] uppercase tracking-widest font-mono">
               Jaipur-Delhi Highway, Achrol, Jaipur, Rajasthan 303002
             </p>
           </div>
@@ -277,7 +316,7 @@
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-full py-4 px-6 rounded-sm bg-cyan-400 hover:bg-white text-black font-bold text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-xl cyan-glow cursor-pointer"
+            class="w-full py-4 px-6 rounded-sm bg-cyan-400 hover:bg-white text-black font-bold text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-xl cyan-glow cursor-pointer font-mono"
           >
             <span class="material-symbols-outlined text-xl">near_me</span>
             <span>OPEN IN GOOGLE MAPS ↗</span>
@@ -289,134 +328,59 @@
     <hr class="border-[#222222]" />
 
     <!-- ========================================================================= -->
-    <!-- SECTION 4: RSVP & ATTENDANCE -->
+    <!-- SECTION 4: LIVE COUNTDOWN & WARM CELEBRATION FOOTER -->
     <!-- ========================================================================= -->
-    <section id="rsvp-section" class="space-y-6 pb-12">
-      <div class="text-center space-y-1">
-        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest">
-          WILL YOU BE JOINING US?
+    <section class="space-y-6 pb-6 font-mono text-center">
+      <div class="space-y-1">
+        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest font-mono">
+          COUNTDOWN TO JAIPUR
         </h2>
-        <p class="text-xs text-[#8e9192] uppercase tracking-wider">
-          Please confirm your attendance below:
+        <p class="text-xs text-[#e9c349] font-bold uppercase tracking-wider font-mono">
+          19–20 NOVEMBER 2026 // 2 DAYS OF CELEBRATION
         </p>
       </div>
 
-      <!-- RSVP Choice Container -->
-      <div id="rsvp-choice-card" class="border border-[#333333] bg-[#131313] p-5 md:p-8 rounded-sm shadow-2xl space-y-3.5">
-        
-        <!-- YES -->
-        <button onclick="openModal('YES')" class="w-full py-4 px-5 bg-transparent border-2 border-[#4ade80] hover:bg-[#4ade80] text-[#4ade80] hover:text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center justify-between rounded-sm transition-all shadow-lg cursor-pointer">
-          <span class="flex items-center gap-2">
-            <span>🎉</span>
-            <span>[ YES, WOULDN'T MISS THIS CIRCUS ]</span>
-          </span>
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
-        </button>
-
-        <!-- MAYBE -->
-        <button onclick="openModal('MAYBE')" class="w-full py-4 px-5 bg-transparent border-2 border-[#ffe088] hover:bg-[#ffe088] text-[#ffe088] hover:text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center justify-between rounded-sm transition-all shadow-lg cursor-pointer">
-          <span class="flex items-center gap-2">
-            <span>⏳</span>
-            <span>[ MAYBE (TRYING TO CLEAR MY SCHEDULE) ]</span>
-          </span>
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
-        </button>
-
-        <!-- NO -->
-        <button onclick="openModal('NO')" class="w-full py-3.5 px-5 bg-transparent border border-[#ffb4ab]/60 hover:bg-[#ffb4ab] text-[#ffb4ab] hover:text-black font-bold text-xs md:text-sm uppercase tracking-widest flex items-center justify-between rounded-sm transition-all cursor-pointer">
-          <span class="flex items-center gap-2">
-            <span>💔</span>
-            <span>[ NO (REGRETTING LIFE CHOICES ALREADY) ]</span>
-          </span>
-          <span class="material-symbols-outlined text-base">close</span>
-        </button>
-      </div>
-
-      <!-- Confirmation Card with Live Countdown (Hidden until response submitted) -->
-      <div id="rsvp-confirm-card" class="hidden border border-[#333333] bg-[#131313] p-6 md:p-10 text-center space-y-6 rounded-sm shadow-2xl">
-        <div class="space-y-2">
-          <h3 id="confirm-msg" class="text-xl md:text-3xl font-bold uppercase tracking-widest text-white">
-            RESPONSE LOGGED. SEE YOU IN JAIPUR!
-          </h3>
-          <p id="confirm-sub-msg" class="text-xs md:text-sm text-[#e9c349] tracking-widest uppercase">
-            19–20 November 2026 // Achrol Niwas, Jaipur
-          </p>
-          <p id="confirm-guest-lbl" class="text-xs text-white uppercase tracking-wider"></p>
-        </div>
-
-        <!-- Live Countdown -->
+      <!-- Live Countdown Grid -->
+      <div class="border border-[#333333] bg-[#131313] p-5 md:p-8 rounded-sm shadow-2xl space-y-4 max-w-2xl mx-auto">
         <div class="grid grid-cols-4 gap-2 md:gap-4 p-4 bg-black/60 border border-[#333333] rounded-sm">
           <div class="p-2 text-center">
-            <div id="cd-d" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">DAYS</div>
+            <div id="cd-d" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">DAYS</div>
           </div>
           <div class="p-2 text-center">
-            <div id="cd-h" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">HRS</div>
+            <div id="cd-h" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">HRS</div>
           </div>
           <div class="p-2 text-center">
-            <div id="cd-m" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">MIN</div>
+            <div id="cd-m" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">MIN</div>
           </div>
           <div class="p-2 text-center">
-            <div id="cd-s" class="text-2xl md:text-5xl font-bold text-[#4ade80] tabular-nums">00</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1">SEC</div>
+            <div id="cd-s" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#4ade80] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">SEC</div>
           </div>
         </div>
 
-        <button onclick="redeemRsvp()" class="text-xs text-[#e9c349] hover:underline uppercase tracking-wider cursor-pointer">
-          ↻ Change or update response
-        </button>
+        <p class="text-[10px] md:text-xs text-[#8e9192] uppercase tracking-widest font-mono">
+          COORDS: 27.1425° N, 75.9520° E · PROBABILITY OF PURE CHAOS: 9,999.99%
+        </p>
       </div>
 
+      <!-- Refined Warm Footer -->
+      <footer class="pt-8 pb-4 text-center space-y-2 border-t border-[#222222]">
+        <p class="text-xs md:text-sm font-bold text-white uppercase tracking-widest font-mono">
+          JANHVI &amp; KRISH // SAVE THE DATE 2026
+        </p>
+        <p class="text-[10px] md:text-xs text-[#8e9192] tracking-wider uppercase font-mono">
+          Jaipur, Rajasthan · See you in November!
+        </p>
+      </footer>
     </section>
 
   </main>
 
   <!-- ========================================================================= -->
-  <!-- MODAL: GUEST NAME & ATTENDEE ENTRY -->
-  <!-- ========================================================================= -->
-  <div id="rsvp-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl hidden font-mono">
-    <div class="w-full max-w-lg border border-[#333333] bg-[#131313] p-5 md:p-8 relative overflow-hidden rounded-sm">
-      <div class="flex justify-between items-center mb-5 border-b border-[#333333] pb-3 bg-[#1c1b1b] -mx-5 md:-mx-8 px-5 md:px-8 -mt-5 md:-mt-8 pt-4">
-        <span class="text-[10px] text-white/70 uppercase tracking-widest font-mono">RSVP_PROTOCOL</span>
-        <button onclick="closeModal()" class="text-white hover:text-[#ffb4ab] cursor-pointer"><span class="material-symbols-outlined text-lg">close</span></button>
-      </div>
-
-      <!-- Step 1: Name -->
-      <div id="modal-step-1" class="space-y-4 md:space-y-5">
-        <h3 id="modal-heading-1" class="text-base md:text-lg font-bold text-white uppercase tracking-widest">WHO'S MAKING THIS DECISION?</h3>
-        <input type="text" id="input-name" placeholder="[ YOUR NAME / FAMILY NAME ]" class="w-full bg-[#0e0e0e] border border-[#333333] p-3.5 text-white uppercase text-xs md:text-sm focus:outline-none focus:border-[#e9c349]" />
-        <button onclick="submitStep1()" class="w-full border-2 border-white bg-white text-black py-3.5 uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] font-bold text-xs md:text-sm cursor-pointer">NEXT_STEP &gt;</button>
-      </div>
-
-      <!-- Step 2: Attendance Count -->
-      <div id="modal-step-2" class="space-y-4 md:space-y-5 hidden">
-        <h3 class="text-base md:text-lg font-bold text-white uppercase tracking-widest">HOW MANY PEOPLE WILL BE ATTENDING?</h3>
-        <div class="grid grid-cols-2 gap-2">
-          <button onclick="setCount(1)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">1 PERSON</button>
-          <button onclick="setCount(2)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">2 PEOPLE</button>
-          <button onclick="setCount(3)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">3 PEOPLE</button>
-          <button onclick="setCount(4)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">4 PEOPLE</button>
-          <button onclick="setCount(5)" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">5 PEOPLE</button>
-          <button onclick="setCount('MORE')" class="border border-[#333333] bg-[#0e0e0e] py-3 text-white hover:bg-white hover:text-black hover:border-white uppercase tracking-widest text-[11px] md:text-xs font-bold transition-all cursor-pointer">MORE THAN 5</button>
-        </div>
-      </div>
-
-      <!-- Step 3: Summary -->
-      <div id="modal-step-3" class="space-y-5 hidden font-mono">
-        <div class="p-3.5 border border-[#333333] bg-[#0e0e0e]">
-          <p class="text-[9px] text-[#8e9192] tracking-widest uppercase mb-1 font-mono">SUMMARY:</p>
-          <p id="summary-name" class="text-white font-bold text-sm md:text-base font-mono"></p>
-          <p id="summary-count" class="text-white text-xs md:text-sm mt-1 font-mono"></p>
-        </div>
-        <button onclick="finalizeRSVP()" class="w-full border-2 border-white bg-white text-black py-3.5 font-bold uppercase tracking-widest hover:bg-black hover:text-[#e9c349] hover:border-[#e9c349] text-xs md:text-sm cursor-pointer">[ CONFIRM &amp; TRANSMIT RSVP ]</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- AUDIO ENGINE (ROMANTIC LOVE THEME FROM TAP REVEAL + ZERO RAPID NOISE) -->
+  <!-- AUDIO ENGINE & REEL CONTROLLER -->
   <!-- ========================================================================= -->
   <script>
     const AudioEngine = (() => {
@@ -452,37 +416,6 @@
         bufferCache['buf_ping'] = generateBuffer(0.4, sr, (t) => {
           const env = Math.exp(-t * 10);
           return (Math.sin(2 * Math.PI * 880 * t) + Math.sin(2 * Math.PI * 1320 * t) * 0.4) * env * 0.25;
-        });
-
-        // Triumphant soft arpeggio for YES
-        bufferCache['buf_rsvp_yes'] = generateBuffer(0.45, sr, (t) => {
-          let sig = 0;
-          [523.25, 659.25, 783.99, 1046.5].forEach((f, idx) => {
-            const startT = idx * 0.05;
-            if (t >= startT) {
-              const dt = t - startT;
-              sig += Math.sin(2 * Math.PI * f * dt) * Math.exp(-dt * 12) * 0.22;
-            }
-          });
-          return sig;
-        });
-
-        // Suspended warm chime for MAYBE
-        bufferCache['buf_rsvp_maybe'] = generateBuffer(0.45, sr, (t) => {
-          let sig = 0;
-          [440.0, 554.37, 659.25].forEach((f, idx) => {
-            const startT = idx * 0.055;
-            if (t >= startT) {
-              const dt = t - startT;
-              sig += Math.sin(2 * Math.PI * f * dt) * Math.exp(-dt * 11) * 0.22;
-            }
-          });
-          return sig;
-        });
-
-        // Soft low tone for NO
-        bufferCache['buf_rsvp_no'] = generateBuffer(0.5, sr, (t) => {
-          return Math.sin(2 * Math.PI * 110 * t) * Math.exp(-t * 8) * 0.3;
         });
       }
 
@@ -527,7 +460,7 @@
         startRomanticLoveTheme();
       }
 
-      // EXACT ROMANTIC LOVE THEME FROM TAP REVEAL
+      // ROMANTIC LOVE THEME (WARM AMBIENT ACOUSTIC RAGA)
       function startRomanticLoveTheme() {
         if (!ctx || romanticGain) return;
         try {
@@ -576,22 +509,6 @@
         } catch(e){}
       }
 
-      function stopRomanticLoveTheme() {
-        if (!ctx) return;
-        if (romanticTimer) { clearInterval(romanticTimer); romanticTimer = null; }
-        if (romanticGain) {
-          const now = ctx.currentTime;
-          romanticGain.gain.cancelScheduledValues(now);
-          romanticGain.gain.setValueAtTime(romanticGain.gain.value, now);
-          romanticGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
-          setTimeout(() => {
-            romanticOscs.forEach(o => { try { o.stop(); o.disconnect(); } catch(e){} });
-            romanticOscs = [];
-            romanticGain = null;
-          }, 450);
-        }
-      }
-
       function toggle() {
         if (!romanticGain) {
           startReelAndSound();
@@ -606,10 +523,10 @@
         const eq = document.getElementById('audio-eq');
         if (isMuted) {
           icon.textContent = 'volume_off';
-          eq.classList.add('hidden');
+          if (eq) eq.classList.add('hidden');
         } else {
           icon.textContent = 'volume_up';
-          eq.classList.remove('hidden');
+          if (eq) eq.classList.remove('hidden');
         }
       }
 
@@ -623,14 +540,11 @@
       return {
         init, toggle, setVolume,
         click: () => playCachedBuffer('buf_click', 0.2),
-        ping: () => playCachedBuffer('buf_ping', 0.25),
-        sfxYesSelect: () => playCachedBuffer('buf_rsvp_yes', 0.35),
-        sfxMaybeSelect: () => playCachedBuffer('buf_rsvp_maybe', 0.35),
-        sfxNoSelect: () => playCachedBuffer('buf_rsvp_no', 0.35)
+        ping: () => playCachedBuffer('buf_ping', 0.25)
       };
     })();
 
-    // 16-Photo Kinetic Reel Controller (Merged with Sound Unlock)
+    // 16-Photo Kinetic Reel Controller (Smooth GPU-accelerated cycle)
     const REEL_PHOTOS = [
       "reveal-photos/photo-1944.jpg",
       "reveal-photos/photo-1945.jpg",
@@ -652,7 +566,7 @@
 
     let reelIndex = 0;
     let reelTimer = null;
-    let isReelPlaying = false; // Starts paused until user clicks!
+    let isReelPlaying = false;
     const reelImgEl = document.getElementById('reel-img');
     const reelNumEl = document.getElementById('reel-num');
     const reelPlayIcon = document.getElementById('reel-play-icon');
@@ -660,8 +574,15 @@
     const reelStartOverlay = document.getElementById('reel-start-overlay');
     const reelBottomControls = document.getElementById('reel-bottom-controls');
 
+    // Pre-cache all 16 images in browser memory for zero-lag playback
+    const preloadedImages = REEL_PHOTOS.map(src => {
+      const img = new Image();
+      img.src = src;
+      return img;
+    });
+
     function startReelAndSound() {
-      // 1. Unlock Web Audio Context via user gesture
+      // 1. Unlock Web Audio Context
       AudioEngine.init();
       const eq = document.getElementById('audio-eq');
       if (eq) eq.classList.remove('hidden');
@@ -709,122 +630,39 @@
       }
     }
 
-    // Preload Photos
-    REEL_PHOTOS.forEach(url => {
-      const img = new Image();
-      img.src = url;
-    });
-
-    // RSVP Logic
-    let currentRsvp = 'YES', guestName = '', guestCount = '1';
-
-    function openModal(t) {
-      currentRsvp = t;
-      if (t === 'YES') AudioEngine.sfxYesSelect();
-      else if (t === 'MAYBE') AudioEngine.sfxMaybeSelect();
-      else AudioEngine.sfxNoSelect();
-
-      document.getElementById('rsvp-modal').classList.remove('hidden');
-      document.getElementById('modal-step-1').classList.remove('hidden');
-      document.getElementById('modal-step-2').classList.add('hidden');
-      document.getElementById('modal-step-3').classList.add('hidden');
-      document.getElementById('modal-heading-1').textContent = t === 'NO' ? 'WHO IS BREAKING OUR HEARTS?' : "WHO'S MAKING THIS DECISION?";
-      document.getElementById('input-name').focus();
-    }
-
-    function closeModal() {
-      AudioEngine.click();
-      document.getElementById('rsvp-modal').classList.add('hidden');
-    }
-
-    function submitStep1() {
-      AudioEngine.click();
-      guestName = document.getElementById('input-name').value || 'ANONYMOUS_GUEST';
-      if (currentRsvp === 'NO') {
-        renderSummary();
-      } else {
-        document.getElementById('modal-step-1').classList.add('hidden');
-        document.getElementById('modal-step-2').classList.remove('hidden');
-      }
-    }
-
-    function setCount(c) {
-      AudioEngine.click();
-      guestCount = c === 'MORE' ? '6+' : c.toString();
-      renderSummary();
-    }
-
-    function renderSummary() {
-      document.getElementById('modal-step-1').classList.add('hidden');
-      document.getElementById('modal-step-2').classList.add('hidden');
-      document.getElementById('modal-step-3').classList.remove('hidden');
-      document.getElementById('summary-name').textContent = guestName;
-      document.getElementById('summary-count').textContent = currentRsvp === 'NO' ? 'STATUS: DECLINED' : 'ATTENDING: ' + guestCount + ' GUEST(S)';
-    }
-
-    function finalizeRSVP() {
-      AudioEngine.click();
-      document.getElementById('rsvp-modal').classList.add('hidden');
-      document.getElementById('rsvp-choice-card').classList.add('hidden');
-      const confirmCard = document.getElementById('rsvp-confirm-card');
-      confirmCard.classList.remove('hidden');
-      const isNo = currentRsvp === 'NO';
-      const col = isNo ? '#ff4d4d' : currentRsvp === 'MAYBE' ? '#ffe088' : '#4ade80';
-
-      if (isNo) {
-        document.getElementById('confirm-msg').textContent = "RESPONSE LOGGED // YOU WILL BE MISSED!";
-        document.getElementById('confirm-sub-msg').textContent = "19–20 November 2026 // Achrol Niwas, Jaipur";
-      } else {
-        document.getElementById('confirm-msg').textContent = currentRsvp === 'MAYBE' ? "SCHEDULE PENDING. HOPE TO SEE YOU IN JAIPUR!" : "RESPONSE LOGGED. SEE YOU IN JAIPUR!";
-        document.getElementById('confirm-sub-msg').textContent = "19–20 November 2026 // Achrol Niwas, Jaipur";
-      }
-
-      document.getElementById('confirm-msg').style.color = col;
-      ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => document.getElementById(id).style.color = col);
-      document.getElementById('confirm-guest-lbl').textContent = "GUEST: " + guestName + (isNo ? "" : " · ATTENDING: " + guestCount);
-      startCountdown();
-
-      // Store in Supabase
-      try {
-        fetch('https://wquuviizwhsuzglowfgb.supabase.co/rest/v1/rsvps', {
-          method: 'POST',
-          headers: {
-            'apikey': 'sb_publishable_gaJz8fuJtKIwA72ClZuZeg_0vZDmZJc',
-            'Authorization': 'Bearer sb_publishable_gaJz8fuJtKIwA72ClZuZeg_0vZDmZJc',
-            'Content-Type': 'application/json',
-            'Prefer': 'return=minimal'
-          },
-          body: JSON.stringify({
-            guest_name: guestName,
-            response: currentRsvp,
-            guest_count: isNo ? '0' : guestCount
-          })
-        }).then(res => {
-          if (res.ok) console.log('RSVP stored in Supabase successfully');
-        }).catch(err => console.error('Supabase RSVP sync error:', err));
-      } catch (err) {
-        console.error('Supabase exception:', err);
-      }
-    }
-
-    function redeemRsvp() {
-      AudioEngine.click();
-      document.getElementById('rsvp-confirm-card').classList.add('hidden');
-      document.getElementById('rsvp-choice-card').classList.remove('hidden');
-    }
-
+    // =========================================================================
+    // Real-Time Countdown (Jaipur Timezone GMT+05:30 Synced)
+    // =========================================================================
     function startCountdown() {
-      const target = new Date('2026-11-19T00:00:00').getTime();
-      setInterval(() => {
-        const diff = Math.max(0, target - new Date().getTime());
-        document.getElementById('cd-d').textContent = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-        document.getElementById('cd-h').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-        document.getElementById('cd-m').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-        const s = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        document.getElementById('cd-s').textContent = s;
-      }, 1000);
+      // Targets 20 November 2026 00:00:00 IST (+05:30)
+      const target = new Date('2026-11-20T00:00:00+05:30').getTime();
+      
+      function update() {
+        const now = Date.now();
+        const diff = Math.max(0, target - now);
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const cdD = document.getElementById('cd-d');
+        const cdH = document.getElementById('cd-h');
+        const cdM = document.getElementById('cd-m');
+        const cdS = document.getElementById('cd-s');
+
+        if (cdD) cdD.textContent = days.toString().padStart(2, '0');
+        if (cdH) cdH.textContent = hours.toString().padStart(2, '0');
+        if (cdM) cdM.textContent = mins.toString().padStart(2, '0');
+        if (cdS) cdS.textContent = secs.toString().padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
     }
 
+    // Start countdown immediately on load
+    startCountdown();
   </script>
 </body>
 </html>

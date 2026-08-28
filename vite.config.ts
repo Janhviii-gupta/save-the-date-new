@@ -13,7 +13,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "index.html"),
-        onepage: path.resolve(__dirname, "onepage.html")
+        interactive: path.resolve(__dirname, "interactive.html"),
+        onepage: path.resolve(__dirname, "onepage.html"),
+        scroll: path.resolve(__dirname, "scroll.html")
       }
     }
   },
