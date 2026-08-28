@@ -96,9 +96,41 @@
     .btn-solid-white-flicker:hover {
       animation: btn-flicker-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
+
+    /* Celebration Balloon Float Animations */
+    @keyframes balloonFloat1 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(4deg); }
+    }
+    @keyframes balloonFloat2 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-22px) rotate(-5deg); }
+    }
+    @keyframes balloonFloat3 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(3deg); }
+    }
+
+    .balloon-anim-1 { animation: balloonFloat1 4.2s ease-in-out infinite; }
+    .balloon-anim-2 { animation: balloonFloat2 5.1s ease-in-out infinite 0.6s; }
+    .balloon-anim-3 { animation: balloonFloat3 4.6s ease-in-out infinite 1.2s; }
+
+    /* Confetti Particle Canvas overlay */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
   </style>
 </head>
 <body class="min-h-screen selection:bg-[#e9c349] selection:text-black font-mono">
+
+  <!-- Interactive Confetti Overlay Canvas -->
+  <canvas id="confetti-canvas"></canvas>
 
   <!-- TOP HEADER BAR: FIXED NON-INTRUSIVE GLASSMORPHISM WITH MATCHING SWITCHER -->
   <header class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#333333] px-3 md:px-8 py-3 flex items-center justify-between shadow-lg">
@@ -322,42 +354,115 @@
     <hr class="border-[#222222]" />
 
     <!-- ========================================================================= -->
-    <!-- SECTION 4: LIVE COUNTDOWN & WARM CELEBRATION FOOTER -->
+    <!-- SECTION 4: LIVE COUNTDOWN WITH RICH CELEBRATION CUES, BANTER & BALLOONS -->
     <!-- ========================================================================= -->
-    <section class="space-y-6 pb-6 font-mono text-center">
-      <div class="space-y-1">
-        <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-widest font-mono">
+    <section class="space-y-6 pb-6 font-mono text-center relative">
+      
+      <!-- Festive Header with Celebration Badges -->
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#e9c349]/10 border border-[#e9c349]/30 rounded-full text-[10px] md:text-xs text-[#e9c349] font-bold uppercase tracking-widest">
+          <span class="text-base animate-bounce">🎉</span>
+          <span>THE GRAND CELEBRATION IS APPROACHING</span>
+          <span class="text-base animate-bounce">✨</span>
+        </div>
+
+        <h2 class="text-2xl md:text-4xl font-bold text-white uppercase tracking-widest font-mono flex items-center justify-center gap-2">
           COUNTDOWN TO JAIPUR
         </h2>
-        <p class="text-xs text-[#e9c349] font-bold uppercase tracking-wider font-mono">
-          19–20 NOVEMBER 2026 // 2 DAYS OF CELEBRATION
+        
+        <p class="text-xs text-[#8e9192] uppercase tracking-widest font-mono">
+          19–20 NOVEMBER 2026 // 2 DAYS OF UNSTOPPABLE MADNESS
         </p>
       </div>
 
-      <!-- Live Countdown Grid -->
-      <div class="border border-[#333333] bg-[#131313] p-5 md:p-8 rounded-sm shadow-2xl space-y-4 max-w-2xl mx-auto">
-        <div class="grid grid-cols-4 gap-2 md:gap-4 p-4 bg-black/60 border border-[#333333] rounded-sm">
-          <div class="p-2 text-center">
-            <div id="cd-d" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#e9c349] tabular-nums font-mono">--</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">DAYS</div>
+      <!-- Main Celebration Countdown Card with Floating Balloon Cues -->
+      <div class="relative border-2 border-[#e9c349]/40 hover:border-[#e9c349] bg-[#131313]/90 backdrop-blur-xl p-5 md:p-8 rounded-sm shadow-[0_0_40px_rgba(233,195,73,0.12)] space-y-6 max-w-2xl mx-auto overflow-hidden group transition-all duration-300">
+        
+        <!-- Left Side Floating Balloon Cues (Festive Emojis) -->
+        <div class="hidden sm:flex flex-col items-center absolute top-4 left-3 pointer-events-none select-none opacity-85 space-y-2">
+          <span class="text-2xl md:text-3xl balloon-anim-1">🎈</span>
+          <span class="text-lg md:text-xl balloon-anim-2">✨</span>
+          <span class="text-xl md:text-2xl balloon-anim-3">🪅</span>
+        </div>
+
+        <!-- Right Side Floating Balloon Cues -->
+        <div class="hidden sm:flex flex-col items-center absolute top-4 right-3 pointer-events-none select-none opacity-85 space-y-2">
+          <span class="text-2xl md:text-3xl balloon-anim-2">🎈</span>
+          <span class="text-lg md:text-xl balloon-anim-1">🍾</span>
+          <span class="text-xl md:text-2xl balloon-anim-3">💃</span>
+        </div>
+
+        <!-- Live Countdown Ticker Grid -->
+        <div class="grid grid-cols-4 gap-2 md:gap-4 p-4 md:p-5 bg-black/75 border border-[#333333] rounded-sm shadow-inner relative z-10">
+          <div class="p-1 md:p-2 text-center">
+            <div id="cd-d" class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono tracking-wider">DAYS</div>
           </div>
-          <div class="p-2 text-center">
-            <div id="cd-h" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#e9c349] tabular-nums font-mono">--</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">HRS</div>
+          <div class="p-1 md:p-2 text-center">
+            <div id="cd-h" class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono tracking-wider">HOURS</div>
           </div>
-          <div class="p-2 text-center">
-            <div id="cd-m" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#e9c349] tabular-nums font-mono">--</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">MIN</div>
+          <div class="p-1 md:p-2 text-center">
+            <div id="cd-m" class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono tracking-wider">MINUTES</div>
           </div>
-          <div class="p-2 text-center">
-            <div id="cd-s" class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#4ade80] tabular-nums font-mono">--</div>
-            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono">SEC</div>
+          <div class="p-1 md:p-2 text-center">
+            <div id="cd-s" class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#4ade80] tabular-nums font-mono">--</div>
+            <div class="text-[9px] md:text-[10px] text-[#8e9192] uppercase mt-1 font-mono tracking-wider">SECONDS</div>
           </div>
         </div>
 
-        <p class="text-[10px] md:text-xs text-[#8e9192] uppercase tracking-widest font-mono">
-          Achrol Niwas · Jaipur, Rajasthan
-        </p>
+        <!-- Interactive Celebration Banter Ticker -->
+        <div class="relative z-10 bg-[#1c1b1b]/95 border border-[#333333] p-3.5 md:p-4 rounded-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+          <div class="flex items-start gap-2.5 flex-grow">
+            <span class="text-xl shrink-0" id="banter-emoji">🥂</span>
+            <div class="space-y-0.5">
+              <span class="text-[9px] text-[#e9c349] font-bold uppercase tracking-widest font-mono">CELEBRATION RADAR:</span>
+              <p id="banter-quote" class="text-xs md:text-sm text-white font-mono leading-snug transition-all duration-300">
+                Counting down the days until Janhvi says yes and Krish gets nervous!
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onclick="cycleBanter();"
+            class="px-2.5 py-1 text-[10px] uppercase font-mono font-bold text-[#e9c349] hover:text-black bg-[#e9c349]/10 hover:bg-[#e9c349] border border-[#e9c349]/40 rounded-sm shrink-0 transition-all cursor-pointer whitespace-nowrap"
+            title="Click for next celebration banter quote"
+          >
+            [ NEXT BANTER ↻ ]
+          </button>
+        </div>
+
+        <!-- Festive Confetti Action Button & 3 Event Badges -->
+        <div class="space-y-4 pt-1 relative z-10">
+          <button
+            type="button"
+            onclick="launchCelebrationConfetti();"
+            class="w-full py-3.5 px-6 rounded-sm bg-gradient-to-r from-[#e9c349] via-[#ffe088] to-[#e9c349] hover:from-white hover:to-white text-black font-extrabold text-xs sm:text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(233,195,73,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.75)] hover:scale-[1.02] transition-all cursor-pointer font-mono"
+          >
+            <span class="text-base">🎉</span>
+            <span>[ POP CELEBRATION CONFETTI ]</span>
+            <span class="text-base">🎊</span>
+          </button>
+
+          <!-- 3 Celebration Highlights Badges -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10px] md:text-[11px] font-mono">
+            <div class="bg-black/60 border border-[#333333] py-2 px-3 rounded-sm text-[#e5e2e1] flex items-center justify-center gap-1.5">
+              <span>🎪</span>
+              <span class="font-bold">2 DAYS OF CELEBRATION</span>
+            </div>
+            <div class="bg-black/60 border border-[#333333] py-2 px-3 rounded-sm text-[#e5e2e1] flex items-center justify-center gap-1.5">
+              <span>🪩</span>
+              <span class="font-bold">3 ICONIC THEMES</span>
+            </div>
+            <div class="bg-black/60 border border-[#333333] py-2 px-3 rounded-sm text-[#e5e2e1] flex items-center justify-center gap-1.5">
+              <span>🏰</span>
+              <span class="font-bold">ACHROL NIWAS RESORT</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Refined Warm Footer -->
@@ -374,7 +479,7 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- AUDIO ENGINE & REEL CONTROLLER -->
+  <!-- AUDIO ENGINE, REEL CONTROLLER, BANTER TICKER & CONFETTI ENGINE -->
   <!-- ========================================================================= -->
   <script>
     const AudioEngine = (() => {
@@ -407,6 +512,18 @@
         bufferCache['buf_ping'] = generateBuffer(0.4, sr, (t) => {
           const env = Math.exp(-t * 10);
           return (Math.sin(2 * Math.PI * 880 * t) + Math.sin(2 * Math.PI * 1320 * t) * 0.4) * env * 0.25;
+        });
+
+        bufferCache['buf_chime'] = generateBuffer(0.6, sr, (t) => {
+          let s = 0;
+          [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, idx) => {
+            const st = idx * 0.04;
+            if (t >= st) {
+              const dt = t - st;
+              s += Math.sin(2 * Math.PI * f * dt) * Math.exp(-dt * 6) * 0.15;
+            }
+          });
+          return s;
         });
       }
 
@@ -528,7 +645,8 @@
       return {
         init, toggle, setVolume,
         click: () => playCachedBuffer('buf_click', 0.2),
-        ping: () => playCachedBuffer('buf_ping', 0.25)
+        ping: () => playCachedBuffer('buf_ping', 0.25),
+        chime: () => playCachedBuffer('buf_chime', 0.3)
       };
     })();
 
@@ -640,7 +758,138 @@
       setInterval(update, 1000);
     }
 
+    // Celebration Banter Quotes Rotation
+    const BANTER_ITEMS = [
+      { emoji: "🥂", quote: "Counting down the days until Janhvi says yes and Krish gets nervous!" },
+      { emoji: "💃", quote: "Time left to practice your best sangeet thumkas & bhangra moves." },
+      { emoji: "🍾", quote: "Stocking the bar for 48 hours of non-stop madness in Jaipur!" },
+      { emoji: "🍛", quote: "Prepare your stomachs for royal Rajasthani feasts & endless mithai." },
+      { emoji: "🪩", quote: "Warning: High voltage glamour and unstoppable dance floors guaranteed." },
+      { emoji: "✨", quote: "Pack your bags, iron your outfits — the wedding of the year is on!" }
+    ];
+
+    let banterIdx = 0;
+    function cycleBanter() {
+      AudioEngine.click();
+      banterIdx = (banterIdx + 1) % BANTER_ITEMS.length;
+      const bQuote = document.getElementById('banter-quote');
+      const bEmoji = document.getElementById('banter-emoji');
+      if (bQuote && bEmoji) {
+        bQuote.style.opacity = '0';
+        setTimeout(() => {
+          bEmoji.textContent = BANTER_ITEMS[banterIdx].emoji;
+          bQuote.textContent = BANTER_ITEMS[banterIdx].quote;
+          bQuote.style.opacity = '1';
+        }, 150);
+      }
+    }
+
+    setInterval(() => {
+      banterIdx = (banterIdx + 1) % BANTER_ITEMS.length;
+      const bQuote = document.getElementById('banter-quote');
+      const bEmoji = document.getElementById('banter-emoji');
+      if (bQuote && bEmoji) {
+        bQuote.style.opacity = '0';
+        setTimeout(() => {
+          bEmoji.textContent = BANTER_ITEMS[banterIdx].emoji;
+          bQuote.textContent = BANTER_ITEMS[banterIdx].quote;
+          bQuote.style.opacity = '1';
+        }, 150);
+      }
+    }, 4200);
+
+    // Celebration Confetti Cannon
+    let confettiParticles = [];
+    let confettiCanvas = null;
+    let confettiCtx = null;
+    let confettiAnimId = null;
+
+    function initConfettiCanvas() {
+      confettiCanvas = document.getElementById('confetti-canvas');
+      if (!confettiCanvas) return;
+      confettiCtx = confettiCanvas.getContext('2d');
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+      window.addEventListener('resize', () => {
+        if (confettiCanvas) {
+          confettiCanvas.width = window.innerWidth;
+          confettiCanvas.height = window.innerHeight;
+        }
+      });
+    }
+
+    function launchCelebrationConfetti() {
+      AudioEngine.chime();
+      if (!confettiCanvas) initConfettiCanvas();
+      if (!confettiCtx) return;
+
+      const colors = ['#e9c349', '#ffe088', '#22d3ee', '#ff69b4', '#4ade80', '#ffffff', '#f43f5e'];
+      const emojis = ['🎉', '✨', '💛', '🎊', '💃', '🥂', '🍾'];
+
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: window.innerWidth * (0.2 + Math.random() * 0.6),
+          y: window.innerHeight * 0.75,
+          vx: (Math.random() - 0.5) * 16,
+          vy: -Math.random() * 18 - 8,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          emoji: Math.random() > 0.65 ? emojis[Math.floor(Math.random() * emojis.length)] : null,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 12,
+          gravity: 0.45,
+          alpha: 1,
+          decay: Math.random() * 0.012 + 0.008
+        });
+      }
+
+      if (!confettiAnimId) {
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      if (!confettiCtx || !confettiCanvas) return;
+      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+      for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotationSpeed;
+        p.alpha -= p.decay;
+
+        if (p.alpha <= 0 || p.y > confettiCanvas.height) {
+          confettiParticles.splice(i, 1);
+          continue;
+        }
+
+        confettiCtx.save();
+        confettiCtx.globalAlpha = Math.max(0, p.alpha);
+        confettiCtx.translate(p.x, p.y);
+        confettiCtx.rotate((p.rotation * Math.PI) / 180);
+
+        if (p.emoji) {
+          confettiCtx.font = `${p.size * 2.2}px serif`;
+          confettiCtx.fillText(p.emoji, 0, 0);
+        } else {
+          confettiCtx.fillStyle = p.color;
+          confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        }
+        confettiCtx.restore();
+      }
+
+      if (confettiParticles.length > 0) {
+        confettiAnimId = requestAnimationFrame(animateConfetti);
+      } else {
+        confettiAnimId = null;
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }
+    }
+
     startCountdown();
+    initConfettiCanvas();
   </script>
 </body>
 </html>

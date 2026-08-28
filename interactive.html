@@ -147,9 +147,38 @@
       backface-visibility: hidden;
       will-change: transform, opacity;
     }
+
+    /* Celebration Balloon Float Animations */
+    @keyframes balloonFloat1 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(4deg); }
+    }
+    @keyframes balloonFloat2 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-22px) rotate(-5deg); }
+    }
+    @keyframes balloonFloat3 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(3deg); }
+    }
+
+    .balloon-anim-1 { animation: balloonFloat1 4.2s ease-in-out infinite; }
+    .balloon-anim-2 { animation: balloonFloat2 5.1s ease-in-out infinite 0.6s; }
+    .balloon-anim-3 { animation: balloonFloat3 4.6s ease-in-out infinite 1.2s; }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
   </style>
 </head>
 <body class="min-h-[100dvh] flex flex-col justify-between selection:bg-white selection:text-black font-mono">
+
+  <!-- Interactive Confetti Overlay Canvas -->
+  <canvas id="confetti-canvas"></canvas>
 
   <!-- CRT SCANLINES & CHROMATIC ABERRATION VIGNETTE -->
   <div class="crt-overlay"></div>
@@ -448,9 +477,9 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTOR 3: VENUE & GOOGLE MAPS -->
+    <!-- SECTOR 3: VENUE & GOOGLE MAPS + CELEBRATION COUNTDOWN & BANTER -->
     <!-- ========================================================================= -->
-    <section id="sec-venue" class="hidden w-full flex-col font-mono max-w-5xl">
+    <section id="sec-venue" class="hidden w-full flex-col font-mono max-w-5xl space-y-6">
       <div class="w-full border border-[#333333] bg-[#131313]/60 backdrop-blur-xl relative overflow-hidden flex flex-col shadow-2xl rounded-sm">
         <div class="border-b border-[#333333] p-2.5 md:p-3 flex justify-between items-center bg-[#1c1b1b]/80">
           <span class="text-[9px] md:text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">VENUE DETAILS</span>
@@ -507,6 +536,49 @@
             <span class="material-symbols-outlined text-[12px] md:text-[14px]">calendar_today</span>
             <span>19–20 NOVEMBER 2026</span>
           </div>
+        </div>
+      </div>
+
+      <!-- CELEBRATION COUNTDOWN & BANTER MODULE (IN INTERACTIVE MODE) -->
+      <div class="border border-[#e9c349]/40 bg-[#131313]/90 backdrop-blur-xl p-5 md:p-6 rounded-sm shadow-2xl space-y-4 text-center">
+        <div class="flex items-center justify-between border-b border-[#333333] pb-2">
+          <span class="text-[10px] text-[#e9c349] font-bold uppercase tracking-widest font-mono">🎉 LIVE CELEBRATION COUNTDOWN</span>
+          <span class="text-[9px] text-[#8e9192] uppercase font-mono">JAIPUR 2026</span>
+        </div>
+
+        <!-- Live Countdown Ticker Grid -->
+        <div class="grid grid-cols-4 gap-2 md:gap-4 p-3.5 bg-black/75 border border-[#333333] rounded-sm">
+          <div class="p-1 text-center">
+            <div id="i-cd-d" class="text-2xl sm:text-4xl font-extrabold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[8px] md:text-[9px] text-[#8e9192] uppercase mt-1 font-mono">DAYS</div>
+          </div>
+          <div class="p-1 text-center">
+            <div id="i-cd-h" class="text-2xl sm:text-4xl font-extrabold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[8px] md:text-[9px] text-[#8e9192] uppercase mt-1 font-mono">HOURS</div>
+          </div>
+          <div class="p-1 text-center">
+            <div id="i-cd-m" class="text-2xl sm:text-4xl font-extrabold text-[#e9c349] tabular-nums font-mono">--</div>
+            <div class="text-[8px] md:text-[9px] text-[#8e9192] uppercase mt-1 font-mono">MINUTES</div>
+          </div>
+          <div class="p-1 text-center">
+            <div id="i-cd-s" class="text-2xl sm:text-4xl font-extrabold text-[#4ade80] tabular-nums font-mono">--</div>
+            <div class="text-[8px] md:text-[9px] text-[#8e9192] uppercase mt-1 font-mono">SECONDS</div>
+          </div>
+        </div>
+
+        <!-- Banter & Confetti Button -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#1c1b1b] p-3 border border-[#333333] rounded-sm text-left">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🥂</span>
+            <span id="i-banter-text" class="text-xs text-white font-mono">Counting down the days until Janhvi says yes and Krish gets nervous!</span>
+          </div>
+          <button
+            type="button"
+            onclick="launchCelebrationConfetti();"
+            class="px-4 py-2 bg-[#e9c349] hover:bg-white text-black font-bold text-[10px] md:text-xs uppercase tracking-wider rounded-sm shrink-0 transition-all cursor-pointer font-mono shadow-[0_0_15px_rgba(233,195,73,0.4)]"
+          >
+            🎉 POP CONFETTI
+          </button>
         </div>
       </div>
     </section>
@@ -570,6 +642,18 @@
         bufferCache['buf_ping'] = generateBuffer(0.4, sr, (t) => {
           const env = Math.exp(-t * 10);
           return (Math.sin(2 * Math.PI * 880 * t) + Math.sin(2 * Math.PI * 1320 * t) * 0.4) * env * 0.25;
+        });
+
+        bufferCache['buf_chime'] = generateBuffer(0.6, sr, (t) => {
+          let s = 0;
+          [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, idx) => {
+            const st = idx * 0.04;
+            if (t >= st) {
+              const dt = t - st;
+              s += Math.sin(2 * Math.PI * f * dt) * Math.exp(-dt * 6) * 0.15;
+            }
+          });
+          return s;
         });
 
         bufferCache['buf_access_granted'] = generateBuffer(0.45, sr, (t) => {
@@ -720,6 +804,7 @@
         init, toggle, setVolume, setTrack,
         click: () => playCachedBuffer('buf_click', 0.2),
         ping: () => playCachedBuffer('buf_ping', 0.25),
+        chime: () => playCachedBuffer('buf_chime', 0.3),
         accessGranted: () => playCachedBuffer('buf_access_granted', 0.35)
       };
     })();
@@ -915,6 +1000,123 @@
       else if (t === 'venue') AudioEngine.setTrack('rajasthan_grand');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Celebration Countdown & Confetti
+    function startInteractiveCountdown() {
+      const target = new Date('2026-11-20T00:00:00+05:30').getTime();
+      function update() {
+        const now = Date.now();
+        const diff = Math.max(0, target - now);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const cdD = document.getElementById('i-cd-d');
+        const cdH = document.getElementById('i-cd-h');
+        const cdM = document.getElementById('i-cd-m');
+        const cdS = document.getElementById('i-cd-s');
+
+        if (cdD) cdD.textContent = days.toString().padStart(2, '0');
+        if (cdH) cdH.textContent = hours.toString().padStart(2, '0');
+        if (cdM) cdM.textContent = mins.toString().padStart(2, '0');
+        if (cdS) cdS.textContent = secs.toString().padStart(2, '0');
+      }
+      update();
+      setInterval(update, 1000);
+    }
+
+    let confettiParticles = [];
+    let confettiCanvas = null;
+    let confettiCtx = null;
+    let confettiAnimId = null;
+
+    function initConfettiCanvas() {
+      confettiCanvas = document.getElementById('confetti-canvas');
+      if (!confettiCanvas) return;
+      confettiCtx = confettiCanvas.getContext('2d');
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+      window.addEventListener('resize', () => {
+        if (confettiCanvas) {
+          confettiCanvas.width = window.innerWidth;
+          confettiCanvas.height = window.innerHeight;
+        }
+      });
+    }
+
+    function launchCelebrationConfetti() {
+      AudioEngine.chime();
+      if (!confettiCanvas) initConfettiCanvas();
+      if (!confettiCtx) return;
+
+      const colors = ['#e9c349', '#ffe088', '#22d3ee', '#ff69b4', '#4ade80', '#ffffff', '#f43f5e'];
+      const emojis = ['🎉', '✨', '💛', '🎊', '💃', '🥂', '🍾'];
+
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: window.innerWidth * (0.2 + Math.random() * 0.6),
+          y: window.innerHeight * 0.75,
+          vx: (Math.random() - 0.5) * 16,
+          vy: -Math.random() * 18 - 8,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          emoji: Math.random() > 0.65 ? emojis[Math.floor(Math.random() * emojis.length)] : null,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 12,
+          gravity: 0.45,
+          alpha: 1,
+          decay: Math.random() * 0.012 + 0.008
+        });
+      }
+
+      if (!confettiAnimId) {
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      if (!confettiCtx || !confettiCanvas) return;
+      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+      for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotationSpeed;
+        p.alpha -= p.decay;
+
+        if (p.alpha <= 0 || p.y > confettiCanvas.height) {
+          confettiParticles.splice(i, 1);
+          continue;
+        }
+
+        confettiCtx.save();
+        confettiCtx.globalAlpha = Math.max(0, p.alpha);
+        confettiCtx.translate(p.x, p.y);
+        confettiCtx.rotate((p.rotation * Math.PI) / 180);
+
+        if (p.emoji) {
+          confettiCtx.font = `${p.size * 2.2}px serif`;
+          confettiCtx.fillText(p.emoji, 0, 0);
+        } else {
+          confettiCtx.fillStyle = p.color;
+          confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        }
+        confettiCtx.restore();
+      }
+
+      if (confettiParticles.length > 0) {
+        confettiAnimId = requestAnimationFrame(animateConfetti);
+      } else {
+        confettiAnimId = null;
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }
+    }
+
+    startInteractiveCountdown();
+    initConfettiCanvas();
   </script>
 </body>
 </html>
