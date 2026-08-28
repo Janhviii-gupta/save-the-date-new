@@ -194,36 +194,70 @@
         </p>
       </div>
 
-      <!-- 16-Photo Kinetic Motion Reel (Enlarged Cinematic Frame + Play Button) -->
-      <div class="border-2 border-[#e9c349]/60 hover:border-[#e9c349] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow w-full max-w-4xl mx-auto cursor-pointer transition-all duration-300 gpu-accelerated" onclick="handleReelClick()">
-        <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] bg-black overflow-hidden flex items-center justify-center">
-          <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] gpu-accelerated" src="reveal-photos/photo-1944.jpg" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none"></div>
-
-          <!-- Initial Tap to Play Overlay -->
-          <div id="reel-start-overlay" class="absolute inset-0 bg-black/65 backdrop-blur-[3px] flex flex-col items-center justify-center p-4 md:p-8 z-30 transition-all duration-300">
-            <button
-              type="button"
-              onclick="event.stopPropagation(); startReelAndSound();"
-              class="px-6 md:px-10 py-4 md:py-5 rounded-sm bg-white hover:bg-black text-black hover:text-[#e9c349] border-2 border-white hover:border-[#e9c349] font-mono font-extrabold text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-[0_0_35px_rgba(255,255,255,0.75)] hover:shadow-[0_0_40px_rgba(233,195,73,0.85)] hover:scale-105 transition-all cursor-pointer btn-solid-white-flicker"
-            >
-              <span class="material-symbols-outlined text-xl md:text-2xl">play_circle</span>
-              <span>[ PLAY PHOTO REEL ]</span>
-            </button>
-            <span class="text-[10px] md:text-xs text-[#e9c349] font-bold uppercase tracking-[0.2em] mt-3 font-mono">
-              TAP TO PLAY WITH MUSIC
-            </span>
+      <!-- 16-Photo Kinetic Motion Reel (Enlarged Cinematic Frame + Celebration Background) -->
+      <div class="relative w-full max-w-4xl mx-auto py-2">
+        
+        <!-- Background Celebration Glow & Floating Elements (Activated on Reveal) -->
+        <div id="reel-bg-celebration" class="opacity-0 transition-opacity duration-700 pointer-events-none select-none">
+          <!-- Radiant Amber-Rose-Gold Halo Aura Glow -->
+          <div class="absolute -inset-4 md:-inset-8 bg-gradient-to-r from-[#e9c349]/25 via-[#ff69b4]/20 to-[#e9c349]/25 rounded-2xl blur-2xl animate-pulse"></div>
+          
+          <!-- Left Floating Celebration Emojis & Balloons -->
+          <div class="hidden sm:flex flex-col items-center absolute -left-8 md:-left-12 top-4 space-y-3 z-10">
+            <span class="text-3xl md:text-4xl balloon-anim-1">🎈</span>
+            <span class="text-xl md:text-2xl balloon-anim-2">✨</span>
+            <span class="text-2xl md:text-3xl balloon-anim-3">🥂</span>
+            <span class="text-xl md:text-2xl balloon-anim-1">💛</span>
+            <span class="text-2xl md:text-3xl balloon-anim-2">💃</span>
           </div>
 
-          <!-- Bottom Play / Pause & Frame Counter (Revealed when playing) -->
-          <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 md:inset-x-6 flex items-center justify-between z-20 px-3.5 py-2 bg-black/85 backdrop-blur-md border border-[#333333] text-[10px] md:text-xs text-white rounded-sm font-mono">
-            <span class="font-bold tracking-widest text-[#e9c349]">
-              PHOTO <span id="reel-num" class="text-white">1</span> / 16
+          <!-- Right Floating Celebration Emojis & Balloons -->
+          <div class="hidden sm:flex flex-col items-center absolute -right-8 md:-right-12 top-4 space-y-3 z-10">
+            <span class="text-3xl md:text-4xl balloon-anim-2">🎈</span>
+            <span class="text-xl md:text-2xl balloon-anim-1">✨</span>
+            <span class="text-2xl md:text-3xl balloon-anim-3">🍾</span>
+            <span class="text-xl md:text-2xl balloon-anim-2">💖</span>
+            <span class="text-2xl md:text-3xl balloon-anim-1">🕺</span>
+          </div>
+
+          <!-- Floating Celebration Banner atop reel -->
+          <div class="absolute -top-3.5 inset-x-0 flex justify-center z-20">
+            <span class="bg-black/90 border border-[#e9c349] text-[#e9c349] px-3.5 py-0.5 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] shadow-[0_0_15px_rgba(233,195,73,0.6)] animate-bounce">
+              🎉 JANHVI &amp; KRISH // CELEBRATION REEL 🎊
             </span>
-            <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1.5 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer font-mono">
-              <span class="material-symbols-outlined text-sm" id="reel-play-icon">pause</span>
-              <span id="reel-play-lbl">PAUSE</span>
-            </button>
+          </div>
+        </div>
+
+        <div class="border-2 border-[#e9c349]/60 hover:border-[#e9c349] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow w-full cursor-pointer transition-all duration-300 gpu-accelerated z-10" onclick="handleReelClick()">
+          <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] bg-black overflow-hidden flex items-center justify-center">
+            <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] gpu-accelerated" src="reveal-photos/photo-1944.jpg" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none"></div>
+
+            <!-- Initial Tap to Play Overlay -->
+            <div id="reel-start-overlay" class="absolute inset-0 bg-black/65 backdrop-blur-[3px] flex flex-col items-center justify-center p-4 md:p-8 z-30 transition-all duration-300">
+              <button
+                type="button"
+                onclick="event.stopPropagation(); startReelAndSound();"
+                class="px-6 md:px-10 py-4 md:py-5 rounded-sm bg-white hover:bg-black text-black hover:text-[#e9c349] border-2 border-white hover:border-[#e9c349] font-mono font-extrabold text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-[0_0_35px_rgba(255,255,255,0.75)] hover:shadow-[0_0_40px_rgba(233,195,73,0.85)] hover:scale-105 transition-all cursor-pointer btn-solid-white-flicker"
+              >
+                <span class="material-symbols-outlined text-xl md:text-2xl">play_circle</span>
+                <span>[ PLAY PHOTO REEL ]</span>
+              </button>
+              <span class="text-[10px] md:text-xs text-[#e9c349] font-bold uppercase tracking-[0.2em] mt-3 font-mono">
+                TAP TO PLAY WITH MUSIC
+              </span>
+            </div>
+
+            <!-- Bottom Play / Pause & Frame Counter (Revealed when playing) -->
+            <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 md:inset-x-6 flex items-center justify-between z-20 px-3.5 py-2 bg-black/85 backdrop-blur-md border border-[#333333] text-[10px] md:text-xs text-white rounded-sm font-mono">
+              <span class="font-bold tracking-widest text-[#e9c349]">
+                PHOTO <span id="reel-num" class="text-white">1</span> / 16
+              </span>
+              <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1.5 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer font-mono">
+                <span class="material-symbols-outlined text-sm" id="reel-play-icon">pause</span>
+                <span id="reel-play-lbl">PAUSE</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -692,6 +726,16 @@
 
       if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
       if (reelBottomControls) reelBottomControls.classList.remove('hidden');
+
+      // Activate celebration background halo & floating balloons
+      const bgCel = document.getElementById('reel-bg-celebration');
+      if (bgCel) {
+        bgCel.classList.remove('opacity-0');
+        bgCel.classList.add('opacity-100');
+      }
+
+      // Launch celebration confetti burst!
+      launchCelebrationConfetti();
 
       isReelPlaying = true;
       if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
