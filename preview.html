@@ -874,15 +874,22 @@
       img.src = src;
     });
 
+    let prevInteractiveIndex = 0;
     function setReelPhoto(idx) {
-      currentReelPhoto = (idx + REEL_PHOTOS.length) % REEL_PHOTOS.length;
-      for (let i = 0; i < REEL_PHOTOS.length; i++) {
-        const frame = document.getElementById(`reel-f-${i}`);
-        if (frame) {
-          frame.style.opacity = (i === currentReelPhoto) ? '1' : '0';
-          frame.style.zIndex = (i === currentReelPhoto) ? '10' : '0';
-        }
+      const nextIndex = (idx + REEL_PHOTOS.length) % REEL_PHOTOS.length;
+      const prevFrame = document.getElementById(`reel-f-${prevInteractiveIndex}`);
+      const nextFrame = document.getElementById(`reel-f-${nextIndex}`);
+      
+      if (prevFrame && prevInteractiveIndex !== nextIndex) {
+        prevFrame.style.opacity = '0';
+        prevFrame.style.zIndex = '0';
       }
+      if (nextFrame) {
+        nextFrame.style.opacity = '1';
+        nextFrame.style.zIndex = '10';
+      }
+      prevInteractiveIndex = nextIndex;
+      currentReelPhoto = nextIndex;
 
       const numEl = document.getElementById('photo-frame-number');
       if (numEl) numEl.textContent = `PHOTO ${currentReelPhoto + 1} / 16 // JAIPUR`;
@@ -890,11 +897,9 @@
       for (let i = 0; i < REEL_PHOTOS.length; i++) {
         const pip = document.getElementById(`reel-pip-${i}`);
         if (pip) {
-          if (i === currentReelPhoto) {
-            pip.className = 'h-1.5 flex-1 bg-[#e9c349] transition-all rounded-full';
-          } else {
-            pip.className = 'h-1 flex-1 bg-[#333333] transition-all rounded-full hover:bg-white/50 cursor-pointer';
-          }
+          pip.className = (i === currentReelPhoto)
+            ? 'h-1.5 flex-1 bg-[#e9c349] transition-all rounded-full'
+            : 'h-1 flex-1 bg-[#333333] transition-all rounded-full hover:bg-white/50 cursor-pointer';
         }
       }
     }

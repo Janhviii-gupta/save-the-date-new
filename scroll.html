@@ -690,6 +690,7 @@
     ];
 
     let reelIndex = 0;
+    let previousReelIndex = 0;
     let reelTimer = null;
     let isReelPlaying = false;
     const reelNumEl = document.getElementById('reel-num');
@@ -699,14 +700,20 @@
     const reelBottomControls = document.getElementById('reel-bottom-controls');
 
     function setSimpleReelFrame(idx) {
-      reelIndex = (idx + REEL_PHOTOS.length) % REEL_PHOTOS.length;
-      for (let i = 0; i < REEL_PHOTOS.length; i++) {
-        const f = document.getElementById(`reel-f-${i}`);
-        if (f) {
-          f.style.opacity = (i === reelIndex) ? '1' : '0';
-          f.style.zIndex = (i === reelIndex) ? '10' : '0';
-        }
+      const nextIndex = (idx + REEL_PHOTOS.length) % REEL_PHOTOS.length;
+      const prevFrame = document.getElementById(`reel-f-${previousReelIndex}`);
+      const nextFrame = document.getElementById(`reel-f-${nextIndex}`);
+      
+      if (prevFrame && previousReelIndex !== nextIndex) {
+        prevFrame.style.opacity = '0';
+        prevFrame.style.zIndex = '0';
       }
+      if (nextFrame) {
+        nextFrame.style.opacity = '1';
+        nextFrame.style.zIndex = '10';
+      }
+      previousReelIndex = nextIndex;
+      reelIndex = nextIndex;
       if (reelNumEl) reelNumEl.textContent = (reelIndex + 1);
     }
 
