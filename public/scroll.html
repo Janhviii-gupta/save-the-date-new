@@ -135,7 +135,7 @@
       <a
         href="interactive.html"
         class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#e9c349]/50 bg-[#1c1b1b]/80 backdrop-blur-md hover:bg-[#e9c349] text-[#e9c349] hover:text-black font-mono text-[10px] md:text-xs font-bold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(233,195,73,0.15)] hover:shadow-[0_0_20px_rgba(233,195,73,0.5)] cursor-pointer"
-        title="Switch to full interactive spy terminal mode"
+        title="Switch to Interactive Mode"
       >
         <span class="material-symbols-outlined text-sm">smart_toy</span>
         <span class="hidden sm:inline">[ INTERACTIVE MODE ↗ ]</span>
@@ -162,37 +162,31 @@
         </p>
       </div>
 
-      <!-- 16-Photo Kinetic Motion Reel (Enlarged Cinematic Frame + Thematic Initialize Trigger) -->
+      <!-- 16-Photo Kinetic Motion Reel (Enlarged Cinematic Frame + Play Button) -->
       <div class="border-2 border-[#e9c349]/60 hover:border-[#e9c349] bg-[#0e0e0e] overflow-hidden shadow-2xl relative rounded-sm gold-glow w-full max-w-4xl mx-auto cursor-pointer transition-all duration-300 gpu-accelerated" onclick="handleReelClick()">
         <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] bg-black overflow-hidden flex items-center justify-center">
           <img id="reel-img" alt="Janhvi & Krish Motion Reel" class="w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] gpu-accelerated" src="reveal-photos/photo-1944.jpg" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none"></div>
 
-          <!-- Thematic Corner HUD Marks -->
-          <div class="absolute top-2.5 left-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
-          <div class="absolute top-2.5 right-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
-          <div class="absolute bottom-2.5 left-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
-          <div class="absolute bottom-2.5 right-2.5 text-[#e9c349] font-mono text-xs z-20 pointer-events-none">+</div>
-
-          <!-- Initial Thematic Tap to Initialize & Unlock Overlay -->
+          <!-- Initial Tap to Play Overlay -->
           <div id="reel-start-overlay" class="absolute inset-0 bg-black/65 backdrop-blur-[3px] flex flex-col items-center justify-center p-4 md:p-8 z-30 transition-all duration-300">
             <button
               type="button"
               onclick="event.stopPropagation(); startReelAndSound();"
               class="px-6 md:px-10 py-4 md:py-5 rounded-sm bg-white hover:bg-black text-black hover:text-[#e9c349] border-2 border-white hover:border-[#e9c349] font-mono font-extrabold text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-[0_0_35px_rgba(255,255,255,0.75)] hover:shadow-[0_0_40px_rgba(233,195,73,0.85)] hover:scale-105 transition-all cursor-pointer btn-solid-white-flicker"
             >
-              <span class="material-symbols-outlined text-xl md:text-2xl">terminal</span>
-              <span>[ INITIALIZE &amp; VIEW REVEAL ]</span>
+              <span class="material-symbols-outlined text-xl md:text-2xl">play_circle</span>
+              <span>[ PLAY PHOTO REEL ]</span>
             </button>
             <span class="text-[10px] md:text-xs text-[#e9c349] font-bold uppercase tracking-[0.2em] mt-3 font-mono">
-              &gt; TAP TO UNLOCK SOUND &amp; VIEW CELEBRATION INTEL
+              TAP TO PLAY WITH MUSIC
             </span>
           </div>
 
           <!-- Bottom Play / Pause & Frame Counter (Revealed when playing) -->
           <div id="reel-bottom-controls" class="hidden absolute bottom-3 inset-x-3 md:inset-x-6 flex items-center justify-between z-20 px-3.5 py-2 bg-black/85 backdrop-blur-md border border-[#333333] text-[10px] md:text-xs text-white rounded-sm font-mono">
             <span class="font-bold tracking-widest text-[#e9c349]">
-              FRAME: <span id="reel-num" class="text-white">1</span> / 16
+              PHOTO <span id="reel-num" class="text-white">1</span> / 16
             </span>
             <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1.5 text-[#e9c349] hover:text-white font-bold tracking-widest uppercase transition-colors cursor-pointer font-mono">
               <span class="material-symbols-outlined text-sm" id="reel-play-icon">pause</span>
@@ -274,7 +268,7 @@
       <div class="text-xs text-[#e5e2e1] leading-relaxed bg-[#131313] p-3.5 border border-[#333333] rounded-sm flex items-start gap-2.5 font-mono">
         <span class="text-base shrink-0">💡</span>
         <div>
-          <strong class="text-[#e9c349]">Directive:</strong> Start shopping now, because wedding outfits take longer to stitch than a government project!
+          <strong class="text-[#e9c349]">Note:</strong> Start shopping now, because wedding outfits take longer to stitch than a government project!
         </div>
       </div>
     </section>
@@ -290,7 +284,7 @@
           ACHROL NIWAS, JAIPUR
         </h2>
         <p class="text-xs text-[#e9c349] font-bold uppercase tracking-wider font-mono">
-          19–20 NOVEMBER 2026 // EVENT HEADQUARTERS
+          19–20 NOVEMBER 2026 // CELEBRATION VENUE
         </p>
       </div>
 
@@ -362,7 +356,7 @@
         </div>
 
         <p class="text-[10px] md:text-xs text-[#8e9192] uppercase tracking-widest font-mono">
-          COORDS: 27.1425° N, 75.9520° E · PROBABILITY OF PURE CHAOS: 9,999.99%
+          Achrol Niwas · Jaipur, Rajasthan
         </p>
       </div>
 
@@ -388,7 +382,6 @@
       let romanticOscs = [], romanticTimer = null, romanticGain = null;
       let delay = null;
 
-      // Low-Latency Buffer Cache for micro-interactions
       const bufferCache = {};
 
       function generateBuffer(durationSec, sampleRate, genFn) {
@@ -406,13 +399,11 @@
         if (!ctx) return;
         const sr = ctx.sampleRate || 44100;
 
-        // Gentle acoustic tap
         bufferCache['buf_click'] = generateBuffer(0.03, sr, (t) => {
           const env = Math.exp(-t * 220);
           return Math.sin(2 * Math.PI * 180 * t) * env * 0.3;
         });
 
-        // Soft glass chime
         bufferCache['buf_ping'] = generateBuffer(0.4, sr, (t) => {
           const env = Math.exp(-t * 10);
           return (Math.sin(2 * Math.PI * 880 * t) + Math.sin(2 * Math.PI * 1320 * t) * 0.4) * env * 0.25;
@@ -460,7 +451,6 @@
         startRomanticLoveTheme();
       }
 
-      // ROMANTIC LOVE THEME (WARM AMBIENT ACOUSTIC RAGA)
       function startRomanticLoveTheme() {
         if (!ctx || romanticGain) return;
         try {
@@ -476,7 +466,6 @@
           if (delay) rf.connect(delay);
           rf.connect(master);
 
-          // Warm Pad Chords (F Major 7 / C Harmonious Sine Drone)
           const padNotes = [174.61, 261.63, 329.63, 392.0];
           padNotes.forEach(freq => {
             const osc = ctx.createOscillator(), g = ctx.createGain();
@@ -489,7 +478,6 @@
             romanticOscs.push(osc);
           });
 
-          // Sparkling Celebration Melody Bells
           const scale = [523.25, 659.25, 783.99, 987.77, 1046.5, 1318.5, 1567.98];
           let aIdx = 0;
           romanticTimer = setInterval(() => {
@@ -544,7 +532,6 @@
       };
     })();
 
-    // 16-Photo Kinetic Reel Controller (Smooth GPU-accelerated cycle)
     const REEL_PHOTOS = [
       "reveal-photos/photo-1944.jpg",
       "reveal-photos/photo-1945.jpg",
@@ -574,7 +561,6 @@
     const reelStartOverlay = document.getElementById('reel-start-overlay');
     const reelBottomControls = document.getElementById('reel-bottom-controls');
 
-    // Pre-cache all 16 images in browser memory for zero-lag playback
     const preloadedImages = REEL_PHOTOS.map(src => {
       const img = new Image();
       img.src = src;
@@ -582,16 +568,13 @@
     });
 
     function startReelAndSound() {
-      // 1. Unlock Web Audio Context
       AudioEngine.init();
       const eq = document.getElementById('audio-eq');
       if (eq) eq.classList.remove('hidden');
 
-      // 2. Hide initial overlay & show bottom controls
       if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
       if (reelBottomControls) reelBottomControls.classList.remove('hidden');
 
-      // 3. Start 16-photo kinetic reel
       isReelPlaying = true;
       if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
       if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
@@ -630,11 +613,7 @@
       }
     }
 
-    // =========================================================================
-    // Real-Time Countdown (Jaipur Timezone GMT+05:30 Synced)
-    // =========================================================================
     function startCountdown() {
-      // Targets 20 November 2026 00:00:00 IST (+05:30)
       const target = new Date('2026-11-20T00:00:00+05:30').getTime();
       
       function update() {
@@ -661,7 +640,6 @@
       setInterval(update, 1000);
     }
 
-    // Start countdown immediately on load
     startCountdown();
   </script>
 </body>

@@ -44,16 +44,16 @@ export function SectorDetails({ onAdvance }: SectorDetailsProps) {
         <div className="flex items-center gap-2">
           <div className="h-[1px] bg-[#333333] flex-grow" />
           <span className="font-mono text-[9px] md:text-[10px] uppercase text-[#8e9192] tracking-[0.2em]">
-            [MISSION_MANIFEST // 5 CLASSIFIED SEGMENTS]
+            [ CELEBRATION DETAILS // JAIPUR 2026 ]
           </span>
           <div className="h-[1px] bg-[#333333] w-12" />
         </div>
 
         <h1 className="font-mono text-xl md:text-3xl text-white uppercase tracking-widest flex items-center gap-2 font-bold">
-          MISSION_PARAMETERS <span className="blinking-caret text-white" />
+          CELEBRATION DETAILS <span className="blinking-caret text-white" />
         </h1>
         <p className="font-mono text-[11px] md:text-xs text-[#8e9192] max-w-2xl uppercase tracking-widest leading-relaxed">
-          Analyzing current event parameters. Please review critical updates below.
+          Event schedule &amp; dress code themes. Please review the details below.
         </p>
       </div>
 

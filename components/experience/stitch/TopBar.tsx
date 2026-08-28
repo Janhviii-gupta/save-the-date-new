@@ -43,12 +43,10 @@ export function TopBar({ currentSector, isRevealed = false }: TopBarProps) {
           {isRevealed || currentSector !== "intro" ? "terminal" : "lock"}
         </span>
         <span className="font-mono text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.2em] whitespace-nowrap">
-          {isRevealed || currentSector !== "intro"
-            ? "SAVE THE DATE 19-20 NOV"
-            : "[ CLASSIFIED // LEVEL 5 ACCESS ]"}
+          JANHVI &amp; KRISH // SAVE THE DATE
         </span>
-        <span className="hidden sm:inline-block font-mono text-[10px] text-[#ffb4ab] border border-[#ffb4ab]/40 px-2 py-0.5 ml-2">
-          {isRevealed || currentSector !== "intro" ? "[ ACTIVE ]" : "[ RESTRICTED ]"}
+        <span className="hidden sm:inline-block font-mono text-[10px] text-[#e9c349] border border-[#e9c349]/40 px-2 py-0.5 ml-2">
+          [ JAIPUR 2026 ]
         </span>
       </div>
 

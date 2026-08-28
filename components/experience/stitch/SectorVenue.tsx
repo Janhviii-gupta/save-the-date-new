@@ -143,16 +143,16 @@ export function SectorVenue({ onAdvance }: SectorVenueProps) {
         {/* System Calculation Block */}
         <div className="bg-[#1c1b1b] p-4 md:p-8 flex flex-col justify-center min-h-[160px] md:min-h-[200px] border-t border-[#333333]">
           <div className="font-mono text-[9px] md:text-[10px] text-[#8e9192] mb-3 flex items-center space-x-2 tracking-widest uppercase">
-            <span className="material-symbols-outlined text-[14px]">memory</span>
-            <span>SYSTEM_CALCULATION_LOG</span>
+            <span className="material-symbols-outlined text-[14px]">calendar_today</span>
+            <span>CELEBRATION DETAILS</span>
           </div>
           <div className="font-mono text-xs md:text-sm text-white space-y-3">
             <p className="opacity-90 tracking-wider text-xs md:text-sm">
-              &gt; Initializing sequence...
+              &gt; Dates: 19–20 November 2026
             </p>
             {line2Visible && (
               <p className="opacity-90 tracking-wider text-xs md:text-sm animate-[fadeIn_0.3s_ease-out]">
-                &gt; Querying geographic delta: JAIPUR_COORDS_LOCKED...
+                &gt; Destination: Jaipur, Rajasthan
               </p>
             )}
             {line3Visible && (
@@ -160,7 +160,7 @@ export function SectorVenue({ onAdvance }: SectorVenueProps) {
                 <span className="mr-2 text-[#e9c349]">&gt;</span>
                 <p className="text-[#e9c349] leading-loose tracking-wider">
                   <span className="bg-[#e9c349]/10 px-2.5 py-1.5 inline-block border border-[#e9c349]/30 text-xs md:text-sm font-bold">
-                    Calculating probability of pure chaos: 9,999.99% (CRITICAL)
+                    Achrol Niwas · 2 Days of Celebration &amp; Music
                   </span>
                 </p>
               </div>

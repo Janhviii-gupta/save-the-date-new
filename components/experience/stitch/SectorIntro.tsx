@@ -42,9 +42,9 @@ export function SectorIntro({ onAdvance, onRevealed }: SectorIntroProps) {
   const dramaticPlayed = useRef(false);
 
   const lines = [
-    "Stop scrolling.",
-    "Look at your screen.",
-    "A classified database just crashed, and only one file survived..."
+    "We're getting married!",
+    "Save the Date: 19–20 November 2026",
+    "Join us in Jaipur, Rajasthan for 2 days of celebration!"
   ];
 
   // Typewriter effect
@@ -449,7 +449,7 @@ export function SectorIntro({ onAdvance, onRevealed }: SectorIntroProps) {
                 warning
               </span>
               <span className="font-mono text-[10px] md:text-xs text-white uppercase tracking-widest text-left leading-relaxed">
-                STATUS: LOCKED IN. PROBABILITY OF CHAOS: 9,999.99% - TOTAL SYSTEM COLLAPSE IMMINENT
+                19–20 NOVEMBER 2026 // JAIPUR, RAJASTHAN
               </span>
             </div>
           </div>
