@@ -746,79 +746,370 @@
       return { init, toggle };
     })();
 
-    // =========================================================================
-    // PERPETUAL CELEBRATION CONFETTI LOOP ENGINE
-    // Runs continuously and non-stop once clicked until the tab is closed!
-    // =========================================================================
-    let isConfettiLoopActive = false;
+  <!-- Persistent Fullscreen Celebration Canvas (Z-Index 9999, Zero-Latency, Perpetual) -->
+  <canvas id="celebration-canvas" class="fixed inset-0 pointer-events-none w-full h-full" style="z-index: 9999; display: none;"></canvas>
 
-    function fireSingleCelebrationBurst(count = 70) {
-      if (typeof confetti !== 'function') return;
-      confetti({
-        particleCount: count,
-        spread: 90,
-        origin: { y: 0.6 },
-        colors: ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#FF85A2', '#FFFFFF'],
-        disableForReducedMotion: false
-      });
+  <script>
+    // 16 Photos Pre-cached Elements
+    const REEL_COUNT = 16;
+    const reelElements = [];
+    for (let i = 0; i < REEL_COUNT; i++) {
+      reelElements.push(document.getElementById(`reel-f-${i}`));
     }
 
+    let reelIndex = 0;
+    let prevIndex = 0;
+    let reelTimer = null;
+    let isReelPlaying = false;
+    const reelPlayIcon = document.getElementById('reel-play-icon');
+    const reelPlayLbl = document.getElementById('reel-play-lbl');
+    const reelStartOverlay = document.getElementById('reel-start-overlay');
+    const reelBottomControls = document.getElementById('reel-bottom-controls');
+
+    function setReelFrame(idx) {
+      const next = (idx + REEL_COUNT) % REEL_COUNT;
+      if (prevIndex !== next) {
+        const prev = reelElements[prevIndex];
+        if (prev) {
+          prev.classList.add('hidden');
+          prev.classList.remove('block');
+          prev.style.zIndex = '0';
+        }
+      }
+      const cur = reelElements[next];
+      if (cur) {
+        cur.classList.remove('hidden');
+        cur.classList.add('block');
+        cur.style.zIndex = '10';
+      }
+      prevIndex = next;
+      reelIndex = next;
+    }
+
+    function startReelAndSound() {
+      WeddingAudio.init();
+      if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
+      if (reelBottomControls) reelBottomControls.classList.remove('hidden');
+
+      // Start the infinite celebratory confetti loop
+      startNonStopCelebrationLoop();
+
+      isReelPlaying = true;
+      if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
+      if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
+      startReelLoop();
+    }
+
+    function handleReelClick() {
+      startNonStopCelebrationLoop();
+      if (!isReelPlaying) {
+        startReelAndSound();
+      } else {
+        toggleReelPlay();
+      }
+    }
+
+    function startReelLoop() {
+      if (reelTimer) clearInterval(reelTimer);
+      reelTimer = setInterval(() => {
+        setReelFrame(reelIndex + 1);
+      }, 200);
+    }
+
+    function toggleReelPlay() {
+      startNonStopCelebrationLoop();
+      if (isReelPlaying) {
+        clearInterval(reelTimer);
+        isReelPlaying = false;
+        if (reelPlayIcon) reelPlayIcon.textContent = 'play_arrow';
+        if (reelPlayLbl) reelPlayLbl.textContent = 'PLAY';
+      } else {
+        isReelPlaying = true;
+        if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
+        if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
+        startReelLoop();
+      }
+    }
+
+    // Lookbook Touch & Click Toggle
+    function toggleLookbookOverlay(frameEl) {
+      const isCurrentlyOpen = frameEl.classList.contains('is-touching');
+      document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
+      if (!isCurrentlyOpen) {
+        frameEl.classList.add('is-touching');
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.photo-frame')) {
+        document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
+      }
+    });
+
+    // Cached Countdown Timer
+    function startCountdown() {
+      const target = new Date('2026-11-20T00:00:00+05:30').getTime();
+      const cdD = document.getElementById('cd-d');
+      const cdH = document.getElementById('cd-h');
+      const cdM = document.getElementById('cd-m');
+      const cdS = document.getElementById('cd-s');
+
+      function update() {
+        const diff = Math.max(0, target - Date.now());
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (cdD) cdD.textContent = d.toString().padStart(2, '0');
+        if (cdH) cdH.textContent = h.toString().padStart(2, '0');
+        if (cdM) cdM.textContent = m.toString().padStart(2, '0');
+        if (cdS) cdS.textContent = s.toString().padStart(2, '0');
+      }
+      update();
+      setInterval(update, 1000);
+    }
+
+    // High-Fidelity Audio Controller
+    const WeddingAudio = (() => {
+      let audioEl = null;
+
+      function getAudio() {
+        if (!audioEl) {
+          audioEl = document.getElementById('wedding-soundtrack');
+          if (audioEl) {
+            audioEl.volume = 1.0;
+            audioEl.loop = true;
+          }
+        }
+        return audioEl;
+      }
+
+      function init() {
+        const a = getAudio();
+        if (!a) return;
+        a.play().then(() => {
+          updateUI(true);
+        }).catch(err => {
+          console.log('Playback error:', err);
+        });
+      }
+
+      function toggle() {
+        const a = getAudio();
+        if (!a) return;
+        if (a.paused) {
+          a.play().then(() => {
+            updateUI(true);
+          }).catch(e => console.log(e));
+        } else {
+          a.pause();
+          updateUI(false);
+        }
+      }
+
+      function updateUI(on) {
+        const icon = document.getElementById('audio-icon');
+        const lbl = document.getElementById('audio-label');
+        if (icon) icon.textContent = on ? 'volume_up' : 'volume_off';
+        if (lbl) lbl.textContent = on ? 'MUSIC ON' : 'MUSIC OFF';
+      }
+
+      return { init, toggle };
+    })();
+
+    // =========================================================================
+    // PERPETUAL HARDWARE-ACCELERATED CELEBRATION ENGINE
+    // Continuous 60fps golden shower + bursts + starbursts until tab close
+    // =========================================================================
+    const CelebrationEngine = (() => {
+      let canvas, ctx;
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      let particles = [];
+      let isRunning = false;
+      let animFrameId = null;
+
+      const LUXURY_PALETTE = [
+        '#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2',
+        '#FFD700', '#FFB703', '#FB8500', '#FF4D6D', '#FFFFFF',
+        '#E0AAFF', '#C77DFF', '#7B2CBF'
+      ];
+
+      function resize() {
+        if (!canvas) return;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function createParticle(x, y, vx, vy, size, type = 'ribbon') {
+        const color = LUXURY_PALETTE[Math.floor(Math.random() * LUXURY_PALETTE.length)];
+        return {
+          x,
+          y,
+          vx,
+          vy,
+          size: size * (Math.random() * 0.5 + 0.75),
+          color,
+          type, // 'ribbon', 'circle', 'glitter'
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 8,
+          tilt: Math.random() * 360,
+          vTilt: (Math.random() - 0.5) * 10,
+          wobble: Math.random() * 10,
+          vWobble: Math.random() * 0.1 + 0.05,
+          gravity: type === 'ribbon' ? 0.25 : 0.35,
+          drag: 0.985,
+          opacity: 1,
+          decay: Math.random() * 0.002 + 0.001
+        };
+      }
+
+      function spawnContinuousTopShower(count = 2) {
+        for (let i = 0; i < count; i++) {
+          const x = Math.random() * width;
+          const y = -15 - Math.random() * 20;
+          const vx = (Math.random() - 0.5) * 1.5;
+          const vy = Math.random() * 2.5 + 1.8;
+          const size = Math.random() * 6 + 6;
+          const type = Math.random() > 0.4 ? 'ribbon' : (Math.random() > 0.5 ? 'circle' : 'glitter');
+          particles.push(createParticle(x, y, vx, vy, size, type));
+        }
+      }
+
+      function spawnExplosion(originX, originY, count = 80) {
+        for (let i = 0; i < count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 16 + 6;
+          const vx = Math.cos(angle) * speed;
+          const vy = Math.sin(angle) * speed - 4;
+          const size = Math.random() * 8 + 6;
+          const type = Math.random() > 0.3 ? 'ribbon' : 'glitter';
+          particles.push(createParticle(originX, originY, vx, vy, size, type));
+        }
+      }
+
+      function spawnCornerFireworks() {
+        // Bottom Left Cannon
+        for (let i = 0; i < 30; i++) {
+          const angle = -(Math.PI / 4) + (Math.random() - 0.5) * 0.5;
+          const speed = Math.random() * 18 + 12;
+          particles.push(createParticle(20, height - 20, Math.cos(angle) * speed, Math.sin(angle) * speed, 8, 'ribbon'));
+        }
+        // Bottom Right Cannon
+        for (let i = 0; i < 30; i++) {
+          const angle = -(3 * Math.PI / 4) + (Math.random() - 0.5) * 0.5;
+          const speed = Math.random() * 18 + 12;
+          particles.push(createParticle(width - 20, height - 20, Math.cos(angle) * speed, Math.sin(angle) * speed, 8, 'ribbon'));
+        }
+      }
+
+      function updateAndDraw() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, width, height);
+
+        // Constant continuous gentle rain from top
+        if (isRunning) {
+          spawnContinuousTopShower(2);
+        }
+
+        const remaining = [];
+        const len = particles.length;
+
+        for (let i = 0; i < len; i++) {
+          const p = particles[i];
+
+          p.vx *= p.drag;
+          p.vy = p.vy * p.drag + p.gravity;
+          p.x += p.vx;
+          p.y += p.vy;
+
+          p.rotation += p.vRot;
+          p.tilt += p.vTilt;
+          p.wobble += p.vWobble;
+
+          // Gentle horizontal flutter
+          p.x += Math.sin(p.wobble) * 0.8;
+
+          // Draw Particle
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+
+          const scaleX = Math.cos((p.tilt * Math.PI) / 180);
+          ctx.scale(scaleX, 1);
+
+          ctx.fillStyle = p.color;
+
+          if (p.type === 'ribbon') {
+            ctx.fillRect(-p.size / 2, -p.size, p.size, p.size * 1.6);
+          } else if (p.type === 'circle') {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            // Glitter star
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 3, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          ctx.restore();
+
+          // Keep within bounds
+          if (p.y < height + 40 && p.x > -50 && p.x < width + 50) {
+            remaining.push(p);
+          }
+        }
+
+        particles = remaining;
+        animFrameId = requestAnimationFrame(updateAndDraw);
+      }
+
+      function start() {
+        if (isRunning) {
+          // Additional click burst
+          spawnExplosion(width / 2, height * 0.45, 60);
+          return;
+        }
+
+        canvas = document.getElementById('celebration-canvas');
+        if (!canvas) return;
+        ctx = canvas.getContext('2d');
+        canvas.style.display = 'block';
+        resize();
+
+        window.addEventListener('resize', resize, { passive: true });
+
+        isRunning = true;
+
+        // Immediate Grand Opening Burst
+        spawnExplosion(width / 2, height * 0.4, 110);
+
+        // Continuous corner starbursts every 2.6s
+        setInterval(() => {
+          if (isRunning) spawnCornerFireworks();
+        }, 2600);
+
+        // Central grand bloom every 5.5s
+        setInterval(() => {
+          if (isRunning) spawnExplosion(width / 2, height * 0.45, 50);
+        }, 5500);
+
+        animFrameId = requestAnimationFrame(updateAndDraw);
+      }
+
+      return { start, spawnExplosion };
+    })();
+
     function startNonStopCelebrationLoop() {
-      if (typeof confetti !== 'function') return;
-
-      // Immediate opening grand burst
-      fireSingleCelebrationBurst(90);
-
-      // Guard against multiple stacking interval registrations
-      if (isConfettiLoopActive) return;
-      isConfettiLoopActive = true;
-
-      // 1. Continuous Top Confetti Shower (fires every 150ms indefinitely)
-      setInterval(() => {
-        confetti({
-          particleCount: 2,
-          angle: 90,
-          spread: 120,
-          startVelocity: Math.random() * 8 + 4,
-          origin: { x: Math.random(), y: -0.05 },
-          colors: ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#FF85A2', '#FFFFFF'],
-          ticks: 400,
-          gravity: 0.45,
-          scalar: Math.random() * 0.4 + 0.8,
-          drift: (Math.random() - 0.5) * 0.8,
-          disableForReducedMotion: false
-        });
-      }, 150);
-
-      // 2. Periodic Royal Corner Fireworks every 2.4 seconds
-      setInterval(() => {
-        confetti({
-          particleCount: 25,
-          angle: 60,
-          spread: 60,
-          startVelocity: 42,
-          origin: { x: 0.03, y: 0.75 },
-          colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
-        });
-        confetti({
-          particleCount: 25,
-          angle: 120,
-          spread: 60,
-          startVelocity: 42,
-          origin: { x: 0.97, y: 0.75 },
-          colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
-        });
-      }, 2400);
-
-      // 3. Central Grand Bloom every 5.0 seconds
-      setInterval(() => {
-        confetti({
-          particleCount: 45,
-          spread: 100,
-          origin: { x: 0.5, y: 0.55 },
-          colors: ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#FF85A2', '#FFFFFF']
-        });
-      }, 5000);
+      CelebrationEngine.start();
     }
 
     // Init on page load
