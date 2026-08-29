@@ -172,21 +172,10 @@
       pointer-events: auto;
     }
 
-    /* Mobile Event Title & Card Strict Centering (< 768px) */
-    @media (max-width: 767px) {
-      .editorial-card {
-        text-align: center !important;
-        align-items: center !important;
-      }
-      .editorial-card h3,
-      .editorial-card p,
-      .editorial-card span,
-      .editorial-card div {
-        text-align: center !important;
-      }
-      .editorial-card .photo-frame {
-        margin: 0 auto !important;
-      }
+    /* Mobile & Universal Strict Centering Rules */
+    .itinerary-card-content,
+    .itinerary-card-content * {
+      text-align: center !important;
     }
   </style>
 </head>
@@ -230,12 +219,12 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- MAIN WRAPPER (PERFECTLY CENTERED ON PHONE, TABLET & LAPTOP) -->
+  <!-- MAIN WRAPPER -->
   <!-- ========================================================================= -->
   <main class="w-full max-w-4xl mx-auto px-3.5 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-12 flex-grow flex flex-col items-center">
 
     <!-- ========================================================================= -->
-    <!-- SECTION 1: HERO & MAX-SIZE CINEMATIC MOTION PICTURE THEATER -->
+    <!-- SECTION 1: HERO & 16-PHOTO KINETIC MOTION GRAPHIC CONTAINER -->
     <!-- ========================================================================= -->
     <section class="w-full text-center space-y-4 sm:space-y-6 flex flex-col items-center">
       
@@ -257,8 +246,8 @@
         </div>
       </div>
 
-      <!-- Max-Scale Motion Picture Theater Canvas (Identical Harmonious Width Across All Sections) -->
-      <div class="relative w-full mx-auto">
+      <!-- 16-Photo Kinetic Motion Graphic Container (Explicit Matching Bounds: max-w: 500px on desktop) -->
+      <div class="relative w-full" style="max-width: 500px; width: 100%; margin: 0 auto;">
         <div class="absolute -inset-2 sm:-inset-3 bg-gradient-to-r from-[#C5A059]/25 via-[#4A0D16]/25 to-[#DFBF7A]/25 rounded-2xl sm:rounded-3xl blur-xl pointer-events-none -z-10"></div>
 
         <!-- Theater Frame -->
@@ -269,9 +258,10 @@
             ✦ WHERE FOREVER BEGAN ✦
           </div>
 
-          <!-- Video Canvas: Grand Sizing Aligned with 3 Outfits Grid -->
+          <!-- Video Canvas: Proportional Cinema Aspect Ratio -->
           <div
-            class="relative w-full aspect-[4/5] sm:aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] min-h-[300px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[500px] bg-[#180306] rounded-lg sm:rounded-xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
+            id="reel-canvas-wrap"
+            class="relative w-full aspect-[4/5] sm:aspect-[4/3] min-h-[300px] sm:min-h-[380px] bg-[#180306] rounded-lg sm:rounded-xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
             onclick="handleReelClick()"
           >
             
@@ -299,6 +289,7 @@
             <div id="reel-start-overlay" class="absolute inset-0 bg-[#25040A]/75 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 z-30 transition-all">
               <button
                 type="button"
+                id="btn-view-reveal"
                 onclick="event.stopPropagation(); startReelAndSound();"
                 class="px-7 sm:px-10 py-3.5 sm:py-4 rounded-full btn-gold font-sans text-xs sm:text-sm font-extrabold uppercase tracking-[0.16em] flex items-center justify-center gap-2.5 cursor-pointer shadow-lg hover:scale-105 transition-all"
               >
@@ -323,17 +314,17 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (TOUCH-PEEK & TAP TOGGLE) -->
+    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (FORCED STRICT INLINE CENTERING) -->
     <!-- ========================================================================= -->
     <section class="w-full space-y-4 sm:space-y-6">
-      <div class="text-center space-y-1 w-full">
-        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.2em] uppercase block">
+      <div class="text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important;">
+        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">
           ATTIRE INSPIRATIONS
         </span>
-        <h2 class="font-royal-title text-2xl sm:text-3xl md:text-4xl text-[#4A0D16] font-bold">
+        <h2 class="font-royal-title text-2xl sm:text-3xl md:text-4xl text-[#4A0D16] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">
           The Three Chapters
         </h2>
-        <p class="text-xs sm:text-sm text-[#4A4242] font-semibold max-w-md mx-auto">
+        <p class="text-xs sm:text-sm text-[#4A4242] font-semibold max-w-md mx-auto" style="text-align: center !important; width: 100% !important; display: block !important;">
           Curated celebratory themes, heritage weaves &amp; color palettes for each chapter:
         </p>
       </div>
@@ -341,25 +332,25 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full">
         
         <!-- Chapter 01: Welcome Carnival & Haldi -->
-        <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full">
+        <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full" style="text-align: center !important;">
           <div
             class="photo-frame relative w-full aspect-[4/3] sm:h-52 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
             onclick="toggleLookbookOverlay(this)"
           >
             <img alt="Welcome Carnival" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
             
-            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3.5 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap">
+            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3.5 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
               DAY 01 · AFTERNOON
             </div>
 
             <!-- Touch / Hover Overlay: Fiesta Yellows -->
             <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center z-20 space-y-2">
-              <span class="font-sans text-[11px] font-extrabold text-[#FACC15] uppercase tracking-wider">
+              <span class="font-sans text-[11px] font-extrabold text-[#FACC15] uppercase tracking-wider" style="text-align: center !important; width: 100% !important; display: block !important;">
                 FIESTA YELLOWS
               </span>
               
               <!-- Yellow Swatches -->
-              <div class="flex items-center gap-1.5 justify-center py-0.5">
+              <div class="flex items-center gap-1.5 justify-center py-0.5" style="text-align: center !important;">
                 <span class="w-5 h-5 rounded-full bg-[#FEF08A] border border-white/40 shadow" title="Pastel Lemon"></span>
                 <span class="w-5 h-5 rounded-full bg-[#FACC15] border border-white/40 shadow" title="Sunshine Yellow"></span>
                 <span class="w-5 h-5 rounded-full bg-[#EAB308] border border-white/40 shadow" title="Haldi Mustard"></span>
@@ -367,51 +358,51 @@
                 <span class="w-5 h-5 rounded-full bg-[#B45309] border border-white/40 shadow" title="Golden Amber"></span>
               </div>
 
-              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans">
-                <div class="text-[#DFBF7A] font-bold">Chanderi · Georgette · Mulmul</div>
-                <div class="text-white/80 font-medium">Sunshine florals &amp; linen-silk kurtas</div>
+              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans" style="text-align: center !important; width: 100% !important;">
+                <div class="text-[#DFBF7A] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">Chanderi · Georgette · Mulmul</div>
+                <div class="text-white/80 font-medium" style="text-align: center !important; width: 100% !important; display: block !important;">Sunshine florals &amp; linen-silk kurtas</div>
               </div>
             </div>
           </div>
           
-          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3">
-            <div class="flex flex-col items-center text-center space-y-1 w-full">
-              <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block">CHAPTER I</span>
-              <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]">
+          <div class="itinerary-card-content p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+            <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
+              <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER I</span>
+              <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
                 Welcome Carnival
               </h3>
-              <div class="pt-1 flex justify-center w-full">
-                <span class="inline-flex items-center gap-1.5 bg-[#FAF7F2] border border-[#C5A059]/40 px-3 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#937332] uppercase shadow-sm">
+              <div class="pt-1 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
+                <span class="inline-flex items-center gap-1.5 bg-[#FAF7F2] border border-[#C5A059]/40 px-3 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#937332] uppercase shadow-sm" style="text-align: center !important;">
                   💛 Sunshine &amp; Haldi Florals
                 </span>
               </div>
             </div>
-            <p class="text-xs sm:text-sm text-[#4A4242] leading-relaxed font-semibold text-center max-w-xs mx-auto">
+            <p class="text-xs sm:text-sm text-[#4A4242] leading-relaxed font-semibold text-center max-w-xs mx-auto" style="text-align: center !important; width: 100% !important; display: block !important;">
               Vibrant yellow georgettes, breezy mulmul &amp; festive celebratory daywear.
             </p>
           </div>
         </div>
 
         <!-- Chapter 02: Sangeet & Gala -->
-        <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full">
+        <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full" style="text-align: center !important;">
           <div
             class="photo-frame relative w-full aspect-[4/3] sm:h-52 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
             onclick="toggleLookbookOverlay(this)"
           >
             <img alt="Sangeet Gala" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
             
-            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3.5 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap">
+            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3.5 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
               DAY 01 · EVENING
             </div>
 
             <!-- Touch / Hover Overlay: Indo-Western Glamour -->
             <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center z-20 space-y-2">
-              <span class="font-sans text-[11px] font-extrabold text-[#CBD5E1] uppercase tracking-wider">
+              <span class="font-sans text-[11px] font-extrabold text-[#CBD5E1] uppercase tracking-wider" style="text-align: center !important; width: 100% !important; display: block !important;">
                 INDO-WESTERN GLAMOUR
               </span>
               
               <!-- Night-Time Swatches -->
-              <div class="flex items-center gap-1.5 justify-center py-0.5">
+              <div class="flex items-center gap-1.5 justify-center py-0.5" style="text-align: center !important;">
                 <span class="w-5 h-5 rounded-full bg-[#09090B] border border-white/40 shadow" title="Midnight Jet Black"></span>
                 <span class="w-5 h-5 rounded-full bg-[#CBD5E1] border border-white/40 shadow" title="Metallic Silver Chrome"></span>
                 <span class="w-5 h-5 rounded-full bg-[#2563EB] border border-white/40 shadow" title="Cobalt Blue"></span>
@@ -419,51 +410,51 @@
                 <span class="w-5 h-5 rounded-full bg-[#581C87] border border-white/40 shadow" title="Dark Violet"></span>
               </div>
 
-              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans">
-                <div class="text-[#CBD5E1] font-bold">Micro-Sequins · Velvet · Satin</div>
-                <div class="text-white/80 font-medium">Silver sequins &amp; modern silhouettes</div>
+              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans" style="text-align: center !important; width: 100% !important;">
+                <div class="text-[#CBD5E1] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">Micro-Sequins · Velvet · Satin</div>
+                <div class="text-white/80 font-medium" style="text-align: center !important; width: 100% !important; display: block !important;">Silver sequins &amp; modern silhouettes</div>
               </div>
             </div>
           </div>
           
-          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3">
-            <div class="flex flex-col items-center text-center space-y-1 w-full">
-              <span class="font-sans text-[10px] sm:text-[11px] text-[#4A0D16] font-extrabold tracking-[0.2em] uppercase block">CHAPTER II</span>
-              <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]">
+          <div class="itinerary-card-content p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+            <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
+              <span class="font-sans text-[10px] sm:text-[11px] text-[#4A0D16] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER II</span>
+              <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
                 Sangeet &amp; Gala
               </h3>
-              <div class="pt-1 flex justify-center w-full">
-                <span class="inline-flex items-center gap-1.5 bg-[#FAF7F2] border border-[#4A0D16]/30 px-3 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#4A0D16] uppercase shadow-sm">
+              <div class="pt-1 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
+                <span class="inline-flex items-center gap-1.5 bg-[#FAF7F2] border border-[#4A0D16]/30 px-3 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#4A0D16] uppercase shadow-sm" style="text-align: center !important;">
                   ✨ Evening Glamour
                 </span>
               </div>
             </div>
-            <p class="text-xs sm:text-sm text-[#4A4242] leading-relaxed font-semibold text-center max-w-xs mx-auto">
+            <p class="text-xs sm:text-sm text-[#4A4242] leading-relaxed font-semibold text-center max-w-xs mx-auto" style="text-align: center !important; width: 100% !important; display: block !important;">
               Metallic silver sequins, modern silhouettes, sharp evening cuts &amp; dancing shoes.
             </p>
           </div>
         </div>
 
         <!-- Chapter 03: Royal Shaadi -->
-        <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full">
+        <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full" style="text-align: center !important;">
           <div
             class="photo-frame relative w-full aspect-[4/3] sm:h-52 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
             onclick="toggleLookbookOverlay(this)"
           >
             <img alt="Royal Shaadi" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
             
-            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3.5 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap">
+            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3.5 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
               DAY 02 · EVENING
             </div>
 
             <!-- Touch / Hover Overlay: Royal Palette -->
             <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center z-20 space-y-2">
-              <span class="font-sans text-[11px] font-extrabold text-[#DFBF7A] uppercase tracking-wider">
+              <span class="font-sans text-[11px] font-extrabold text-[#DFBF7A] uppercase tracking-wider" style="text-align: center !important; width: 100% !important; display: block !important;">
                 ROYAL PALETTE
               </span>
               
               <!-- Sundowner Swatches -->
-              <div class="flex items-center gap-1.5 justify-center py-0.5">
+              <div class="flex items-center gap-1.5 justify-center py-0.5" style="text-align: center !important;">
                 <span class="w-5 h-5 rounded-full bg-[#D4AF37] border border-white/40 shadow" title="Sunset Gold"></span>
                 <span class="w-5 h-5 rounded-full bg-[#047857] border border-white/40 shadow" title="Royal Emerald"></span>
                 <span class="w-5 h-5 rounded-full bg-[#FFFBEB] border border-white/40 shadow" title="Ivory Pearl"></span>
@@ -471,26 +462,26 @@
                 <span class="w-5 h-5 rounded-full bg-[#0E7490] border border-white/40 shadow" title="Peacock Teal"></span>
               </div>
 
-              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans">
-                <div class="text-[#DFBF7A] font-bold">Banarasi Katan · Brocade · Raw Silk</div>
-                <div class="text-white/80 font-medium">Opulent heritage silks &amp; royal jewels</div>
+              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans" style="text-align: center !important; width: 100% !important;">
+                <div class="text-[#DFBF7A] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">Banarasi Katan · Brocade · Raw Silk</div>
+                <div class="text-white/80 font-medium" style="text-align: center !important; width: 100% !important; display: block !important;">Opulent heritage silks &amp; royal jewels</div>
               </div>
             </div>
           </div>
           
-          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3">
-            <div class="flex flex-col items-center text-center space-y-1 w-full">
-              <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block">CHAPTER III</span>
-              <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]">
+          <div class="itinerary-card-content p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+            <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
+              <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER III</span>
+              <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
                 The Royal Wedding
               </h3>
-              <div class="pt-1 flex justify-center w-full">
-                <span class="inline-flex items-center gap-1.5 bg-[#FAF7F2] border border-[#C5A059]/40 px-3 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#937332] uppercase shadow-sm">
+              <div class="pt-1 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
+                <span class="inline-flex items-center gap-1.5 bg-[#FAF7F2] border border-[#C5A059]/40 px-3 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#937332] uppercase shadow-sm" style="text-align: center !important;">
                   👑 Royal Sundowner Heritage
                 </span>
               </div>
             </div>
-            <p class="text-xs sm:text-sm text-[#4A4242] leading-relaxed font-semibold text-center max-w-xs mx-auto">
+            <p class="text-xs sm:text-sm text-[#4A4242] leading-relaxed font-semibold text-center max-w-xs mx-auto" style="text-align: center !important; width: 100% !important; display: block !important;">
               Sunset gold zari, pure Banarasi silks, royal emeralds &amp; timeless Rajasthani grandeur.
             </p>
           </div>
@@ -500,22 +491,22 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION -->
+    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION (MATCHING 500PX DESKTOP BOUNDS) -->
     <!-- ========================================================================= -->
-    <section class="w-full mx-auto space-y-4">
-      <div class="text-center space-y-1 w-full">
-        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.2em] uppercase block">
+    <section class="w-full space-y-4" style="max-width: 500px; width: 100%; margin: 0 auto;">
+      <div class="text-center space-y-1 w-full" style="text-align: center !important;">
+        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">
           THE SANCTUARY
         </span>
-        <h2 class="font-royal-title text-2xl sm:text-3xl md:text-4xl text-[#4A0D16] font-bold">
+        <h2 class="font-royal-title text-2xl sm:text-3xl md:text-4xl text-[#4A0D16] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">
           Achrol Niwas, Jaipur
         </h2>
-        <p class="text-xs sm:text-sm text-[#4A4242] font-semibold">
+        <p class="text-xs sm:text-sm text-[#4A4242] font-semibold" style="text-align: center !important; width: 100% !important; display: block !important;">
           Jaipur-Delhi Highway, Achrol, Rajasthan 303002
         </p>
       </div>
 
-      <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden group w-full">
+      <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden group w-full" style="width: 100% !important;">
         <a
           href="https://achrolniwas.com/"
           target="_blank"
@@ -524,7 +515,7 @@
         >
           <img alt="Achrol Niwas Resort Jaipur" loading="lazy" decoding="async" class="w-full h-full object-cover" src="achrol-niwas.jpg" />
         </a>
-        <div class="p-4 sm:p-6 text-center bg-white w-full">
+        <div class="p-4 sm:p-6 text-center bg-white w-full" style="text-align: center !important;">
           <a
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
             target="_blank"
@@ -541,17 +532,17 @@
     <!-- ========================================================================= -->
     <!-- SECTION 4: THE WEDDING COUNTDOWN -->
     <!-- ========================================================================= -->
-    <section class="w-full text-center space-y-3 pb-2 flex flex-col items-center">
-      <div class="space-y-1 w-full text-center">
-        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.18em] uppercase block">
+    <section class="w-full text-center space-y-3 pb-2 flex flex-col items-center" style="max-width: 500px; width: 100%; margin: 0 auto; text-align: center !important;">
+      <div class="space-y-1 w-full text-center" style="text-align: center !important;">
+        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.18em] uppercase block" style="text-align: center !important;">
           ⏳ THE WEDDING COUNTDOWN
         </span>
-        <h2 class="font-royal-title text-2xl sm:text-3xl text-[#4A0D16] font-bold">
+        <h2 class="font-royal-title text-2xl sm:text-3xl text-[#4A0D16] font-bold" style="text-align: center !important;">
           Days Until Janhvi Says &ldquo;I Do&rdquo; &amp; Krish Panics!
         </h2>
       </div>
 
-      <div class="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-md mx-auto">
+      <div class="grid grid-cols-4 gap-2 sm:gap-3 w-full mx-auto" style="text-align: center !important;">
         <div class="editorial-card p-2.5 sm:p-3.5 rounded-xl text-center">
           <div id="cd-d" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
           <div class="font-sans text-[9px] sm:text-[10px] font-extrabold text-[#937332] uppercase tracking-wider mt-0.5">DAYS</div>
@@ -576,196 +567,26 @@
   <!-- ========================================================================= -->
   <!-- FOOTER -->
   <!-- ========================================================================= -->
-  <footer class="w-full bg-white border-t border-[#E8DFD3] py-6 px-4 text-center space-y-1.5">
-    <p class="font-sans text-xs font-extrabold text-[#4A0D16] uppercase tracking-widest">
+  <footer class="w-full bg-white border-t border-[#E8DFD3] py-6 px-4 text-center space-y-1.5" style="text-align: center !important;">
+    <p class="font-sans text-xs font-extrabold text-[#4A0D16] uppercase tracking-widest" style="text-align: center !important;">
       ACHROL NIWAS · JAIPUR, RAJASTHAN
     </p>
-    <p class="font-sans text-xs text-[#4A4242] font-bold">
+    <p class="font-sans text-xs text-[#4A4242] font-bold" style="text-align: center !important;">
       19–20 NOVEMBER 2026
     </p>
-    <p class="font-sans text-[11px] sm:text-xs text-[#937332] uppercase tracking-[0.16em] font-extrabold pt-1">
+    <p class="font-sans text-[11px] sm:text-xs text-[#937332] uppercase tracking-[0.16em] font-extrabold pt-1" style="text-align: center !important;">
       GUPTA &amp; BHATIA FAMILIES EAGERLY AWAIT YOUR PRESENCE
     </p>
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT: INLINE BUNDLED CANVAS CONFETTI LIBRARY & PERPETUAL ENGINE -->
+  <!-- PERSISTENT FULLSCREEN CELEBRATION CANVAS (Z-INDEX 9999) -->
   <!-- ========================================================================= -->
-  <script>
-    // Inlined Canvas-Confetti Library (Self-contained, 100% Offline & Instant)
-    !function(t,e){!function t(e,a,n,r){var o=!!(e.Worker&&e.Blob&&e.Promise&&e.OffscreenCanvas&&e.OffscreenCanvasRenderingContext2D&&e.HTMLCanvasElement&&e.HTMLCanvasElement.prototype.transferControlToOffscreen&&e.URL&&e.URL.createObjectURL),i="function"==typeof Path2D&&"function"==typeof DOMMatrix,l=function(){if(!e.OffscreenCanvas)return!1;var t=new OffscreenCanvas(1,1),a=t.getContext("2d");a.fillRect(0,0,1,1);var n=t.transferToImageBitmap();try{a.createPattern(n,"no-repeat")}catch(t){return!1}return!0}();function s(){}function c(t){var n=a.exports.Promise,r=void 0!==n?n:e.Promise;return"function"==typeof r?new r(t):(t(s,s),null)}var h,f,u,d,m,g,p,b,M,v,y,w=(h=l,f=new Map,{transform:function(t){if(h)return t;if(f.has(t))return f.get(t);var e=new OffscreenCanvas(t.width,t.height);return e.getContext("2d").drawImage(t,0,0),f.set(t,e),e},clear:function(){f.clear()}}),x=(m=Math.floor(1e3/60),g={},p=0,"function"==typeof requestAnimationFrame&&"function"==typeof cancelAnimationFrame?(u=function(t){var e=Math.random();return g[e]=requestAnimationFrame((function a(n){p===n||p+m-1<n?(p=n,delete g[e],t()):g[e]=requestAnimationFrame(a)})),e},d=function(t){g[t]&&cancelAnimationFrame(g[t])}):(u=function(t){return setTimeout(t,m)},d=function(t){return clearTimeout(t)}),{frame:u,cancel:d}),C=(v={},function(){if(b)return b;if(!n&&o){var e=["var CONFETTI, SIZE = {}, module = {};","("+t.toString()+")(this, module, true, SIZE);","onmessage = function(msg) {","  if (msg.data.options) {","    CONFETTI(msg.data.options).then(function () {","      if (msg.data.callback) {","        postMessage({ callback: msg.data.callback });","      }","    });","  } else if (msg.data.reset) {","    CONFETTI && CONFETTI.reset();","  } else if (msg.data.resize) {","    SIZE.width = msg.data.resize.width;","    SIZE.height = msg.data.resize.height;","  } else if (msg.data.canvas) {","    SIZE.width = msg.data.canvas.width;","    SIZE.height = msg.data.canvas.height;","    CONFETTI = module.exports.create(msg.data.canvas);","  }","}"].join("\n");try{b=new Worker(URL.createObjectURL(new Blob([e])))}catch(t){return void 0!==typeof console&&"function"==typeof console.warn&&console.warn("🎊 Could not load worker",t),null}!function(t){function e(e,a){t.postMessage({options:e||{},callback:a})}t.init=function(e){var a=e.transferControlToOffscreen();t.postMessage({canvas:a},[a])},t.fire=function(a,n,r){if(M)return e(a,null),M;var o=Math.random().toString(36).slice(2);return M=c((function(n){function i(e){e.data.callback===o&&(delete v[o],t.removeEventListener("message",i),M=null,w.clear(),r(),n())}t.addEventListener("message",i),e(a,o),v[o]=i.bind(null,{data:{callback:o}})}))},t.reset=function(){for(var e in t.postMessage({reset:!0}),v)v[e](),delete v[e]}}(b)}return b}),I={particleCount:50,angle:90,spread:45,startVelocity:45,decay:.9,gravity:1,drift:0,ticks:200,x:.5,y:.5,shapes:["square","circle"],zIndex:100,colors:["#26ccff","#a25afd","#ff5e7e","#88ff5a","#fcff42","#ffa62d","#ff36ff"],disableForReducedMotion:!1,scalar:1};function T(t,e,a){return function(t,e){return e?e(t):t}(t&&null!=t[e]?t[e]:I[e],a)}function E(t){return t<0?0:Math.floor(t)}function P(t){return parseInt(t,16)}function S(t){return t.map(O)}function O(t){var e=String(t).replace(/[^0-9a-f]/gi,"");return e.length<6&&(e=e[0]+e[0]+e[1]+e[1]+e[2]+e[2]),{r:P(e.substring(0,2)),g:P(e.substring(2,4)),b:P(e.substring(4,6))}}function k(t){t.width=document.documentElement.clientWidth,t.height=document.documentElement.clientHeight}function B(t){var e=t.getBoundingClientRect();t.width=e.width,t.height=e.height}function F(t,e){e.x+=Math.cos(e.angle2D)*e.velocity+e.drift,e.y+=Math.sin(e.angle2D)*e.velocity+e.gravity,e.velocity*=e.decay,e.flat?(e.wobble=0,e.wobbleX=e.x+10*e.scalar,e.wobbleY=e.y+10*e.scalar,e.tiltSin=0,e.tiltCos=0,e.random=1):(e.wobble+=e.wobbleSpeed,e.wobbleX=e.x+10*e.scalar*Math.cos(e.wobble),e.wobbleY=e.y+10*e.scalar*Math.sin(e.wobble),e.tiltAngle+=.1,e.tiltSin=Math.sin(e.tiltAngle),e.tiltCos=Math.cos(e.tiltAngle),e.random=Math.random()+2);var a=e.tick++/e.totalTicks,n=e.x+e.random*e.tiltCos,r=e.y+e.random*e.tiltSin,o=e.wobbleX+e.random*e.tiltCos,l=e.wobbleY+e.random*e.tiltSin;if(t.fillStyle="rgba("+e.color.r+", "+e.color.g+", "+e.color.b+", "+(1-a)+")",t.beginPath(),i&&"path"===e.shape.type&&"string"==typeof e.shape.path&&Array.isArray(e.shape.matrix))t.fill(function(t,e,a,n,r,o,i){var l=new Path2D(t),s=new Path2D;s.addPath(l,new DOMMatrix(e));var c=new Path2D;return c.addPath(s,new DOMMatrix([Math.cos(i)*r,Math.sin(i)*r,-Math.sin(i)*o,Math.cos(i)*o,a,n])),c}(e.shape.path,e.shape.matrix,e.x,e.y,.1*Math.abs(o-n),.1*Math.abs(l-r),Math.PI/10*e.wobble));else if("bitmap"===e.shape.type){var s=Math.PI/10*e.wobble,c=.1*Math.abs(o-n),h=.1*Math.abs(l-r),f=e.shape.bitmap.width*e.scalar,u=e.shape.bitmap.height*e.scalar,d=new DOMMatrix([Math.cos(s)*c,Math.sin(s)*c,-Math.sin(s)*h,Math.cos(s)*h,e.x,e.y]);d.multiplySelf(new DOMMatrix(e.shape.matrix));var m=t.createPattern(w.transform(e.shape.bitmap),"no-repeat");m.setTransform(d),t.globalAlpha=1-a,t.fillStyle=m,t.fillRect(e.x-f/2,e.y-u/2,f,u),t.globalAlpha=1}else if("circle"===e.shape)t.ellipse?t.ellipse(e.x,e.y,Math.abs(o-n)*e.ovalScalar,Math.abs(l-r)*e.ovalScalar,Math.PI/10*e.wobble,0,2*Math.PI):function(t,e,a,n,r,o,i,l,s){t.save(),t.translate(e,a),t.rotate(o),t.scale(n,r),t.arc(0,0,1,i,l,s),t.restore()}(t,e.x,e.y,Math.abs(o-n)*e.ovalScalar,Math.abs(l-r)*e.ovalScalar,Math.PI/10*e.wobble,0,2*Math.PI);else if("star"===e.shape)for(var g=Math.PI/2*3,p=4*e.scalar,b=8*e.scalar,M=e.x,v=e.y,y=5,x=Math.PI/y;y--;)M=e.x+Math.cos(g)*b,v=e.y+Math.sin(g)*b,t.lineTo(M,v),g+=x,M=e.x+Math.cos(g)*p,v=e.y+Math.sin(g)*p,t.lineTo(M,v),g+=x;else t.moveTo(Math.floor(e.x),Math.floor(e.y)),t.lineTo(Math.floor(e.wobbleX),Math.floor(r)),t.lineTo(Math.floor(o),Math.floor(l)),t.lineTo(Math.floor(n),Math.floor(e.wobbleY));return t.closePath(),t.fill(),e.tick<e.totalTicks}function A(t,a){var i,l=!t,s=!!T(a||{},"resize"),h=!1,f=T(a,"disableForReducedMotion",Boolean),u=o&&!!T(a||{},"useWorker")?C():null,d=l?k:B,m=!(!t||!u)&&!!t.__confetti_initialized,g="function"==typeof matchMedia&&matchMedia("(prefers-reduced-motion)").matches;function p(e,a,o){for(var l,s,h,f,u,m=T(e,"particleCount",E),g=T(e,"angle",Number),p=T(e,"spread",Number),b=T(e,"startVelocity",Number),M=T(e,"decay",Number),v=T(e,"gravity",Number),y=T(e,"drift",Number),C=T(e,"colors",S),I=T(e,"ticks",Number),P=T(e,"shapes"),O=T(e,"scalar"),k=!!T(e,"flat"),B=function(t){var e=T(t,"origin",Object);return e.x=T(e,"x",Number),e.y=T(e,"y",Number),e}(e),A=m,R=[],N=t.width*B.x,z=t.height*B.y;A--;)R.push((l={x:N,y:z,angle:g,spread:p,startVelocity:b,color:C[A%C.length],shape:P[(f=0,u=P.length,Math.floor(Math.random()*(u-f))+f)],ticks:I,decay:M,gravity:v,drift:y,scalar:O,flat:k},s=void 0,h=void 0,s=l.angle*(Math.PI/180),h=l.spread*(Math.PI/180),{x:l.x,y:l.y,wobble:10*Math.random(),wobbleSpeed:Math.min(.11,.1*Math.random()+.05),velocity:.5*l.startVelocity+Math.random()*l.startVelocity,angle2D:-s+(.5*h-Math.random()*h),tiltAngle:(.5*Math.random()+.25)*Math.PI,color:l.color,shape:l.shape,tick:0,totalTicks:l.ticks,decay:l.decay,drift:l.drift,random:Math.random()+2,tiltSin:0,tiltCos:0,wobbleX:0,wobbleY:0,gravity:3*l.gravity,ovalScalar:.6,scalar:l.scalar,flat:l.flat}));return i?i.addFettis(R):(i=function(t,e,a,o,i){var l,s,h=e.slice(),f=t.getContext("2d"),u=c((function(e){function c(){l=s=null,f.clearRect(0,0,o.width,o.height),w.clear(),i(),e()}l=x.frame((function e(){!n||o.width===r.width&&o.height===r.height||(o.width=t.width=r.width,o.height=t.height=r.height),o.width||o.height||(a(t),o.width=t.width,o.height=t.height),f.clearRect(0,0,o.width,o.height),(h=h.filter((function(t){return F(f,t)}))).length?l=x.frame(e):c()})),s=c}));return{addFettis:function(t){return h=h.concat(t),u},canvas:t,promise:u,reset:function(){l&&x.cancel(l),s&&s()}}}(t,R,d,a,o),i.promise)}function b(a){var n=f||T(a,"disableForReducedMotion",Boolean),r=T(a,"zIndex",Number);if(n&&g)return c((function(t){t()}));l&&i?t=i.canvas:l&&!t&&(t=function(t){var e=document.createElement("canvas");return e.style.position="fixed",e.style.top="0px",e.style.left="0px",e.style.pointerEvents="none",e.style.zIndex=t,e}(r),document.body.appendChild(t)),s&&!m&&d(t);var o={width:t.width,height:t.height};function b(){if(u){var e={getBoundingClientRect:function(){if(!l)return t.getBoundingClientRect()}};return d(e),void u.postMessage({resize:{width:e.width,height:e.height}})}o.width=o.height=null}function M(){i=null,s&&(h=!1,e.removeEventListener("resize",b)),l&&t&&(document.body.contains(t)&&document.body.removeChild(t),t=null,m=!1)}return u&&!m&&u.init(t),m=!0,u&&(t.__confetti_initialized=!0),s&&!h&&(h=!0,e.addEventListener("resize",b,!1)),u?u.fire(a,o,M):p(a,o,M)}return b.reset=function(){u&&u.reset(),i&&i.reset()},b}function R(){return y||(y=A(null,{useWorker:!0,resize:!0})),y}a.exports=function(){return R().apply(this,arguments)},a.exports.reset=function(){R().reset()},a.exports.create=A,a.exports.shapeFromPath=function(t){if(!i)throw new Error("path confetti are not supported in this browser");var e,a;"string"==typeof t?e=t:(e=t.path,a=t.matrix);var n=new Path2D(e),r=document.createElement("canvas").getContext("2d");if(!a){for(var o,l,s=1e3,c=s,h=s,f=0,u=0,d=0;d<s;d+=2)for(var m=0;m<s;m+=2)r.isPointInPath(n,d,m,"nonzero")&&(c=Math.min(c,d),h=Math.min(h,m),f=Math.max(f,d),u=Math.max(u,m));o=f-c,l=u-h;var g=Math.min(10/o,10/l);a=[g,0,0,g,-Math.round(o/2+c)*g,-Math.round(l/2+h)*g]}return{type:"path",path:e,matrix:a}},a.exports.shapeFromText=function(t){var e,a=1,n="#000000",r='"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "EmojiOne Color", "Android Emoji", "Twemoji Mozilla", "system emoji", sans-serif';"string"==typeof t?e=t:(e=t.text,a="scalar"in t?t.scalar:a,r="fontFamily"in t?t.fontFamily:r,n="color"in t?t.color:n);var o=10*a,i=o+"px "+r,l=new OffscreenCanvas(o,o),s=l.getContext("2d");s.font=i;var c=s.measureText(e),h=Math.ceil(c.actualBoundingBoxRight+c.actualBoundingBoxLeft),f=Math.ceil(c.actualBoundingBoxAscent+c.actualBoundingBoxDescent),u=c.actualBoundingBoxLeft+2,d=c.actualBoundingBoxAscent+2;h+=4,f+=4,(s=(l=new OffscreenCanvas(h,f)).getContext("2d")).font=i,s.fillStyle=n,s.fillText(e,u,d);var m=1/a;return{type:"bitmap",bitmap:l.transferToImageBitmap(),matrix:[m,0,0,m,-h*m/2,-f*m/2]}}}(function(){return void 0!==t?t:"undefined"!=typeof self?self:this||{}}(),e,!1),t.confetti=e.exports}(window,{});
-
-    // 16 Photos Pre-cached Elements
-    const REEL_COUNT = 16;
-    const reelElements = [];
-    for (let i = 0; i < REEL_COUNT; i++) {
-      reelElements.push(document.getElementById(`reel-f-${i}`));
-    }
-
-    let reelIndex = 0;
-    let prevIndex = 0;
-    let reelTimer = null;
-    let isReelPlaying = false;
-    const reelPlayIcon = document.getElementById('reel-play-icon');
-    const reelPlayLbl = document.getElementById('reel-play-lbl');
-    const reelStartOverlay = document.getElementById('reel-start-overlay');
-    const reelBottomControls = document.getElementById('reel-bottom-controls');
-
-    function setReelFrame(idx) {
-      const next = (idx + REEL_COUNT) % REEL_COUNT;
-      if (prevIndex !== next) {
-        const prev = reelElements[prevIndex];
-        if (prev) {
-          prev.classList.add('hidden');
-          prev.classList.remove('block');
-          prev.style.zIndex = '0';
-        }
-      }
-      const cur = reelElements[next];
-      if (cur) {
-        cur.classList.remove('hidden');
-        cur.classList.add('block');
-        cur.style.zIndex = '10';
-      }
-      prevIndex = next;
-      reelIndex = next;
-    }
-
-    function startReelAndSound() {
-      WeddingAudio.init();
-      if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
-      if (reelBottomControls) reelBottomControls.classList.remove('hidden');
-
-      // Start the infinite celebratory confetti loop
-      startNonStopCelebrationLoop();
-
-      isReelPlaying = true;
-      if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
-      if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
-      startReelLoop();
-    }
-
-    function handleReelClick() {
-      startNonStopCelebrationLoop();
-      if (!isReelPlaying) {
-        startReelAndSound();
-      } else {
-        toggleReelPlay();
-      }
-    }
-
-    function startReelLoop() {
-      if (reelTimer) clearInterval(reelTimer);
-      reelTimer = setInterval(() => {
-        setReelFrame(reelIndex + 1);
-      }, 200);
-    }
-
-    function toggleReelPlay() {
-      startNonStopCelebrationLoop();
-      if (isReelPlaying) {
-        clearInterval(reelTimer);
-        isReelPlaying = false;
-        if (reelPlayIcon) reelPlayIcon.textContent = 'play_arrow';
-        if (reelPlayLbl) reelPlayLbl.textContent = 'PLAY';
-      } else {
-        isReelPlaying = true;
-        if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
-        if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
-        startReelLoop();
-      }
-    }
-
-    // Lookbook Touch & Click Toggle
-    function toggleLookbookOverlay(frameEl) {
-      const isCurrentlyOpen = frameEl.classList.contains('is-touching');
-      document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
-      if (!isCurrentlyOpen) {
-        frameEl.classList.add('is-touching');
-      }
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.photo-frame')) {
-        document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
-      }
-    });
-
-    // Cached Countdown Timer
-    function startCountdown() {
-      const target = new Date('2026-11-20T00:00:00+05:30').getTime();
-      const cdD = document.getElementById('cd-d');
-      const cdH = document.getElementById('cd-h');
-      const cdM = document.getElementById('cd-m');
-      const cdS = document.getElementById('cd-s');
-
-      function update() {
-        const diff = Math.max(0, target - Date.now());
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-        if (cdD) cdD.textContent = d.toString().padStart(2, '0');
-        if (cdH) cdH.textContent = h.toString().padStart(2, '0');
-        if (cdM) cdM.textContent = m.toString().padStart(2, '0');
-        if (cdS) cdS.textContent = s.toString().padStart(2, '0');
-      }
-      update();
-      setInterval(update, 1000);
-    }
-
-    // High-Fidelity Audio Controller
-    const WeddingAudio = (() => {
-      let audioEl = null;
-
-      function getAudio() {
-        if (!audioEl) {
-          audioEl = document.getElementById('wedding-soundtrack');
-          if (audioEl) {
-            audioEl.volume = 1.0;
-            audioEl.loop = true;
-          }
-        }
-        return audioEl;
-      }
-
-      function init() {
-        const a = getAudio();
-        if (!a) return;
-        a.play().then(() => {
-          updateUI(true);
-        }).catch(err => {
-          console.log('Playback error:', err);
-        });
-      }
-
-      function toggle() {
-        const a = getAudio();
-        if (!a) return;
-        if (a.paused) {
-          a.play().then(() => {
-            updateUI(true);
-          }).catch(e => console.log(e));
-        } else {
-          a.pause();
-          updateUI(false);
-        }
-      }
-
-      function updateUI(on) {
-        const icon = document.getElementById('audio-icon');
-        const lbl = document.getElementById('audio-label');
-        if (icon) icon.textContent = on ? 'volume_up' : 'volume_off';
-        if (lbl) lbl.textContent = on ? 'MUSIC ON' : 'MUSIC OFF';
-      }
-
-      return { init, toggle };
-    })();
-
-  <!-- Persistent Fullscreen Celebration Canvas (Z-Index 9999, Zero-Latency, Perpetual) -->
   <canvas id="celebration-canvas" class="fixed inset-0 pointer-events-none w-full h-full" style="z-index: 9999; display: none;"></canvas>
 
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: HARDCODED INFINITE CELEBRATION ENGINE -->
+  <!-- ========================================================================= -->
   <script>
     // 16 Photos Pre-cached Elements
     const REEL_COUNT = 16;
@@ -809,7 +630,7 @@
       if (reelBottomControls) reelBottomControls.classList.remove('hidden');
 
       // Start the infinite celebratory confetti loop
-      startNonStopCelebrationLoop();
+      startHardcodedInfiniteConfetti();
 
       isReelPlaying = true;
       if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
@@ -818,7 +639,7 @@
     }
 
     function handleReelClick() {
-      startNonStopCelebrationLoop();
+      startHardcodedInfiniteConfetti();
       if (!isReelPlaying) {
         startReelAndSound();
       } else {
@@ -834,7 +655,7 @@
     }
 
     function toggleReelPlay() {
-      startNonStopCelebrationLoop();
+      startHardcodedInfiniteConfetti();
       if (isReelPlaying) {
         clearInterval(reelTimer);
         isReelPlaying = false;
@@ -936,18 +757,18 @@
     })();
 
     // =========================================================================
-    // PERPETUAL HARDWARE-ACCELERATED CELEBRATION ENGINE
-    // Continuous 60fps golden shower + bursts + starbursts until tab close
+    // HARDCODED INFINITE CONFETTI ENGINE (PERPETUAL & BULLETPROOF)
+    // Runs continuous 60fps particle loop + repeating setInterval(..., 2000)
     // =========================================================================
-    const CelebrationEngine = (() => {
+    let isConfettiLoopStarted = false;
+
+    const ConfettiSystem = (() => {
       let canvas, ctx;
       let width = window.innerWidth;
       let height = window.innerHeight;
       let particles = [];
-      let isRunning = false;
-      let animFrameId = null;
 
-      const LUXURY_PALETTE = [
+      const COLORS = [
         '#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2',
         '#FFD700', '#FFB703', '#FB8500', '#FF4D6D', '#FFFFFF',
         '#E0AAFF', '#C77DFF', '#7B2CBF'
@@ -966,7 +787,7 @@
       }
 
       function createParticle(x, y, vx, vy, size, type = 'ribbon') {
-        const color = LUXURY_PALETTE[Math.floor(Math.random() * LUXURY_PALETTE.length)];
+        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
         return {
           x,
           y,
@@ -974,7 +795,7 @@
           vy,
           size: size * (Math.random() * 0.5 + 0.75),
           color,
-          type, // 'ribbon', 'circle', 'glitter'
+          type,
           rotation: Math.random() * 360,
           vRot: (Math.random() - 0.5) * 8,
           tilt: Math.random() * 360,
@@ -982,59 +803,55 @@
           wobble: Math.random() * 10,
           vWobble: Math.random() * 0.1 + 0.05,
           gravity: type === 'ribbon' ? 0.25 : 0.35,
-          drag: 0.985,
-          opacity: 1,
-          decay: Math.random() * 0.002 + 0.001
+          drag: 0.985
         };
       }
 
-      function spawnContinuousTopShower(count = 2) {
+      function spawnTopShower(count = 3) {
         for (let i = 0; i < count; i++) {
           const x = Math.random() * width;
           const y = -15 - Math.random() * 20;
           const vx = (Math.random() - 0.5) * 1.5;
           const vy = Math.random() * 2.5 + 1.8;
           const size = Math.random() * 6 + 6;
-          const type = Math.random() > 0.4 ? 'ribbon' : (Math.random() > 0.5 ? 'circle' : 'glitter');
+          const type = Math.random() > 0.4 ? 'ribbon' : 'circle';
           particles.push(createParticle(x, y, vx, vy, size, type));
         }
       }
 
-      function spawnExplosion(originX, originY, count = 80) {
+      function spawnBurst(originX, originY, count = 75) {
         for (let i = 0; i < count; i++) {
           const angle = Math.random() * Math.PI * 2;
           const speed = Math.random() * 16 + 6;
           const vx = Math.cos(angle) * speed;
           const vy = Math.sin(angle) * speed - 4;
           const size = Math.random() * 8 + 6;
-          const type = Math.random() > 0.3 ? 'ribbon' : 'glitter';
+          const type = Math.random() > 0.3 ? 'ribbon' : 'circle';
           particles.push(createParticle(originX, originY, vx, vy, size, type));
         }
       }
 
-      function spawnCornerFireworks() {
-        // Bottom Left Cannon
-        for (let i = 0; i < 30; i++) {
+      function spawnCornerCannons() {
+        // Left Cannon
+        for (let i = 0; i < 35; i++) {
           const angle = -(Math.PI / 4) + (Math.random() - 0.5) * 0.5;
           const speed = Math.random() * 18 + 12;
           particles.push(createParticle(20, height - 20, Math.cos(angle) * speed, Math.sin(angle) * speed, 8, 'ribbon'));
         }
-        // Bottom Right Cannon
-        for (let i = 0; i < 30; i++) {
+        // Right Cannon
+        for (let i = 0; i < 35; i++) {
           const angle = -(3 * Math.PI / 4) + (Math.random() - 0.5) * 0.5;
           const speed = Math.random() * 18 + 12;
           particles.push(createParticle(width - 20, height - 20, Math.cos(angle) * speed, Math.sin(angle) * speed, 8, 'ribbon'));
         }
       }
 
-      function updateAndDraw() {
+      function loop() {
         if (!ctx) return;
         ctx.clearRect(0, 0, width, height);
 
         // Constant continuous gentle rain from top
-        if (isRunning) {
-          spawnContinuousTopShower(2);
-        }
+        spawnTopShower(2);
 
         const remaining = [];
         const len = particles.length;
@@ -1051,10 +868,8 @@
           p.tilt += p.vTilt;
           p.wobble += p.vWobble;
 
-          // Gentle horizontal flutter
           p.x += Math.sin(p.wobble) * 0.8;
 
-          // Draw Particle
           ctx.save();
           ctx.translate(p.x, p.y);
           ctx.rotate((p.rotation * Math.PI) / 180);
@@ -1066,71 +881,74 @@
 
           if (p.type === 'ribbon') {
             ctx.fillRect(-p.size / 2, -p.size, p.size, p.size * 1.6);
-          } else if (p.type === 'circle') {
+          } else {
             ctx.beginPath();
             ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
-            ctx.fill();
-          } else {
-            // Glitter star
-            ctx.beginPath();
-            ctx.arc(0, 0, p.size / 3, 0, Math.PI * 2);
             ctx.fill();
           }
 
           ctx.restore();
 
-          // Keep within bounds
           if (p.y < height + 40 && p.x > -50 && p.x < width + 50) {
             remaining.push(p);
           }
         }
 
         particles = remaining;
-        animFrameId = requestAnimationFrame(updateAndDraw);
+        requestAnimationFrame(loop);
       }
 
-      function start() {
-        if (isRunning) {
-          // Additional click burst
-          spawnExplosion(width / 2, height * 0.45, 60);
-          return;
-        }
-
+      function init() {
         canvas = document.getElementById('celebration-canvas');
         if (!canvas) return;
         ctx = canvas.getContext('2d');
         canvas.style.display = 'block';
         resize();
-
         window.addEventListener('resize', resize, { passive: true });
-
-        isRunning = true;
-
-        // Immediate Grand Opening Burst
-        spawnExplosion(width / 2, height * 0.4, 110);
-
-        // Continuous corner starbursts every 2.6s
-        setInterval(() => {
-          if (isRunning) spawnCornerFireworks();
-        }, 2600);
-
-        // Central grand bloom every 5.5s
-        setInterval(() => {
-          if (isRunning) spawnExplosion(width / 2, height * 0.45, 50);
-        }, 5500);
-
-        animFrameId = requestAnimationFrame(updateAndDraw);
+        requestAnimationFrame(loop);
       }
 
-      return { start, spawnExplosion };
+      return { init, spawnBurst, spawnCornerCannons };
     })();
 
-    function startNonStopCelebrationLoop() {
-      CelebrationEngine.start();
+    function startHardcodedInfiniteConfetti() {
+      if (isConfettiLoopStarted) {
+        ConfettiSystem.spawnBurst(window.innerWidth / 2, window.innerHeight * 0.45, 60);
+        return;
+      }
+      isConfettiLoopStarted = true;
+
+      ConfettiSystem.init();
+
+      // Opening Burst
+      ConfettiSystem.spawnBurst(window.innerWidth / 2, window.innerHeight * 0.4, 120);
+
+      // HARDCODED INFINITE INTERVAL (Runs forever every 2000ms until tab close)
+      setInterval(() => {
+        ConfettiSystem.spawnCornerCannons();
+        ConfettiSystem.spawnBurst(window.innerWidth / 2, window.innerHeight * 0.45, 40);
+      }, 2000);
     }
 
-    // Init on page load
-    startCountdown();
+    // Explicit Event Binding on Button & Hero Wrap
+    window.addEventListener('DOMContentLoaded', () => {
+      startCountdown();
+
+      const btnReveal = document.getElementById('btn-view-reveal');
+      if (btnReveal) {
+        btnReveal.addEventListener('click', (e) => {
+          e.stopPropagation();
+          startReelAndSound();
+        });
+      }
+
+      const reelWrap = document.getElementById('reel-canvas-wrap');
+      if (reelWrap) {
+        reelWrap.addEventListener('click', () => {
+          handleReelClick();
+        });
+      }
+    });
 
     // Register PWA Service Worker for Home Screen Installability
     if ('serviceWorker' in navigator) {
