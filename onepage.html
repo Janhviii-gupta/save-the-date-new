@@ -19,12 +19,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <!-- Google Fonts: Crisp High-Legibility Modern Typography -->
+  <!-- High-Priority Resource Preloading (Instant Render & Sound) -->
+  <link rel="preload" as="image" href="reveal-photos/photo-1944.jpg" fetchpriority="high" />
+  <link rel="preload" as="audio" href="sounds/romantic-wedding.mp3" type="audio/mpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Material Symbols -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <!-- Tailwind CSS CDN -->
@@ -65,11 +65,19 @@
   </script>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      text-rendering: optimizeLegibility;
+      overscroll-behavior-y: none;
+    }
+
     body {
       background-color: #FAF7F2;
       color: #1F1A1A;
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
+      contain: paint;
     }
 
     .font-royal-title {
@@ -83,10 +91,13 @@
       border: 1px solid #E8DFD3;
       box-shadow: 0 4px 16px -2px rgba(74, 13, 22, 0.06), 0 0 0 1px rgba(197, 160, 89, 0.15);
       transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
     }
     .editorial-card:hover {
       border-color: #C5A059;
-      transform: translateY(-2px);
+      transform: translateY(-2px) translateZ(0);
       box-shadow: 0 12px 28px -4px rgba(74, 13, 22, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.4);
     }
 
@@ -98,11 +109,12 @@
       letter-spacing: 0.12em;
       box-shadow: 0 4px 15px rgba(147, 115, 50, 0.3);
       transition: all 0.2s ease;
+      transform: translateZ(0);
     }
     .btn-gold:hover {
       background: linear-gradient(135deg, #C5A059 0%, #DFBF7A 50%, #C5A059 100%);
       box-shadow: 0 6px 20px rgba(147, 115, 50, 0.45);
-      transform: translateY(-1px);
+      transform: translateY(-1px) translateZ(0);
     }
 
     .btn-maroon {
@@ -113,21 +125,25 @@
       letter-spacing: 0.12em;
       box-shadow: 0 4px 15px rgba(74, 13, 22, 0.3);
       transition: all 0.2s ease;
+      transform: translateZ(0);
     }
     .btn-maroon:hover {
       background: linear-gradient(135deg, #6B1420 0%, #8E1D2D 50%, #6B1420 100%);
       box-shadow: 0 6px 20px rgba(74, 13, 22, 0.45);
-      transform: translateY(-1px);
+      transform: translateY(-1px) translateZ(0);
     }
 
     .photo-frame img,
     .venue-frame img {
       transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
     }
     .photo-frame:hover img,
     .photo-frame.is-touching img,
     .venue-frame:hover img {
-      transform: scale(1.08);
+      transform: scale(1.08) translateZ(0);
     }
 
     /* Lookbook Overlay: Smooth Touch Peek & Hover Fade/Retreat */
@@ -135,6 +151,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease-in-out;
+      transform: translateZ(0);
     }
     .photo-frame:hover .photo-overlay,
     .photo-frame.is-touching .photo-overlay {
@@ -238,23 +255,23 @@
           <!-- Video Canvas -->
           <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-[#180306] rounded-xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50" onclick="handleReelClick()">
             
-            <!-- 16 Instant-Switch Proposal Photos -->
-            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" class="absolute inset-0 w-full h-full object-cover z-10 block" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <!-- 16 Instant-Switch Proposal Photos (Pre-cached & Hardware Accelerated) -->
+            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover z-10 block" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
 
             <div class="absolute inset-0 bg-gradient-to-t from-[#200308]/60 via-transparent to-transparent pointer-events-none z-20"></div>
 
@@ -314,7 +331,7 @@
             onpointerup="this.classList.remove('is-touching')"
             onpointerleave="this.classList.remove('is-touching')"
           >
-            <img alt="Welcome Carnival" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
+            <img alt="Welcome Carnival" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
             
             <div class="absolute top-2 left-2 bg-[#937332] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 01 · AFTERNOON
@@ -371,7 +388,7 @@
             onpointerup="this.classList.remove('is-touching')"
             onpointerleave="this.classList.remove('is-touching')"
           >
-            <img alt="Sangeet Gala" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
+            <img alt="Sangeet Gala" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
             
             <div class="absolute top-2 left-2 bg-[#4A0D16] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 01 · EVENING
@@ -428,7 +445,7 @@
             onpointerup="this.classList.remove('is-touching')"
             onpointerleave="this.classList.remove('is-touching')"
           >
-            <img alt="Royal Shaadi" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
+            <img alt="Royal Shaadi" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
             
             <div class="absolute top-2 left-2 bg-[#937332] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 02 · EVENING
@@ -500,7 +517,7 @@
           rel="noopener noreferrer"
           class="venue-frame block relative w-full aspect-[16/9] sm:aspect-[21/9] bg-[#120F0F] overflow-hidden cursor-pointer"
         >
-          <img alt="Achrol Niwas Resort Jaipur" class="w-full h-full object-cover" src="achrol-niwas.jpg" />
+          <img alt="Achrol Niwas Resort Jaipur" loading="lazy" decoding="async" class="w-full h-full object-cover" src="achrol-niwas.jpg" />
         </a>
         <div class="p-3.5 sm:p-5 text-center bg-white">
           <a
@@ -567,28 +584,15 @@
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT: REEL, WARDROBE RETREAT, & HIGH-VOLUME WEDDING AUDIO ENGINE -->
+  <!-- JAVASCRIPT: HIGH-PERFORMANCE CACHED REEL & AUDIO CONTROLLER -->
   <!-- ========================================================================= -->
   <script>
-    // 16 Photos
-    const REEL_PHOTOS = [
-      "reveal-photos/photo-1944.jpg",
-      "reveal-photos/photo-1945.jpg",
-      "reveal-photos/photo-1946.jpg",
-      "reveal-photos/photo-1947.jpg",
-      "reveal-photos/photo-1948.jpg",
-      "reveal-photos/photo-1949.jpg",
-      "reveal-photos/photo-1950.jpg",
-      "reveal-photos/photo-1951.jpg",
-      "reveal-photos/photo-1952.jpg",
-      "reveal-photos/photo-1953.jpg",
-      "reveal-photos/photo-1954.jpg",
-      "reveal-photos/photo-1955.jpg",
-      "reveal-photos/photo-1956.jpg",
-      "reveal-photos/photo-1957.jpg",
-      "reveal-photos/photo-1958.jpg",
-      "reveal-photos/photo-1959.jpg"
-    ];
+    // 16 Photos Pre-cached Elements
+    const REEL_COUNT = 16;
+    const reelElements = [];
+    for (let i = 0; i < REEL_COUNT; i++) {
+      reelElements.push(document.getElementById(`reel-f-${i}`));
+    }
 
     let reelIndex = 0;
     let prevIndex = 0;
@@ -600,16 +604,16 @@
     const reelBottomControls = document.getElementById('reel-bottom-controls');
 
     function setReelFrame(idx) {
-      const next = (idx + REEL_PHOTOS.length) % REEL_PHOTOS.length;
+      const next = (idx + REEL_COUNT) % REEL_COUNT;
       if (prevIndex !== next) {
-        const prev = document.getElementById(`reel-f-${prevIndex}`);
+        const prev = reelElements[prevIndex];
         if (prev) {
           prev.classList.add('hidden');
           prev.classList.remove('block');
           prev.style.zIndex = '0';
         }
       }
-      const cur = document.getElementById(`reel-f-${next}`);
+      const cur = reelElements[next];
       if (cur) {
         cur.classList.remove('hidden');
         cur.classList.add('block');
@@ -660,28 +664,29 @@
       }
     }
 
-    // Instant Retreat on Touch End / Document Tap
+    // Passive Touch Listeners for High-Speed Touch Responsiveness
     window.addEventListener('touchend', () => {
       document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
-    });
+    }, { passive: true });
+    
     window.addEventListener('touchcancel', () => {
       document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
-    });
+    }, { passive: true });
 
-    // Countdown Timer
+    // Cached Countdown Timer
     function startCountdown() {
       const target = new Date('2026-11-20T00:00:00+05:30').getTime();
+      const cdD = document.getElementById('cd-d');
+      const cdH = document.getElementById('cd-h');
+      const cdM = document.getElementById('cd-m');
+      const cdS = document.getElementById('cd-s');
+
       function update() {
         const diff = Math.max(0, target - Date.now());
         const d = Math.floor(diff / (1000 * 60 * 60 * 24));
         const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-        const cdD = document.getElementById('cd-d');
-        const cdH = document.getElementById('cd-h');
-        const cdM = document.getElementById('cd-m');
-        const cdS = document.getElementById('cd-s');
 
         if (cdD) cdD.textContent = d.toString().padStart(2, '0');
         if (cdH) cdH.textContent = h.toString().padStart(2, '0');
@@ -692,10 +697,7 @@
       setInterval(update, 1000);
     }
 
-    // =========================================================================
-    // HIGH-FIDELITY CINEMATIC ORCHESTRAL SOUNDTRACK ENGINE
-    // Seamless Looping, Instant Floating Toggle, 100% Mobile Full-Volume
-    // =========================================================================
+    // High-Fidelity Audio Controller
     const WeddingAudio = (() => {
       let audioEl = null;
 
@@ -743,18 +745,19 @@
       return { init, toggle };
     })();
 
-    // Confetti Animation
+    // Lightweight Auto-Sleep Confetti Engine (Runs 4.5s burst, then sleeps to preserve battery)
     let confettiParticles = [];
     let confettiCanvas = null;
     let confettiCtx = null;
     let confettiActive = false;
+    let confettiEndTime = 0;
     const COLORS = ['#C5A059', '#937332', '#6B1420', '#FAF7F2', '#DFBF7A'];
     const EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉'];
 
     function initConfetti() {
       confettiCanvas = document.getElementById('confetti-canvas');
       if (!confettiCanvas) return;
-      confettiCtx = confettiCanvas.getContext('2d');
+      confettiCtx = confettiCanvas.getContext('2d', { alpha: true });
       confettiCanvas.width = window.innerWidth;
       confettiCanvas.height = window.innerHeight;
       window.addEventListener('resize', () => {
@@ -762,29 +765,32 @@
           confettiCanvas.width = window.innerWidth;
           confettiCanvas.height = window.innerHeight;
         }
-      });
+      }, { passive: true });
     }
 
     function launchConfetti() {
       if (!confettiCanvas) initConfetti();
       if (!confettiCtx) return;
 
-      for (let i = 0; i < 60; i++) {
+      confettiEndTime = Date.now() + 4500;
+      confettiParticles = [];
+
+      for (let i = 0; i < 50; i++) {
         const isEmoji = Math.random() > 0.6;
         confettiParticles.push({
           x: window.innerWidth * (0.2 + Math.random() * 0.6),
-          y: window.innerHeight * 0.6,
-          vx: (Math.random() - 0.5) * 14,
-          vy: -Math.random() * 15 - 6,
+          y: window.innerHeight * 0.55,
+          vx: (Math.random() - 0.5) * 12,
+          vy: -Math.random() * 14 - 5,
           size: Math.random() * 8 + 4,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
           emoji: isEmoji ? EMOJIS[Math.floor(Math.random() * EMOJIS.length)] : null,
           rotation: Math.random() * 360,
-          rotationSpeed: (Math.random() - 0.5) * 10,
-          gravity: 0.38,
+          rotationSpeed: (Math.random() - 0.5) * 8,
+          gravity: 0.35,
           alpha: 1,
           wobble: Math.random() * Math.PI * 2,
-          wobbleSpeed: Math.random() * 0.04 + 0.02
+          wobbleSpeed: 0.04
         });
       }
 
@@ -798,29 +804,33 @@
       if (!confettiCtx || !confettiCanvas) return;
       confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
 
+      const now = Date.now();
+      const isFinishing = now > confettiEndTime;
+
       for (let i = confettiParticles.length - 1; i >= 0; i--) {
         const p = confettiParticles[i];
         p.wobble += p.wobbleSpeed;
-        p.x += p.vx + Math.sin(p.wobble) * 0.8;
+        p.x += p.vx + Math.sin(p.wobble) * 0.6;
         p.y += p.vy;
         p.vy += p.gravity;
         p.rotation += p.rotationSpeed;
 
-        if (p.y > confettiCanvas.height + 30) {
-          p.x = Math.random() * confettiCanvas.width;
-          p.y = -20;
-          p.vy = Math.random() * 1.5 + 0.8;
-          p.vx = (Math.random() - 0.5) * 1.5;
-          p.gravity = 0.02;
+        if (isFinishing) {
+          p.alpha -= 0.02;
+        }
+
+        if (p.alpha <= 0) {
+          confettiParticles.splice(i, 1);
+          continue;
         }
 
         confettiCtx.save();
-        confettiCtx.globalAlpha = p.alpha;
+        confettiCtx.globalAlpha = Math.max(0, p.alpha);
         confettiCtx.translate(p.x, p.y);
         confettiCtx.rotate((p.rotation * Math.PI) / 180);
 
         if (p.emoji) {
-          confettiCtx.font = `${p.size * 2.0}px serif`;
+          confettiCtx.font = `${p.size * 1.8}px serif`;
           confettiCtx.fillText(p.emoji, 0, 0);
         } else {
           confettiCtx.fillStyle = p.color;
@@ -829,7 +839,12 @@
         confettiCtx.restore();
       }
 
-      requestAnimationFrame(animateConfetti);
+      if (confettiParticles.length > 0) {
+        requestAnimationFrame(animateConfetti);
+      } else {
+        confettiActive = false;
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }
     }
 
     // Init on page load
