@@ -189,7 +189,7 @@
     <div class="flex flex-col items-center justify-center text-center max-w-lg w-full space-y-6">
       <div class="flex items-center gap-2 font-mono text-[10px] text-[#e9c349] uppercase tracking-[0.3em]">
         <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping"></span>
-        <span>SAVE THE DATE // 19–20 NOVEMBER 2026</span>
+        <span>CLASSIFIED TRANSMISSION // LEVEL 5 ACCESS</span>
       </div>
 
       <button
@@ -197,11 +197,11 @@
         onclick="bypassAudioGate()"
         class="w-full max-w-md py-4 sm:py-5 md:py-6 px-3 sm:px-6 md:px-8 border-2 border-white bg-white hover:bg-black text-black hover:text-[#e9c349] hover:border-[#e9c349] hover:shadow-[0_0_40px_rgba(233,195,73,0.85)] font-mono font-bold text-[11px] sm:text-xs md:text-base uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap transition-all duration-300 btn-solid-white-flicker cursor-pointer glitch-hover"
       >
-        [ ENTER INVITATION ]
+        [ VIEW REVEAL ]
       </button>
 
       <p class="font-mono text-[9px] text-[#8e9192] uppercase tracking-[0.3em]">
-        JANHVI &amp; KRISH // JAIPUR, RAJASTHAN
+        SECURITY PROTOCOL // ENCRYPTED ACCESS
       </p>
     </div>
   </div>
@@ -212,10 +212,10 @@
     <div class="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1 mr-1.5 sm:mr-3">
       <span class="w-2 h-2 bg-[#e9c349] rounded-full animate-ping shrink-0"></span>
       <span id="top-nav-title" class="text-[11px] sm:text-xs md:text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap truncate font-mono">
-        JANHVI &amp; KRISH <span class="hidden md:inline text-[#8e9192]">// SAVE THE DATE</span>
+        CLASSIFIED DOSSIER <span class="hidden md:inline text-[#8e9192]">// RESTRICTED ACCESS</span>
       </span>
-      <span class="hidden lg:inline-block text-[10px] text-[#e9c349] border border-[#e9c349]/40 px-2 py-0.5 ml-2 font-mono shrink-0">
-        [ JAIPUR 2026 ]
+      <span id="top-nav-badge" class="hidden lg:inline-block text-[10px] text-[#e9c349] border border-[#e9c349]/40 px-2 py-0.5 ml-2 font-mono shrink-0">
+        [ ENCRYPTED ]
       </span>
     </div>
 
@@ -243,7 +243,7 @@
 
       <!-- Symmetrical Header Switcher Button: [ SIMPLE SCROLL VIEW ] -->
       <a
-        href="index.html"
+        href="onepage.html"
         class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-[#e9c349]/60 bg-[#1c1b1b]/90 backdrop-blur-md hover:bg-[#e9c349] text-[#e9c349] hover:text-black font-mono text-[9px] sm:text-[11px] md:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all shadow-[0_0_15px_rgba(233,195,73,0.15)] hover:shadow-[0_0_20px_rgba(233,195,73,0.5)] cursor-pointer shrink-0"
         title="Switch to Simple Scroll View"
       >
@@ -265,8 +265,8 @@
     <!-- ========================================================================= -->
     <section id="sec-intro" class="w-full flex flex-col items-center min-h-[calc(100dvh-8rem)] justify-center font-mono">
       <div id="pre-reveal-card" class="w-full border border-[#333333] bg-[#1c1b1b]/60 backdrop-blur-md p-5 md:p-8 relative my-auto rounded-sm shadow-2xl">
-        <div class="absolute -top-3 left-4 bg-[#333333] text-[10px] px-2 py-0.5 text-[#e9c349] uppercase tracking-widest font-mono">
-          [ WELCOME // SAVE THE DATE ]
+        <div id="pre-reveal-badge" class="absolute -top-3 left-4 bg-[#333333] text-[10px] px-2 py-0.5 text-[#e9c349] uppercase tracking-widest font-mono">
+          [ CLASSIFIED DOSSIER // DECRYPTION REQUIRED ]
         </div>
         <div class="mt-3 mb-6 min-h-[90px] md:min-h-[110px] flex items-center justify-center">
           <p id="typewriter-box" class="text-white mb-2 leading-relaxed max-w-2xl text-center mx-auto text-xs md:text-base font-mono">
@@ -275,7 +275,7 @@
         </div>
         <div class="mb-6">
           <div class="flex justify-between items-end mb-2">
-            <span class="text-[10px] text-[#e9c349] uppercase tracking-widest font-mono">LOADING...</span>
+            <span class="text-[10px] text-[#e9c349] uppercase tracking-widest font-mono">DECRYPTING...</span>
             <span id="progress-lbl" class="text-[10px] text-[#8e9192] uppercase tracking-widest font-mono">0%</span>
           </div>
           <div class="w-full h-[2px] bg-[#333333] relative overflow-hidden">
@@ -287,7 +287,7 @@
             <span class="material-symbols-outlined text-xl md:text-2xl">keyboard_double_arrow_down</span>
           </div>
           <button id="btn-reveal" onclick="triggerReveal()" class="w-full h-14 md:h-16 border-2 border-[#333333] text-[#8e9192] uppercase tracking-[0.2em] font-bold text-xs md:text-base flex items-center justify-center gap-2 cursor-not-allowed opacity-50 transition-all font-mono">
-            [ VIEW REVEAL ]
+            [ TAP TO REVEAL ]
           </button>
         </div>
       </div>
@@ -325,10 +325,6 @@
             onmouseleave="slowDownReel(); document.getElementById('photo-love-badge')?.classList.add('hidden');"
             class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] border-2 border-[#e9c349]/70 hover:border-[#e9c349] p-1.5 md:p-2 flex flex-col items-center justify-center mb-3 bg-[#0e0e0e] backdrop-blur-xl mx-auto group transition-all duration-300 shadow-[0_0_35px_rgba(0,0,0,0.9)] hover:shadow-[0_0_50px_rgba(233,195,73,0.35)] cursor-pointer rounded-sm overflow-hidden z-10"
           >
-            <div class="absolute top-2.5 left-2.5 z-20 font-mono text-[9px] text-[#e9c349] bg-black/85 px-2.5 py-0.5 border border-[#e9c349]/40 flex items-center gap-1.5 shadow-md">
-              <span class="w-1.5 h-1.5 bg-[#4ade80] rounded-full animate-pulse"></span>
-              <span id="photo-frame-number">PHOTO 1 / 16 // JAIPUR</span>
-            </div>
             <div id="photo-love-badge" class="hidden absolute top-2.5 right-2.5 z-20 font-mono text-[8px] md:text-[9px] text-pink-300 bg-black/90 px-2.5 py-0.5 border border-pink-500/60 animate-pulse tracking-widest shadow-md">[♥ JANHVI &amp; KRISH ♥]</div>
 
             <div class="w-full h-full relative overflow-hidden bg-black flex items-center justify-center">
@@ -570,7 +566,7 @@
       <!-- CELEBRATION COUNTDOWN & BANTER MODULE (IN INTERACTIVE MODE) -->
       <div class="border border-[#e9c349]/40 bg-[#131313]/90 backdrop-blur-xl p-5 md:p-6 rounded-sm shadow-2xl space-y-4 text-center">
         <div class="flex items-center justify-between border-b border-[#333333] pb-2">
-          <span class="text-[10px] text-[#e9c349] font-bold uppercase tracking-widest font-mono">🎉 LIVE CELEBRATION COUNTDOWN</span>
+          <span class="text-[10px] text-[#e9c349] font-bold uppercase tracking-widest font-mono">⏳ T-MINUS: DAYS UNTIL JANHVI SAYS "I DO" &amp; KRISH GETS SWEATY PALMS!</span>
           <span class="text-[9px] text-[#8e9192] uppercase font-mono">JAIPUR 2026</span>
         </div>
 
@@ -891,9 +887,6 @@
       prevInteractiveIndex = nextIndex;
       currentReelPhoto = nextIndex;
 
-      const numEl = document.getElementById('photo-frame-number');
-      if (numEl) numEl.textContent = `PHOTO ${currentReelPhoto + 1} / 16 // JAIPUR`;
-
       for (let i = 0; i < REEL_PHOTOS.length; i++) {
         const pip = document.getElementById(`reel-pip-${i}`);
         if (pip) {
@@ -981,11 +974,24 @@
       }
     }
 
+    let isRevealed = false;
+
     function triggerReveal() {
+      isRevealed = true;
       AudioEngine.accessGranted();
       const flash = document.getElementById('flash-overlay');
       flash.classList.remove('opacity-0');
       flash.classList.add('opacity-100');
+
+      // Reveal names and title in the top navigation
+      const navTitle = document.getElementById('top-nav-title');
+      if (navTitle) {
+        navTitle.innerHTML = 'JANHVI &amp; KRISH <span class="hidden md:inline text-[#8e9192]">// SAVE THE DATE</span>';
+      }
+      const navBadge = document.getElementById('top-nav-badge');
+      if (navBadge) {
+        navBadge.textContent = '[ JAIPUR 2026 ]';
+      }
 
       setTimeout(() => {
         document.getElementById('pre-reveal-card').classList.add('hidden');
@@ -1018,6 +1024,19 @@
     }
 
     function switchTab(t) {
+      // If user hasn't revealed yet and tries to switch to Wardrobe/Venue, gate it!
+      if (!isRevealed && (t === 'details' || t === 'venue')) {
+        AudioEngine.click();
+        const preCard = document.getElementById('pre-reveal-card');
+        if (preCard) {
+          preCard.classList.add('border-red-500', 'animate-pulse');
+          setTimeout(() => {
+            preCard.classList.remove('border-red-500', 'animate-pulse');
+          }, 600);
+        }
+        return;
+      }
+
       AudioEngine.click();
       ['intro', 'details', 'venue'].forEach(id => {
         const sec = document.getElementById(`sec-${id}`);
