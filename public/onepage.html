@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Save the Date · 19–20 November 2026 | Jaipur, Rajasthan</title>
+  <title>Save the Date · Janhvi &amp; Krish | 19–20 Nov 2026, Jaipur</title>
   
-  <meta name="description" content="Save the Date for the wedding celebration of Janhvi Gupta & Krish Bhatia on 19–20 November 2026 at Achrol Niwas, Jaipur, Rajasthan." />
+  <meta name="description" content="Gupta &amp; Bhatia families eagerly invite you to the wedding celebration of Janhvi &amp; Krish on 19–20 November 2026 at Achrol Niwas, Jaipur, Rajasthan." />
 
-  <!-- Google Fonts: Luxury High-Fashion Serif & Modern Editorial Typography -->
+  <!-- OpenGraph / WhatsApp Rich In-Chat Preview Metadata -->
+  <meta property="og:title" content="Save The Date · Janhvi &amp; Krish (19–20 Nov 2026, Jaipur)" />
+  <meta property="og:description" content="Gupta &amp; Bhatia families eagerly await your presence &amp; blessings at Achrol Niwas, Jaipur." />
+  <meta property="og:image" content="https://save-the-date-jk.vercel.app/reveal-photos/photo-1944.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://save-the-date-jk.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#4A0D16" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Google Fonts: Crisp High-Legibility Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Italiana&family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Material Symbols -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -22,37 +34,29 @@
       theme: {
         extend: {
           fontFamily: {
-            editorial: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
-            luxury: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            italiana: ['"Italiana"', 'serif'],
-            syne: ['"Syne"', 'sans-serif'],
-            mono: ['"Space Grotesk"', 'monospace'],
+            title: ['"Playfair Display"', 'Georgia', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            syne: ['"Syne"', 'sans-serif'],
           },
           colors: {
             ivory: {
-              50: '#FFFEFA',
-              100: '#FAF7F2',
-              200: '#F4EFEB',
-              300: '#EBE3DA',
-              400: '#DDD2C3',
+              DEFAULT: '#FAF7F2',
+              card: '#FFFFFF',
+              border: '#E8DFD3',
             },
             royalMaroon: {
               DEFAULT: '#6B1420',
               deep: '#4A0D16',
-              light: '#8E1D2D',
-              soft: '#FAF0F2',
+              dark: '#2A050A',
             },
-            champagneGold: {
+            royalGold: {
               DEFAULT: '#C5A059',
               light: '#DFBF7A',
-              pale: '#FBF7EE',
               dark: '#937332',
             },
-            espresso: {
-              DEFAULT: '#1E1B1B',
-              muted: '#4A4444',
-              soft: '#736B6B',
+            charcoal: {
+              DEFAULT: '#1F1A1A',
+              muted: '#4A4242',
             }
           }
         }
@@ -63,73 +67,68 @@
   <style>
     body {
       background-color: #FAF7F2;
-      color: #1E1B1B;
+      color: #1F1A1A;
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    .font-vogue-title {
+    .font-royal-title {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
-    
-    .font-italiana-accent {
-      font-family: 'Italiana', serif;
-      letter-spacing: 0.03em;
-    }
 
-    .font-syne-label {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .editorial-frame {
-      position: relative;
+    .editorial-card {
       background: #FFFFFF;
-      border: 1px solid #EBE3DA;
-      box-shadow: 0 4px 20px -4px rgba(107, 20, 32, 0.06), 0 0 0 1px rgba(197, 160, 89, 0.15);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid #E8DFD3;
+      box-shadow: 0 4px 16px -2px rgba(74, 13, 22, 0.06), 0 0 0 1px rgba(197, 160, 89, 0.15);
+      transition: all 0.3s ease;
     }
-    .editorial-frame:hover {
+    .editorial-card:hover {
       border-color: #C5A059;
-      box-shadow: 0 12px 30px -6px rgba(107, 20, 32, 0.10), 0 0 0 1px rgba(197, 160, 89, 0.35);
+      box-shadow: 0 10px 25px -4px rgba(74, 13, 22, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.35);
     }
 
-    .btn-editorial-gold {
+    .btn-gold {
       background: linear-gradient(135deg, #937332 0%, #C5A059 50%, #937332 100%);
       color: #FFFFFF;
       font-family: 'Syne', sans-serif;
-      letter-spacing: 0.15em;
       font-weight: 700;
-      box-shadow: 0 4px 15px rgba(147, 115, 50, 0.25);
-      transition: all 0.25s ease;
+      letter-spacing: 0.12em;
+      box-shadow: 0 4px 15px rgba(147, 115, 50, 0.3);
+      transition: all 0.2s ease;
     }
-    .btn-editorial-gold:hover {
+    .btn-gold:hover {
       background: linear-gradient(135deg, #C5A059 0%, #DFBF7A 50%, #C5A059 100%);
-      box-shadow: 0 6px 20px rgba(147, 115, 50, 0.4);
+      box-shadow: 0 6px 20px rgba(147, 115, 50, 0.45);
       transform: translateY(-1px);
     }
 
-    .btn-editorial-maroon {
+    .btn-maroon {
       background: linear-gradient(135deg, #4A0D16 0%, #6B1420 50%, #4A0D16 100%);
       color: #FFFFFF;
       font-family: 'Syne', sans-serif;
-      letter-spacing: 0.15em;
       font-weight: 700;
-      box-shadow: 0 4px 15px rgba(74, 13, 22, 0.25);
-      transition: all 0.25s ease;
+      letter-spacing: 0.12em;
+      box-shadow: 0 4px 15px rgba(74, 13, 22, 0.3);
+      transition: all 0.2s ease;
     }
-    .btn-editorial-maroon:hover {
+    .btn-maroon:hover {
       background: linear-gradient(135deg, #6B1420 0%, #8E1D2D 50%, #6B1420 100%);
-      box-shadow: 0 6px 20px rgba(74, 13, 22, 0.4);
+      box-shadow: 0 6px 20px rgba(74, 13, 22, 0.45);
       transform: translateY(-1px);
     }
 
-    /* Mobile Touch Toggle for Overlay */
-    .touch-active .photo-overlay {
-      opacity: 1 !important;
+    /* Lookbook Overlay Smooth Fade & Retreat */
+    .photo-overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease-in-out;
+    }
+    .editorial-card.touch-active .photo-overlay,
+    .editorial-card:hover .photo-overlay {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     #confetti-canvas {
@@ -141,163 +140,128 @@
       pointer-events: none;
       z-index: 999;
     }
-
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #FAF7F2;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #C5A059;
-      border-radius: 3px;
-    }
   </style>
 </head>
-<body class="min-h-screen bg-[#FAF7F2] text-[#1E1B1B] selection:bg-[#C5A059] selection:text-white flex flex-col antialiased">
+<body class="min-h-screen bg-[#FAF7F2] text-[#1F1A1A] flex flex-col antialiased selection:bg-[#C5A059] selection:text-white">
 
-  <!-- Interactive Confetti Overlay Canvas -->
+  <!-- Interactive Celebration Confetti Canvas -->
   <canvas id="confetti-canvas"></canvas>
 
   <!-- ========================================================================= -->
-  <!-- TOP EDITORIAL HEADER BAR (CLEAN & NON-REPETITIVE) -->
+  <!-- TOP BAR: CLEAN & HIGH READABILITY -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#EBE3DA] px-4 sm:px-8 md:px-12 py-2.5 flex items-center justify-between shadow-[0_2px_10px_rgba(0,0,0,0.02)] h-14">
-    
-    <!-- Left Metadata -->
-    <div class="flex items-center gap-2 min-w-0 flex-1 mr-2">
-      <span class="w-2 h-2 rounded-full bg-[#C5A059] shrink-0"></span>
-      <span class="font-syne-label text-[10px] sm:text-[11px] font-bold text-[#6B1420] tracking-wider truncate">
+  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD3] px-4 sm:px-6 py-2.5 flex items-center justify-between shadow-sm h-13">
+    <div class="flex items-center gap-2 truncate mr-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-[#C5A059] shrink-0"></span>
+      <span class="font-syne text-[11px] sm:text-xs font-bold text-[#4A0D16] tracking-wider uppercase truncate">
         SAVE THE DATE · 19–20 NOV 2026 · JAIPUR
       </span>
     </div>
 
-    <!-- Right Controls: Gentle Audio & Spy Mode Switcher -->
-    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-      
-      <!-- Gentle Ambient Audio Button -->
+    <!-- Audio Toggle & Spy Mode Pill -->
+    <div class="flex items-center gap-2 shrink-0">
       <button
         type="button"
-        onclick="AudioEngine.toggle()"
+        onclick="WeddingAudio.toggle()"
         id="btn-audio-toggle"
-        aria-label="Toggle Wedding Music"
-        class="flex items-center gap-1.5 px-3 py-1 rounded-full text-[#6B1420] hover:text-white bg-[#6B1420]/10 hover:bg-[#6B1420] border border-[#6B1420]/25 transition-all cursor-pointer font-syne text-[10px] font-bold tracking-wider"
-        title="Toggle Music"
+        class="flex items-center gap-1 px-3 py-1 rounded-full text-[#4A0D16] bg-[#4A0D16]/10 hover:bg-[#4A0D16] hover:text-white border border-[#4A0D16]/20 transition-all font-syne text-[10px] sm:text-[11px] font-bold tracking-wider cursor-pointer"
+        title="Toggle Wedding Music"
       >
-        <span class="material-symbols-outlined text-sm" id="audio-icon">volume_up</span>
-        <span class="hidden sm:inline" id="audio-label">MUSIC ON</span>
+        <span class="material-symbols-outlined text-base" id="audio-icon">volume_up</span>
+        <span id="audio-label">MUSIC ON</span>
       </button>
 
-      <!-- Mode Switcher Pill -->
       <a
         href="interactive.html"
-        class="flex items-center gap-1.5 px-3 sm:px-3.5 py-1 rounded-full border border-[#C5A059] bg-[#FFFFFF] hover:bg-[#6B1420] text-[#6B1420] hover:text-white font-syne text-[10px] font-bold tracking-wider uppercase transition-all shadow-sm shrink-0"
+        class="flex items-center gap-1 px-3 py-1 rounded-full border border-[#C5A059] bg-white hover:bg-[#4A0D16] text-[#4A0D16] hover:text-white font-syne text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all shadow-sm"
         title="Switch to Interactive Mode"
       >
-        <span class="material-symbols-outlined text-xs text-[#937332] group-hover:text-white">smart_toy</span>
-        <span class="hidden sm:inline">Interactive Mode ↗</span>
-        <span class="sm:hidden">Interactive ↗</span>
+        <span>Spy Mode ↗</span>
       </a>
     </div>
   </header>
 
   <!-- ========================================================================= -->
-  <!-- MAIN EDITORIAL SCROLL CONTAINER (TIGHT VERTICAL RHYTHM) -->
+  <!-- MAIN COMPACT CONTENT (DECLUTTERED & HIGH READABILITY) -->
   <!-- ========================================================================= -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-10 sm:space-y-14 flex-grow">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-10 flex-grow">
 
     <!-- ========================================================================= -->
-    <!-- SECTION 1: HERO & KINETIC MOTION REEL -->
+    <!-- SECTION 1: HERO & ROYAL WINE REEL CENTERPIECE -->
     <!-- ========================================================================= -->
-    <section id="sec-hero" class="text-center space-y-6">
+    <section class="text-center space-y-4">
       
-      <!-- Editorial Masthead Header -->
-      <div class="space-y-2 max-w-2xl mx-auto">
-        <div class="inline-flex items-center gap-2">
-          <span class="h-[1px] w-6 sm:w-10 bg-[#C5A059]"></span>
-          <span class="font-syne-label text-[10px] sm:text-[11px] font-extrabold text-[#937332] tracking-[0.25em]">
-            WEDDING CELEBRATION
-          </span>
-          <span class="h-[1px] w-6 sm:w-10 bg-[#C5A059]"></span>
-        </div>
-
-        <!-- Sole Prominent Placement of Names Above the Motion Graphic -->
-        <h1 class="font-vogue-title text-4xl sm:text-6xl md:text-7xl text-[#6B1420] leading-[0.95] tracking-tight">
-          Janhvi <span class="font-editorial italic font-normal text-3xl sm:text-5xl md:text-6xl text-[#C5A059]">&amp;</span> Krish
+      <!-- Couple Names & Auspicious Date Banner -->
+      <div class="space-y-1.5">
+        <span class="font-syne text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.25em] uppercase block">
+          WEDDING CELEBRATION
+        </span>
+        <h1 class="font-royal-title text-4xl sm:text-6xl text-[#4A0D16] leading-tight">
+          Janhvi <span class="italic font-normal text-3xl sm:text-5xl text-[#C5A059]">&amp;</span> Krish
         </h1>
-
-        <div class="flex flex-wrap items-center justify-center gap-2 pt-1 font-mono text-[11px] sm:text-xs">
-          <span class="bg-[#6B1420]/10 border border-[#C5A059]/40 text-[#6B1420] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-1 font-sans text-xs sm:text-sm font-semibold">
+          <span class="bg-[#4A0D16]/10 border border-[#C5A059]/40 text-[#4A0D16] px-3.5 py-0.5 rounded-full">
             19 · 20 NOVEMBER 2026
           </span>
-          <span class="bg-[#C5A059]/15 border border-[#C5A059]/40 text-[#937332] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
+          <span class="bg-[#C5A059]/15 border border-[#C5A059]/40 text-[#937332] px-3.5 py-0.5 rounded-full">
             JAIPUR, RAJASTHAN
           </span>
         </div>
       </div>
 
-      <!-- High-Contrast Dark Royal Velvet & Gold Theater Framing Centerpiece -->
-      <div class="relative w-full max-w-3xl mx-auto py-2">
-        
-        <!-- Deep Ambient Contrast Halo (Separates Dark Theater from Ivory Canvas) -->
-        <div class="absolute -inset-3 sm:-inset-6 md:-inset-8 bg-gradient-to-r from-[#C5A059]/30 via-[#6B1420]/25 to-[#DFBF7A]/30 rounded-[2.5rem] blur-2xl pointer-events-none -z-10"></div>
-        <div class="absolute -inset-1 bg-black/40 rounded-3xl blur-md pointer-events-none -z-10"></div>
+      <!-- High-Contrast Deep Royal Maroon & Gold Theater Reel -->
+      <div class="relative w-full max-w-2xl mx-auto py-1">
+        <div class="absolute -inset-2 bg-gradient-to-r from-[#C5A059]/20 via-[#4A0D16]/20 to-[#DFBF7A]/20 rounded-3xl blur-xl pointer-events-none -z-10"></div>
 
-        <!-- Deep Imperial Royal Maroon & Gold Theater Frame (Warm Luxury, Zero Cold Black) -->
-        <div class="relative bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-3xl p-3.5 sm:p-5 md:p-6 shadow-[0_30px_70px_-15px_rgba(74,13,22,0.55),0_15px_35px_-5px_rgba(40,4,8,0.7),0_0_40px_rgba(197,160,89,0.3)] transition-all duration-500 hover:shadow-[0_35px_80px_-15px_rgba(74,13,22,0.7),0_0_50px_rgba(197,160,89,0.4)]">
+        <!-- Theater Frame -->
+        <div class="relative bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-2xl p-2.5 sm:p-3.5 shadow-2xl">
           
-          <!-- Golden Archival Header Plaque -->
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-5 py-1 rounded-full font-syne text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.25em] shadow-xl z-30 whitespace-nowrap border border-white/40">
+          <!-- Archival Header Plaque -->
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-4 py-0.5 rounded-full font-syne text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] shadow-md z-30 whitespace-nowrap border border-white/30">
             ✦ WHERE FOREVER BEGAN ✦
           </div>
 
-          <!-- Metallic Gold Corner Filigree Accents -->
-          <div class="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-[#DFBF7A] rounded-tl-sm pointer-events-none"></div>
-          <div class="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-[#DFBF7A] rounded-tr-sm pointer-events-none"></div>
-          <div class="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-[#DFBF7A] rounded-bl-sm pointer-events-none"></div>
-          <div class="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-[#DFBF7A] rounded-br-sm pointer-events-none"></div>
-
-          <!-- Inner Video Canvas with Inset Shadow & Gold Bevel -->
-          <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] bg-[#180306] rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-[inset_0_4px_25px_rgba(24,3,6,0.95)] border border-[#C5A059]/60" onclick="handleReelClick()">
+          <!-- Video Canvas -->
+          <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-[#180306] rounded-xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50" onclick="handleReelClick()">
             
-            <!-- Instant-Switch Stacked Frames (Zero Opacity Transition to Eliminate Flicker) -->
-            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-10 block" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" class="absolute inset-0 w-full h-full object-cover filter contrast-[1.08] brightness-[0.98] z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <!-- 16 Instant-Switch Proposal Photos -->
+            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" class="absolute inset-0 w-full h-full object-cover z-10 block" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
 
-            <div class="absolute inset-0 bg-gradient-to-t from-[#200308]/60 via-transparent to-[#200308]/20 pointer-events-none z-20"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#200308]/60 via-transparent to-transparent pointer-events-none z-20"></div>
 
-            <!-- Initial Tap to Play Cinematic Overlay -->
-            <div id="reel-start-overlay" class="absolute inset-0 bg-[#25040A]/75 backdrop-blur-[3px] flex flex-col items-center justify-center p-4 z-30 transition-all duration-300">
+            <!-- Initial Tap Play Overlay -->
+            <div id="reel-start-overlay" class="absolute inset-0 bg-[#25040A]/75 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 z-30 transition-all">
               <button
                 type="button"
                 onclick="event.stopPropagation(); startReelAndSound();"
-                class="px-8 sm:px-10 py-4 sm:py-5 rounded-full btn-editorial-gold font-syne text-xs sm:text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3 cursor-pointer shadow-[0_10px_35px_rgba(147,115,50,0.45)] hover:scale-105 transition-all"
+                class="px-8 sm:px-10 py-3.5 sm:py-4 rounded-full btn-gold font-syne text-xs sm:text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-2.5 cursor-pointer shadow-lg hover:scale-105 transition-all"
               >
-                <span class="material-symbols-outlined text-2xl sm:text-3xl text-white animate-pulse">play_circle</span>
+                <span class="material-symbols-outlined text-2xl sm:text-3xl text-white">play_circle</span>
                 <span>VIEW REVEAL</span>
               </button>
-              <span class="font-mono text-[9px] sm:text-[10px] text-[#DFBF7A] uppercase tracking-widest mt-2.5">
+              <span class="font-sans text-[11px] sm:text-xs font-semibold text-[#DFBF7A] mt-2">
                 ✦ Tap to play music ✦
               </span>
             </div>
 
-            <!-- Bottom Controls: Just Clean Pause/Play Button -->
-            <div id="reel-bottom-controls" class="hidden absolute bottom-3 right-3 sm:right-5 flex items-center z-30 px-3.5 py-1.5 bg-[#25040A]/90 backdrop-blur-md rounded-full text-xs text-white border border-[#C5A059]/40 shadow-lg">
-              <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1.5 text-[#DFBF7A] hover:text-white font-syne font-bold tracking-wider uppercase transition-colors cursor-pointer text-[10px] sm:text-xs">
+            <!-- Bottom Play/Pause Toggle -->
+            <div id="reel-bottom-controls" class="hidden absolute bottom-2.5 right-2.5 sm:right-4 flex items-center z-30 px-3 py-1 bg-[#25040A]/90 backdrop-blur-md rounded-full text-xs text-white border border-[#C5A059]/40 shadow-lg">
+              <button type="button" onclick="event.stopPropagation(); toggleReelPlay();" id="reel-play-btn" class="flex items-center gap-1 text-[#DFBF7A] hover:text-white font-syne font-bold tracking-wider uppercase transition-colors cursor-pointer text-[10px] sm:text-xs">
                 <span class="material-symbols-outlined text-sm" id="reel-play-icon">pause</span>
                 <span id="reel-play-lbl">PAUSE</span>
               </button>
@@ -305,320 +269,251 @@
           </div>
         </div>
       </div>
-
-      <!-- Clean Invitation Quote -->
-      <div class="max-w-xl mx-auto text-center pt-1">
-        <p class="font-italiana-accent text-lg sm:text-xl text-[#1E1B1B] leading-relaxed">
-          &ldquo;Two days of pure joy, royal feasts, high glamour, and timeless memories under the Rajasthani sky.&rdquo;
-        </p>
-      </div>
     </section>
 
-    <div class="flex items-center justify-center gap-3 my-4 sm:my-6">
-      <span class="h-[1px] flex-1 bg-[#EBE3DA]"></span>
-      <span class="font-mono text-[10px] text-[#937332] font-bold tracking-widest uppercase">02 / WARDROBE &amp; THEMES</span>
-      <span class="h-[1px] flex-1 bg-[#EBE3DA]"></span>
-    </div>
-
     <!-- ========================================================================= -->
-    <!-- SECTION 2: CELEBRATION SCHEDULE & WARDROBE LOOKBOOK (PERFECT TYPOGRAPHY) -->
+    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (COMPACT & EASY TO TAP) -->
     <!-- ========================================================================= -->
-    <section id="sec-wardrobe" class="space-y-6 scroll-mt-20">
-      <div class="text-center space-y-1.5">
-        <span class="font-syne-label text-[10px] font-extrabold text-[#937332]">
+    <section class="space-y-4">
+      <div class="text-center space-y-1">
+        <span class="font-syne text-[10px] sm:text-[11px] font-extrabold text-[#937332] tracking-widest uppercase block">
           CURATED ATTIRE GUIDE
         </span>
-        <h2 class="font-vogue-title text-3xl sm:text-4xl text-[#6B1420]">
+        <h2 class="font-royal-title text-2xl sm:text-3xl text-[#4A0D16]">
           The Three Chapters
         </h2>
-        <p class="text-xs sm:text-sm text-[#736B6B] font-medium max-w-md mx-auto">
-          Hover over each photo to preview recommended fabrics &amp; color swatches:
+        <p class="text-xs sm:text-sm text-[#4A4242] font-medium">
+          Tap or hover any photo to preview fabrics &amp; color swatches (tap again to close):
         </p>
       </div>
 
-      <!-- 3 Editorial Style Lookbook Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         
         <!-- Chapter 01: Welcome Carnival & Haldi -->
-        <div class="editorial-frame rounded-2xl overflow-hidden flex flex-col group">
-          
-          <!-- Photo with Hover / Tap Drawer Overlay -->
-          <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-[#1E1B1B] cursor-pointer" onclick="this.classList.toggle('touch-active')">
-            <img alt="Welcome Carnival Lookbook" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
+        <div id="card-chapter-1" class="editorial-card rounded-xl overflow-hidden flex flex-col group cursor-pointer" onclick="toggleLookbook('card-chapter-1', event)">
+          <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B]">
+            <img alt="Welcome Carnival" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
             
-            <div class="absolute top-2.5 left-2.5 bg-[#937332] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-widest shadow z-10">
+            <div class="absolute top-2 left-2 bg-[#937332] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 01 · AFTERNOON
             </div>
 
-            <div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white/90 font-syne text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10 group-hover:opacity-0 transition-opacity">
-              Hover for Palette ▾
-            </div>
-
-            <!-- Hover Overlay: Fiesta Yellows -->
-            <div class="photo-overlay absolute inset-0 bg-black/85 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 space-y-2">
+            <!-- Tap / Hover Overlay: Fiesta Yellows -->
+            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
               <span class="font-syne text-[11px] font-extrabold text-[#FACC15] uppercase tracking-wider">
                 FIESTA YELLOWS
               </span>
-              <span class="font-mono text-[9px] text-[#DFBF7A]/90 tracking-wide">
-                (Haldi Carnival Palette)
-              </span>
               
-              <!-- Strict Yellow Swatches -->
+              <!-- Yellow Swatches -->
               <div class="flex items-center gap-1.5 justify-center py-0.5">
-                <span class="w-5 h-5 rounded-full bg-[#FEF08A] border border-white/30 shadow" title="Pastel Lemon"></span>
-                <span class="w-5 h-5 rounded-full bg-[#FACC15] border border-white/30 shadow" title="Sunshine Yellow"></span>
-                <span class="w-5 h-5 rounded-full bg-[#EAB308] border border-white/30 shadow" title="Haldi Mustard"></span>
-                <span class="w-5 h-5 rounded-full bg-[#CA8A04] border border-white/30 shadow" title="Rich Ochre"></span>
-                <span class="w-5 h-5 rounded-full bg-[#B45309] border border-white/30 shadow" title="Golden Amber"></span>
+                <span class="w-5 h-5 rounded-full bg-[#FEF08A] border border-white/40 shadow" title="Pastel Lemon"></span>
+                <span class="w-5 h-5 rounded-full bg-[#FACC15] border border-white/40 shadow" title="Sunshine Yellow"></span>
+                <span class="w-5 h-5 rounded-full bg-[#EAB308] border border-white/40 shadow" title="Haldi Mustard"></span>
+                <span class="w-5 h-5 rounded-full bg-[#CA8A04] border border-white/40 shadow" title="Rich Ochre"></span>
+                <span class="w-5 h-5 rounded-full bg-[#B45309] border border-white/40 shadow" title="Golden Amber"></span>
               </div>
 
-              <!-- Fabrics & Styling -->
-              <div class="text-[10px] text-white/90 leading-tight space-y-1 pt-1 font-mono">
+              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans">
                 <div class="text-[#DFBF7A] font-bold">Chanderi · Georgette · Mulmul</div>
-                <div class="text-white/80 text-[9px]">Breezy yellow florals, mirror-work &amp; linen-silk kurtas</div>
+                <div class="text-white/80">Breezy florals &amp; linen-silk kurtas</div>
               </div>
+
+              <span class="inline-block text-[8px] text-white/60 uppercase tracking-widest pt-1">
+                ✕ Tap to close
+              </span>
             </div>
           </div>
           
-          <!-- Card Content (Clean Original View) -->
-          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-2.5">
-            <div class="space-y-1.5">
-              <span class="font-mono text-[9px] text-[#937332] font-bold tracking-widest uppercase block">CHAPTER I</span>
-              <h3 class="font-editorial font-bold text-xl sm:text-2xl text-[#6B1420] tracking-tight">
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <span class="font-syne text-[9px] text-[#937332] font-bold tracking-widest uppercase block">CHAPTER I</span>
+              <h3 class="font-royal-title font-bold text-lg sm:text-xl text-[#4A0D16]">
                 Welcome Carnival
               </h3>
               <div class="pt-0.5">
-                <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2.5 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#937332] uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#937332] uppercase">
                   💛 Haldi Fiesta
                 </span>
               </div>
             </div>
-            <p class="text-xs text-[#4A4444] leading-relaxed">
+            <p class="text-xs text-[#4A4242] leading-relaxed font-medium">
               Sunshine yellows, vibrant georgettes, mustard silks &amp; playful festive daywear.
             </p>
           </div>
         </div>
 
         <!-- Chapter 02: Sangeet & Gala -->
-        <div class="editorial-frame rounded-2xl overflow-hidden flex flex-col group">
-          
-          <!-- Photo with Hover / Tap Drawer Overlay -->
-          <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-[#1E1B1B] cursor-pointer" onclick="this.classList.toggle('touch-active')">
-            <img alt="Sangeet Gala Lookbook" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
+        <div id="card-chapter-2" class="editorial-card rounded-xl overflow-hidden flex flex-col group cursor-pointer" onclick="toggleLookbook('card-chapter-2', event)">
+          <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B]">
+            <img alt="Sangeet Gala" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
             
-            <div class="absolute top-2.5 left-2.5 bg-[#6B1420] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-widest shadow z-10">
+            <div class="absolute top-2 left-2 bg-[#4A0D16] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 01 · EVENING
             </div>
 
-            <div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white/90 font-syne text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10 group-hover:opacity-0 transition-opacity">
-              Hover for Palette ▾
-            </div>
-
-            <!-- Hover Overlay: Indo-Western Glamour (Night-Time Palette · No Brown / No Gold) -->
-            <div class="photo-overlay absolute inset-0 bg-black/85 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 space-y-2">
+            <!-- Tap / Hover Overlay: Indo-Western Glamour -->
+            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
               <span class="font-syne text-[11px] font-extrabold text-[#CBD5E1] uppercase tracking-wider">
                 INDO-WESTERN GLAMOUR
               </span>
-              <span class="font-mono text-[9px] text-[#CBD5E1]/90 tracking-wide">
-                (Night-Time Cocktail &amp; Bling)
-              </span>
               
-              <!-- Night-Time Metallic & Jewel Swatches (No Brown, No Gold) -->
+              <!-- Night-Time Swatches -->
               <div class="flex items-center gap-1.5 justify-center py-0.5">
-                <span class="w-5 h-5 rounded-full bg-[#09090B] border border-white/30 shadow" title="Midnight Jet Black"></span>
-                <span class="w-5 h-5 rounded-full bg-[#CBD5E1] border border-white/30 shadow" title="Metallic Silver Chrome"></span>
-                <span class="w-5 h-5 rounded-full bg-[#2563EB] border border-white/30 shadow" title="Electric Cobalt Blue"></span>
-                <span class="w-5 h-5 rounded-full bg-[#064E3B] border border-white/30 shadow" title="Deep Emerald Velvet"></span>
-                <span class="w-5 h-5 rounded-full bg-[#581C87] border border-white/30 shadow" title="Regal Dark Violet"></span>
+                <span class="w-5 h-5 rounded-full bg-[#09090B] border border-white/40 shadow" title="Midnight Jet Black"></span>
+                <span class="w-5 h-5 rounded-full bg-[#CBD5E1] border border-white/40 shadow" title="Metallic Silver Chrome"></span>
+                <span class="w-5 h-5 rounded-full bg-[#2563EB] border border-white/40 shadow" title="Cobalt Blue"></span>
+                <span class="w-5 h-5 rounded-full bg-[#064E3B] border border-white/40 shadow" title="Emerald Velvet"></span>
+                <span class="w-5 h-5 rounded-full bg-[#581C87] border border-white/40 shadow" title="Dark Violet"></span>
               </div>
 
-              <!-- Fabrics & Styling -->
-              <div class="text-[10px] text-white/90 leading-tight space-y-1 pt-1 font-mono">
-                <div class="text-[#CBD5E1] font-bold">Micro-Sequins · Velvet · Liquid Satin</div>
-                <div class="text-white/80 text-[9px]">Silver micro-sequins, modern celebratory silhouettes &amp; sharp evening cuts</div>
+              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans">
+                <div class="text-[#CBD5E1] font-bold">Micro-Sequins · Velvet · Satin</div>
+                <div class="text-white/80">Silver sequins &amp; modern silhouettes</div>
               </div>
+
+              <span class="inline-block text-[8px] text-white/60 uppercase tracking-widest pt-1">
+                ✕ Tap to close
+              </span>
             </div>
           </div>
           
-          <!-- Card Content (Clean Original View) -->
-          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-2.5">
-            <div class="space-y-1.5">
-              <span class="font-mono text-[9px] text-[#6B1420] font-bold tracking-widest uppercase block">CHAPTER II</span>
-              <h3 class="font-editorial font-bold text-xl sm:text-2xl text-[#6B1420] tracking-tight">
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <span class="font-syne text-[9px] text-[#4A0D16] font-bold tracking-widest uppercase block">CHAPTER II</span>
+              <h3 class="font-royal-title font-bold text-lg sm:text-xl text-[#4A0D16]">
                 Sangeet &amp; Gala
               </h3>
               <div class="pt-0.5">
-                <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#6B1420]/30 px-2.5 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#6B1420] uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#4A0D16]/30 px-2 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#4A0D16] uppercase">
                   ✨ Evening Glamour
                 </span>
               </div>
             </div>
-            <p class="text-xs text-[#4A4444] leading-relaxed">
+            <p class="text-xs text-[#4A4242] leading-relaxed font-medium">
               Metallic silver sequins, statement Indo-Western cuts, evening glamour &amp; dancing shoes.
             </p>
           </div>
         </div>
 
         <!-- Chapter 03: Royal Shaadi -->
-        <div class="editorial-frame rounded-2xl overflow-hidden flex flex-col group">
-          
-          <!-- Photo with Hover / Tap Drawer Overlay -->
-          <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-[#1E1B1B] cursor-pointer" onclick="this.classList.toggle('touch-active')">
-            <img alt="Royal Shaadi Lookbook" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
+        <div id="card-chapter-3" class="editorial-card rounded-xl overflow-hidden flex flex-col group cursor-pointer" onclick="toggleLookbook('card-chapter-3', event)">
+          <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B]">
+            <img alt="Royal Shaadi" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
             
-            <div class="absolute top-2.5 left-2.5 bg-[#4A0D16] text-[#DFBF7A] font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-widest shadow z-10">
+            <div class="absolute top-2 left-2 bg-[#937332] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 02 · EVENING
             </div>
 
-            <div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white/90 font-syne text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10 group-hover:opacity-0 transition-opacity">
-              Hover for Palette ▾
-            </div>
-
-            <!-- Hover Overlay: Royal Palette (Sundowner Wedding Edition) -->
-            <div class="photo-overlay absolute inset-0 bg-black/85 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 space-y-2">
+            <!-- Tap / Hover Overlay: Royal Palette -->
+            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
               <span class="font-syne text-[11px] font-extrabold text-[#DFBF7A] uppercase tracking-wider">
                 ROYAL PALETTE
               </span>
-              <span class="font-mono text-[9px] text-[#DFBF7A]/90 tracking-wide">
-                (Sundowner Wedding Edition)
-              </span>
               
-              <!-- Curated Sundowner Non-Red Swatches -->
+              <!-- Sundowner Swatches -->
               <div class="flex items-center gap-1.5 justify-center py-0.5">
-                <span class="w-5 h-5 rounded-full bg-[#D4AF37] border border-white/30 shadow" title="Sunset Antique Gold"></span>
-                <span class="w-5 h-5 rounded-full bg-[#047857] border border-white/30 shadow" title="Royal Emerald Green"></span>
-                <span class="w-5 h-5 rounded-full bg-[#FFFBEB] border border-white/30 shadow" title="Ivory & Pearl Brocade"></span>
-                <span class="w-5 h-5 rounded-full bg-[#1E1B4B] border border-white/30 shadow" title="Twilight Midnight Navy"></span>
-                <span class="w-5 h-5 rounded-full bg-[#0E7490] border border-white/30 shadow" title="Sundowner Peacock Teal"></span>
+                <span class="w-5 h-5 rounded-full bg-[#D4AF37] border border-white/40 shadow" title="Sunset Gold"></span>
+                <span class="w-5 h-5 rounded-full bg-[#047857] border border-white/40 shadow" title="Royal Emerald"></span>
+                <span class="w-5 h-5 rounded-full bg-[#FFFBEB] border border-white/40 shadow" title="Ivory Pearl"></span>
+                <span class="w-5 h-5 rounded-full bg-[#1E1B4B] border border-white/40 shadow" title="Midnight Navy"></span>
+                <span class="w-5 h-5 rounded-full bg-[#0E7490] border border-white/40 shadow" title="Peacock Teal"></span>
               </div>
 
-              <!-- Fabrics & Styling -->
-              <div class="text-[10px] text-white/90 leading-tight space-y-1 pt-1 font-mono">
+              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans">
                 <div class="text-[#DFBF7A] font-bold">Banarasi Katan · Brocade · Raw Silk</div>
-                <div class="text-white/80 text-[9px]">Opulent heritage silks, antique zari achkans &amp; royal jewels</div>
+                <div class="text-white/80">Opulent heritage silks &amp; royal jewels</div>
               </div>
+
+              <span class="inline-block text-[8px] text-white/60 uppercase tracking-widest pt-1">
+                ✕ Tap to close
+              </span>
             </div>
           </div>
           
-          <!-- Card Content (Clean Original View) -->
-          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-2.5">
-            <div class="space-y-1.5">
-              <span class="font-mono text-[9px] text-[#937332] font-bold tracking-widest uppercase block">CHAPTER III</span>
-              <h3 class="font-editorial font-bold text-xl sm:text-2xl text-[#6B1420] tracking-tight">
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <span class="font-syne text-[9px] text-[#937332] font-bold tracking-widest uppercase block">CHAPTER III</span>
+              <h3 class="font-royal-title font-bold text-lg sm:text-xl text-[#4A0D16]">
                 The Royal Wedding
               </h3>
               <div class="pt-0.5">
-                <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2.5 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#937332] uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#937332] uppercase">
                   👑 Sundowner Royalty
                 </span>
               </div>
             </div>
-            <p class="text-xs text-[#4A4444] leading-relaxed">
-              Antique sunset gold, royal emeralds, Banarasi silks &amp; Rajasthani royal grandeur.
+            <p class="text-xs text-[#4A4242] leading-relaxed font-medium">
+              Antique sunset gold, royal emeralds, Banarasi silks &amp; Rajasthani grandeur.
             </p>
           </div>
         </div>
 
       </div>
-
-      <!-- Shopping Note -->
-      <div class="editorial-frame p-4 rounded-xl border-l-4 border-l-[#C5A059] flex items-center gap-3">
-        <span class="text-xl shrink-0">💡</span>
-        <div class="text-xs text-[#1E1B1B] leading-relaxed">
-          <strong class="font-syne font-bold text-[#6B1420] uppercase tracking-wider mr-1">Shopping Note:</strong>
-          Start tailoring early! Custom festive season tailoring takes extra time in autumn.
-        </div>
-      </div>
     </section>
 
-    <div class="flex items-center justify-center gap-3 my-4 sm:my-6">
-      <span class="h-[1px] flex-1 bg-[#EBE3DA]"></span>
-      <span class="font-mono text-[10px] text-[#937332] font-bold tracking-widest uppercase">03 / THE SANCTUARY</span>
-      <span class="h-[1px] flex-1 bg-[#EBE3DA]"></span>
-    </div>
-
     <!-- ========================================================================= -->
-    <!-- SECTION 3: 4K VENUE & GOOGLE MAPS NAVIGATION (CLEAN & NON-REPETITIVE) -->
+    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION -->
     <!-- ========================================================================= -->
-    <section id="sec-venue" class="space-y-6 scroll-mt-20">
-      <div class="text-center space-y-1.5">
-        <span class="font-syne-label text-[10px] font-extrabold text-[#937332]">
+    <section class="space-y-3">
+      <div class="text-center space-y-1">
+        <span class="font-syne text-[10px] sm:text-[11px] font-extrabold text-[#937332] tracking-widest uppercase block">
           THE SANCTUARY
         </span>
-        <h2 class="font-vogue-title text-3xl sm:text-4xl text-[#6B1420]">
+        <h2 class="font-royal-title text-2xl sm:text-3xl text-[#4A0D16]">
           Achrol Niwas, Jaipur
         </h2>
-        <p class="text-xs sm:text-sm text-[#736B6B] font-medium max-w-md mx-auto">
+        <p class="text-xs sm:text-sm text-[#4A4242] font-medium">
           Jaipur-Delhi Highway, Achrol, Rajasthan 303002
         </p>
       </div>
 
-      <div class="editorial-frame rounded-2xl overflow-hidden shadow-xl">
-        
-        <!-- Crystal-Clear 4K Venue Photography -->
-        <div class="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-[#120F0F] overflow-hidden group">
-          <img
-            alt="Achrol Niwas Luxury Resort Jaipur"
-            class="w-full h-full object-cover filter contrast-[1.04] brightness-[0.98] transition-transform duration-1000 ease-out group-hover:scale-105"
-            src="achrol-niwas.jpg"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#1E1B1B]/70 via-transparent to-black/15 pointer-events-none"></div>
+      <div class="editorial-card rounded-xl overflow-hidden">
+        <div class="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-[#120F0F]">
+          <img alt="Achrol Niwas Resort Jaipur" class="w-full h-full object-cover" src="achrol-niwas.jpg" />
         </div>
-
-        <!-- Clean Navigation Action Bar -->
-        <div class="p-4 sm:p-6 text-center">
+        <div class="p-3 sm:p-4 text-center">
           <a
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-full sm:w-auto inline-flex px-8 py-3.5 rounded-full btn-editorial-maroon text-xs uppercase tracking-[0.2em] items-center justify-center gap-2.5 shadow-lg cursor-pointer"
+            class="w-full sm:w-auto inline-flex px-6 py-2.5 rounded-full btn-maroon text-xs uppercase tracking-[0.15em] items-center justify-center gap-2 shadow-md cursor-pointer"
           >
-            <span class="material-symbols-outlined text-lg">near_me</span>
+            <span class="material-symbols-outlined text-base">near_me</span>
             <span>📍 OPEN IN GOOGLE MAPS ↗</span>
           </a>
         </div>
       </div>
     </section>
 
-    <div class="flex items-center justify-center gap-3 my-4 sm:my-6">
-      <span class="h-[1px] flex-1 bg-[#EBE3DA]"></span>
-      <span class="font-mono text-[10px] text-[#937332] font-bold tracking-widest uppercase">04 / THE COUNTDOWN</span>
-      <span class="h-[1px] flex-1 bg-[#EBE3DA]"></span>
-    </div>
-
     <!-- ========================================================================= -->
-    <!-- SECTION 4: WITTY & MEMORABLE COUNTDOWN TO JAIPUR -->
+    <!-- SECTION 4: THE WEDDING COUNTDOWN -->
     <!-- ========================================================================= -->
-    <section class="text-center space-y-6 pb-4">
-      <div class="space-y-2">
-        <span class="font-syne-label text-[10px] font-extrabold text-[#937332] tracking-[0.25em]">
+    <section class="text-center space-y-3 pb-2">
+      <div class="space-y-1">
+        <span class="font-syne text-[10px] font-extrabold text-[#937332] tracking-widest uppercase block">
           ⏳ THE WEDDING COUNTDOWN
         </span>
-        <h2 class="font-vogue-title text-3xl sm:text-5xl text-[#6B1420] leading-tight">
+        <h2 class="font-royal-title text-2xl sm:text-3xl text-[#4A0D16]">
           Days Until Janhvi Says &ldquo;I Do&rdquo; &amp; Krish Panics!
         </h2>
-        <p class="text-xs sm:text-sm text-[#736B6B] font-medium max-w-md mx-auto">
-          Start practicing your Sangeet thumkas &amp; packing your royal outfits 💃🕺
-        </p>
       </div>
 
-      <!-- Countdown Grid with High-Fashion Editorial Digits -->
-      <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg mx-auto">
-        <div class="editorial-frame p-3 sm:p-5 rounded-2xl text-center">
-          <div id="cd-d" class="font-editorial text-3xl sm:text-5xl font-bold text-[#6B1420] tabular-nums leading-none">--</div>
-          <div class="font-syne text-[8px] sm:text-[9px] font-extrabold text-[#937332] uppercase tracking-widest mt-1.5">DAYS</div>
+      <div class="grid grid-cols-4 gap-2 sm:gap-3 max-w-md mx-auto">
+        <div class="editorial-card p-2.5 sm:p-3.5 rounded-xl text-center">
+          <div id="cd-d" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
+          <div class="font-syne text-[8px] sm:text-[9px] font-bold text-[#937332] uppercase tracking-wider mt-0.5">DAYS</div>
         </div>
-        <div class="editorial-frame p-3 sm:p-5 rounded-2xl text-center">
-          <div id="cd-h" class="font-editorial text-3xl sm:text-5xl font-bold text-[#6B1420] tabular-nums leading-none">--</div>
-          <div class="font-syne text-[8px] sm:text-[9px] font-extrabold text-[#937332] uppercase tracking-widest mt-1.5">HOURS</div>
+        <div class="editorial-card p-2.5 sm:p-3.5 rounded-xl text-center">
+          <div id="cd-h" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
+          <div class="font-syne text-[8px] sm:text-[9px] font-bold text-[#937332] uppercase tracking-wider mt-0.5">HOURS</div>
         </div>
-        <div class="editorial-frame p-3 sm:p-5 rounded-2xl text-center">
-          <div id="cd-m" class="font-editorial text-3xl sm:text-5xl font-bold text-[#6B1420] tabular-nums leading-none">--</div>
-          <div class="font-syne text-[8px] sm:text-[9px] font-extrabold text-[#937332] uppercase tracking-widest mt-1.5">MINS</div>
+        <div class="editorial-card p-2.5 sm:p-3.5 rounded-xl text-center">
+          <div id="cd-m" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
+          <div class="font-syne text-[8px] sm:text-[9px] font-bold text-[#937332] uppercase tracking-wider mt-0.5">MINS</div>
         </div>
-        <div class="editorial-frame p-3 sm:p-5 rounded-2xl text-center">
-          <div id="cd-s" class="font-editorial text-3xl sm:text-5xl font-bold text-[#C5A059] tabular-nums leading-none">--</div>
-          <div class="font-syne text-[8px] sm:text-[9px] font-extrabold text-[#937332] uppercase tracking-widest mt-1.5">SECS</div>
+        <div class="editorial-card p-2.5 sm:p-3.5 rounded-xl text-center">
+          <div id="cd-s" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#C5A059] tabular-nums">--</div>
+          <div class="font-syne text-[8px] sm:text-[9px] font-bold text-[#937332] uppercase tracking-wider mt-0.5">SECS</div>
         </div>
       </div>
     </section>
@@ -626,25 +521,25 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- EDITORIAL FOOTER (CLEAN & NON-REPETITIVE) -->
+  <!-- FOOTER -->
   <!-- ========================================================================= -->
-  <footer class="bg-white border-t border-[#EBE3DA] py-8 px-4 text-center space-y-2">
-    <p class="font-syne text-[11px] sm:text-xs font-bold text-[#6B1420] uppercase tracking-widest">
+  <footer class="bg-white border-t border-[#E8DFD3] py-6 px-4 text-center space-y-1.5">
+    <p class="font-syne text-xs font-bold text-[#4A0D16] uppercase tracking-widest">
       ACHROL NIWAS · JAIPUR, RAJASTHAN
     </p>
-    <p class="font-mono text-xs text-[#736B6B] font-medium max-w-md mx-auto">
+    <p class="font-sans text-xs text-[#4A4242] font-semibold">
       19–20 NOVEMBER 2026
     </p>
-    <p class="font-syne text-[9px] sm:text-[10px] text-[#937332] uppercase tracking-[0.2em] font-extrabold pt-1">
+    <p class="font-syne text-[10px] sm:text-[11px] text-[#937332] uppercase tracking-[0.18em] font-extrabold pt-1">
       GUPTA &amp; BHATIA FAMILIES EAGERLY AWAIT YOUR PRESENCE
     </p>
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT: ROMANTIC AMBIANCE & REEL CONTROLLER -->
+  <!-- JAVASCRIPT: REEL, WARDROBE RETREAT, & HIGH-VOLUME WEDDING AUDIO ENGINE -->
   <!-- ========================================================================= -->
   <script>
-    // High-Definition Photos
+    // 16 Photos
     const REEL_PHOTOS = [
       "reveal-photos/photo-1944.jpg",
       "reveal-photos/photo-1945.jpg",
@@ -665,7 +560,7 @@
     ];
 
     let reelIndex = 0;
-    let previousReelIndex = 0;
+    let prevIndex = 0;
     let reelTimer = null;
     let isReelPlaying = false;
     const reelPlayIcon = document.getElementById('reel-play-icon');
@@ -673,37 +568,36 @@
     const reelStartOverlay = document.getElementById('reel-start-overlay');
     const reelBottomControls = document.getElementById('reel-bottom-controls');
 
-    // Instant Zero-Flicker Frame Switching
     function setReelFrame(idx) {
-      const nextIndex = (idx + REEL_PHOTOS.length) % REEL_PHOTOS.length;
-      if (previousReelIndex !== nextIndex) {
-        const prevFrame = document.getElementById(`reel-f-${previousReelIndex}`);
-        if (prevFrame) {
-          prevFrame.classList.add('hidden');
-          prevFrame.classList.remove('block');
-          prevFrame.style.zIndex = '0';
+      const next = (idx + REEL_PHOTOS.length) % REEL_PHOTOS.length;
+      if (prevIndex !== next) {
+        const prev = document.getElementById(`reel-f-${prevIndex}`);
+        if (prev) {
+          prev.classList.add('hidden');
+          prev.classList.remove('block');
+          prev.style.zIndex = '0';
         }
       }
-      const nextFrame = document.getElementById(`reel-f-${nextIndex}`);
-      if (nextFrame) {
-        nextFrame.classList.remove('hidden');
-        nextFrame.classList.add('block');
-        nextFrame.style.zIndex = '10';
+      const cur = document.getElementById(`reel-f-${next}`);
+      if (cur) {
+        cur.classList.remove('hidden');
+        cur.classList.add('block');
+        cur.style.zIndex = '10';
       }
-      previousReelIndex = nextIndex;
-      reelIndex = nextIndex;
+      prevIndex = next;
+      reelIndex = next;
     }
 
     function startReelAndSound() {
-      AudioEngine.init();
+      WeddingAudio.init();
       if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
       if (reelBottomControls) reelBottomControls.classList.remove('hidden');
 
-      launchCelebrationConfetti();
+      launchConfetti();
       isReelPlaying = true;
       if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
       if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
-      startReel();
+      startReelLoop();
     }
 
     function handleReelClick() {
@@ -714,7 +608,7 @@
       }
     }
 
-    function startReel() {
+    function startReelLoop() {
       if (reelTimer) clearInterval(reelTimer);
       reelTimer = setInterval(() => {
         setReelFrame(reelIndex + 1);
@@ -731,92 +625,193 @@
         isReelPlaying = true;
         if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
         if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
-        startReel();
+        startReelLoop();
       }
     }
+
+    // Touch Toggle & Smooth Retreat for Lookbook Cards
+    function toggleLookbook(cardId, e) {
+      if (e) e.stopPropagation();
+      const card = document.getElementById(cardId);
+      if (!card) return;
+      const wasActive = card.classList.contains('touch-active');
+      
+      // Close all cards first
+      document.querySelectorAll('.editorial-card').forEach(c => c.classList.remove('touch-active'));
+      
+      // If wasn't active, toggle open
+      if (!wasActive) {
+        card.classList.add('touch-active');
+      }
+    }
+
+    // Tap anywhere outside on the screen immediately retreats all open lookbooks
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.editorial-card').forEach(c => c.classList.remove('touch-active'));
+    });
 
     // Countdown Timer
     function startCountdown() {
       const target = new Date('2026-11-20T00:00:00+05:30').getTime();
-      
       function update() {
-        const now = Date.now();
-        const diff = Math.max(0, target - now);
-        
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+        const diff = Math.max(0, target - Date.now());
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
 
         const cdD = document.getElementById('cd-d');
         const cdH = document.getElementById('cd-h');
         const cdM = document.getElementById('cd-m');
         const cdS = document.getElementById('cd-s');
 
-        if (cdD) cdD.textContent = days.toString().padStart(2, '0');
-        if (cdH) cdH.textContent = hours.toString().padStart(2, '0');
-        if (cdM) cdM.textContent = mins.toString().padStart(2, '0');
-        if (cdS) cdS.textContent = secs.toString().padStart(2, '0');
+        if (cdD) cdD.textContent = d.toString().padStart(2, '0');
+        if (cdH) cdH.textContent = h.toString().padStart(2, '0');
+        if (cdM) cdM.textContent = m.toString().padStart(2, '0');
+        if (cdS) cdS.textContent = s.toString().padStart(2, '0');
       }
-
       update();
       setInterval(update, 1000);
     }
 
-    // Soothing Wedding Audio Engine
-    const AudioEngine = (() => {
+    // Authentic Festive Royal Indian Wedding Soundscape Engine (Android + iOS Guaranteed Full Volume)
+    const WeddingAudio = (() => {
       let ctx = null;
       let isPlaying = false;
-      let oscs = [];
       let masterGain = null;
-      let intervalId = null;
+      let melodyTimer = null;
+      let droneNodes = [];
+
+      // Raag Yaman / Bhupali Auspicious Notes (D major / Bilawal scale: D, E, F#, G, A, B, C#)
+      const SCALE = [
+        293.66, // D4 (Sa)
+        329.63, // E4 (Re)
+        369.99, // F#4 (Ga)
+        392.00, // G4 (Ma)
+        440.00, // A4 (Pa)
+        493.88, // B4 (Dha)
+        554.37, // C#5 (Ni)
+        587.33, // D5 (Sa')
+        659.25, // E5 (Re')
+        739.99  // F#5 (Ga')
+      ];
+
+      // Romantic Indian Festive Wedding Melody sequence
+      const MELODY = [
+        { note: 0, dur: 0.8 }, { note: 2, dur: 0.8 }, { note: 4, dur: 1.2 },
+        { note: 5, dur: 0.6 }, { note: 4, dur: 0.6 }, { note: 2, dur: 1.0 },
+        { note: 7, dur: 1.4 }, { note: 6, dur: 0.6 }, { note: 5, dur: 0.8 },
+        { note: 4, dur: 1.2 }, { note: 2, dur: 0.6 }, { note: 0, dur: 1.6 },
+        { note: 4, dur: 0.8 }, { note: 7, dur: 0.8 }, { note: 9, dur: 1.4 },
+        { note: 8, dur: 0.6 }, { note: 7, dur: 1.2 }, { note: 4, dur: 1.6 }
+      ];
 
       function init() {
-        if (ctx) return;
+        if (ctx) {
+          if (ctx.state === 'suspended') ctx.resume();
+          if (!isPlaying) {
+            masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
+            isPlaying = true;
+            updateUI(true);
+          }
+          return;
+        }
+
         try {
           const AudioContextClass = window.AudioContext || window.webkitAudioContext;
           ctx = new AudioContextClass();
-          masterGain = ctx.createGain();
-          masterGain.gain.setValueAtTime(0.2, ctx.currentTime);
-          masterGain.connect(ctx.destination);
+          if (ctx.state === 'suspended') ctx.resume();
 
-          // Gentle Indian wedding drone (Pa - Sa frequencies)
-          const notes = [146.83, 220.00, 293.66, 440.00];
-          notes.forEach(f => {
+          // Master Output Gain with Loud, Clear Output
+          masterGain = ctx.createGain();
+          masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
+
+          // Warm Acoustic Lowpass Filter
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(2400, ctx.currentTime);
+          filter.Q.setValueAtTime(1.2, ctx.currentTime);
+
+          masterGain.connect(filter);
+          filter.connect(ctx.destination);
+
+          // 1. Resonant Royal Tanpura & Shehnai Harmonics Drone (Sa - Pa - Sa')
+          const droneFreqs = [146.83, 220.00, 293.66, 440.00];
+          droneFreqs.forEach((freq, idx) => {
             const osc = ctx.createOscillator();
             const g = ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(f, ctx.currentTime);
-            g.gain.setValueAtTime(0.04, ctx.currentTime);
+            osc.type = idx % 2 === 0 ? 'sawtooth' : 'triangle';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+            // Subtle warm chorusing detune
+            osc.detune.setValueAtTime((idx - 1.5) * 4, ctx.currentTime);
+
+            g.gain.setValueAtTime(0.08, ctx.currentTime);
             osc.connect(g);
             g.connect(masterGain);
             osc.start();
-            oscs.push(osc);
+            droneNodes.push({ osc, g });
           });
 
-          // Soft ambient temple chimes
-          const melody = [587.33, 659.25, 783.99, 880.00, 1046.50];
-          let mIdx = 0;
-          intervalId = setInterval(() => {
+          // 2. Play Romantic Sitar & Flute Melodic Plucks
+          let step = 0;
+          function playNextNote() {
             if (!ctx || !isPlaying) return;
+            const current = MELODY[step % MELODY.length];
+            const freq = SCALE[current.note % SCALE.length];
             const t = ctx.currentTime;
-            const chime = ctx.createOscillator();
-            const cg = ctx.createGain();
-            chime.type = 'triangle';
-            chime.frequency.setValueAtTime(melody[mIdx % melody.length], t);
-            cg.gain.setValueAtTime(0.05, t);
-            cg.gain.exponentialRampToValueAtTime(0.0001, t + 2.5);
-            chime.connect(cg);
-            cg.connect(masterGain);
-            chime.start(t);
-            chime.stop(t + 2.6);
-            mIdx++;
-          }, 3200);
+
+            // Sitar Pluck Oscillator
+            const sitar = ctx.createOscillator();
+            const sitarGain = ctx.createGain();
+            sitar.type = 'sawtooth';
+            sitar.frequency.setValueAtTime(freq, t);
+
+            // Resonant pluck envelope
+            sitarGain.gain.setValueAtTime(0.22, t);
+            sitarGain.gain.exponentialRampToValueAtTime(0.001, t + current.dur * 1.2);
+
+            sitar.connect(sitarGain);
+            sitarGain.connect(masterGain);
+            sitar.start(t);
+            sitar.stop(t + current.dur * 1.25);
+
+            // Romantic Bansuri Flute Harmonic
+            const flute = ctx.createOscillator();
+            const fluteGain = ctx.createGain();
+            flute.type = 'triangle';
+            flute.frequency.setValueAtTime(freq, t);
+            fluteGain.gain.setValueAtTime(0.18, t);
+            fluteGain.gain.exponentialRampToValueAtTime(0.001, t + current.dur * 1.5);
+            flute.connect(fluteGain);
+            fluteGain.connect(masterGain);
+            flute.start(t);
+            flute.stop(t + current.dur * 1.55);
+
+            // Golden Temple Chimes on cadence notes
+            if (current.note === 0 || current.note === 7) {
+              const chime = ctx.createOscillator();
+              const chimeG = ctx.createGain();
+              chime.type = 'sine';
+              chime.frequency.setValueAtTime(freq * 2, t);
+              chimeG.gain.setValueAtTime(0.10, t);
+              chimeG.gain.exponentialRampToValueAtTime(0.0001, t + 2.5);
+              chime.connect(chimeG);
+              chimeG.connect(masterGain);
+              chime.start(t);
+              chime.stop(t + 2.6);
+            }
+
+            step++;
+            melodyTimer = setTimeout(playNextNote, current.dur * 850);
+          }
 
           isPlaying = true;
-          updateAudioUI(true);
-        } catch (e) {
-          console.warn('Audio Context init error', e);
+          updateUI(true);
+          playNextNote();
+
+        } catch (err) {
+          console.warn('Wedding audio init error:', err);
         }
       }
 
@@ -826,18 +821,18 @@
           return;
         }
         if (isPlaying) {
-          masterGain.gain.setValueAtTime(0.001, ctx.currentTime);
+          masterGain.gain.setValueAtTime(0.0001, ctx.currentTime);
           isPlaying = false;
-          updateAudioUI(false);
+          updateUI(false);
         } else {
-          ctx.resume();
-          masterGain.gain.setValueAtTime(0.2, ctx.currentTime);
+          if (ctx.state === 'suspended') ctx.resume();
+          masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
           isPlaying = true;
-          updateAudioUI(true);
+          updateUI(true);
         }
       }
 
-      function updateAudioUI(on) {
+      function updateUI(on) {
         const icon = document.getElementById('audio-icon');
         const lbl = document.getElementById('audio-label');
         if (icon) icon.textContent = on ? 'volume_up' : 'volume_off';
@@ -847,15 +842,15 @@
       return { init, toggle };
     })();
 
-    // Celebration Confetti
+    // Confetti Animation
     let confettiParticles = [];
     let confettiCanvas = null;
     let confettiCtx = null;
-    let confettiAnimRunning = false;
-    const CONFETTI_COLORS = ['#C5A059', '#937332', '#6B1420', '#8E1D2D', '#FAF7F2', '#DFBF7A'];
-    const CONFETTI_EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉'];
+    let confettiActive = false;
+    const COLORS = ['#C5A059', '#937332', '#6B1420', '#FAF7F2', '#DFBF7A'];
+    const EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉'];
 
-    function initConfettiCanvas() {
+    function initConfetti() {
       confettiCanvas = document.getElementById('confetti-canvas');
       if (!confettiCanvas) return;
       confettiCtx = confettiCanvas.getContext('2d');
@@ -869,20 +864,20 @@
       });
     }
 
-    function launchCelebrationConfetti() {
-      if (!confettiCanvas) initConfettiCanvas();
+    function launchConfetti() {
+      if (!confettiCanvas) initConfetti();
       if (!confettiCtx) return;
 
-      for (let i = 0; i < 65; i++) {
-        const isEmoji = Math.random() > 0.65;
+      for (let i = 0; i < 60; i++) {
+        const isEmoji = Math.random() > 0.6;
         confettiParticles.push({
           x: window.innerWidth * (0.2 + Math.random() * 0.6),
-          y: window.innerHeight * 0.65,
+          y: window.innerHeight * 0.6,
           vx: (Math.random() - 0.5) * 14,
-          vy: -Math.random() * 16 - 6,
+          vy: -Math.random() * 15 - 6,
           size: Math.random() * 8 + 4,
-          color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
-          emoji: isEmoji ? CONFETTI_EMOJIS[Math.floor(Math.random() * CONFETTI_EMOJIS.length)] : null,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          emoji: isEmoji ? EMOJIS[Math.floor(Math.random() * EMOJIS.length)] : null,
           rotation: Math.random() * 360,
           rotationSpeed: (Math.random() - 0.5) * 10,
           gravity: 0.38,
@@ -892,13 +887,13 @@
         });
       }
 
-      if (!confettiAnimRunning) {
-        confettiAnimRunning = true;
-        animateCelebrationConfetti();
+      if (!confettiActive) {
+        confettiActive = true;
+        animateConfetti();
       }
     }
 
-    function animateCelebrationConfetti() {
+    function animateConfetti() {
       if (!confettiCtx || !confettiCanvas) return;
       confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
 
@@ -933,12 +928,12 @@
         confettiCtx.restore();
       }
 
-      requestAnimationFrame(animateCelebrationConfetti);
+      requestAnimationFrame(animateConfetti);
     }
 
-    // Initialize
+    // Init on page load
     startCountdown();
-    initConfettiCanvas();
+    initConfetti();
   </script>
 </body>
 </html>
