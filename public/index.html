@@ -673,36 +673,55 @@
       setInterval(update, 1000);
     }
 
-    // Authentic Festive Royal Indian Wedding Soundscape Engine (Android + iOS Guaranteed Full Volume)
+    // =========================================================================
+    // MAGICAL CINEMATIC SYMPHONIC ROMANCE ENGINE ("Yad Lagla" Inspired Atmosphere)
+    // Orchestral Strings, Romantic Waltz Harmony, Celestial Harp & Solo Flute
+    // =========================================================================
     const WeddingAudio = (() => {
       let ctx = null;
       let isPlaying = false;
       let masterGain = null;
-      let melodyTimer = null;
-      let droneNodes = [];
+      let orchestraFilter = null;
+      let delayNode = null;
+      let delayGain = null;
+      let songInterval = null;
+      let arpInterval = null;
+      let activeNodes = [];
 
-      // Raag Yaman / Bhupali Auspicious Notes (D major / Bilawal scale: D, E, F#, G, A, B, C#)
-      const SCALE = [
-        293.66, // D4 (Sa)
-        329.63, // E4 (Re)
-        369.99, // F#4 (Ga)
-        392.00, // G4 (Ma)
-        440.00, // A4 (Pa)
-        493.88, // B4 (Dha)
-        554.37, // C#5 (Ni)
-        587.33, // D5 (Sa')
-        659.25, // E5 (Re')
-        739.99  // F#5 (Ga')
-      ];
-
-      // Romantic Indian Festive Wedding Melody sequence
-      const MELODY = [
-        { note: 0, dur: 0.8 }, { note: 2, dur: 0.8 }, { note: 4, dur: 1.2 },
-        { note: 5, dur: 0.6 }, { note: 4, dur: 0.6 }, { note: 2, dur: 1.0 },
-        { note: 7, dur: 1.4 }, { note: 6, dur: 0.6 }, { note: 5, dur: 0.8 },
-        { note: 4, dur: 1.2 }, { note: 2, dur: 0.6 }, { note: 0, dur: 1.6 },
-        { note: 4, dur: 0.8 }, { note: 7, dur: 0.8 }, { note: 9, dur: 1.4 },
-        { note: 8, dur: 0.6 }, { note: 7, dur: 1.2 }, { note: 4, dur: 1.6 }
+      // Grand Romantic Symphonic Chords (D Major / Bm / Gmaj9 / A7sus4)
+      const CHORDS = [
+        // Chord 1: D Major (Lush & Warm)
+        {
+          bass: 73.42, // D2
+          notes: [146.83, 220.00, 293.66, 369.99, 440.00, 587.33], // D3, A3, D4, F#4, A4, D5
+          harp: [293.66, 369.99, 440.00, 587.33, 739.99, 880.00, 1174.66],
+          lead: [587.33, 739.99, 880.00, 739.99],
+          dur: 3.6
+        },
+        // Chord 2: B Minor 7 (Emotional Longing)
+        {
+          bass: 61.74, // B1
+          notes: [123.47, 185.00, 246.94, 293.66, 369.99, 440.00], // B2, F#3, B3, D4, F#4, A4
+          harp: [246.94, 293.66, 369.99, 440.00, 587.33, 739.99, 987.77],
+          lead: [739.99, 880.00, 987.77, 880.00],
+          dur: 3.6
+        },
+        // Chord 3: G Major 9 (Soaring Magical Wonder - "Yad Lagla" climax)
+        {
+          bass: 49.00, // G1
+          notes: [98.00, 146.83, 196.00, 246.94, 293.66, 369.99, 440.00], // G2, D3, G3, B3, D4, F#4, A4
+          harp: [196.00, 246.94, 293.66, 369.99, 440.00, 587.33, 739.99],
+          lead: [880.00, 987.77, 1174.66, 987.77],
+          dur: 4.0
+        },
+        // Chord 4: A 7 Suspended 4 -> A 7 (Resolution & Sweet Romance)
+        {
+          bass: 55.00, // A1
+          notes: [110.00, 164.81, 220.00, 293.66, 329.63, 440.00, 554.37], // A2, E3, A3, D4, E4, A4, C#5
+          harp: [220.00, 277.18, 329.63, 440.00, 554.37, 659.25, 880.00],
+          lead: [739.99, 659.25, 554.37, 587.33],
+          dur: 4.0
+        }
       ];
 
       function init() {
@@ -721,96 +740,135 @@
           ctx = new AudioContextClass();
           if (ctx.state === 'suspended') ctx.resume();
 
-          // Master Output Gain with Loud, Clear Output
+          // Master Gain
           masterGain = ctx.createGain();
           masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
 
-          // Warm Acoustic Lowpass Filter
-          const filter = ctx.createBiquadFilter();
-          filter.type = 'lowpass';
-          filter.frequency.setValueAtTime(2400, ctx.currentTime);
-          filter.Q.setValueAtTime(1.2, ctx.currentTime);
+          // Warm Orchestral Hall Filter (simulates acoustic concert hall)
+          orchestraFilter = ctx.createBiquadFilter();
+          orchestraFilter.type = 'lowpass';
+          orchestraFilter.frequency.setValueAtTime(3200, ctx.currentTime);
+          orchestraFilter.Q.setValueAtTime(1.0, ctx.currentTime);
 
-          masterGain.connect(filter);
-          filter.connect(ctx.destination);
+          // Concert Hall Reverb & Delay Effect
+          delayNode = ctx.createDelay();
+          delayNode.delayTime.setValueAtTime(0.38, ctx.currentTime);
+          delayGain = ctx.createGain();
+          delayGain.gain.setValueAtTime(0.28, ctx.currentTime);
 
-          // 1. Resonant Royal Tanpura & Shehnai Harmonics Drone (Sa - Pa - Sa')
-          const droneFreqs = [146.83, 220.00, 293.66, 440.00];
-          droneFreqs.forEach((freq, idx) => {
-            const osc = ctx.createOscillator();
-            const g = ctx.createGain();
-            osc.type = idx % 2 === 0 ? 'sawtooth' : 'triangle';
-            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+          delayNode.connect(delayGain);
+          delayGain.connect(delayNode);
+          delayGain.connect(orchestraFilter);
 
-            // Subtle warm chorusing detune
-            osc.detune.setValueAtTime((idx - 1.5) * 4, ctx.currentTime);
-
-            g.gain.setValueAtTime(0.08, ctx.currentTime);
-            osc.connect(g);
-            g.connect(masterGain);
-            osc.start();
-            droneNodes.push({ osc, g });
-          });
-
-          // 2. Play Romantic Sitar & Flute Melodic Plucks
-          let step = 0;
-          function playNextNote() {
-            if (!ctx || !isPlaying) return;
-            const current = MELODY[step % MELODY.length];
-            const freq = SCALE[current.note % SCALE.length];
-            const t = ctx.currentTime;
-
-            // Sitar Pluck Oscillator
-            const sitar = ctx.createOscillator();
-            const sitarGain = ctx.createGain();
-            sitar.type = 'sawtooth';
-            sitar.frequency.setValueAtTime(freq, t);
-
-            // Resonant pluck envelope
-            sitarGain.gain.setValueAtTime(0.22, t);
-            sitarGain.gain.exponentialRampToValueAtTime(0.001, t + current.dur * 1.2);
-
-            sitar.connect(sitarGain);
-            sitarGain.connect(masterGain);
-            sitar.start(t);
-            sitar.stop(t + current.dur * 1.25);
-
-            // Romantic Bansuri Flute Harmonic
-            const flute = ctx.createOscillator();
-            const fluteGain = ctx.createGain();
-            flute.type = 'triangle';
-            flute.frequency.setValueAtTime(freq, t);
-            fluteGain.gain.setValueAtTime(0.18, t);
-            fluteGain.gain.exponentialRampToValueAtTime(0.001, t + current.dur * 1.5);
-            flute.connect(fluteGain);
-            fluteGain.connect(masterGain);
-            flute.start(t);
-            flute.stop(t + current.dur * 1.55);
-
-            // Golden Temple Chimes on cadence notes
-            if (current.note === 0 || current.note === 7) {
-              const chime = ctx.createOscillator();
-              const chimeG = ctx.createGain();
-              chime.type = 'sine';
-              chime.frequency.setValueAtTime(freq * 2, t);
-              chimeG.gain.setValueAtTime(0.10, t);
-              chimeG.gain.exponentialRampToValueAtTime(0.0001, t + 2.5);
-              chime.connect(chimeG);
-              chimeG.connect(masterGain);
-              chime.start(t);
-              chime.stop(t + 2.6);
-            }
-
-            step++;
-            melodyTimer = setTimeout(playNextNote, current.dur * 850);
-          }
+          masterGain.connect(orchestraFilter);
+          masterGain.connect(delayNode);
+          orchestraFilter.connect(ctx.destination);
 
           isPlaying = true;
           updateUI(true);
-          playNextNote();
+
+          let chordIdx = 0;
+          function playNextSymphonyBar() {
+            if (!ctx || !isPlaying) return;
+            const currentChord = CHORDS[chordIdx % CHORDS.length];
+            const t = ctx.currentTime;
+            const barDur = currentChord.dur;
+
+            // 1. Lush Orchestral String Ensemble (Violins + Cellos + Bass)
+            currentChord.notes.forEach((freq, idx) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = idx < 2 ? 'sawtooth' : 'triangle';
+              osc.frequency.setValueAtTime(freq, t);
+
+              // Subtle orchestral chorusing detune & natural vibrato
+              osc.detune.setValueAtTime((idx - 2.5) * 6, t);
+
+              // String Bowing Envelope (Gentle Crescendo & Decrescendo)
+              gain.gain.setValueAtTime(0.001, t);
+              gain.gain.linearRampToValueAtTime(idx < 2 ? 0.12 : 0.08, t + 0.9);
+              gain.gain.setValueAtTime(idx < 2 ? 0.12 : 0.08, t + barDur - 0.8);
+              gain.gain.linearRampToValueAtTime(0.001, t + barDur);
+
+              osc.connect(gain);
+              gain.connect(masterGain);
+              osc.start(t);
+              osc.stop(t + barDur + 0.1);
+            });
+
+            // 2. Deep Cello / Double-Bass Foundation
+            const bassOsc = ctx.createOscillator();
+            const bassGain = ctx.createGain();
+            bassOsc.type = 'sawtooth';
+            bassOsc.frequency.setValueAtTime(currentChord.bass, t);
+            bassGain.gain.setValueAtTime(0.001, t);
+            bassGain.gain.linearRampToValueAtTime(0.18, t + 0.5);
+            bassGain.gain.setValueAtTime(0.18, t + barDur - 0.6);
+            bassGain.gain.linearRampToValueAtTime(0.001, t + barDur);
+
+            bassOsc.connect(bassGain);
+            bassGain.connect(masterGain);
+            bassOsc.start(t);
+            bassOsc.stop(t + barDur + 0.1);
+
+            // 3. Magical Celestial Harp / Celesta Cascade (Ascending & Descending Shimmer)
+            const harpNotes = currentChord.harp;
+            harpNotes.forEach((hFreq, hIdx) => {
+              const harpDelay = hIdx * 0.18;
+              const hT = t + harpDelay;
+              if (hT < t + barDur) {
+                const hOsc = ctx.createOscillator();
+                const hGain = ctx.createGain();
+                hOsc.type = 'sine';
+                hOsc.frequency.setValueAtTime(hFreq, hT);
+
+                // Sparkling bell attack & long magical decay
+                hGain.gain.setValueAtTime(0.09, hT);
+                hGain.gain.exponentialRampToValueAtTime(0.0001, hT + 1.6);
+
+                hOsc.connect(hGain);
+                hGain.connect(masterGain);
+                hOsc.start(hT);
+                hOsc.stop(hT + 1.65);
+              }
+            });
+
+            // 4. Soaring Romantic Solo Flute / Violin Melody Line
+            const leadNotes = currentChord.lead;
+            leadNotes.forEach((lFreq, lIdx) => {
+              const lDelay = lIdx * (barDur / leadNotes.length);
+              const lT = t + lDelay;
+              const lDur = (barDur / leadNotes.length) * 0.9;
+
+              const leadOsc = ctx.createOscillator();
+              const leadGain = ctx.createGain();
+              leadOsc.type = 'triangle';
+              leadOsc.frequency.setValueAtTime(lFreq, lT);
+
+              // Passionate romantic vibrato
+              leadOsc.detune.setValueAtTime(0, lT);
+              leadOsc.detune.linearRampToValueAtTime(8, lT + lDur * 0.5);
+              leadOsc.detune.linearRampToValueAtTime(-8, lT + lDur);
+
+              leadGain.gain.setValueAtTime(0.001, lT);
+              leadGain.gain.linearRampToValueAtTime(0.14, lT + 0.15);
+              leadGain.gain.setValueAtTime(0.14, lT + lDur - 0.15);
+              leadGain.gain.linearRampToValueAtTime(0.001, lT + lDur);
+
+              leadOsc.connect(leadGain);
+              leadGain.connect(masterGain);
+              leadOsc.start(lT);
+              leadOsc.stop(lT + lDur + 0.05);
+            });
+
+            chordIdx++;
+            songInterval = setTimeout(playNextSymphonyBar, barDur * 1000 - 150);
+          }
+
+          playNextSymphonyBar();
 
         } catch (err) {
-          console.warn('Wedding audio init error:', err);
+          console.warn('Symphonic romance audio error:', err);
         }
       }
 
