@@ -34,6 +34,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+  <!-- Canvas Confetti Library for High-Performance Continuous Celebration Shower -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -635,7 +638,7 @@
       if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
       if (reelBottomControls) reelBottomControls.classList.remove('hidden');
 
-      launchConfetti();
+      startNonStopCelebration();
       isReelPlaying = true;
       if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
       if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
@@ -665,7 +668,8 @@
         if (reelPlayLbl) reelPlayLbl.textContent = 'PLAY';
       } else {
         isReelPlaying = true;
-        launchConfetti(80);
+        triggerCelebrationBurst(80);
+        startNonStopCelebration();
         if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
         if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
         startReelLoop();
@@ -754,166 +758,71 @@
     })();
 
     // =========================================================================
-    // PERPETUAL GRAND ROYAL WEDDING CELEBRATION ENGINE
-    // Active Throughout The Entire Session (Infinite Shower & Periodic Fireworks)
+    // PERPETUAL GRAND ROYAL WEDDING CELEBRATION SHOWER
+    // Runs continuously throughout the entire stay until the tab is closed!
     // =========================================================================
-    let confettiParticles = [];
-    let confettiCanvas = null;
-    let confettiCtx = null;
-    let isCelebrating = false;
-    let isLoopRunning = false;
-    let lastFireworkTime = 0;
-    const CONFETTI_COLORS = ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#E5C158', '#FF69B4', '#FFFFFF', '#D4AF37', '#FF85A2'];
-    const CONFETTI_EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉', '🌹', '💍', '⭐', '✨'];
+    let isCelebrationRunning = false;
 
-    function initConfetti() {
-      confettiCanvas = document.getElementById('confetti-canvas');
-      if (!confettiCanvas) return;
-      confettiCtx = confettiCanvas.getContext('2d');
-      resizeConfettiCanvas();
-      window.addEventListener('resize', resizeConfettiCanvas, { passive: true });
+    function triggerCelebrationBurst(count = 70) {
+      if (typeof confetti !== 'function') return;
+      confetti({
+        particleCount: count,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#FF85A2', '#FFFFFF'],
+        disableForReducedMotion: false
+      });
     }
 
-    function resizeConfettiCanvas() {
-      if (!confettiCanvas || !confettiCtx) return;
-      const dpr = window.devicePixelRatio || 1;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      confettiCanvas.width = w * dpr;
-      confettiCanvas.height = h * dpr;
-      confettiCanvas.style.width = w + 'px';
-      confettiCanvas.style.height = h + 'px';
-      confettiCtx.setTransform(1, 0, 0, 1, 0, 0);
-      confettiCtx.scale(dpr, dpr);
-    }
+    function startNonStopCelebration() {
+      if (typeof confetti !== 'function') return;
 
-    function spawnParticle(fromTop = false, customX = null, customY = null) {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const isEmoji = Math.random() > 0.38;
+      // Opening Grand Explosion
+      triggerCelebrationBurst(140);
 
-      const x = customX !== null ? customX : Math.random() * w;
-      const y = customY !== null ? customY : (fromTop ? -25 - Math.random() * 40 : Math.random() * h);
+      if (isCelebrationRunning) return;
+      isCelebrationRunning = true;
 
-      return {
-        x: x,
-        y: y,
-        vx: fromTop ? (Math.random() - 0.5) * 2.8 : (Math.random() - 0.5) * 16,
-        vy: fromTop ? (Math.random() * 2.2 + 1.2) : (-Math.random() * 16 - 6),
-        size: Math.random() * 9 + 5,
-        color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
-        emoji: isEmoji ? CONFETTI_EMOJIS[Math.floor(Math.random() * CONFETTI_EMOJIS.length)] : null,
-        rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 8,
-        gravity: fromTop ? 0.025 : 0.28,
-        alpha: fromTop ? (Math.random() * 0.4 + 0.6) : 1.0,
-        wobble: Math.random() * Math.PI * 2,
-        wobbleSpeed: Math.random() * 0.04 + 0.02
-      };
-    }
+      // 1. Continuous Non-Stop Rain from Top (fires every 120ms throughout the session)
+      setInterval(() => {
+        confetti({
+          particleCount: 2,
+          angle: 90,
+          spread: 120,
+          startVelocity: Math.random() * 8 + 4,
+          origin: { x: Math.random(), y: -0.08 },
+          colors: ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#FF85A2', '#FFFFFF'],
+          ticks: 400,
+          gravity: 0.45,
+          scalar: Math.random() * 0.4 + 0.8,
+          drift: (Math.random() - 0.5) * 0.8,
+          disableForReducedMotion: false
+        });
+      }, 120);
 
-    function fireworkBurst(originX, originY, count = 28) {
-      for (let i = 0; i < count; i++) {
-        const p = spawnParticle(false, originX, originY);
-        p.vx = (Math.random() - 0.5) * 14;
-        p.vy = (Math.random() - 0.5) * 14 - 3;
-        p.gravity = 0.22;
-        confettiParticles.push(p);
-      }
-    }
-
-    function launchConfetti(burstCount = 100) {
-      if (!confettiCanvas || !confettiCtx) initConfetti();
-      if (!confettiCtx) return;
-
-      isCelebrating = true;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-
-      // Immediate Multi-Point Celebration Explosions
-      fireworkBurst(w * 0.5, h * 0.45, burstCount * 0.5);
-      fireworkBurst(w * 0.2, h * 0.5, burstCount * 0.25);
-      fireworkBurst(w * 0.8, h * 0.5, burstCount * 0.25);
-
-      // Seed continuous falling stardust so the whole screen stays filled
-      while (confettiParticles.length < 90) {
-        confettiParticles.push(spawnParticle(true));
-      }
-
-      if (!isLoopRunning) {
-        isLoopRunning = true;
-        requestAnimationFrame(celebrationLoop);
-      }
-    }
-
-    function celebrationLoop() {
-      if (!confettiCtx || !confettiCanvas) return;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const now = Date.now();
-
-      confettiCtx.clearRect(0, 0, w, h);
-
-      if (isCelebrating) {
-        // Continuous periodic celebratory firework bursts every 2.8 seconds
-        if (now - lastFireworkTime > 2800) {
-          lastFireworkTime = now;
-          const isLeft = Math.random() > 0.5;
-          const fx = isLeft ? w * (0.12 + Math.random() * 0.18) : w * (0.7 + Math.random() * 0.18);
-          const fy = h * (0.35 + Math.random() * 0.25);
-          fireworkBurst(fx, fy, 24);
-        }
-
-        // Maintain constant falling stardust shower throughout the entire session
-        while (confettiParticles.length < 80) {
-          confettiParticles.push(spawnParticle(true));
-        }
-      }
-
-      for (let i = confettiParticles.length - 1; i >= 0; i--) {
-        const p = confettiParticles[i];
-        p.wobble += p.wobbleSpeed;
-        p.x += p.vx + Math.sin(p.wobble) * 1.2;
-        p.y += p.vy;
-        p.vy += p.gravity;
-        p.rotation += p.rotationSpeed;
-        p.vx *= 0.99;
-
-        // Infinite loop: when reaching bottom of screen, recycle immediately to the top!
-        if (p.y > h + 30) {
-          if (isCelebrating) {
-            confettiParticles[i] = spawnParticle(true);
-            continue;
-          } else {
-            confettiParticles.splice(i, 1);
-            continue;
-          }
-        }
-
-        confettiCtx.save();
-        confettiCtx.globalAlpha = Math.max(0, Math.min(1, p.alpha));
-        confettiCtx.translate(p.x, p.y);
-        confettiCtx.rotate((p.rotation * Math.PI) / 180);
-
-        if (p.emoji) {
-          confettiCtx.font = `${p.size * 2.2}px serif`;
-          confettiCtx.textAlign = 'center';
-          confettiCtx.textBaseline = 'middle';
-          confettiCtx.fillText(p.emoji, 0, 0);
-        } else {
-          confettiCtx.fillStyle = p.color;
-          confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
-        }
-        confettiCtx.restore();
-      }
-
-      // Keep running perpetually while celebrating
-      requestAnimationFrame(celebrationLoop);
+      // 2. Periodic Royal Fireworks from Corners every 3.2 seconds
+      setInterval(() => {
+        confetti({
+          particleCount: 30,
+          angle: 60,
+          spread: 65,
+          startVelocity: 45,
+          origin: { x: 0.02, y: 0.75 },
+          colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
+        });
+        confetti({
+          particleCount: 30,
+          angle: 120,
+          spread: 65,
+          startVelocity: 45,
+          origin: { x: 0.98, y: 0.75 },
+          colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
+        });
+      }, 3200);
     }
 
     // Init on page load
     startCountdown();
-    initConfetti();
 
     // Register PWA Service Worker for Home Screen Installability
     if ('serviceWorker' in navigator) {
