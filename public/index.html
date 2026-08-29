@@ -278,30 +278,30 @@
         <!-- Grand Theater Frame (Matches 100% width of the 3 cards grid) -->
         <div class="relative w-full bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-xl sm:rounded-2xl md:rounded-3xl p-2 sm:p-3.5 md:p-4 shadow-2xl overflow-visible">
 
-          <!-- Video Canvas: Cinema Aspect Ratio Scaling Across All 3 Devices -->
+          <!-- Video Canvas: Exact 3:2 Native Photo Aspect Ratio (100% Zero-Crop Scaling Across Mobile, Tablet & Laptop) -->
           <div
             id="reel-canvas-wrap"
-            class="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[21/9] min-h-[330px] sm:min-h-[440px] md:min-h-[500px] lg:min-h-[540px] bg-[#180306] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
+            class="relative w-full aspect-[3/2] bg-[#180306] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
             onclick="handleReelClick()"
           >
             
-            <!-- 16 Proposal Photos -->
-            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover z-10 block" style="object-position: center 38%;" />
-            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
-            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <!-- 16 Proposal Photos (1600x1066 -> Exact 3:2 Native Aspect Ratio, 100% Uncropped) -->
+            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-10 block" />
+            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
 
             <div class="absolute inset-0 bg-gradient-to-t from-[#200308]/60 via-transparent to-transparent pointer-events-none z-20"></div>
 
