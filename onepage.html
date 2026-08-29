@@ -171,6 +171,23 @@
       opacity: 1;
       pointer-events: auto;
     }
+
+    /* Mobile Event Title & Card Strict Centering (< 768px) */
+    @media (max-width: 767px) {
+      .editorial-card {
+        text-align: center !important;
+        align-items: center !important;
+      }
+      .editorial-card h3,
+      .editorial-card p,
+      .editorial-card span,
+      .editorial-card div {
+        text-align: center !important;
+      }
+      .editorial-card .photo-frame {
+        margin: 0 auto !important;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-[#FAF7F2] text-[#1F1A1A] flex flex-col antialiased selection:bg-[#C5A059] selection:text-white overflow-x-hidden">
