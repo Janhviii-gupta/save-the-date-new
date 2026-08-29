@@ -82,11 +82,12 @@
       background: #FFFFFF;
       border: 1px solid #E8DFD3;
       box-shadow: 0 4px 16px -2px rgba(74, 13, 22, 0.06), 0 0 0 1px rgba(197, 160, 89, 0.15);
-      transition: all 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .editorial-card:hover {
       border-color: #C5A059;
-      box-shadow: 0 10px 25px -4px rgba(74, 13, 22, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(74, 13, 22, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.4);
     }
 
     .btn-gold {
@@ -117,6 +118,16 @@
       background: linear-gradient(135deg, #6B1420 0%, #8E1D2D 50%, #6B1420 100%);
       box-shadow: 0 6px 20px rgba(74, 13, 22, 0.45);
       transform: translateY(-1px);
+    }
+
+    .photo-frame img,
+    .venue-frame img {
+      transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .photo-frame:hover img,
+    .photo-frame.is-touching img,
+    .venue-frame:hover img {
+      transform: scale(1.08);
     }
 
     /* Lookbook Overlay: Smooth Touch Peek & Hover Fade/Retreat */
@@ -479,10 +490,15 @@
         </p>
       </div>
 
-      <div class="editorial-card rounded-xl overflow-hidden">
-        <div class="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-[#120F0F]">
+      <div class="editorial-card rounded-xl overflow-hidden group">
+        <a
+          href="https://achrolniwas.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="venue-frame block relative w-full aspect-[16/9] sm:aspect-[21/9] bg-[#120F0F] overflow-hidden cursor-pointer"
+        >
           <img alt="Achrol Niwas Resort Jaipur" class="w-full h-full object-cover" src="achrol-niwas.jpg" />
-        </div>
+        </a>
         <div class="p-3 sm:p-4 text-center">
           <a
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
