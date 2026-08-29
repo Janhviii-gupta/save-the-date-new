@@ -638,7 +638,7 @@
       if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
       if (reelBottomControls) reelBottomControls.classList.remove('hidden');
 
-      startNonStopCelebration();
+      triggerMotionPictureConfetti();
       isReelPlaying = true;
       if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
       if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
@@ -646,6 +646,7 @@
     }
 
     function handleReelClick() {
+      triggerMotionPictureConfetti();
       if (!isReelPlaying) {
         startReelAndSound();
       } else {
@@ -661,6 +662,7 @@
     }
 
     function toggleReelPlay() {
+      triggerMotionPictureConfetti();
       if (isReelPlaying) {
         clearInterval(reelTimer);
         isReelPlaying = false;
@@ -668,8 +670,6 @@
         if (reelPlayLbl) reelPlayLbl.textContent = 'PLAY';
       } else {
         isReelPlaying = true;
-        triggerCelebrationBurst(80);
-        startNonStopCelebration();
         if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
         if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
         startReelLoop();
@@ -758,67 +758,53 @@
     })();
 
     // =========================================================================
-    // PERPETUAL GRAND ROYAL WEDDING CELEBRATION SHOWER
-    // Runs continuously throughout the entire stay until the tab is closed!
+    // CONTINUOUS CELEBRATION CONFETTI LOOP (SETINTERVAL)
+    // Triggers every few seconds until the tab is closed without stacking
     // =========================================================================
-    let isCelebrationRunning = false;
+    let confettiInterval = null;
 
-    function triggerCelebrationBurst(count = 70) {
+    function fireConfettiBurst() {
       if (typeof confetti !== 'function') return;
+
+      // Central Celebration Bloom
       confetti({
-        particleCount: count,
+        particleCount: 55,
         spread: 90,
         origin: { y: 0.6 },
         colors: ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#FF85A2', '#FFFFFF'],
         disableForReducedMotion: false
       });
+
+      // Side Starbursts
+      confetti({
+        particleCount: 25,
+        angle: 60,
+        spread: 55,
+        startVelocity: 40,
+        origin: { x: 0.05, y: 0.7 },
+        colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
+      });
+
+      confetti({
+        particleCount: 25,
+        angle: 120,
+        spread: 55,
+        startVelocity: 40,
+        origin: { x: 0.95, y: 0.7 },
+        colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
+      });
     }
 
-    function startNonStopCelebration() {
-      if (typeof confetti !== 'function') return;
+    function triggerMotionPictureConfetti() {
+      // Fire immediate confetti burst on first click
+      fireConfettiBurst();
 
-      // Opening Grand Explosion
-      triggerCelebrationBurst(140);
-
-      if (isCelebrationRunning) return;
-      isCelebrationRunning = true;
-
-      // 1. Continuous Non-Stop Rain from Top (fires every 120ms throughout the session)
-      setInterval(() => {
-        confetti({
-          particleCount: 2,
-          angle: 90,
-          spread: 120,
-          startVelocity: Math.random() * 8 + 4,
-          origin: { x: Math.random(), y: -0.08 },
-          colors: ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#FF85A2', '#FFFFFF'],
-          ticks: 400,
-          gravity: 0.45,
-          scalar: Math.random() * 0.4 + 0.8,
-          drift: (Math.random() - 0.5) * 0.8,
-          disableForReducedMotion: false
-        });
-      }, 120);
-
-      // 2. Periodic Royal Fireworks from Corners every 3.2 seconds
-      setInterval(() => {
-        confetti({
-          particleCount: 30,
-          angle: 60,
-          spread: 65,
-          startVelocity: 45,
-          origin: { x: 0.02, y: 0.75 },
-          colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
-        });
-        confetti({
-          particleCount: 30,
-          angle: 120,
-          spread: 65,
-          startVelocity: 45,
-          origin: { x: 0.98, y: 0.75 },
-          colors: ['#C5A059', '#DFBF7A', '#6B1420', '#FFD700', '#FFFFFF']
-        });
-      }, 3200);
+      // Check if an interval already exists so it doesn't stack up on multiple clicks
+      if (!confettiInterval) {
+        confettiInterval = setInterval(() => {
+          fireConfettiBurst();
+        }, 2800);
+      }
     }
 
     // Init on page load
