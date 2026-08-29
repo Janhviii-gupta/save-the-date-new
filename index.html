@@ -155,6 +155,9 @@
 </head>
 <body class="min-h-screen bg-[#FAF7F2] text-[#1F1A1A] flex flex-col antialiased selection:bg-[#C5A059] selection:text-white">
 
+  <!-- Background High-Fidelity Cinematic Orchestral Soundtrack -->
+  <audio id="wedding-soundtrack" src="sounds/romantic-wedding.mp3" preload="auto" loop playsinline></audio>
+
   <!-- Interactive Celebration Confetti Canvas -->
   <canvas id="confetti-canvas"></canvas>
 
@@ -690,218 +693,43 @@
     }
 
     // =========================================================================
-    // MAGICAL CINEMATIC SYMPHONIC ROMANCE ENGINE ("Yad Lagla" Inspired Atmosphere)
-    // Orchestral Strings, Romantic Waltz Harmony, Celestial Harp & Solo Flute
+    // HIGH-FIDELITY CINEMATIC ORCHESTRAL SOUNDTRACK ENGINE
+    // Seamless Looping, Instant Floating Toggle, 100% Mobile Full-Volume
     // =========================================================================
     const WeddingAudio = (() => {
-      let ctx = null;
-      let isPlaying = false;
-      let masterGain = null;
-      let orchestraFilter = null;
-      let delayNode = null;
-      let delayGain = null;
-      let songInterval = null;
-      let arpInterval = null;
-      let activeNodes = [];
+      let audioEl = null;
 
-      // Grand Romantic Symphonic Chords (D Major / Bm / Gmaj9 / A7sus4)
-      const CHORDS = [
-        // Chord 1: D Major (Lush & Warm)
-        {
-          bass: 73.42, // D2
-          notes: [146.83, 220.00, 293.66, 369.99, 440.00, 587.33], // D3, A3, D4, F#4, A4, D5
-          harp: [293.66, 369.99, 440.00, 587.33, 739.99, 880.00, 1174.66],
-          lead: [587.33, 739.99, 880.00, 739.99],
-          dur: 3.6
-        },
-        // Chord 2: B Minor 7 (Emotional Longing)
-        {
-          bass: 61.74, // B1
-          notes: [123.47, 185.00, 246.94, 293.66, 369.99, 440.00], // B2, F#3, B3, D4, F#4, A4
-          harp: [246.94, 293.66, 369.99, 440.00, 587.33, 739.99, 987.77],
-          lead: [739.99, 880.00, 987.77, 880.00],
-          dur: 3.6
-        },
-        // Chord 3: G Major 9 (Soaring Magical Wonder - "Yad Lagla" climax)
-        {
-          bass: 49.00, // G1
-          notes: [98.00, 146.83, 196.00, 246.94, 293.66, 369.99, 440.00], // G2, D3, G3, B3, D4, F#4, A4
-          harp: [196.00, 246.94, 293.66, 369.99, 440.00, 587.33, 739.99],
-          lead: [880.00, 987.77, 1174.66, 987.77],
-          dur: 4.0
-        },
-        // Chord 4: A 7 Suspended 4 -> A 7 (Resolution & Sweet Romance)
-        {
-          bass: 55.00, // A1
-          notes: [110.00, 164.81, 220.00, 293.66, 329.63, 440.00, 554.37], // A2, E3, A3, D4, E4, A4, C#5
-          harp: [220.00, 277.18, 329.63, 440.00, 554.37, 659.25, 880.00],
-          lead: [739.99, 659.25, 554.37, 587.33],
-          dur: 4.0
+      function getAudio() {
+        if (!audioEl) {
+          audioEl = document.getElementById('wedding-soundtrack');
+          if (audioEl) {
+            audioEl.volume = 1.0;
+            audioEl.loop = true;
+          }
         }
-      ];
+        return audioEl;
+      }
 
       function init() {
-        if (ctx) {
-          if (ctx.state === 'suspended') ctx.resume();
-          if (!isPlaying) {
-            masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
-            isPlaying = true;
-            updateUI(true);
-          }
-          return;
-        }
-
-        try {
-          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-          ctx = new AudioContextClass();
-          if (ctx.state === 'suspended') ctx.resume();
-
-          // Master Gain
-          masterGain = ctx.createGain();
-          masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
-
-          // Warm Orchestral Hall Filter (simulates acoustic concert hall)
-          orchestraFilter = ctx.createBiquadFilter();
-          orchestraFilter.type = 'lowpass';
-          orchestraFilter.frequency.setValueAtTime(3200, ctx.currentTime);
-          orchestraFilter.Q.setValueAtTime(1.0, ctx.currentTime);
-
-          // Concert Hall Reverb & Delay Effect
-          delayNode = ctx.createDelay();
-          delayNode.delayTime.setValueAtTime(0.38, ctx.currentTime);
-          delayGain = ctx.createGain();
-          delayGain.gain.setValueAtTime(0.28, ctx.currentTime);
-
-          delayNode.connect(delayGain);
-          delayGain.connect(delayNode);
-          delayGain.connect(orchestraFilter);
-
-          masterGain.connect(orchestraFilter);
-          masterGain.connect(delayNode);
-          orchestraFilter.connect(ctx.destination);
-
-          isPlaying = true;
+        const a = getAudio();
+        if (!a) return;
+        a.play().then(() => {
           updateUI(true);
-
-          let chordIdx = 0;
-          function playNextSymphonyBar() {
-            if (!ctx || !isPlaying) return;
-            const currentChord = CHORDS[chordIdx % CHORDS.length];
-            const t = ctx.currentTime;
-            const barDur = currentChord.dur;
-
-            // 1. Lush Orchestral String Ensemble (Violins + Cellos + Bass)
-            currentChord.notes.forEach((freq, idx) => {
-              const osc = ctx.createOscillator();
-              const gain = ctx.createGain();
-              osc.type = idx < 2 ? 'sawtooth' : 'triangle';
-              osc.frequency.setValueAtTime(freq, t);
-
-              // Subtle orchestral chorusing detune & natural vibrato
-              osc.detune.setValueAtTime((idx - 2.5) * 6, t);
-
-              // String Bowing Envelope (Gentle Crescendo & Decrescendo)
-              gain.gain.setValueAtTime(0.001, t);
-              gain.gain.linearRampToValueAtTime(idx < 2 ? 0.12 : 0.08, t + 0.9);
-              gain.gain.setValueAtTime(idx < 2 ? 0.12 : 0.08, t + barDur - 0.8);
-              gain.gain.linearRampToValueAtTime(0.001, t + barDur);
-
-              osc.connect(gain);
-              gain.connect(masterGain);
-              osc.start(t);
-              osc.stop(t + barDur + 0.1);
-            });
-
-            // 2. Deep Cello / Double-Bass Foundation
-            const bassOsc = ctx.createOscillator();
-            const bassGain = ctx.createGain();
-            bassOsc.type = 'sawtooth';
-            bassOsc.frequency.setValueAtTime(currentChord.bass, t);
-            bassGain.gain.setValueAtTime(0.001, t);
-            bassGain.gain.linearRampToValueAtTime(0.18, t + 0.5);
-            bassGain.gain.setValueAtTime(0.18, t + barDur - 0.6);
-            bassGain.gain.linearRampToValueAtTime(0.001, t + barDur);
-
-            bassOsc.connect(bassGain);
-            bassGain.connect(masterGain);
-            bassOsc.start(t);
-            bassOsc.stop(t + barDur + 0.1);
-
-            // 3. Magical Celestial Harp / Celesta Cascade (Ascending & Descending Shimmer)
-            const harpNotes = currentChord.harp;
-            harpNotes.forEach((hFreq, hIdx) => {
-              const harpDelay = hIdx * 0.18;
-              const hT = t + harpDelay;
-              if (hT < t + barDur) {
-                const hOsc = ctx.createOscillator();
-                const hGain = ctx.createGain();
-                hOsc.type = 'sine';
-                hOsc.frequency.setValueAtTime(hFreq, hT);
-
-                // Sparkling bell attack & long magical decay
-                hGain.gain.setValueAtTime(0.09, hT);
-                hGain.gain.exponentialRampToValueAtTime(0.0001, hT + 1.6);
-
-                hOsc.connect(hGain);
-                hGain.connect(masterGain);
-                hOsc.start(hT);
-                hOsc.stop(hT + 1.65);
-              }
-            });
-
-            // 4. Soaring Romantic Solo Flute / Violin Melody Line
-            const leadNotes = currentChord.lead;
-            leadNotes.forEach((lFreq, lIdx) => {
-              const lDelay = lIdx * (barDur / leadNotes.length);
-              const lT = t + lDelay;
-              const lDur = (barDur / leadNotes.length) * 0.9;
-
-              const leadOsc = ctx.createOscillator();
-              const leadGain = ctx.createGain();
-              leadOsc.type = 'triangle';
-              leadOsc.frequency.setValueAtTime(lFreq, lT);
-
-              // Passionate romantic vibrato
-              leadOsc.detune.setValueAtTime(0, lT);
-              leadOsc.detune.linearRampToValueAtTime(8, lT + lDur * 0.5);
-              leadOsc.detune.linearRampToValueAtTime(-8, lT + lDur);
-
-              leadGain.gain.setValueAtTime(0.001, lT);
-              leadGain.gain.linearRampToValueAtTime(0.14, lT + 0.15);
-              leadGain.gain.setValueAtTime(0.14, lT + lDur - 0.15);
-              leadGain.gain.linearRampToValueAtTime(0.001, lT + lDur);
-
-              leadOsc.connect(leadGain);
-              leadGain.connect(masterGain);
-              leadOsc.start(lT);
-              leadOsc.stop(lT + lDur + 0.05);
-            });
-
-            chordIdx++;
-            songInterval = setTimeout(playNextSymphonyBar, barDur * 1000 - 150);
-          }
-
-          playNextSymphonyBar();
-
-        } catch (err) {
-          console.warn('Symphonic romance audio error:', err);
-        }
+        }).catch(err => {
+          console.log('Playback error:', err);
+        });
       }
 
       function toggle() {
-        if (!ctx) {
-          init();
-          return;
-        }
-        if (isPlaying) {
-          masterGain.gain.setValueAtTime(0.0001, ctx.currentTime);
-          isPlaying = false;
-          updateUI(false);
+        const a = getAudio();
+        if (!a) return;
+        if (a.paused) {
+          a.play().then(() => {
+            updateUI(true);
+          }).catch(e => console.log(e));
         } else {
-          if (ctx.state === 'suspended') ctx.resume();
-          masterGain.gain.setValueAtTime(0.85, ctx.currentTime);
-          isPlaying = true;
-          updateUI(true);
+          a.pause();
+          updateUI(false);
         }
       }
 
