@@ -754,105 +754,99 @@
     })();
 
     // =========================================================================
-    // CONTINUOUS GRAND ROYAL WEDDING CELEBRATION & STARDUST ENGINE
-    // Stays Active Throughout Once Triggered (Continuous Petals + Shimmer + Firework Bursts)
+    // PERPETUAL GRAND ROYAL WEDDING CELEBRATION ENGINE
+    // Active Throughout The Entire Session (Infinite Shower & Periodic Fireworks)
     // =========================================================================
     let confettiParticles = [];
     let confettiCanvas = null;
     let confettiCtx = null;
     let isCelebrating = false;
+    let isLoopRunning = false;
     let lastFireworkTime = 0;
-    const CONFETTI_COLORS = ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#E5C158', '#FF69B4', '#FFFFFF', '#D4AF37'];
-    const CONFETTI_EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉', '🌹', '💍', '✨', '⭐', '✨'];
+    const CONFETTI_COLORS = ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#E5C158', '#FF69B4', '#FFFFFF', '#D4AF37', '#FF85A2'];
+    const CONFETTI_EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉', '🌹', '💍', '⭐', '✨'];
 
     function initConfetti() {
       confettiCanvas = document.getElementById('confetti-canvas');
       if (!confettiCanvas) return;
       confettiCtx = confettiCanvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      confettiCanvas.width = window.innerWidth * dpr;
-      confettiCanvas.height = window.innerHeight * dpr;
-      confettiCanvas.style.width = window.innerWidth + 'px';
-      confettiCanvas.style.height = window.innerHeight + 'px';
-      confettiCtx.scale(dpr, dpr);
-
-      window.addEventListener('resize', () => {
-        if (confettiCanvas && confettiCtx) {
-          const d = window.devicePixelRatio || 1;
-          confettiCanvas.width = window.innerWidth * d;
-          confettiCanvas.height = window.innerHeight * d;
-          confettiCanvas.style.width = window.innerWidth + 'px';
-          confettiCanvas.style.height = window.innerHeight + 'px';
-          confettiCtx.scale(d, d);
-        }
-      }, { passive: true });
+      resizeConfettiCanvas();
+      window.addEventListener('resize', resizeConfettiCanvas, { passive: true });
     }
 
-    function createCelebrationParticle(fromTop = false, customX = null, customY = null) {
+    function resizeConfettiCanvas() {
+      if (!confettiCanvas || !confettiCtx) return;
+      const dpr = window.devicePixelRatio || 1;
       const w = window.innerWidth;
       const h = window.innerHeight;
-      const isEmoji = Math.random() > 0.4;
-      
+      confettiCanvas.width = w * dpr;
+      confettiCanvas.height = h * dpr;
+      confettiCanvas.style.width = w + 'px';
+      confettiCanvas.style.height = h + 'px';
+      confettiCtx.setTransform(1, 0, 0, 1, 0, 0);
+      confettiCtx.scale(dpr, dpr);
+    }
+
+    function spawnParticle(fromTop = false, customX = null, customY = null) {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const isEmoji = Math.random() > 0.38;
+
       const x = customX !== null ? customX : Math.random() * w;
-      const y = customY !== null ? customY : (fromTop ? -20 - Math.random() * 40 : Math.random() * h);
+      const y = customY !== null ? customY : (fromTop ? -25 - Math.random() * 40 : Math.random() * h);
 
       return {
         x: x,
         y: y,
-        vx: fromTop ? (Math.random() - 0.5) * 3 : (Math.random() - 0.5) * 16,
+        vx: fromTop ? (Math.random() - 0.5) * 2.8 : (Math.random() - 0.5) * 16,
         vy: fromTop ? (Math.random() * 2.2 + 1.2) : (-Math.random() * 16 - 6),
         size: Math.random() * 9 + 5,
         color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
         emoji: isEmoji ? CONFETTI_EMOJIS[Math.floor(Math.random() * CONFETTI_EMOJIS.length)] : null,
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 10,
-        gravity: fromTop ? 0.02 : 0.28,
+        rotationSpeed: (Math.random() - 0.5) * 8,
+        gravity: fromTop ? 0.025 : 0.28,
         alpha: fromTop ? (Math.random() * 0.4 + 0.6) : 1.0,
         wobble: Math.random() * Math.PI * 2,
         wobbleSpeed: Math.random() * 0.04 + 0.02
       };
     }
 
-    function spawnCornerFirework() {
-      if (!confettiCtx || !confettiCanvas) return;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const isLeft = Math.random() > 0.5;
-      const originX = isLeft ? w * (0.1 + Math.random() * 0.2) : w * (0.7 + Math.random() * 0.2);
-      const originY = h * (0.35 + Math.random() * 0.3);
-
-      for (let i = 0; i < 25; i++) {
-        const p = createCelebrationParticle(false, originX, originY);
+    function fireworkBurst(originX, originY, count = 28) {
+      for (let i = 0; i < count; i++) {
+        const p = spawnParticle(false, originX, originY);
         p.vx = (Math.random() - 0.5) * 14;
         p.vy = (Math.random() - 0.5) * 14 - 3;
+        p.gravity = 0.22;
         confettiParticles.push(p);
       }
     }
 
-    function launchConfetti(count = 100) {
+    function launchConfetti(burstCount = 100) {
       if (!confettiCanvas || !confettiCtx) initConfetti();
       if (!confettiCtx) return;
 
       isCelebrating = true;
-
-      // Super Burst on trigger
       const w = window.innerWidth;
       const h = window.innerHeight;
-      for (let i = 0; i < count; i++) {
-        const originX = w * (0.15 + Math.random() * 0.7);
-        const originY = h * (0.35 + Math.random() * 0.35);
-        confettiParticles.push(createCelebrationParticle(false, originX, originY));
+
+      // Immediate Multi-Point Celebration Explosions
+      fireworkBurst(w * 0.5, h * 0.45, burstCount * 0.5);
+      fireworkBurst(w * 0.2, h * 0.5, burstCount * 0.25);
+      fireworkBurst(w * 0.8, h * 0.5, burstCount * 0.25);
+
+      // Seed continuous falling stardust so the whole screen stays filled
+      while (confettiParticles.length < 90) {
+        confettiParticles.push(spawnParticle(true));
       }
 
-      // Seed continuous floating stardust if needed
-      while (confettiParticles.length < 85) {
-        confettiParticles.push(createCelebrationParticle(true));
+      if (!isLoopRunning) {
+        isLoopRunning = true;
+        requestAnimationFrame(celebrationLoop);
       }
-
-      animateCelebration();
     }
 
-    function animateCelebration() {
+    function celebrationLoop() {
       if (!confettiCtx || !confettiCanvas) return;
       const w = window.innerWidth;
       const h = window.innerHeight;
@@ -860,30 +854,35 @@
 
       confettiCtx.clearRect(0, 0, w, h);
 
-      // Periodic Grand Firework Starburst every 3.5 seconds
-      if (isCelebrating && now - lastFireworkTime > 3500) {
-        lastFireworkTime = now;
-        spawnCornerFirework();
-      }
+      if (isCelebrating) {
+        // Continuous periodic celebratory firework bursts every 2.8 seconds
+        if (now - lastFireworkTime > 2800) {
+          lastFireworkTime = now;
+          const isLeft = Math.random() > 0.5;
+          const fx = isLeft ? w * (0.12 + Math.random() * 0.18) : w * (0.7 + Math.random() * 0.18);
+          const fy = h * (0.35 + Math.random() * 0.25);
+          fireworkBurst(fx, fy, 24);
+        }
 
-      // Maintain continuous floating particles throughout
-      if (isCelebrating && confettiParticles.length < 75) {
-        confettiParticles.push(createCelebrationParticle(true));
+        // Maintain constant falling stardust shower throughout the entire session
+        while (confettiParticles.length < 80) {
+          confettiParticles.push(spawnParticle(true));
+        }
       }
 
       for (let i = confettiParticles.length - 1; i >= 0; i--) {
         const p = confettiParticles[i];
         p.wobble += p.wobbleSpeed;
-        p.x += p.vx + Math.sin(p.wobble) * 1.4;
+        p.x += p.vx + Math.sin(p.wobble) * 1.2;
         p.y += p.vy;
         p.vy += p.gravity;
         p.rotation += p.rotationSpeed;
         p.vx *= 0.99;
 
-        // When particle reaches bottom: in continuous mode, re-spawn smoothly from the top!
+        // Infinite loop: when reaching bottom of screen, recycle immediately to the top!
         if (p.y > h + 30) {
           if (isCelebrating) {
-            confettiParticles[i] = createCelebrationParticle(true);
+            confettiParticles[i] = spawnParticle(true);
             continue;
           } else {
             confettiParticles.splice(i, 1);
@@ -897,7 +896,7 @@
         confettiCtx.rotate((p.rotation * Math.PI) / 180);
 
         if (p.emoji) {
-          confettiCtx.font = `${p.size * 2.1}px serif`;
+          confettiCtx.font = `${p.size * 2.2}px serif`;
           confettiCtx.textAlign = 'center';
           confettiCtx.textBaseline = 'middle';
           confettiCtx.fillText(p.emoji, 0, 0);
@@ -908,7 +907,8 @@
         confettiCtx.restore();
       }
 
-      requestAnimationFrame(animateCelebration);
+      // Keep running perpetually while celebrating
+      requestAnimationFrame(celebrationLoop);
     }
 
     // Init on page load
