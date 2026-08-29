@@ -16,8 +16,15 @@
   <meta property="og:url" content="https://save-the-date-jk.vercel.app/" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#4A0D16" />
+
+  <!-- Progressive Web App (PWA) & Fullscreen Standalone App Configuration -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="J&K Wedding" />
+  <meta name="application-name" content="J&K Wedding" />
+  <link rel="apple-touch-icon" href="reveal-photos/photo-1944.jpg" />
 
   <!-- High-Priority Resource Preloading (Instant Render & Sound) -->
   <link rel="preload" as="image" href="reveal-photos/photo-1944.jpg" fetchpriority="high" />
@@ -850,6 +857,15 @@
     // Init on page load
     startCountdown();
     initConfetti();
+
+    // Register PWA Service Worker for Home Screen Installability
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('PWA SW notice:', err);
+        });
+      }, { passive: true });
+    }
   </script>
 </body>
 </html>
