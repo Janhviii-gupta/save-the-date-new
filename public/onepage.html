@@ -170,10 +170,10 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      z-index: 999;
+      z-index: 99999;
     }
   </style>
 </head>
@@ -665,6 +665,7 @@
         if (reelPlayLbl) reelPlayLbl.textContent = 'PLAY';
       } else {
         isReelPlaying = true;
+        launchConfetti(80);
         if (reelPlayIcon) reelPlayIcon.textContent = 'pause';
         if (reelPlayLbl) reelPlayLbl.textContent = 'PAUSE';
         startReelLoop();
@@ -752,81 +753,96 @@
       return { init, toggle };
     })();
 
-    // Lightweight Auto-Sleep Confetti Engine (Runs 4.5s burst, then sleeps to preserve battery)
+    // =========================================================================
+    // VISUAL CELEBRATION & ROYAL GOLDEN CONFETTI ENGINE (RESTORED & ENHANCED)
+    // =========================================================================
     let confettiParticles = [];
     let confettiCanvas = null;
     let confettiCtx = null;
-    let confettiActive = false;
-    let confettiEndTime = 0;
-    const COLORS = ['#C5A059', '#937332', '#6B1420', '#FAF7F2', '#DFBF7A'];
-    const EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉'];
+    let confettiAnimId = null;
+    const CONFETTI_COLORS = ['#C5A059', '#DFBF7A', '#937332', '#6B1420', '#FAF7F2', '#FFD700', '#E5C158', '#FF69B4', '#FFFFFF'];
+    const CONFETTI_EMOJIS = ['✨', '💖', '💛', '🌸', '🥂', '🎉', '🌹', '💍', '✨'];
 
     function initConfetti() {
       confettiCanvas = document.getElementById('confetti-canvas');
       if (!confettiCanvas) return;
-      confettiCtx = confettiCanvas.getContext('2d', { alpha: true });
-      confettiCanvas.width = window.innerWidth;
-      confettiCanvas.height = window.innerHeight;
+      confettiCtx = confettiCanvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      confettiCanvas.width = window.innerWidth * dpr;
+      confettiCanvas.height = window.innerHeight * dpr;
+      confettiCanvas.style.width = window.innerWidth + 'px';
+      confettiCanvas.style.height = window.innerHeight + 'px';
+      confettiCtx.scale(dpr, dpr);
+
       window.addEventListener('resize', () => {
-        if (confettiCanvas) {
-          confettiCanvas.width = window.innerWidth;
-          confettiCanvas.height = window.innerHeight;
+        if (confettiCanvas && confettiCtx) {
+          const d = window.devicePixelRatio || 1;
+          confettiCanvas.width = window.innerWidth * d;
+          confettiCanvas.height = window.innerHeight * d;
+          confettiCanvas.style.width = window.innerWidth + 'px';
+          confettiCanvas.style.height = window.innerHeight + 'px';
+          confettiCtx.scale(d, d);
         }
       }, { passive: true });
     }
 
-    function launchConfetti() {
-      if (!confettiCanvas) initConfetti();
+    function launchConfetti(count = 120) {
+      if (!confettiCanvas || !confettiCtx) initConfetti();
       if (!confettiCtx) return;
 
-      confettiEndTime = Date.now() + 4500;
-      confettiParticles = [];
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-      for (let i = 0; i < 50; i++) {
-        const isEmoji = Math.random() > 0.6;
+      // Burst from center and multiple dynamic origins
+      for (let i = 0; i < count; i++) {
+        const isEmoji = Math.random() > 0.45;
+        const originX = w * (0.15 + Math.random() * 0.7);
+        const originY = h * (0.35 + Math.random() * 0.35);
+
         confettiParticles.push({
-          x: window.innerWidth * (0.2 + Math.random() * 0.6),
-          y: window.innerHeight * 0.55,
-          vx: (Math.random() - 0.5) * 12,
-          vy: -Math.random() * 14 - 5,
-          size: Math.random() * 8 + 4,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          emoji: isEmoji ? EMOJIS[Math.floor(Math.random() * EMOJIS.length)] : null,
+          x: originX,
+          y: originY,
+          vx: (Math.random() - 0.5) * 18,
+          vy: -Math.random() * 18 - 8,
+          size: Math.random() * 10 + 6,
+          color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+          emoji: isEmoji ? CONFETTI_EMOJIS[Math.floor(Math.random() * CONFETTI_EMOJIS.length)] : null,
           rotation: Math.random() * 360,
-          rotationSpeed: (Math.random() - 0.5) * 8,
-          gravity: 0.35,
-          alpha: 1,
+          rotationSpeed: (Math.random() - 0.5) * 14,
+          gravity: 0.28,
+          alpha: 1.0,
           wobble: Math.random() * Math.PI * 2,
-          wobbleSpeed: 0.04
+          wobbleSpeed: Math.random() * 0.05 + 0.02
         });
       }
 
-      if (!confettiActive) {
-        confettiActive = true;
+      if (!confettiAnimId) {
         animateConfetti();
       }
     }
 
     function animateConfetti() {
       if (!confettiCtx || !confettiCanvas) return;
-      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-      const now = Date.now();
-      const isFinishing = now > confettiEndTime;
+      confettiCtx.clearRect(0, 0, w, h);
 
       for (let i = confettiParticles.length - 1; i >= 0; i--) {
         const p = confettiParticles[i];
         p.wobble += p.wobbleSpeed;
-        p.x += p.vx + Math.sin(p.wobble) * 0.6;
+        p.x += p.vx + Math.sin(p.wobble) * 1.5;
         p.y += p.vy;
         p.vy += p.gravity;
         p.rotation += p.rotationSpeed;
+        p.vx *= 0.985;
 
-        if (isFinishing) {
-          p.alpha -= 0.02;
+        // Fade out gracefully as it falls near bottom
+        if (p.y > h * 0.75) {
+          p.alpha -= 0.012;
         }
 
-        if (p.alpha <= 0) {
+        if (p.y > h + 50 || p.alpha <= 0) {
           confettiParticles.splice(i, 1);
           continue;
         }
@@ -837,7 +853,9 @@
         confettiCtx.rotate((p.rotation * Math.PI) / 180);
 
         if (p.emoji) {
-          confettiCtx.font = `${p.size * 1.8}px serif`;
+          confettiCtx.font = `${p.size * 2.2}px serif`;
+          confettiCtx.textAlign = 'center';
+          confettiCtx.textBaseline = 'middle';
           confettiCtx.fillText(p.emoji, 0, 0);
         } else {
           confettiCtx.fillStyle = p.color;
@@ -847,10 +865,10 @@
       }
 
       if (confettiParticles.length > 0) {
-        requestAnimationFrame(animateConfetti);
+        confettiAnimId = requestAnimationFrame(animateConfetti);
       } else {
-        confettiActive = false;
-        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confettiAnimId = null;
+        confettiCtx.clearRect(0, 0, w, h);
       }
     }
 
