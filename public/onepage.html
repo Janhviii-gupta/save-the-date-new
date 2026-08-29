@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <title>Save the Date · Janhvi &amp; Krish | 19–20 Nov 2026, Jaipur</title>
   
   <meta name="description" content="Gupta &amp; Bhatia families eagerly invite you to the wedding celebration of Janhvi &amp; Krish on 19–20 November 2026 at Achrol Niwas, Jaipur, Rajasthan." />
@@ -75,19 +75,23 @@
   </script>
 
   <style>
-    html {
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       text-rendering: optimizeLegibility;
-      overscroll-behavior-y: none;
-    }
-
-    body {
       background-color: #FAF7F2;
       color: #1F1A1A;
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
-      contain: paint;
     }
 
     .font-royal-title {
@@ -168,53 +172,40 @@
       opacity: 1;
       pointer-events: auto;
     }
-
-    #confetti-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 99999;
-    }
   </style>
 </head>
-<body class="min-h-screen bg-[#FAF7F2] text-[#1F1A1A] flex flex-col antialiased selection:bg-[#C5A059] selection:text-white">
+<body class="min-h-screen bg-[#FAF7F2] text-[#1F1A1A] flex flex-col antialiased selection:bg-[#C5A059] selection:text-white overflow-x-hidden">
 
   <!-- Background High-Fidelity Cinematic Orchestral Soundtrack -->
   <audio id="wedding-soundtrack" src="sounds/romantic-wedding.mp3" preload="auto" loop playsinline></audio>
 
-  <!-- Interactive Celebration Confetti Canvas -->
-  <canvas id="confetti-canvas"></canvas>
-
   <!-- ========================================================================= -->
-  <!-- TOP BAR: CLEAN & HIGH READABILITY -->
+  <!-- TOP BAR: CLEAN, BALANCED & HIGH READABILITY ACROSS MOBILE/TABLET/LAPTOP -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD3] px-4 sm:px-6 py-2.5 flex items-center justify-between shadow-sm h-13">
-    <div class="flex items-center gap-2 truncate mr-2">
-      <span class="w-2.5 h-2.5 rounded-full bg-[#C5A059] shrink-0"></span>
-      <span class="font-syne text-[11px] sm:text-xs font-bold text-[#4A0D16] tracking-wider uppercase truncate">
-        SAVE THE DATE · 19–20 NOV 2026 · JAIPUR
+  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD3] w-full px-3 sm:px-6 py-2.5 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-1.5 sm:gap-2 truncate mr-2 min-w-0">
+      <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#C5A059] shrink-0"></span>
+      <span class="font-syne text-[10px] sm:text-xs font-bold text-[#4A0D16] tracking-wider uppercase truncate">
+        SAVE THE DATE · 19–20 NOV 2026
       </span>
     </div>
 
     <!-- Audio Toggle & Spy Mode Pill -->
-    <div class="flex items-center gap-2 shrink-0">
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
       <button
         type="button"
         onclick="WeddingAudio.toggle()"
         id="btn-audio-toggle"
-        class="flex items-center gap-1 px-3 py-1 rounded-full text-[#4A0D16] bg-[#4A0D16]/10 hover:bg-[#4A0D16] hover:text-white border border-[#4A0D16]/20 transition-all font-syne text-[10px] sm:text-[11px] font-bold tracking-wider cursor-pointer"
+        class="flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[#4A0D16] bg-[#4A0D16]/10 hover:bg-[#4A0D16] hover:text-white border border-[#4A0D16]/20 transition-all font-syne text-[10px] sm:text-[11px] font-bold tracking-wider cursor-pointer whitespace-nowrap"
         title="Toggle Wedding Music"
       >
-        <span class="material-symbols-outlined text-base" id="audio-icon">volume_up</span>
+        <span class="material-symbols-outlined text-sm sm:text-base" id="audio-icon">volume_up</span>
         <span id="audio-label">MUSIC ON</span>
       </button>
 
       <a
         href="interactive.html"
-        class="flex items-center gap-1 px-3 py-1 rounded-full border border-[#C5A059] bg-white hover:bg-[#4A0D16] text-[#4A0D16] hover:text-white font-syne text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all shadow-sm"
+        class="flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full border border-[#C5A059] bg-white hover:bg-[#4A0D16] text-[#4A0D16] hover:text-white font-syne text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all shadow-sm whitespace-nowrap"
         title="Switch to Interactive Mode"
       >
         <span>Spy Mode ↗</span>
@@ -223,22 +214,22 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- MAIN COMPACT CONTENT (DECLUTTERED & HIGH READABILITY) -->
+  <!-- MAIN WRAPPER (PERFECTLY CENTERED ON PHONE, TABLET & LAPTOP) -->
   <!-- ========================================================================= -->
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-10 flex-grow">
+  <main class="w-full max-w-4xl mx-auto px-3.5 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-12 flex-grow flex flex-col items-center">
 
     <!-- ========================================================================= -->
-    <!-- SECTION 1: HERO & ROYAL WINE REEL CENTERPIECE -->
+    <!-- SECTION 1: HERO & MAX-SIZE CINEMATIC MOTION PICTURE THEATER -->
     <!-- ========================================================================= -->
-    <section class="text-center space-y-4">
+    <section class="w-full text-center space-y-4 sm:space-y-6 flex flex-col items-center">
       
       <!-- Couple Names & Auspicious Date Banner -->
-      <div class="space-y-1.5">
+      <div class="space-y-1.5 w-full text-center">
         <span class="font-syne text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.25em] uppercase block">
           WEDDING CELEBRATION
         </span>
-        <h1 class="font-royal-title text-4xl sm:text-6xl text-[#4A0D16] leading-tight">
-          Janhvi <span class="italic font-normal text-3xl sm:text-5xl text-[#C5A059]">&amp;</span> Krish
+        <h1 class="font-royal-title text-3xl sm:text-5xl md:text-6xl text-[#4A0D16] leading-tight">
+          Janhvi <span class="italic font-normal text-2xl sm:text-4xl md:text-5xl text-[#C5A059]">&amp;</span> Krish
         </h1>
         <div class="flex flex-wrap items-center justify-center gap-2 pt-1 font-sans text-xs sm:text-sm font-semibold">
           <span class="bg-[#4A0D16]/10 border border-[#C5A059]/40 text-[#4A0D16] px-3.5 py-0.5 rounded-full">
@@ -250,22 +241,25 @@
         </div>
       </div>
 
-      <!-- Grand High-Contrast Deep Royal Maroon & Gold Theater Reel (Enlarged) -->
-      <div class="relative w-full max-w-3xl mx-auto py-2">
-        <div class="absolute -inset-3 bg-gradient-to-r from-[#C5A059]/25 via-[#4A0D16]/25 to-[#DFBF7A]/25 rounded-3xl blur-2xl pointer-events-none -z-10"></div>
+      <!-- Max-Scale Motion Picture Theater Canvas (Phone: Full Width / Tablet: Large / Laptop: Grand Cinema) -->
+      <div class="relative w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto">
+        <div class="absolute -inset-2 sm:-inset-3 bg-gradient-to-r from-[#C5A059]/25 via-[#4A0D16]/25 to-[#DFBF7A]/25 rounded-2xl sm:rounded-3xl blur-xl pointer-events-none -z-10"></div>
 
         <!-- Theater Frame -->
-        <div class="relative bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-2xl p-3 sm:p-5 shadow-2xl">
+        <div class="relative w-full bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-2xl overflow-hidden">
           
           <!-- Archival Header Plaque -->
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-5 py-1 rounded-full font-syne text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.2em] shadow-lg z-30 whitespace-nowrap border border-white/30">
+          <div class="absolute -top-3 sm:-top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-4 sm:px-6 py-0.5 sm:py-1 rounded-full font-syne text-[9px] sm:text-xs font-extrabold uppercase tracking-[0.2em] shadow-lg z-30 whitespace-nowrap border border-white/30">
             ✦ WHERE FOREVER BEGAN ✦
           </div>
 
-          <!-- Video Canvas (Grand Cinematic Scale) -->
-          <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] min-h-[320px] sm:min-h-[420px] md:min-h-[480px] bg-[#180306] rounded-xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50" onclick="handleReelClick()">
+          <!-- Video Canvas: Maximized Sizing Across All Devices -->
+          <div
+            class="relative w-full aspect-[4/5] sm:aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] min-h-[300px] sm:min-h-[420px] md:min-h-[480px] bg-[#180306] rounded-lg sm:rounded-xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
+            onclick="handleReelClick()"
+          >
             
-            <!-- 16 Instant-Switch Proposal Photos (Pre-cached & Hardware Accelerated) -->
+            <!-- 16 Proposal Photos (Pre-cached & Hardware Accelerated) -->
             <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover z-10 block" style="object-position: center 38%; transform: translateZ(0);" />
             <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
             <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
@@ -290,7 +284,7 @@
               <button
                 type="button"
                 onclick="event.stopPropagation(); startReelAndSound();"
-                class="px-8 sm:px-10 py-3.5 sm:py-4 rounded-full btn-gold font-syne text-xs sm:text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-2.5 cursor-pointer shadow-lg hover:scale-105 transition-all"
+                class="px-7 sm:px-10 py-3.5 sm:py-4 rounded-full btn-gold font-syne text-xs sm:text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-2.5 cursor-pointer shadow-lg hover:scale-105 transition-all"
               >
                 <span class="material-symbols-outlined text-2xl sm:text-3xl text-white">play_circle</span>
                 <span>VIEW REVEAL</span>
@@ -313,14 +307,14 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (TOUCH-PEEK & ELEGANT COPY) -->
+    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (CLEAN GRID ACROSS ALL DEVICES) -->
     <!-- ========================================================================= -->
-    <section class="space-y-4">
-      <div class="text-center space-y-1">
+    <section class="w-full space-y-4 sm:space-y-6">
+      <div class="text-center space-y-1 w-full">
         <span class="font-syne text-[10px] sm:text-[11px] font-extrabold text-[#937332] tracking-widest uppercase block">
           ATTIRE INSPIRATIONS
         </span>
-        <h2 class="font-royal-title text-2xl sm:text-3xl text-[#4A0D16]">
+        <h2 class="font-royal-title text-2xl sm:text-3xl md:text-4xl text-[#4A0D16]">
           The Three Chapters
         </h2>
         <p class="text-xs sm:text-sm text-[#4A4242] font-medium max-w-md mx-auto">
@@ -328,12 +322,12 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full">
         
         <!-- Chapter 01: Welcome Carnival & Haldi -->
-        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group">
+        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group w-full">
           <div
-            class="photo-frame relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
+            class="photo-frame relative w-full aspect-[4/3] sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
             ontouchstart="this.classList.add('is-touching')"
             ontouchend="this.classList.remove('is-touching')"
             ontouchcancel="this.classList.remove('is-touching')"
@@ -388,9 +382,9 @@
         </div>
 
         <!-- Chapter 02: Sangeet & Gala -->
-        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group">
+        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group w-full">
           <div
-            class="photo-frame relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
+            class="photo-frame relative w-full aspect-[4/3] sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
             ontouchstart="this.classList.add('is-touching')"
             ontouchend="this.classList.remove('is-touching')"
             ontouchcancel="this.classList.remove('is-touching')"
@@ -445,9 +439,9 @@
         </div>
 
         <!-- Chapter 03: Royal Shaadi -->
-        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group">
+        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group w-full">
           <div
-            class="photo-frame relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
+            class="photo-frame relative w-full aspect-[4/3] sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
             ontouchstart="this.classList.add('is-touching')"
             ontouchend="this.classList.remove('is-touching')"
             ontouchcancel="this.classList.remove('is-touching')"
@@ -507,8 +501,8 @@
     <!-- ========================================================================= -->
     <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION -->
     <!-- ========================================================================= -->
-    <section class="space-y-3">
-      <div class="text-center space-y-1">
+    <section class="w-full max-w-2xl mx-auto space-y-3">
+      <div class="text-center space-y-1 w-full">
         <span class="font-syne text-[10px] sm:text-[11px] font-extrabold text-[#937332] tracking-widest uppercase block">
           THE SANCTUARY
         </span>
@@ -520,7 +514,7 @@
         </p>
       </div>
 
-      <div class="editorial-card rounded-xl overflow-hidden group">
+      <div class="editorial-card rounded-xl overflow-hidden group w-full">
         <a
           href="https://achrolniwas.com/"
           target="_blank"
@@ -529,7 +523,7 @@
         >
           <img alt="Achrol Niwas Resort Jaipur" loading="lazy" decoding="async" class="w-full h-full object-cover" src="achrol-niwas.jpg" />
         </a>
-        <div class="p-3.5 sm:p-5 text-center bg-white">
+        <div class="p-3.5 sm:p-5 text-center bg-white w-full">
           <a
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
             target="_blank"
@@ -546,8 +540,8 @@
     <!-- ========================================================================= -->
     <!-- SECTION 4: THE WEDDING COUNTDOWN -->
     <!-- ========================================================================= -->
-    <section class="text-center space-y-3 pb-2">
-      <div class="space-y-1">
+    <section class="w-full text-center space-y-3 pb-2 flex flex-col items-center">
+      <div class="space-y-1 w-full text-center">
         <span class="font-syne text-[10px] font-extrabold text-[#937332] tracking-widest uppercase block">
           ⏳ THE WEDDING COUNTDOWN
         </span>
@@ -556,7 +550,7 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-4 gap-2 sm:gap-3 max-w-md mx-auto">
+      <div class="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-md mx-auto">
         <div class="editorial-card p-2.5 sm:p-3.5 rounded-xl text-center">
           <div id="cd-d" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
           <div class="font-syne text-[8px] sm:text-[9px] font-bold text-[#937332] uppercase tracking-wider mt-0.5">DAYS</div>
@@ -581,7 +575,7 @@
   <!-- ========================================================================= -->
   <!-- FOOTER -->
   <!-- ========================================================================= -->
-  <footer class="bg-white border-t border-[#E8DFD3] py-6 px-4 text-center space-y-1.5">
+  <footer class="w-full bg-white border-t border-[#E8DFD3] py-6 px-4 text-center space-y-1.5">
     <p class="font-syne text-xs font-bold text-[#4A0D16] uppercase tracking-widest">
       ACHROL NIWAS · JAIPUR, RAJASTHAN
     </p>
@@ -594,7 +588,7 @@
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT: HIGH-PERFORMANCE CACHED REEL & AUDIO CONTROLLER -->
+  <!-- JAVASCRIPT: REEL, AUDIO, & NON-STACKING SETINTERVAL CONFETTI LOOP -->
   <!-- ========================================================================= -->
   <script>
     // 16 Photos Pre-cached Elements
