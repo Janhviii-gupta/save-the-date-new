@@ -119,14 +119,14 @@
       transform: translateY(-1px);
     }
 
-    /* Lookbook Overlay Smooth Fade & Retreat */
+    /* Lookbook Overlay: Smooth Touch Peek & Hover Fade/Retreat */
     .photo-overlay {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease-in-out;
+      transition: opacity 0.2s ease-in-out;
     }
-    .editorial-card.touch-active .photo-overlay,
-    .editorial-card:hover .photo-overlay {
+    .photo-frame:hover .photo-overlay,
+    .photo-frame.is-touching .photo-overlay {
       opacity: 1;
       pointer-events: auto;
     }
@@ -272,34 +272,42 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (COMPACT & EASY TO TAP) -->
+    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (TOUCH-PEEK & ELEGANT COPY) -->
     <!-- ========================================================================= -->
     <section class="space-y-4">
       <div class="text-center space-y-1">
         <span class="font-syne text-[10px] sm:text-[11px] font-extrabold text-[#937332] tracking-widest uppercase block">
-          CURATED ATTIRE GUIDE
+          ATTIRE INSPIRATIONS
         </span>
         <h2 class="font-royal-title text-2xl sm:text-3xl text-[#4A0D16]">
           The Three Chapters
         </h2>
-        <p class="text-xs sm:text-sm text-[#4A4242] font-medium">
-          Tap or hover any photo to preview fabrics &amp; color swatches (tap again to close):
+        <p class="text-xs sm:text-sm text-[#4A4242] font-medium max-w-md mx-auto">
+          Curated celebratory themes, heritage weaves &amp; color palettes for each chapter:
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         
         <!-- Chapter 01: Welcome Carnival & Haldi -->
-        <div id="card-chapter-1" class="editorial-card rounded-xl overflow-hidden flex flex-col group cursor-pointer" onclick="toggleLookbook('card-chapter-1', event)">
-          <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B]">
+        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group">
+          <div
+            class="photo-frame relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
+            ontouchstart="this.classList.add('is-touching')"
+            ontouchend="this.classList.remove('is-touching')"
+            ontouchcancel="this.classList.remove('is-touching')"
+            onpointerdown="this.classList.add('is-touching')"
+            onpointerup="this.classList.remove('is-touching')"
+            onpointerleave="this.classList.remove('is-touching')"
+          >
             <img alt="Welcome Carnival" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
             
             <div class="absolute top-2 left-2 bg-[#937332] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 01 · AFTERNOON
             </div>
 
-            <!-- Tap / Hover Overlay: Fiesta Yellows -->
-            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
+            <!-- Touch / Hover Overlay: Fiesta Yellows -->
+            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center z-20 space-y-2">
               <span class="font-syne text-[11px] font-extrabold text-[#FACC15] uppercase tracking-wider">
                 FIESTA YELLOWS
               </span>
@@ -315,12 +323,8 @@
 
               <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans">
                 <div class="text-[#DFBF7A] font-bold">Chanderi · Georgette · Mulmul</div>
-                <div class="text-white/80">Breezy florals &amp; linen-silk kurtas</div>
+                <div class="text-white/80">Sunshine florals &amp; linen-silk kurtas</div>
               </div>
-
-              <span class="inline-block text-[8px] text-white/60 uppercase tracking-widest pt-1">
-                ✕ Tap to close
-              </span>
             </div>
           </div>
           
@@ -332,27 +336,35 @@
               </h3>
               <div class="pt-0.5">
                 <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#937332] uppercase">
-                  💛 Haldi Fiesta
+                  💛 Sunshine &amp; Haldi Florals
                 </span>
               </div>
             </div>
             <p class="text-xs text-[#4A4242] leading-relaxed font-medium">
-              Sunshine yellows, vibrant georgettes, mustard silks &amp; playful festive daywear.
+              Vibrant yellow georgettes, breezy mulmul &amp; festive celebratory daywear.
             </p>
           </div>
         </div>
 
         <!-- Chapter 02: Sangeet & Gala -->
-        <div id="card-chapter-2" class="editorial-card rounded-xl overflow-hidden flex flex-col group cursor-pointer" onclick="toggleLookbook('card-chapter-2', event)">
-          <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B]">
+        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group">
+          <div
+            class="photo-frame relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
+            ontouchstart="this.classList.add('is-touching')"
+            ontouchend="this.classList.remove('is-touching')"
+            ontouchcancel="this.classList.remove('is-touching')"
+            onpointerdown="this.classList.add('is-touching')"
+            onpointerup="this.classList.remove('is-touching')"
+            onpointerleave="this.classList.remove('is-touching')"
+          >
             <img alt="Sangeet Gala" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
             
             <div class="absolute top-2 left-2 bg-[#4A0D16] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 01 · EVENING
             </div>
 
-            <!-- Tap / Hover Overlay: Indo-Western Glamour -->
-            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
+            <!-- Touch / Hover Overlay: Indo-Western Glamour -->
+            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center z-20 space-y-2">
               <span class="font-syne text-[11px] font-extrabold text-[#CBD5E1] uppercase tracking-wider">
                 INDO-WESTERN GLAMOUR
               </span>
@@ -370,10 +382,6 @@
                 <div class="text-[#CBD5E1] font-bold">Micro-Sequins · Velvet · Satin</div>
                 <div class="text-white/80">Silver sequins &amp; modern silhouettes</div>
               </div>
-
-              <span class="inline-block text-[8px] text-white/60 uppercase tracking-widest pt-1">
-                ✕ Tap to close
-              </span>
             </div>
           </div>
           
@@ -390,22 +398,30 @@
               </div>
             </div>
             <p class="text-xs text-[#4A4242] leading-relaxed font-medium">
-              Metallic silver sequins, statement Indo-Western cuts, evening glamour &amp; dancing shoes.
+              Metallic silver sequins, modern silhouettes, sharp evening cuts &amp; dancing shoes.
             </p>
           </div>
         </div>
 
         <!-- Chapter 03: Royal Shaadi -->
-        <div id="card-chapter-3" class="editorial-card rounded-xl overflow-hidden flex flex-col group cursor-pointer" onclick="toggleLookbook('card-chapter-3', event)">
-          <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B]">
+        <div class="editorial-card rounded-xl overflow-hidden flex flex-col group">
+          <div
+            class="photo-frame relative w-full h-44 sm:h-48 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
+            ontouchstart="this.classList.add('is-touching')"
+            ontouchend="this.classList.remove('is-touching')"
+            ontouchcancel="this.classList.remove('is-touching')"
+            onpointerdown="this.classList.add('is-touching')"
+            onpointerup="this.classList.remove('is-touching')"
+            onpointerleave="this.classList.remove('is-touching')"
+          >
             <img alt="Royal Shaadi" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
             
             <div class="absolute top-2 left-2 bg-[#937332] text-white font-syne text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">
               DAY 02 · EVENING
             </div>
 
-            <!-- Tap / Hover Overlay: Royal Palette -->
-            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
+            <!-- Touch / Hover Overlay: Royal Palette -->
+            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3.5 flex flex-col justify-center items-center text-center z-20 space-y-2">
               <span class="font-syne text-[11px] font-extrabold text-[#DFBF7A] uppercase tracking-wider">
                 ROYAL PALETTE
               </span>
@@ -423,10 +439,6 @@
                 <div class="text-[#DFBF7A] font-bold">Banarasi Katan · Brocade · Raw Silk</div>
                 <div class="text-white/80">Opulent heritage silks &amp; royal jewels</div>
               </div>
-
-              <span class="inline-block text-[8px] text-white/60 uppercase tracking-widest pt-1">
-                ✕ Tap to close
-              </span>
             </div>
           </div>
           
@@ -438,12 +450,12 @@
               </h3>
               <div class="pt-0.5">
                 <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2 py-0.5 rounded-full font-syne text-[9px] font-bold text-[#937332] uppercase">
-                  👑 Sundowner Royalty
+                  👑 Royal Sundowner Heritage
                 </span>
               </div>
             </div>
             <p class="text-xs text-[#4A4242] leading-relaxed font-medium">
-              Antique sunset gold, royal emeralds, Banarasi silks &amp; Rajasthani grandeur.
+              Sunset gold zari, pure Banarasi silks, royal emeralds &amp; timeless Rajasthani grandeur.
             </p>
           </div>
         </div>
@@ -629,25 +641,12 @@
       }
     }
 
-    // Touch Toggle & Smooth Retreat for Lookbook Cards
-    function toggleLookbook(cardId, e) {
-      if (e) e.stopPropagation();
-      const card = document.getElementById(cardId);
-      if (!card) return;
-      const wasActive = card.classList.contains('touch-active');
-      
-      // Close all cards first
-      document.querySelectorAll('.editorial-card').forEach(c => c.classList.remove('touch-active'));
-      
-      // If wasn't active, toggle open
-      if (!wasActive) {
-        card.classList.add('touch-active');
-      }
-    }
-
-    // Tap anywhere outside on the screen immediately retreats all open lookbooks
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.editorial-card').forEach(c => c.classList.remove('touch-active'));
+    // Instant Retreat on Touch End / Document Tap
+    window.addEventListener('touchend', () => {
+      document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
+    });
+    window.addEventListener('touchcancel', () => {
+      document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
     });
 
     // Countdown Timer
