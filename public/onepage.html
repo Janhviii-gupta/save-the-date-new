@@ -26,13 +26,13 @@
   <meta name="application-name" content="J&K Wedding" />
   <link rel="apple-touch-icon" href="reveal-photos/photo-1944.jpg" />
 
-  <!-- High-Priority Resource Preloading (Instant Render & Sound) -->
+  <!-- High-Priority Resource Preloading -->
   <link rel="preload" as="image" href="reveal-photos/photo-1944.jpg" fetchpriority="high" />
   <link rel="preload" as="audio" href="sounds/romantic-wedding.mp3" type="audio/mpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   
-  <!-- Premium High-Readability Wedding Typography (Cinzel, Playfair Display & Plus Jakarta Sans) -->
+  <!-- Premium High-Readability Wedding Typography -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -103,15 +103,61 @@
       background: #FFFFFF;
       border: 1px solid #E8DFD3;
       box-shadow: 0 4px 16px -2px rgba(74, 13, 22, 0.06), 0 0 0 1px rgba(197, 160, 89, 0.15);
-      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
       transform: translateZ(0);
       backface-visibility: hidden;
-      will-change: transform;
     }
-    .editorial-card:hover {
-      border-color: #C5A059;
-      transform: translateY(-2px) translateZ(0);
-      box-shadow: 0 12px 28px -4px rgba(74, 13, 22, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.4);
+
+    /* DESKTOP-ONLY HOVER RULES (Completely Disabled on Mobile/Touch Devices) */
+    @media (hover: hover) and (min-width: 769px) {
+      .editorial-card {
+        transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform;
+      }
+      .editorial-card:hover {
+        border-color: #C5A059;
+        transform: translateY(-2px) translateZ(0);
+        box-shadow: 0 12px 28px -4px rgba(74, 13, 22, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.4);
+      }
+      .photo-frame img,
+      .venue-frame img {
+        transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform;
+      }
+      .photo-frame:hover img,
+      .venue-frame:hover img {
+        transform: scale(1.08) translateZ(0);
+      }
+      .photo-overlay {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease-in-out;
+      }
+      .photo-frame:hover .photo-overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    /* MOBILE TOUCH-SAFE RULES (< 768px): Zero Stuck Hovers, Clean Tap Toggles */
+    @media (max-width: 768px) {
+      .editorial-card {
+        transform: none !important;
+        transition: none !important;
+      }
+      .photo-frame img,
+      .venue-frame img {
+        transform: none !important;
+        transition: none !important;
+      }
+      .photo-overlay {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+      .photo-frame.is-active-touch .photo-overlay {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
     }
 
     .btn-gold {
@@ -124,10 +170,8 @@
       transition: all 0.2s ease;
       transform: translateZ(0);
     }
-    .btn-gold:hover {
-      background: linear-gradient(135deg, #C5A059 0%, #DFBF7A 50%, #C5A059 100%);
-      box-shadow: 0 6px 20px rgba(147, 115, 50, 0.45);
-      transform: translateY(-1px) translateZ(0);
+    .btn-gold:active {
+      transform: scale(0.98);
     }
 
     .btn-maroon {
@@ -140,42 +184,8 @@
       transition: all 0.2s ease;
       transform: translateZ(0);
     }
-    .btn-maroon:hover {
-      background: linear-gradient(135deg, #6B1420 0%, #8E1D2D 50%, #6B1420 100%);
-      box-shadow: 0 6px 20px rgba(74, 13, 22, 0.45);
-      transform: translateY(-1px) translateZ(0);
-    }
-
-    .photo-frame img,
-    .venue-frame img {
-      transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-      transform: translateZ(0);
-      backface-visibility: hidden;
-      will-change: transform;
-    }
-    .photo-frame:hover img,
-    .photo-frame.is-touching img,
-    .venue-frame:hover img {
-      transform: scale(1.08) translateZ(0);
-    }
-
-    /* Lookbook Overlay: Smooth Touch Peek & Hover Fade/Retreat */
-    .photo-overlay {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease-in-out;
-      transform: translateZ(0);
-    }
-    .photo-frame:hover .photo-overlay,
-    .photo-frame.is-touching .photo-overlay {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* Mobile & Universal Strict Centering Rules */
-    .itinerary-card-content,
-    .itinerary-card-content * {
-      text-align: center !important;
+    .btn-maroon:active {
+      transform: scale(0.98);
     }
   </style>
 </head>
@@ -226,17 +236,17 @@
     <!-- ========================================================================= -->
     <!-- SECTION 1: HERO & 16-PHOTO KINETIC MOTION GRAPHIC CONTAINER -->
     <!-- ========================================================================= -->
-    <section class="w-full text-center space-y-4 sm:space-y-6 flex flex-col items-center">
+    <section class="w-full text-center space-y-4 sm:space-y-6 flex flex-col items-center" style="text-align: center !important; width: 100% !important;">
       
       <!-- Couple Names & Auspicious Date Banner -->
-      <div class="space-y-1.5 w-full text-center">
-        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.22em] uppercase block">
+      <div class="space-y-1.5 w-full text-center" style="text-align: center !important; width: 100% !important;">
+        <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#937332] tracking-[0.22em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">
           WEDDING CELEBRATION
         </span>
-        <h1 class="font-royal-title text-3xl sm:text-5xl md:text-6xl text-[#4A0D16] leading-tight font-bold">
+        <h1 class="font-royal-title text-3xl sm:text-5xl md:text-6xl text-[#4A0D16] leading-tight font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">
           Janhvi <span class="italic font-normal text-2xl sm:text-4xl md:text-5xl text-[#C5A059] font-serif">&amp;</span> Krish
         </h1>
-        <div class="flex flex-wrap items-center justify-center gap-2 pt-1 font-sans text-xs sm:text-sm font-bold">
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-1 font-sans text-xs sm:text-sm font-bold" style="text-align: center !important; justify-content: center !important;">
           <span class="bg-[#4A0D16]/10 border border-[#C5A059]/40 text-[#4A0D16] px-3.5 py-0.5 rounded-full">
             19 · 20 NOVEMBER 2026
           </span>
@@ -246,7 +256,7 @@
         </div>
       </div>
 
-      <!-- 16-Photo Kinetic Motion Graphic Container (Explicit Matching Bounds: max-w: 500px on desktop) -->
+      <!-- 16-Photo Kinetic Motion Graphic Container (Matched 500px Desktop Bounds) -->
       <div class="relative w-full" style="max-width: 500px; width: 100%; margin: 0 auto;">
         <div class="absolute -inset-2 sm:-inset-3 bg-gradient-to-r from-[#C5A059]/25 via-[#4A0D16]/25 to-[#DFBF7A]/25 rounded-2xl sm:rounded-3xl blur-xl pointer-events-none -z-10"></div>
 
@@ -254,34 +264,34 @@
         <div class="relative w-full bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-2xl overflow-hidden">
           
           <!-- Archival Header Plaque -->
-          <div class="absolute -top-3 sm:-top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-4 sm:px-6 py-0.5 sm:py-1 rounded-full font-sans text-[9px] sm:text-xs font-extrabold uppercase tracking-[0.18em] shadow-lg z-30 whitespace-nowrap border border-white/30">
+          <div class="absolute -top-3 sm:-top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-4 sm:px-6 py-0.5 sm:py-1 rounded-full font-sans text-[9px] sm:text-xs font-extrabold uppercase tracking-[0.18em] shadow-lg z-30 whitespace-nowrap border border-white/30" style="text-align: center !important;">
             ✦ WHERE FOREVER BEGAN ✦
           </div>
 
-          <!-- Video Canvas: Proportional Cinema Aspect Ratio -->
+          <!-- Video Canvas -->
           <div
             id="reel-canvas-wrap"
             class="relative w-full aspect-[4/5] sm:aspect-[4/3] min-h-[300px] sm:min-h-[380px] bg-[#180306] rounded-lg sm:rounded-xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
             onclick="handleReelClick()"
           >
             
-            <!-- 16 Proposal Photos (Pre-cached & Hardware Accelerated) -->
-            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover z-10 block" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
-            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%; transform: translateZ(0);" />
+            <!-- 16 Proposal Photos -->
+            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover z-10 block" style="object-position: center 38%;" />
+            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
+            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" style="object-position: center 38%;" />
 
             <div class="absolute inset-0 bg-gradient-to-t from-[#200308]/60 via-transparent to-transparent pointer-events-none z-20"></div>
 
@@ -365,7 +375,7 @@
             </div>
           </div>
           
-          <div class="itinerary-card-content p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
             <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
               <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER I</span>
               <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
@@ -417,7 +427,7 @@
             </div>
           </div>
           
-          <div class="itinerary-card-content p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
             <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
               <span class="font-sans text-[10px] sm:text-[11px] text-[#4A0D16] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER II</span>
               <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
@@ -469,7 +479,7 @@
             </div>
           </div>
           
-          <div class="itinerary-card-content p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-3" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
             <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
               <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER III</span>
               <h3 class="font-royal-title font-bold text-xl sm:text-2xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
@@ -669,18 +679,18 @@
       }
     }
 
-    // Lookbook Touch & Click Toggle
+    // Touch-safe Lookbook overlay handler: never gets stuck!
     function toggleLookbookOverlay(frameEl) {
-      const isCurrentlyOpen = frameEl.classList.contains('is-touching');
-      document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
-      if (!isCurrentlyOpen) {
-        frameEl.classList.add('is-touching');
+      const isActive = frameEl.classList.contains('is-active-touch');
+      document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-active-touch'));
+      if (!isActive) {
+        frameEl.classList.add('is-active-touch');
       }
     }
 
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.photo-frame')) {
-        document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-touching'));
+        document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-active-touch'));
       }
     });
 
@@ -758,7 +768,6 @@
 
     // =========================================================================
     // HARDCODED INFINITE CONFETTI ENGINE (PERPETUAL & BULLETPROOF)
-    // Runs continuous 60fps particle loop + repeating setInterval(..., 2000)
     // =========================================================================
     let isConfettiLoopStarted = false;
 
@@ -923,11 +932,11 @@
       // Opening Burst
       ConfettiSystem.spawnBurst(window.innerWidth / 2, window.innerHeight * 0.4, 120);
 
-      // HARDCODED INFINITE INTERVAL (Runs forever every 2000ms until tab close)
+      // HARDCODED INFINITE INTERVAL (Runs forever every 1800ms until tab close)
       setInterval(() => {
         ConfettiSystem.spawnCornerCannons();
         ConfettiSystem.spawnBurst(window.innerWidth / 2, window.innerHeight * 0.45, 40);
-      }, 2000);
+      }, 1800);
     }
 
     // Explicit Event Binding on Button & Hero Wrap
