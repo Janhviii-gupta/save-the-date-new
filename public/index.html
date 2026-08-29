@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <!-- Production Release Build: v2.5.0 · 2026-08-29 · Refined Editorial Spacing, Grand Hero & Subtle Confetti -->
+  <!-- Production Release Build: v2.6.0 · 2026-08-29 · Full Symmetry Match, Non-Clipping Badges & Responsive Nav -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <title>Save the Date · Janhvi &amp; Krish | 19–20 Nov 2026, Jaipur</title>
@@ -42,6 +42,13 @@
   <script>
     tailwind.config = {
       theme: {
+        screens: {
+          'xs': '400px',
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px',
+        },
         extend: {
           fontFamily: {
             title: ['"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
@@ -196,32 +203,33 @@
   <audio id="wedding-soundtrack" src="sounds/romantic-wedding.mp3" preload="auto" loop playsinline></audio>
 
   <!-- ========================================================================= -->
-  <!-- TOP BAR: CLEAN, BALANCED & HIGH READABILITY ACROSS MOBILE/TABLET/LAPTOP -->
+  <!-- TOP BAR: RESPONSIVE, ZERO-CLIPPING ON MOBILE & TABLET & LAPTOP -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD3] w-full px-4 sm:px-8 py-3 flex items-center justify-between shadow-sm">
-    <div class="flex items-center gap-2 truncate mr-2 min-w-0">
-      <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#C5A059] shrink-0"></span>
-      <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#4A0D16] tracking-wider uppercase truncate">
-        SAVE THE DATE · 19–20 NOV 2026
+  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD3] w-full px-3 sm:px-6 md:px-8 py-2.5 sm:py-3 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 min-w-0">
+      <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#C5A059] shrink-0 animate-pulse"></span>
+      <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#4A0D16] tracking-wider uppercase whitespace-nowrap">
+        <span class="sm:hidden">SAVE THE DATE · JAIPUR</span>
+        <span class="hidden sm:inline">SAVE THE DATE · 19–20 NOV 2026</span>
       </span>
     </div>
 
     <!-- Audio Toggle & Spy Mode Pill -->
-    <div class="flex items-center gap-2 shrink-0">
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
       <button
         type="button"
         onclick="WeddingAudio.toggle()"
         id="btn-audio-toggle"
-        class="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full text-[#4A0D16] bg-[#4A0D16]/10 hover:bg-[#4A0D16] hover:text-white border border-[#4A0D16]/20 transition-all font-sans text-[10px] sm:text-[11px] font-bold tracking-wider cursor-pointer whitespace-nowrap"
+        class="flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[#4A0D16] bg-[#4A0D16]/10 hover:bg-[#4A0D16] hover:text-white border border-[#4A0D16]/20 transition-all font-sans text-[10px] sm:text-[11px] font-bold tracking-wider cursor-pointer whitespace-nowrap"
         title="Toggle Wedding Music"
       >
         <span class="material-symbols-outlined text-sm sm:text-base" id="audio-icon">volume_up</span>
-        <span id="audio-label">MUSIC ON</span>
+        <span id="audio-label" class="hidden xs:inline sm:inline">MUSIC ON</span>
       </button>
 
       <a
         href="interactive.html"
-        class="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full border border-[#C5A059] bg-white hover:bg-[#4A0D16] text-[#4A0D16] hover:text-white font-sans text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase transition-all shadow-sm whitespace-nowrap"
+        class="flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-[#C5A059] bg-white hover:bg-[#4A0D16] text-[#4A0D16] hover:text-white font-sans text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase transition-all shadow-sm whitespace-nowrap"
         title="Switch to Interactive Mode"
       >
         <span>Spy Mode ↗</span>
@@ -230,24 +238,25 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- MAIN WRAPPER: GENEROUS EDITORIAL SPACING (UNCROWDED & REGAL) -->
+  <!-- MAIN WRAPPER: BALANCED ARCHITECTURAL SYMMETRY ACROSS ALL VIEWPORTS -->
   <!-- ========================================================================= -->
-  <main class="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-10 py-8 sm:py-14 space-y-12 sm:space-y-16 md:space-y-20 flex-grow flex flex-col items-center">
+  <main class="w-full max-w-5xl mx-auto px-3.5 sm:px-6 md:px-8 py-6 sm:py-12 md:py-16 space-y-10 sm:space-y-14 md:space-y-18 flex-grow flex flex-col items-center">
 
     <!-- ========================================================================= -->
     <!-- SECTION 1: HERO & GRAND 16-PHOTO KINETIC MOTION GRAPHIC THEATER -->
+    <!-- (MATCHES EXACT 100% WIDTH OF 3 CARDS & VENUE CARD ON LAPTOP/DESKTOP) -->
     <!-- ========================================================================= -->
-    <section class="w-full text-center space-y-6 sm:space-y-8 flex flex-col items-center" style="text-align: center !important; width: 100% !important;">
+    <section class="w-full text-center space-y-5 sm:space-y-7 flex flex-col items-center" style="text-align: center !important; width: 100% !important;">
       
       <!-- Couple Names & Auspicious Date Banner -->
-      <div class="space-y-3 w-full text-center max-w-2xl mx-auto" style="text-align: center !important; width: 100% !important;">
+      <div class="space-y-2.5 w-full text-center max-w-2xl mx-auto" style="text-align: center !important; width: 100% !important;">
         <span class="font-sans text-xs sm:text-sm font-extrabold text-[#937332] tracking-[0.24em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">
           WEDDING CELEBRATION
         </span>
         <h1 class="font-royal-title text-4xl sm:text-6xl md:text-7xl text-[#4A0D16] leading-tight font-bold tracking-tight" style="text-align: center !important; width: 100% !important; display: block !important;">
           Janhvi <span class="italic font-normal text-3xl sm:text-5xl md:text-6xl text-[#C5A059] font-serif">&amp;</span> Krish
         </h1>
-        <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2 font-sans text-xs sm:text-sm font-bold" style="text-align: center !important; justify-content: center !important;">
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-1 font-sans text-xs sm:text-sm font-bold" style="text-align: center !important; justify-content: center !important;">
           <span class="bg-[#4A0D16]/10 border border-[#C5A059]/40 text-[#4A0D16] px-4 py-1 rounded-full shadow-sm">
             19 · 20 NOVEMBER 2026
           </span>
@@ -257,22 +266,22 @@
         </div>
       </div>
 
-      <!-- Grand, Prominent 16-Photo Kinetic Motion Graphic Theater Container -->
-      <div class="relative w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto">
+      <!-- Grand Motion Graphic Theater Container (Full Width Match, Non-Clipping Badge) -->
+      <div class="relative w-full mx-auto pt-3.5 sm:pt-4">
         <div class="absolute -inset-3 sm:-inset-4 bg-gradient-to-r from-[#C5A059]/20 via-[#4A0D16]/20 to-[#DFBF7A]/20 rounded-2xl sm:rounded-3xl blur-2xl pointer-events-none -z-10"></div>
 
-        <!-- Grand Theater Frame -->
-        <div class="relative w-full bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-xl sm:rounded-2xl md:rounded-3xl p-2.5 sm:p-4 md:p-5 shadow-2xl overflow-hidden">
-          
-          <!-- Archival Header Plaque -->
-          <div class="absolute -top-3.5 sm:-top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-5 sm:px-7 py-1 rounded-full font-sans text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.2em] shadow-lg z-30 whitespace-nowrap border border-white/30" style="text-align: center !important;">
-            ✦ WHERE FOREVER BEGAN ✦
-          </div>
+        <!-- Archival Header Plaque (Positioned outside overflow container so it never gets clipped) -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-5 sm:px-7 py-1 rounded-full font-sans text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.2em] shadow-xl z-30 whitespace-nowrap border border-white/40" style="text-align: center !important;">
+          ✦ WHERE FOREVER BEGAN ✦
+        </div>
 
-          <!-- Video Canvas: Grand Cinematic Dimensions -->
+        <!-- Grand Theater Frame (Matches 100% width of the 3 cards grid) -->
+        <div class="relative w-full bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border-2 border-[#C5A059] rounded-xl sm:rounded-2xl md:rounded-3xl p-2 sm:p-3.5 md:p-4 shadow-2xl overflow-visible">
+
+          <!-- Video Canvas: Cinema Aspect Ratio Scaling Across All 3 Devices -->
           <div
             id="reel-canvas-wrap"
-            class="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/9] min-h-[340px] sm:min-h-[440px] md:min-h-[500px] bg-[#180306] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
+            class="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[21/9] min-h-[330px] sm:min-h-[440px] md:min-h-[500px] lg:min-h-[540px] bg-[#180306] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/50"
             onclick="handleReelClick()"
           >
             
@@ -325,7 +334,7 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (CLEAN SPACING & INLINE CENTERING) -->
+    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (FULL CONTAINER WIDTH MATCH) -->
     <!-- ========================================================================= -->
     <section class="w-full space-y-6 sm:space-y-8">
       <div class="text-center space-y-2 w-full max-w-xl mx-auto" style="text-align: center !important; width: 100% !important;">
@@ -502,10 +511,10 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION (GRAND EDITORIAL WIDTH) -->
+    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION (FULL CONTAINER WIDTH MATCH) -->
     <!-- ========================================================================= -->
-    <section class="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto space-y-6 sm:space-y-8">
-      <div class="text-center space-y-2 w-full" style="text-align: center !important;">
+    <section class="w-full space-y-6 sm:space-y-8">
+      <div class="text-center space-y-2 w-full max-w-xl mx-auto" style="text-align: center !important;">
         <span class="font-sans text-xs sm:text-sm font-extrabold text-[#937332] tracking-[0.22em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">
           THE SANCTUARY
         </span>
