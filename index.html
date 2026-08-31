@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <!-- Production Release Build: v2.6.0 · 2026-08-29 · Full Symmetry Match, Non-Clipping Badges & Responsive Nav -->
+  <!-- Production Release Build: v2.7.0 · Universal Android & Safari Scaling, Direct Color Palettes & Simplified Copy -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>Save the Date · Janhvi &amp; Krish | 19–20 Nov 2026, Jaipur</title>
   
   <meta name="description" content="Gupta &amp; Bhatia families eagerly invite you to the wedding celebration of Janhvi &amp; Krish on 19–20 November 2026 at Achrol Niwas, Jaipur, Rajasthan." />
@@ -84,6 +84,7 @@
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html, body {
@@ -97,8 +98,11 @@
       text-rendering: optimizeLegibility;
       background-color: #FAF7F2;
       color: #1F1A1A;
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     .font-royal-title {
@@ -110,43 +114,34 @@
     .editorial-card {
       background: #FFFFFF;
       border: 1px solid #E8DFD3;
-      box-shadow: 0 4px 20px -2px rgba(74, 13, 22, 0.05), 0 0 0 1px rgba(197, 160, 89, 0.12);
+      box-shadow: 0 4px 16px -2px rgba(74, 13, 22, 0.04), 0 0 0 1px rgba(197, 160, 89, 0.1);
       transform: translateZ(0);
+      -webkit-transform: translateZ(0);
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
-    /* DESKTOP-ONLY HOVER RULES (Completely Disabled on Mobile/Touch Devices) */
+    /* Desktop Hover Enhancements */
     @media (hover: hover) and (min-width: 769px) {
       .editorial-card {
-        transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-        will-change: transform;
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .editorial-card:hover {
         border-color: #C5A059;
         transform: translateY(-2px) translateZ(0);
-        box-shadow: 0 14px 32px -4px rgba(74, 13, 22, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.35);
+        box-shadow: 0 12px 24px -4px rgba(74, 13, 22, 0.1), 0 0 0 1px rgba(197, 160, 89, 0.3);
       }
       .photo-frame img,
       .venue-frame img {
-        transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-        will-change: transform;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .photo-frame:hover img,
       .venue-frame:hover img {
-        transform: scale(1.06) translateZ(0);
-      }
-      .photo-overlay {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease-in-out;
-      }
-      .photo-frame:hover .photo-overlay {
-        opacity: 1;
-        pointer-events: auto;
+        transform: scale(1.05) translateZ(0);
       }
     }
 
-    /* MOBILE TOUCH-SAFE RULES (< 768px): Zero Stuck Hovers, Clean Tap Toggles */
+    /* Universal Android & Safari Touch Polish */
     @media (max-width: 768px) {
       .editorial-card {
         transform: none !important;
@@ -156,15 +151,6 @@
       .venue-frame img {
         transform: none !important;
         transition: none !important;
-      }
-      .photo-overlay {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease;
-      }
-      .photo-frame.is-active-touch .photo-overlay {
-        opacity: 1 !important;
-        pointer-events: auto !important;
       }
     }
 
@@ -194,6 +180,12 @@
     }
     .btn-maroon:active {
       transform: scale(0.98);
+    }
+
+    /* Cross-browser 3:2 Aspect Ratio Utility */
+    .aspect-photo {
+      aspect-ratio: 3 / 2;
+      width: 100%;
     }
   </style>
 </head>
@@ -240,16 +232,16 @@
   <!-- ========================================================================= -->
   <!-- MAIN WRAPPER: BALANCED ARCHITECTURAL SYMMETRY ACROSS ALL VIEWPORTS -->
   <!-- ========================================================================= -->
-  <main class="w-full max-w-5xl mx-auto px-3.5 sm:px-6 md:px-8 py-6 sm:py-12 md:py-16 space-y-10 sm:space-y-14 md:space-y-18 flex-grow flex flex-col items-center">
+  <main class="w-full max-w-5xl mx-auto px-3.5 sm:px-6 md:px-8 py-6 sm:py-10 md:py-14 space-y-10 sm:space-y-12 md:space-y-16 flex-grow flex flex-col items-center">
 
     <!-- ========================================================================= -->
     <!-- SECTION 1: HERO & GRAND 16-PHOTO KINETIC MOTION GRAPHIC THEATER -->
-    <!-- (MATCHES EXACT 100% WIDTH OF 3 CARDS & VENUE CARD ON LAPTOP/DESKTOP) -->
+    <!-- (PRIMARY CENTERPIECE: 100% UN増ROPPED ON ANDROID, SAFARI & LAPTOPS) -->
     <!-- ========================================================================= -->
-    <section class="w-full text-center space-y-5 sm:space-y-7 flex flex-col items-center" style="text-align: center !important; width: 100% !important;">
+    <section class="w-full text-center space-y-4 sm:space-y-6 flex flex-col items-center" style="text-align: center !important; width: 100% !important;">
       
       <!-- Couple Names & Auspicious Date Banner -->
-      <div class="space-y-2.5 w-full text-center max-w-2xl mx-auto" style="text-align: center !important; width: 100% !important;">
+      <div class="space-y-2 w-full text-center max-w-2xl mx-auto" style="text-align: center !important; width: 100% !important;">
         <span class="font-sans text-xs sm:text-sm font-extrabold text-[#937332] tracking-[0.24em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">
           WEDDING CELEBRATION
         </span>
@@ -266,8 +258,8 @@
         </div>
       </div>
 
-      <!-- Grand Motion Graphic Theater Container (Maximized Mobile Width & Zero Crop) -->
-      <div class="relative w-full -mx-1 sm:mx-auto max-w-[calc(100%+0.5rem)] sm:max-w-5xl pt-3.5 sm:pt-4">
+      <!-- Grand Motion Graphic Theater Container (Hero Centerpiece) -->
+      <div class="relative w-full max-w-5xl mx-auto pt-3.5 sm:pt-4">
         <div class="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-[#C5A059]/20 via-[#4A0D16]/20 to-[#DFBF7A]/20 rounded-xl sm:rounded-3xl blur-2xl pointer-events-none -z-10"></div>
 
         <!-- Archival Header Plaque -->
@@ -275,33 +267,33 @@
           ✦ WHERE FOREVER BEGAN ✦
         </div>
 
-        <!-- Grand Theater Frame: Slim mobile padding to maximize photo size -->
-        <div class="relative w-full bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border sm:border-2 border-[#C5A059] rounded-xl sm:rounded-2xl md:rounded-3xl p-1 sm:p-3 md:p-4 shadow-2xl overflow-visible">
+        <!-- Grand Theater Frame -->
+        <div class="relative w-full bg-gradient-to-b from-[#4A0D16] via-[#33080F] to-[#200308] border sm:border-2 border-[#C5A059] rounded-xl sm:rounded-2xl md:rounded-3xl p-1.5 sm:p-3 md:p-4 shadow-2xl overflow-visible">
 
-          <!-- Video Canvas: Exact 3:2 Native Photo Aspect Ratio (100% Zero-Crop Scaling Across Mobile, Tablet & Laptop) -->
+          <!-- Video Canvas: Exact 3:2 Native Photo Aspect Ratio (100% Zero-Crop Scaling) -->
           <div
             id="reel-canvas-wrap"
-            class="relative w-full aspect-[3/2] bg-[#180306] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/40"
+            class="relative w-full aspect-photo bg-[#180306] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-inner border border-[#C5A059]/40"
             onclick="handleReelClick()"
           >
             
             <!-- 16 Proposal Photos (1600x1066 -> Exact 3:2 Native Aspect Ratio, 100% Uncropped) -->
-            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-10 block" />
-            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
-            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" decoding="async" class="absolute inset-0 w-full h-full object-contain sm:object-cover z-0 hidden" />
+            <img id="reel-f-0" alt="Proposal Frame" src="reveal-photos/photo-1944.jpg" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover z-10 block" />
+            <img id="reel-f-1" alt="Proposal Frame" src="reveal-photos/photo-1945.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-2" alt="Proposal Frame" src="reveal-photos/photo-1946.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-3" alt="Proposal Frame" src="reveal-photos/photo-1947.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-4" alt="Proposal Frame" src="reveal-photos/photo-1948.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-5" alt="Proposal Frame" src="reveal-photos/photo-1949.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-6" alt="Proposal Frame" src="reveal-photos/photo-1950.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-7" alt="Proposal Frame" src="reveal-photos/photo-1951.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-8" alt="Proposal Frame" src="reveal-photos/photo-1952.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-9" alt="Proposal Frame" src="reveal-photos/photo-1953.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-10" alt="Proposal Frame" src="reveal-photos/photo-1954.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-11" alt="Proposal Frame" src="reveal-photos/photo-1955.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-12" alt="Proposal Frame" src="reveal-photos/photo-1956.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-13" alt="Proposal Frame" src="reveal-photos/photo-1957.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-14" alt="Proposal Frame" src="reveal-photos/photo-1958.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+            <img id="reel-f-15" alt="Proposal Frame" src="reveal-photos/photo-1959.jpg" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
 
             <div class="absolute inset-0 bg-gradient-to-t from-[#200308]/60 via-transparent to-transparent pointer-events-none z-20"></div>
 
@@ -334,7 +326,7 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (REFINED, COMPACT & OPTIMAL) -->
+    <!-- SECTION 2: WARDROBE & THREE CHAPTERS (CLEAN SWATCHES & SIMPLIFIED COPY) -->
     <!-- ========================================================================= -->
     <section class="w-full max-w-4xl mx-auto space-y-4 sm:space-y-6">
       <div class="text-center space-y-1.5 w-full max-w-lg mx-auto" style="text-align: center !important; width: 100% !important;">
@@ -353,156 +345,111 @@
         
         <!-- Chapter 01: Welcome Carnival & Haldi -->
         <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full shadow-sm" style="text-align: center !important;">
-          <div
-            class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
-            onclick="toggleLookbookOverlay(this)"
-          >
+          <div class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B]">
             <img alt="Welcome Carnival" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
             
             <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
               DAY 01 · AFTERNOON
             </div>
+          </div>
 
-            <!-- Touch / Hover Overlay: Fiesta Yellows -->
-            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
-              <span class="font-sans text-[10px] sm:text-[11px] font-extrabold text-[#FACC15] uppercase tracking-wider" style="text-align: center !important; width: 100% !important; display: block !important;">
-                FIESTA YELLOWS
-              </span>
-              
-              <!-- Yellow Swatches -->
-              <div class="flex items-center gap-1.5 justify-center py-0.5" style="text-align: center !important;">
-                <span class="w-4 h-4 rounded-full bg-[#FEF08A] border border-white/40 shadow" title="Pastel Lemon"></span>
-                <span class="w-4 h-4 rounded-full bg-[#FACC15] border border-white/40 shadow" title="Sunshine Yellow"></span>
-                <span class="w-4 h-4 rounded-full bg-[#EAB308] border border-white/40 shadow" title="Haldi Mustard"></span>
-                <span class="w-4 h-4 rounded-full bg-[#CA8A04] border border-white/40 shadow" title="Rich Ochre"></span>
-                <span class="w-4 h-4 rounded-full bg-[#B45309] border border-white/40 shadow" title="Golden Amber"></span>
-              </div>
-
-              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans" style="text-align: center !important; width: 100% !important;">
-                <div class="text-[#DFBF7A] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">Chanderi · Georgette · Mulmul</div>
-                <div class="text-white/80 font-medium" style="text-align: center !important; width: 100% !important; display: block !important;">Sunshine florals &amp; linen-silk kurtas</div>
-              </div>
-            </div>
+          <!-- Color Palette Swatches Directly Under Image -->
+          <div class="flex items-center justify-center gap-2 py-2 bg-[#FAF7F2] border-y border-[#E8DFD3]">
+            <span class="w-4 h-4 rounded-full bg-[#FEF08A] border border-black/15 shadow-sm" title="Pastel Lemon"></span>
+            <span class="w-4 h-4 rounded-full bg-[#FACC15] border border-black/15 shadow-sm" title="Sunshine Yellow"></span>
+            <span class="w-4 h-4 rounded-full bg-[#EAB308] border border-black/15 shadow-sm" title="Haldi Mustard"></span>
+            <span class="w-4 h-4 rounded-full bg-[#CA8A04] border border-black/15 shadow-sm" title="Rich Ochre"></span>
+            <span class="w-4 h-4 rounded-full bg-[#B45309] border border-black/15 shadow-sm" title="Golden Amber"></span>
           </div>
           
-          <div class="p-3.5 sm:p-4 md:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-2.5" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+          <div class="p-3.5 sm:p-4 md:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-2" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
             <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
               <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER I</span>
               <h3 class="font-royal-title font-bold text-lg sm:text-xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
                 Welcome Carnival
               </h3>
-              <div class="pt-1 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
+              <div class="pt-0.5 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
                 <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2.5 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#937332] uppercase shadow-sm" style="text-align: center !important;">
                   💛 Sunshine &amp; Haldi
                 </span>
               </div>
             </div>
             <p class="text-[11px] sm:text-xs text-[#4A4242] leading-relaxed font-medium text-center max-w-xs mx-auto" style="text-align: center !important; width: 100% !important; display: block !important;">
-              Vibrant yellow georgettes, breezy mulmul &amp; festive celebratory daywear.
+              Breezy yellow florals, pastel linens &amp; festive daywear.
             </p>
           </div>
         </div>
 
         <!-- Chapter 02: Sangeet & Gala -->
         <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full shadow-sm" style="text-align: center !important;">
-          <div
-            class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
-            onclick="toggleLookbookOverlay(this)"
-          >
+          <div class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B]">
             <img alt="Sangeet Gala" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
             
             <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
               DAY 01 · EVENING
             </div>
+          </div>
 
-            <!-- Touch / Hover Overlay: Indo-Western Glamour -->
-            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
-              <span class="font-sans text-[10px] sm:text-[11px] font-extrabold text-[#CBD5E1] uppercase tracking-wider" style="text-align: center !important; width: 100% !important; display: block !important;">
-                INDO-WESTERN GLAMOUR
-              </span>
-              
-              <!-- Night-Time Swatches -->
-              <div class="flex items-center gap-1.5 justify-center py-0.5" style="text-align: center !important;">
-                <span class="w-4 h-4 rounded-full bg-[#09090B] border border-white/40 shadow" title="Midnight Jet Black"></span>
-                <span class="w-4 h-4 rounded-full bg-[#CBD5E1] border border-white/40 shadow" title="Metallic Silver Chrome"></span>
-                <span class="w-4 h-4 rounded-full bg-[#2563EB] border border-white/40 shadow" title="Cobalt Blue"></span>
-                <span class="w-4 h-4 rounded-full bg-[#064E3B] border border-white/40 shadow" title="Emerald Velvet"></span>
-                <span class="w-4 h-4 rounded-full bg-[#581C87] border border-white/40 shadow" title="Dark Violet"></span>
-              </div>
-
-              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans" style="text-align: center !important; width: 100% !important;">
-                <div class="text-[#CBD5E1] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">Micro-Sequins · Velvet · Satin</div>
-                <div class="text-white/80 font-medium" style="text-align: center !important; width: 100% !important; display: block !important;">Silver sequins &amp; modern cuts</div>
-              </div>
-            </div>
+          <!-- Color Palette Swatches Directly Under Image -->
+          <div class="flex items-center justify-center gap-2 py-2 bg-[#FAF7F2] border-y border-[#E8DFD3]">
+            <span class="w-4 h-4 rounded-full bg-[#09090B] border border-black/15 shadow-sm" title="Midnight Black"></span>
+            <span class="w-4 h-4 rounded-full bg-[#CBD5E1] border border-black/15 shadow-sm" title="Metallic Silver"></span>
+            <span class="w-4 h-4 rounded-full bg-[#2563EB] border border-black/15 shadow-sm" title="Cobalt Blue"></span>
+            <span class="w-4 h-4 rounded-full bg-[#064E3B] border border-black/15 shadow-sm" title="Emerald Velvet"></span>
+            <span class="w-4 h-4 rounded-full bg-[#581C87] border border-black/15 shadow-sm" title="Dark Violet"></span>
           </div>
           
-          <div class="p-3.5 sm:p-4 md:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-2.5" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+          <div class="p-3.5 sm:p-4 md:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-2" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
             <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
               <span class="font-sans text-[10px] sm:text-[11px] text-[#4A0D16] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER II</span>
               <h3 class="font-royal-title font-bold text-lg sm:text-xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
                 Sangeet &amp; Gala
               </h3>
-              <div class="pt-1 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
+              <div class="pt-0.5 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
                 <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#4A0D16]/30 px-2.5 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#4A0D16] uppercase shadow-sm" style="text-align: center !important;">
                   ✨ Evening Glamour
                 </span>
               </div>
             </div>
             <p class="text-[11px] sm:text-xs text-[#4A4242] leading-relaxed font-medium text-center max-w-xs mx-auto" style="text-align: center !important; width: 100% !important; display: block !important;">
-              Metallic silver sequins, modern silhouettes &amp; dancing shoes.
+              Cocktail glam, dark suits &amp; dancing shoes.
             </p>
           </div>
         </div>
 
         <!-- Chapter 03: Royal Shaadi -->
         <div class="editorial-card rounded-xl sm:rounded-2xl overflow-hidden flex flex-col group w-full shadow-sm" style="text-align: center !important;">
-          <div
-            class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B] cursor-pointer select-none"
-            onclick="toggleLookbookOverlay(this)"
-          >
+          <div class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B]">
             <img alt="Royal Shaadi" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
             
             <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
               DAY 02 · EVENING
             </div>
+          </div>
 
-            <!-- Touch / Hover Overlay: Royal Palette -->
-            <div class="photo-overlay absolute inset-0 bg-[#25040A]/90 backdrop-blur-md p-3 flex flex-col justify-center items-center text-center z-20 space-y-2">
-              <span class="font-sans text-[10px] sm:text-[11px] font-extrabold text-[#DFBF7A] uppercase tracking-wider" style="text-align: center !important; width: 100% !important; display: block !important;">
-                ROYAL PALETTE
-              </span>
-              
-              <!-- Sundowner Swatches -->
-              <div class="flex items-center gap-1.5 justify-center py-0.5" style="text-align: center !important;">
-                <span class="w-4 h-4 rounded-full bg-[#D4AF37] border border-white/40 shadow" title="Sunset Gold"></span>
-                <span class="w-4 h-4 rounded-full bg-[#047857] border border-white/40 shadow" title="Royal Emerald"></span>
-                <span class="w-4 h-4 rounded-full bg-[#FFFBEB] border border-white/40 shadow" title="Ivory Pearl"></span>
-                <span class="w-4 h-4 rounded-full bg-[#1E1B4B] border border-white/40 shadow" title="Midnight Navy"></span>
-                <span class="w-4 h-4 rounded-full bg-[#0E7490] border border-white/40 shadow" title="Peacock Teal"></span>
-              </div>
-
-              <div class="text-[10px] text-white/90 leading-tight space-y-0.5 font-sans" style="text-align: center !important; width: 100% !important;">
-                <div class="text-[#DFBF7A] font-bold" style="text-align: center !important; width: 100% !important; display: block !important;">Banarasi Katan · Brocade · Raw Silk</div>
-                <div class="text-white/80 font-medium" style="text-align: center !important; width: 100% !important; display: block !important;">Opulent heritage silks &amp; jewels</div>
-              </div>
-            </div>
+          <!-- Color Palette Swatches Directly Under Image -->
+          <div class="flex items-center justify-center gap-2 py-2 bg-[#FAF7F2] border-y border-[#E8DFD3]">
+            <span class="w-4 h-4 rounded-full bg-[#D4AF37] border border-black/15 shadow-sm" title="Sunset Gold"></span>
+            <span class="w-4 h-4 rounded-full bg-[#047857] border border-black/15 shadow-sm" title="Royal Emerald"></span>
+            <span class="w-4 h-4 rounded-full bg-[#FFFBEB] border border-black/15 shadow-sm" title="Ivory Pearl"></span>
+            <span class="w-4 h-4 rounded-full bg-[#1E1B4B] border border-black/15 shadow-sm" title="Midnight Navy"></span>
+            <span class="w-4 h-4 rounded-full bg-[#0E7490] border border-black/15 shadow-sm" title="Peacock Teal"></span>
           </div>
           
-          <div class="p-3.5 sm:p-4 md:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-2.5" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
+          <div class="p-3.5 sm:p-4 md:p-5 flex-grow flex flex-col justify-between items-center text-center space-y-2" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
             <div class="flex flex-col items-center text-center space-y-1 w-full" style="text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
               <span class="font-sans text-[10px] sm:text-[11px] text-[#937332] font-extrabold tracking-[0.2em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">CHAPTER III</span>
               <h3 class="font-royal-title font-bold text-lg sm:text-xl text-[#4A0D16]" style="text-align: center !important; width: 100% !important; display: block !important;">
                 The Royal Wedding
               </h3>
-              <div class="pt-1 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
+              <div class="pt-0.5 flex justify-center w-full" style="text-align: center !important; width: 100% !important; display: flex !important; justify-content: center !important;">
                 <span class="inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C5A059]/40 px-2.5 py-0.5 rounded-full font-sans text-[10px] font-extrabold text-[#937332] uppercase shadow-sm" style="text-align: center !important;">
                   👑 Royal Heritage
                 </span>
               </div>
             </div>
             <p class="text-[11px] sm:text-xs text-[#4A4242] leading-relaxed font-medium text-center max-w-xs mx-auto" style="text-align: center !important; width: 100% !important; display: block !important;">
-              Sunset gold zari, pure Banarasi silks, royal emeralds &amp; grandeur.
+              Opulent heritage silks, gold zari &amp; royal eveningwear.
             </p>
           </div>
         </div>
@@ -513,8 +460,8 @@
     <!-- ========================================================================= -->
     <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION (FULL CONTAINER WIDTH MATCH) -->
     <!-- ========================================================================= -->
-    <section class="w-full space-y-6 sm:space-y-8">
-      <div class="text-center space-y-2 w-full max-w-xl mx-auto" style="text-align: center !important;">
+    <section class="w-full space-y-5 sm:space-y-7">
+      <div class="text-center space-y-1.5 w-full max-w-xl mx-auto" style="text-align: center !important;">
         <span class="font-sans text-xs sm:text-sm font-extrabold text-[#937332] tracking-[0.22em] uppercase block" style="text-align: center !important; width: 100% !important; display: block !important;">
           THE SANCTUARY
         </span>
@@ -535,12 +482,12 @@
         >
           <img alt="Achrol Niwas Resort Jaipur" loading="lazy" decoding="async" class="w-full h-full object-cover" src="achrol-niwas.jpg" />
         </a>
-        <div class="p-6 sm:p-8 text-center bg-white w-full" style="text-align: center !important;">
+        <div class="p-5 sm:p-7 text-center bg-white w-full" style="text-align: center !important;">
           <a
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-full sm:w-auto inline-flex px-10 sm:px-12 py-4 rounded-full btn-maroon font-sans font-bold text-sm sm:text-base tracking-wide items-center justify-center gap-3 shadow-xl hover:scale-105 transition-all cursor-pointer border border-[#C5A059]/40"
+            class="w-full sm:w-auto inline-flex px-9 sm:px-12 py-3.5 sm:py-4 rounded-full btn-maroon font-sans font-bold text-sm sm:text-base tracking-wide items-center justify-center gap-2.5 sm:gap-3 shadow-xl hover:scale-105 transition-all cursor-pointer border border-[#C5A059]/40"
           >
             <span class="material-symbols-outlined text-xl text-[#DFBF7A]">location_on</span>
             <span>Open in Google Maps ↗</span>
@@ -563,19 +510,19 @@
       </div>
 
       <div class="grid grid-cols-4 gap-3 sm:gap-4 w-full mx-auto" style="text-align: center !important;">
-        <div class="editorial-card p-3.5 sm:p-4 rounded-2xl text-center shadow-sm">
+        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
           <div id="cd-d" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
           <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">DAYS</div>
         </div>
-        <div class="editorial-card p-3.5 sm:p-4 rounded-2xl text-center shadow-sm">
+        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
           <div id="cd-h" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
           <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">HOURS</div>
         </div>
-        <div class="editorial-card p-3.5 sm:p-4 rounded-2xl text-center shadow-sm">
+        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
           <div id="cd-m" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
           <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">MINS</div>
         </div>
-        <div class="editorial-card p-3.5 sm:p-4 rounded-2xl text-center shadow-sm">
+        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
           <div id="cd-s" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#C5A059] tabular-nums">--</div>
           <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">SECS</div>
         </div>
@@ -605,7 +552,7 @@
   <canvas id="celebration-canvas" class="fixed inset-0 pointer-events-none w-full h-full" style="z-index: 9999; display: none;"></canvas>
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT: SUBTLE ELEGANT INFINITE CELEBRATION ENGINE -->
+  <!-- JAVASCRIPT: ROBUST CELEBRATION ENGINE & TOUCH-SAFE CONTROLLERS -->
   <!-- ========================================================================= -->
   <script>
     // 16 Photos Pre-cached Elements
@@ -649,7 +596,7 @@
       if (reelStartOverlay) reelStartOverlay.classList.add('hidden');
       if (reelBottomControls) reelBottomControls.classList.remove('hidden');
 
-      // Start the subtle, elegant celebratory confetti loop
+      // Start the celebratory confetti loop
       startHardcodedInfiniteConfetti();
 
       isReelPlaying = true;
@@ -688,21 +635,6 @@
         startReelLoop();
       }
     }
-
-    // Touch-safe Lookbook overlay handler: never gets stuck!
-    function toggleLookbookOverlay(frameEl) {
-      const isActive = frameEl.classList.contains('is-active-touch');
-      document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-active-touch'));
-      if (!isActive) {
-        frameEl.classList.add('is-active-touch');
-      }
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.photo-frame')) {
-        document.querySelectorAll('.photo-frame').forEach(f => f.classList.remove('is-active-touch'));
-      }
-    });
 
     // Cached Countdown Timer
     function startCountdown() {
@@ -777,7 +709,7 @@
     })();
 
     // =========================================================================
-    // SUBTLE & ELEGANT INFINITE CONFETTI SYSTEM (LIGHTWEIGHT & UNOBTRUSIVE)
+    // SUBTLE & ELEGANT INFINITE CONFETTI SYSTEM (UNIVERSAL BROWSER COMPATIBLE)
     // =========================================================================
     let isConfettiLoopStarted = false;
 
@@ -788,7 +720,6 @@
       let particles = [];
       let frameCounter = 0;
 
-      // Soft, refined luxury palette with subtle alpha blending
       const COLORS = [
         'rgba(197, 160, 89, 0.85)',
         'rgba(223, 191, 122, 0.8)',
@@ -906,7 +837,6 @@
         ctx.clearRect(0, 0, width, height);
 
         frameCounter++;
-        // Very subtle trickle throughout: only 1 delicate particle every 4 frames (~15/sec)
         if (frameCounter % 4 === 0) {
           spawnGentleStardust(1);
         }
@@ -971,7 +901,6 @@
 
     function startHardcodedInfiniteConfetti() {
       if (isConfettiLoopStarted) {
-        // Massive burst every time clicked
         ConfettiSystem.spawnGrandClickExplosion();
         return;
       }
@@ -979,7 +908,7 @@
 
       ConfettiSystem.init();
 
-      // MASSIVE GRAND CELEBRATION BURST ON CLICK (190+ particles!)
+      // MASSIVE GRAND CELEBRATION BURST ON CLICK (190+ particles)
       ConfettiSystem.spawnGrandClickExplosion();
 
       // Infinite Subtle Ambient Rainfall throughout (spaced out every 6s)
