@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <!-- Production Release Build: v2.7.0 · Universal Android & Safari Scaling, Direct Color Palettes & Simplified Copy -->
+  <!-- Production Release Build: v3.1.0 · Universal Auto-Purge Cache Buster & Liquid Responsive Layout -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>Save the Date · Janhvi &amp; Krish | 19–20 Nov 2026, Jaipur</title>
   
+  <!-- Comprehensive Cache Prevention Meta Headers -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
   <meta name="description" content="Gupta &amp; Bhatia families eagerly invite you to the wedding celebration of Janhvi &amp; Krish on 19–20 November 2026 at Achrol Niwas, Jaipur, Rajasthan." />
 
   <!-- OpenGraph / WhatsApp Rich In-Chat Preview Metadata -->
@@ -18,7 +23,7 @@
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#4A0D16" />
 
-  <!-- Progressive Web App (PWA) & Fullscreen Standalone App Configuration -->
+  <!-- Progressive Web App (PWA) Configuration -->
   <link rel="manifest" href="manifest.json" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -26,6 +31,46 @@
   <meta name="apple-mobile-web-app-title" content="J&K Wedding" />
   <meta name="application-name" content="J&K Wedding" />
   <link rel="apple-touch-icon" href="reveal-photos/photo-1944.jpg" />
+
+  <!-- Immediate Client-side Service Worker & Cache Purger + Live Version Verifier -->
+  <script>
+    (function() {
+      var CURRENT_BUILD = "3.1.0";
+      
+      // 1. Purge all Service Workers
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          for (var i = 0; i < regs.length; i++) {
+            regs[i].unregister();
+          }
+        });
+      }
+      
+      // 2. Clear Cache Storage
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (var i = 0; i < names.length; i++) {
+            caches.delete(names[i]);
+          }
+        });
+      }
+      
+      // 3. Dynamic Version Check: verify if browser is holding onto stale HTML
+      try {
+        fetch('/version.json?_t=' + Date.now(), { cache: 'no-store' })
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            if (data && data.version && data.version !== CURRENT_BUILD) {
+              if (!sessionStorage.getItem('reloaded_for_v' + data.version)) {
+                sessionStorage.setItem('reloaded_for_v' + data.version, '1');
+                window.location.replace(window.location.pathname + '?v=' + Date.now());
+              }
+            }
+          })
+          .catch(function() {});
+      } catch(e) {}
+    })();
+  </script>
 
   <!-- High-Priority Resource Preloading -->
   <link rel="preload" as="image" href="reveal-photos/photo-1944.jpg" fetchpriority="high" />
@@ -43,7 +88,7 @@
     tailwind.config = {
       theme: {
         screens: {
-          'xs': '400px',
+          'xs': '380px',
           'sm': '640px',
           'md': '768px',
           'lg': '1024px',
@@ -87,13 +132,29 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html {
       width: 100%;
-      max-width: 100%;
+      max-width: 100vw;
       overflow-x: hidden;
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100dvh;
       -webkit-overflow-scrolling: touch;
       text-rendering: optimizeLegibility;
       background-color: #FAF7F2;
@@ -101,8 +162,6 @@
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
     }
 
     .font-royal-title {
@@ -141,7 +200,7 @@
       }
     }
 
-    /* Universal Android & Safari Touch Polish */
+    /* Universal Mobile Touch Polish */
     @media (max-width: 768px) {
       .editorial-card {
         transform: none !important;
@@ -189,18 +248,18 @@
     }
   </style>
 </head>
-<body class="min-h-screen bg-[#FAF7F2] text-[#1F1A1A] flex flex-col antialiased selection:bg-[#C5A059] selection:text-white overflow-x-hidden">
+<body class="min-h-screen bg-[#FAF7F2] text-[#1F1A1A] flex flex-col items-center antialiased selection:bg-[#C5A059] selection:text-white overflow-x-hidden w-full max-w-full">
 
   <!-- Background High-Fidelity Cinematic Orchestral Soundtrack -->
   <audio id="wedding-soundtrack" src="sounds/romantic-wedding.mp3" preload="auto" loop playsinline></audio>
 
   <!-- ========================================================================= -->
-  <!-- TOP BAR: RESPONSIVE, ZERO-CLIPPING ON MOBILE & TABLET & LAPTOP -->
+  <!-- TOP BAR: RESPONSIVE, ZERO-CLIPPING ON ALL ANDROID & PIXEL VIEWPORTS -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD3] w-full px-3 sm:px-6 md:px-8 py-2.5 sm:py-3 flex items-center justify-between shadow-sm">
+  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD3] w-full max-w-full px-3 sm:px-6 md:px-8 py-2 sm:py-3 flex items-center justify-between shadow-sm box-border">
     <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 min-w-0">
       <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#C5A059] shrink-0 animate-pulse"></span>
-      <span class="font-sans text-[11px] sm:text-xs font-extrabold text-[#4A0D16] tracking-wider uppercase whitespace-nowrap">
+      <span class="font-sans text-[10px] xs:text-[11px] sm:text-xs font-extrabold text-[#4A0D16] tracking-wider uppercase whitespace-nowrap">
         <span class="sm:hidden">SAVE THE DATE · JAIPUR</span>
         <span class="hidden sm:inline">SAVE THE DATE · 19–20 NOV 2026</span>
       </span>
@@ -216,7 +275,7 @@
         title="Toggle Wedding Music"
       >
         <span class="material-symbols-outlined text-sm sm:text-base" id="audio-icon">volume_up</span>
-        <span id="audio-label" class="hidden xs:inline sm:inline">MUSIC ON</span>
+        <span id="audio-label" class="hidden sm:inline">MUSIC ON</span>
       </button>
 
       <a
@@ -232,11 +291,10 @@
   <!-- ========================================================================= -->
   <!-- MAIN WRAPPER: BALANCED ARCHITECTURAL SYMMETRY ACROSS ALL VIEWPORTS -->
   <!-- ========================================================================= -->
-  <main class="w-full max-w-5xl mx-auto px-3.5 sm:px-6 md:px-8 py-6 sm:py-10 md:py-14 space-y-10 sm:space-y-12 md:space-y-16 flex-grow flex flex-col items-center">
+  <main class="w-full max-w-5xl mx-auto px-3.5 sm:px-6 md:px-8 py-5 sm:py-8 md:py-14 space-y-8 sm:space-y-12 md:space-y-16 flex-grow flex flex-col items-center box-border">
 
     <!-- ========================================================================= -->
     <!-- SECTION 1: HERO & GRAND 16-PHOTO KINETIC MOTION GRAPHIC THEATER -->
-    <!-- (PRIMARY CENTERPIECE: 100% UN増ROPPED ON ANDROID, SAFARI & LAPTOPS) -->
     <!-- ========================================================================= -->
     <section class="w-full text-center space-y-4 sm:space-y-6 flex flex-col items-center" style="text-align: center !important; width: 100% !important;">
       
@@ -260,10 +318,11 @@
 
       <!-- Grand Motion Graphic Theater Container (Hero Centerpiece) -->
       <div class="relative w-full max-w-5xl mx-auto pt-3.5 sm:pt-4">
-        <div class="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-[#C5A059]/20 via-[#4A0D16]/20 to-[#DFBF7A]/20 rounded-xl sm:rounded-3xl blur-2xl pointer-events-none -z-10"></div>
+        <!-- Glow Backdrop: Contained Bounds preventing horizontal bleed -->
+        <div class="absolute inset-0 sm:-inset-2 bg-gradient-to-r from-[#C5A059]/20 via-[#4A0D16]/20 to-[#DFBF7A]/20 rounded-xl sm:rounded-3xl blur-lg sm:blur-2xl pointer-events-none -z-10"></div>
 
-        <!-- Archival Header Plaque -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-4 sm:px-7 py-1 rounded-full font-sans text-[9px] sm:text-xs font-extrabold uppercase tracking-[0.2em] shadow-xl z-30 whitespace-nowrap border border-white/40" style="text-align: center !important;">
+        <!-- Archival Header Plaque: Absolute Mathematically Centered -->
+        <div class="absolute -top-3 sm:-top-3.5 left-0 right-0 mx-auto w-fit bg-gradient-to-r from-[#937332] via-[#C5A059] to-[#937332] text-white px-4 sm:px-7 py-0.5 sm:py-1 rounded-full font-sans text-[9px] sm:text-xs font-extrabold uppercase tracking-[0.18em] sm:tracking-[0.2em] shadow-xl z-30 whitespace-nowrap border border-white/40 text-center">
           ✦ WHERE FOREVER BEGAN ✦
         </div>
 
@@ -298,17 +357,17 @@
             <div class="absolute inset-0 bg-gradient-to-t from-[#200308]/60 via-transparent to-transparent pointer-events-none z-20"></div>
 
             <!-- Initial Tap Play Overlay -->
-            <div id="reel-start-overlay" class="absolute inset-0 bg-[#25040A]/75 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 z-30 transition-all">
+            <div id="reel-start-overlay" class="absolute inset-0 bg-[#25040A]/75 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 sm:p-6 z-30 transition-all">
               <button
                 type="button"
                 id="btn-view-reveal"
                 onclick="event.stopPropagation(); startReelAndSound();"
-                class="px-8 sm:px-12 py-4 sm:py-5 rounded-full btn-gold font-sans text-xs sm:text-base font-extrabold uppercase tracking-[0.18em] flex items-center justify-center gap-3 cursor-pointer shadow-xl hover:scale-105 transition-all"
+                class="px-7 sm:px-12 py-3.5 sm:py-5 rounded-full btn-gold font-sans text-xs sm:text-base font-extrabold uppercase tracking-[0.16em] sm:tracking-[0.18em] flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer shadow-xl hover:scale-105 transition-all"
               >
                 <span class="material-symbols-outlined text-2xl sm:text-3xl text-white">play_circle</span>
                 <span>VIEW REVEAL</span>
               </button>
-              <span class="font-sans text-xs sm:text-sm font-bold text-[#DFBF7A] mt-3 tracking-wide">
+              <span class="font-sans text-[11px] sm:text-sm font-bold text-[#DFBF7A] mt-2.5 sm:mt-3 tracking-wide">
                 ✦ Tap to play wedding music ✦
               </span>
             </div>
@@ -348,7 +407,7 @@
           <div class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B]">
             <img alt="Welcome Carnival" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5DF2g3lIyKeJFuwJimWX26O3CQZEmjaJp6nvA40wJsQlFfZ9K9rTdN13fZ7HqpHZN0aKhTxlbysPKGTC6UnfDb0Wqcv4uJJcSTGMF2fAdR1-ukcF0oQMquBtdxPnp3iLaTI87L0M2ysM4c39JJliOaCyXSYvPDcwWa8Z3gDzJQqzbN96kIcRjZ72OO9LXT8OF6E7FTP_mxxcI6YW8acEZvuRanaW7kXU66oK-bsWKinM7uRlW3bUnZCetX7TZToOp7MrXnYjQ9hQ5zok" />
             
-            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
+            <div class="absolute top-2.5 left-0 right-0 mx-auto w-fit bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap text-center">
               DAY 01 · AFTERNOON
             </div>
           </div>
@@ -385,7 +444,7 @@
           <div class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B]">
             <img alt="Sangeet Gala" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4d4TI_ImyFBCdpvWKVnQfumFe40BDzFEK3CBlhksESeIj9awBhW00qnP71kfV30cE82_5Yqwnpjy6NiyO2r3kxfImOzzSBz6stSP1dkzWKe-8x5J17BtIPyZXu0fexcw5Uy834ESVH5mziQCJyqdRkT19mSXsOIz4eYazQwfhtloNLoYCQCWlaYlc1u0mx5fADj8It3fXmMG6uAf4qaY9B7ne4hKpnVpHfPIQxCK3HrMNRqjAXhchmLTIEaQeLlky5qzQQ77jJqrTZM" />
             
-            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
+            <div class="absolute top-2.5 left-0 right-0 mx-auto w-fit bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap text-center">
               DAY 01 · EVENING
             </div>
           </div>
@@ -422,7 +481,7 @@
           <div class="photo-frame relative w-full aspect-[16/10] sm:h-40 md:h-44 overflow-hidden bg-[#1E1B1B]">
             <img alt="Royal Shaadi" loading="lazy" decoding="async" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA51TQ5aGwJXrv11BDkwnADtlIbYUdm2hVaVm89N1Zxii5CF9nUtLFBKtFmR66xY_yTj2bQiR_vY3HrdrUnAUKScwWIqE81AO29U7NNVSZ8v-ef03-DgZI-dc_Kt6VTWiSGdAa-KFtyTCxI0xvCQEk0ic1bS2E88zxzpXs82gqQbMQamb4UfB1JgpgkSoIOIMCCSmmmKF3ovMSSoTOsXtrk5bdLjtx8WeWUta77e9Z68B3-BkMFrydpB9SBWbcfp-1nEb6m8iv2Gg2uRIU" />
             
-            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap" style="text-align: center !important;">
+            <div class="absolute top-2.5 left-0 right-0 mx-auto w-fit bg-[#4A0D16]/90 backdrop-blur-md text-[#DFBF7A] border border-[#C5A059]/40 font-sans text-[9px] sm:text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-[0.15em] shadow z-10 whitespace-nowrap text-center">
               DAY 02 · EVENING
             </div>
           </div>
@@ -458,7 +517,7 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION (FULL CONTAINER WIDTH MATCH) -->
+    <!-- SECTION 3: VENUE & GOOGLE MAPS NAVIGATION -->
     <!-- ========================================================================= -->
     <section class="w-full space-y-5 sm:space-y-7">
       <div class="text-center space-y-1.5 w-full max-w-xl mx-auto" style="text-align: center !important;">
@@ -487,7 +546,7 @@
             href="https://www.google.com/maps/search/?api=1&query=Achrol+Niwas+A+TreeHouse+Resort+Jaipur"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-full sm:w-auto inline-flex px-9 sm:px-12 py-3.5 sm:py-4 rounded-full btn-maroon font-sans font-bold text-sm sm:text-base tracking-wide items-center justify-center gap-2.5 sm:gap-3 shadow-xl hover:scale-105 transition-all cursor-pointer border border-[#C5A059]/40"
+            class="w-full sm:w-auto inline-flex px-8 sm:px-12 py-3.5 sm:py-4 rounded-full btn-maroon font-sans font-bold text-sm sm:text-base tracking-wide items-center justify-center gap-2.5 sm:gap-3 shadow-xl hover:scale-105 transition-all cursor-pointer border border-[#C5A059]/40"
           >
             <span class="material-symbols-outlined text-xl text-[#DFBF7A]">location_on</span>
             <span>Open in Google Maps ↗</span>
@@ -509,22 +568,22 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-4 gap-3 sm:gap-4 w-full mx-auto" style="text-align: center !important;">
-        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
-          <div id="cd-d" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
-          <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">DAYS</div>
+      <div class="grid grid-cols-4 gap-2 sm:gap-4 w-full max-w-md sm:max-w-xl mx-auto" style="text-align: center !important;">
+        <div class="editorial-card p-2.5 sm:p-4 rounded-xl sm:rounded-2xl text-center shadow-sm">
+          <div id="cd-d" class="font-royal-title text-xl xs:text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
+          <div class="font-sans text-[9px] xs:text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">DAYS</div>
         </div>
-        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
-          <div id="cd-h" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
-          <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">HOURS</div>
+        <div class="editorial-card p-2.5 sm:p-4 rounded-xl sm:rounded-2xl text-center shadow-sm">
+          <div id="cd-h" class="font-royal-title text-xl xs:text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
+          <div class="font-sans text-[9px] xs:text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">HOURS</div>
         </div>
-        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
-          <div id="cd-m" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
-          <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">MINS</div>
+        <div class="editorial-card p-2.5 sm:p-4 rounded-xl sm:rounded-2xl text-center shadow-sm">
+          <div id="cd-m" class="font-royal-title text-xl xs:text-2xl sm:text-4xl font-bold text-[#4A0D16] tabular-nums">--</div>
+          <div class="font-sans text-[9px] xs:text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">MINS</div>
         </div>
-        <div class="editorial-card p-3 sm:p-4 rounded-2xl text-center shadow-sm">
-          <div id="cd-s" class="font-royal-title text-2xl sm:text-4xl font-bold text-[#C5A059] tabular-nums">--</div>
-          <div class="font-sans text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">SECS</div>
+        <div class="editorial-card p-2.5 sm:p-4 rounded-xl sm:rounded-2xl text-center shadow-sm">
+          <div id="cd-s" class="font-royal-title text-xl xs:text-2xl sm:text-4xl font-bold text-[#C5A059] tabular-nums">--</div>
+          <div class="font-sans text-[9px] xs:text-[10px] sm:text-xs font-extrabold text-[#937332] uppercase tracking-wider mt-1">SECS</div>
         </div>
       </div>
     </section>
@@ -534,7 +593,7 @@
   <!-- ========================================================================= -->
   <!-- FOOTER -->
   <!-- ========================================================================= -->
-  <footer class="w-full bg-white border-t border-[#E8DFD3] py-8 px-4 text-center space-y-2" style="text-align: center !important;">
+  <footer class="w-full bg-white border-t border-[#E8DFD3] py-8 px-4 text-center space-y-2 box-border" style="text-align: center !important;">
     <p class="font-sans text-xs sm:text-sm font-extrabold text-[#4A0D16] uppercase tracking-widest" style="text-align: center !important;">
       ACHROL NIWAS · JAIPUR, RAJASTHAN
     </p>
@@ -549,7 +608,7 @@
   <!-- ========================================================================= -->
   <!-- PERSISTENT FULLSCREEN CELEBRATION CANVAS (Z-INDEX 9999) -->
   <!-- ========================================================================= -->
-  <canvas id="celebration-canvas" class="fixed inset-0 pointer-events-none w-full h-full" style="z-index: 9999; display: none;"></canvas>
+  <canvas id="celebration-canvas" class="fixed inset-0 pointer-events-none w-full h-full max-w-full max-h-full" style="z-index: 9999; display: none;"></canvas>
 
   <!-- ========================================================================= -->
   <!-- JAVASCRIPT: ROBUST CELEBRATION ENGINE & TOUCH-SAFE CONTROLLERS -->
@@ -681,7 +740,7 @@
         a.play().then(() => {
           updateUI(true);
         }).catch(err => {
-          console.log('Playback error:', err);
+          console.log('Playback notice:', err);
         });
       }
 
@@ -733,7 +792,7 @@
 
       function resize() {
         if (!canvas) return;
-        width = window.innerWidth;
+        width = Math.min(window.innerWidth, document.documentElement.clientWidth || window.innerWidth);
         height = window.innerHeight;
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         canvas.width = width * dpr;
@@ -766,8 +825,8 @@
 
       // Grand Mega Celebration Explosion (Triggered on photo/button click)
       function spawnGrandClickExplosion() {
-        const cx = window.innerWidth / 2;
-        const cy = Math.min(window.innerHeight * 0.45, 400);
+        const cx = width / 2;
+        const cy = Math.min(height * 0.45, 400);
 
         // 1. Central 360-degree radial blast (80 particles)
         for (let i = 0; i < 80; i++) {
@@ -805,7 +864,7 @@
         }
       }
 
-      // Gentle, subtle ongoing stardust rain (throughout)
+      // Gentle, subtle ongoing stardust rain
       function spawnGentleStardust(count = 1) {
         for (let i = 0; i < count; i++) {
           const x = Math.random() * width;
@@ -818,7 +877,7 @@
         }
       }
 
-      // Subtle, spaced corner shimmer (throughout ambient)
+      // Subtle, spaced corner shimmer
       function spawnSoftCornerShimmer() {
         for (let i = 0; i < 8; i++) {
           const angle = -(Math.PI / 4) + (Math.random() - 0.5) * 0.4;
@@ -907,8 +966,6 @@
       isConfettiLoopStarted = true;
 
       ConfettiSystem.init();
-
-      // MASSIVE GRAND CELEBRATION BURST ON CLICK (190+ particles)
       ConfettiSystem.spawnGrandClickExplosion();
 
       // Infinite Subtle Ambient Rainfall throughout (spaced out every 6s)
@@ -937,11 +994,13 @@
       }
     });
 
-    // Register PWA Service Worker for Home Screen Installability
+    // Auto-Purge Service Workers and Caches on Every Page Visit
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(err => {
-          console.log('PWA SW notice:', err);
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for (var i = 0; i < registrations.length; i++) {
+            registrations[i].unregister();
+          }
         });
       }, { passive: true });
     }
