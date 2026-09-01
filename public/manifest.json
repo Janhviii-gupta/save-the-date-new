@@ -11,13 +11,13 @@
   "scope": "/",
   "icons": [
     {
-      "src": "reveal-photos/photo-1944.jpg",
+      "src": "preview-1948.jpg",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "reveal-photos/photo-1944.jpg",
+      "src": "preview-1948.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
